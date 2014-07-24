@@ -4,23 +4,25 @@
  */
 package com.scenes.test;
 
+import java.io.IOException;
+
 import org.andengine.engine.Engine;
 
-import android.test.SingleLaunchActivityTestCase;
+import android.test.ActivityInstrumentationTestCase2;
 
 import com.activities.GameActivity;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.DataInMemory;
 
-public class DataInMemoryTest extends SingleLaunchActivityTestCase<GameActivity> {
+public class DataInMemoryTest extends ActivityInstrumentationTestCase2<GameActivity> {
 		
 	private GameActivity gA; 
 	private Engine e; 
 	private DataInMemory data; 
 	
 	public DataInMemoryTest() {
-		super("com.activities", GameActivity.class);
+		super(GameActivity.class); 
 	}
 	
 	@Override
@@ -38,7 +40,7 @@ public class DataInMemoryTest extends SingleLaunchActivityTestCase<GameActivity>
 //	public void testResourseManagerCameraIsInit() {
 //		assertNotNull(ResourcesManager.getInstance().camera);
 //	}
-	
+//	
 //	public void testResourseManagerEngineIsInit() {
 //		assertNotNull(ResourcesManager.getInstance().engine);
 //	}
@@ -79,8 +81,9 @@ public class DataInMemoryTest extends SingleLaunchActivityTestCase<GameActivity>
 	}
 	
 	@Override
-	public void tearDown() throws Exception {
+	public void tearDown() throws Exception { 
 		super.tearDown();
+		gA = null;
 		System.gc(); 
 	}
 	

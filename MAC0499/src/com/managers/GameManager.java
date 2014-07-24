@@ -38,7 +38,6 @@ public class GameManager {
 		return userName;
 	}
 
-	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
