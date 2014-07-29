@@ -15,6 +15,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,18 +24,58 @@ import android.os.AsyncTask;
 public class HTTPPostRequester {
 
 	private String url = "http://192.168.0.149/Requisicao.php"; 
+	
+	
+//	public JSONObject teste() {
+//		String json = "{\"message\":\"This is a message\"}";
+//
+//	    HttpClient httpClient = new DefaultHttpClient();
+//
+//	    try {
+//	        HttpPost request = new HttpPost(url);
+//	        StringEntity params = new StringEntity("message=" + json);
+//	        request.addHeader("content-type", "application/x-www-form-urlencoded");
+//	        request.setEntity(params);
+//	        HttpResponse response = httpClient.execute(request);
+//
+//	        // handle response here...
+//
+//	        
+////	        System.out.println(org.apache.http.util.EntityUtils.toString(response.getEntity()));
+//	        StringBuilder sb = new StringBuilder();
+//			try {
+//			    BufferedReader reader = 
+//			           new BufferedReader(new InputStreamReader(response.getEntity().getContent()), 65728);
+//			    String line = null;
+//
+//			    while ((line = reader.readLine()) != null) {
+//			        sb.append(line);
+//			    }
+//			}
+//			catch (IOException e) { e.printStackTrace(); }
+//			catch (Exception e) { e.printStackTrace(); }
+//			System.out.println("AQUI FDP " + sb.toString());
+//			return null;
+//
+//	    } catch (Exception ex) {
+//	        // handle exception here
+//	    } finally {
+//	        httpClient.getConnectionManager().shutdown();
+//	    }
+//		return null;
+//	}
+
 
 	public JSONObject post(JSONObject jsonParams) {
 		HttpClient httpClient = new DefaultHttpClient(); 
 		HttpPost post = new HttpPost(url);
 		try {
-			StringEntity entityParams = new StringEntity(jsonParams.toString());
+			StringEntity entityParams = new StringEntity("message=" + jsonParams.toString());
+			
 			post.setEntity(entityParams);
-			post.addHeader("content-type", "application/x-www-form-urlencoded");
-			System.out.println("DEBUG - Antes de fazer o execute");
+		    post.addHeader("content-type", "application/x-www-form-urlencoded");
 			HttpResponse response = httpClient.execute(post);
 			HttpEntity entity = response.getEntity();
-			System.out.println("DEBUG - Passou to execute");
 			StringBuilder sb = new StringBuilder();
 
 			BufferedReader reader = 
@@ -59,7 +100,6 @@ public class HTTPPostRequester {
 	}
 
 	public void asyncPost(HTTPResponseListener httpResponseListener, JSONObject obj) {
-		System.out.println("DEBUG - chegou no async do postrequester: " + obj);
 		new HttpPostRequest(httpResponseListener).execute(url, obj.toString());
 	}
 
@@ -77,10 +117,11 @@ public class HTTPPostRequester {
 			try {
 				obj = new JSONObject(params[1]);
 			} catch (JSONException e) {
-				System.err.println("FUDEU TUDO AQUI NO ASSINCRONO");
+				e.printStackTrace(); 
 			} 
 			System.out.println("DEBUG - dentro da classe estranha obj = " + obj);
 			return HTTPPostRequester.this.post(obj);
+//			return HTTPPostRequester.this.teste(); 
 		}
 
 		protected void onPostExecute(JSONObject result) {

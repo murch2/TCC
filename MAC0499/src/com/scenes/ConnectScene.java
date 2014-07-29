@@ -12,6 +12,8 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.text.Text;
 import org.andengine.util.adt.color.Color;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
@@ -19,26 +21,21 @@ import com.facebook.model.GraphUser;
 import com.managers.GameManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
+import com.server.HTTPPostRequester;
+import com.server.HTTPResponseListener;
+import com.server.MakeParameters;
 import com.util.Constants;
 import com.util.FacebookFacade;
 
-public class ConnectScene extends BaseScene implements IOnMenuItemClickListener, GraphUserCallback {
+public class ConnectScene extends BaseScene implements IOnMenuItemClickListener, GraphUserCallback, HTTPResponseListener {
 
 	private MenuScene facebookMenu; 
 	private final int MENU_FACEBOOK_CONNECT = 0;
 	private FacebookFacade fb;  
 	
 	@Override
-	public void createScene() {
-		//Talvez essa variavel do facebook tenha que ser usada em mais lugares na classe. 
+	public void createScene() { 
 		fb = new FacebookFacade();
-//		if (GameManager.getInstance().getDataInMemory().readBooleanData(Constants.FACEBOOK_LOGIN)) {
-//			System.out.println("DEBUG - Tá devolvendo true no connectScene");
-//			fb.login(this); 
-//		} 
-//		else {
-//			System.out.println("DEBUG - Tá devolvendo false no connectScene");
-//		}
 		createBackground();
 		createWelcomeMessage(); 
 		createFacebookConnectMenu();
@@ -118,15 +115,26 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 	@Override
 	public void onCompleted(GraphUser user, Response response) {
 		//Se a classe só faz um pedido ao facebook tranquilo. 
-		//agora se a classe fizer dois dá pra criar uma cariavel de estado pra guardar 
+		//agora se a classe fizer dois dá pra criar uma variavel de estado pra guardar 
 		//qual foi o ultimo que se faz e se pode fazer pq num tem nenhum sendo feito. 
 		if (user != null) {
+			new HTTPPostRequester().asyncPost(this, MakeParameters.makeSignUpParams(user)); 
 			GameManager.getInstance().setLoggedUser(true); 
-			GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
+//			GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
-			GameManager.getInstance().setUserID(user.getId()); 
+			GameManager.getInstance().setUserID(user.getId());
+			//Aqui eu tenho que chamar o layer de loading. (ou na cena que tá sendo criada)
 			SceneManager.getInstance().createMainMenuScene(); 
 		}
 	}
+
 	
+	@Override
+	public void onResponse(JSONObject json) {
+
+//		System.out.println("CORRECT = ");
+//		System.out.println(json.toString());
+
+	}
+
 }

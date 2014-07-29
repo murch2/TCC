@@ -15,6 +15,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.util.GLState;
 
+import com.facebook.Session;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 
@@ -83,6 +84,8 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 		switch (pMenuItem.getID()) {
 		case MENU_PROFILE:
 			System.out.println("Clicou no menu profile");
+			Session.getActiveSession().closeAndClearTokenInformation(); 
+			
 			return true; 
 
 		default:

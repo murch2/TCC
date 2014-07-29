@@ -10,11 +10,10 @@ require 'ExecuteQuery.php';
 
  class TrataRequisicao {
 
- 	public $json; 
-
  	function __construct($json) {
- 		$json_decoded = json_decode($json, true); 
- 		$this->tratandoRequisicao($json_decoded); 
+ 		$json = json_decode($json, true); 
+ 		$json = $json['message']; 
+ 		$this->tratandoRequisicao($json); 
  	}
 
  	// Se tiver herança o log tem que ir como herança
@@ -25,17 +24,18 @@ require 'ExecuteQuery.php';
  	}
 
  	function tratandoRequisicao ($json) { 
- 		$j = json_decode($json); 
- 		$r = array('chavinha' => 'valorzinho');
- 		$d = json_encode($r); 
- 		exit($d); 
- 		// if ($json["request_type"] == "infoDB") {
- 		// 	$cc = new ExecuteQuery (); 
- 		// 	$result = $cc->makeQuery($json); 
- 		// 	exit(json_encode($result)); 
- 		// 	// $this->log ($result); 
- 		// } else {
- 		// 	$this->log("Entra aqui no else");
- 		// }
+ 		$exeQuery = new ExecuteQuery (); 
+
+ 		switch ($json['requestID']) {
+ 			case 'SignUp':
+ 				$result = $exeQuery->SignUpQuery($json);
+ 				break;
+ 			
+ 			default:
+ 				break;
+ 		} 
+ 		//na verdade vou dar um ok no result ou error. 
+ 		$result = json_encode($result); 
+ 		exit($result); 
  	}
  }

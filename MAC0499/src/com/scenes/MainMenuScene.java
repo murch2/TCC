@@ -16,6 +16,7 @@ import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.Constants;
 import com.util.FacebookFacade;
 
 public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback {
@@ -25,19 +26,13 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 	@Override
 	public void createScene() {
+		GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, false);
 		createBackground();
 		createHUD(); 
-		makeRequestTest();
 		if (!GameManager.getInstance().isLoggedUser()) {
 			fb = new FacebookFacade(); 
 			fb.login(this); 
 		}
-	}
-
-	
-	private void makeRequestTest() {
-		JSONObject obj = MakeParameters.makeTestparams();
-		new HTTPPostRequester().asyncPost(this, obj); 
 	}
 
 	private void createBackground() {
