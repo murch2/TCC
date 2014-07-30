@@ -58,10 +58,10 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		menuNewGame = new MenuScene(camera);
 		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
 
-		final IMenuItem facebookConnectItem = new ScaleMenuItemDecorator(
+		final IMenuItem itemNewGame = new ScaleMenuItemDecorator(
 				new SpriteMenuItem(MENU_NEWGAME, resourcesManager.newGameMenuRegion, vbom), 0.8f, 1);
 		
-		menuNewGame.addMenuItem(facebookConnectItem);
+		menuNewGame.addMenuItem(itemNewGame);
 		menuNewGame.buildAnimations();
 		menuNewGame.setBackgroundEnabled(false);
 
