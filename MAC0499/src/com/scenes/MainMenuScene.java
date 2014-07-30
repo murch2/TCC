@@ -5,6 +5,11 @@
 package com.scenes;
 
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.scene.menu.MenuScene;
+import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
+import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.scene.menu.item.SpriteMenuItem;
+import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,10 +26,12 @@ import com.server.MakeParameters;
 import com.util.Constants;
 import com.util.FacebookFacade;
 
-public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback {
+public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback, IOnMenuItemClickListener {
 
 	//Talvez isso vá pra uma das classes singleton. 
-	private FacebookFacade fb; 
+	private FacebookFacade fb;
+	private MenuScene menuNewGame; 
+	private final int MENU_NEWGAME = 0;
 
 	@Override
 	public void createScene() {
@@ -40,17 +47,34 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	private void createItensScene() {
 		//Acho que soh no fim desse metodo o loading poderá sair da tela
 		createHUD();
+		createBtnNewGame(); 
 	}
 
 	private void createBackground() {
 		setBackground(new Background(Color.BLUE));
+	}
+	
+	private void createBtnNewGame() {
+		menuNewGame = new MenuScene(camera);
+		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
+
+		final IMenuItem facebookConnectItem = new ScaleMenuItemDecorator(
+				new SpriteMenuItem(MENU_NEWGAME, resourcesManager.newGameMenuRegion, vbom), 0.8f, 1);
+		
+		menuNewGame.addMenuItem(facebookConnectItem);
+		menuNewGame.buildAnimations();
+		menuNewGame.setBackgroundEnabled(false);
+
+		//Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
+		menuNewGame.setOnMenuItemClickListener(this); 
+
+		setChildScene(menuNewGame);
 	}
 
 	//Aqui vou fazer um pop-up pra sair do jogo. 
 	@Override
 	public void onBackKeyPressed() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -93,5 +117,23 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			//Aqui tb deu merda pra recuperar os dados do cara no BD
 			e.printStackTrace();
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener#onMenuItemClicked(org.andengine.entity.scene.menu.MenuScene, org.andengine.entity.scene.menu.item.IMenuItem, float, float)
+	 */
+	@Override
+	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
+			float pMenuItemLocalX, float pMenuItemLocalY) {
+		switch (pMenuItem.getID()) {
+		case MENU_NEWGAME:
+			SceneManager.getInstance().createNewGameScene();
+			return true; 
+
+		default:
+			break;
+		}
+		return false;
+		
 	}
 }

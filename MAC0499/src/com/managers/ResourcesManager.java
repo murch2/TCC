@@ -32,7 +32,7 @@ public class ResourcesManager {
     public ITextureRegion splashRegion; 
     private BitmapTextureAtlas splashTextureAtlas;
     
-    ///GameModeMenu
+    ///Connect Scene
     public ITextureRegion facebookConnectRegion;
     private BuildableBitmapTextureAtlas facebookConnectMenuAtlas; 
     
@@ -42,6 +42,10 @@ public class ResourcesManager {
     public ITextureRegion headerBackgroundRegion;
     public ITextureRegion headerProfileRegion;
     private BuildableBitmapTextureAtlas headerAtlas;
+    
+    //MainMenu
+    public ITextureRegion newGameMenuRegion;
+    private BuildableBitmapTextureAtlas mainMenuAtlas;
     
 	public static ResourcesManager getInstance() {
         return INSTANCE;
@@ -103,11 +107,25 @@ public class ResourcesManager {
     
     public synchronized void loadMainMenuScene() {
     	loadFonts();
-    	loadHeader(); 
+    	//o loadHeader talvez tenha que sair daqui. 
+    	loadHeader();
+    	loadMainMenuGraphics(); 
     }
 
     public synchronized void unloadMainMenuScene() {
 
+    }
+    
+    private synchronized void loadMainMenuGraphics() {
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/mainMenu/"); 
+    	mainMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 390, 90, TextureOptions.BILINEAR); 
+    	newGameMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnNewGame.png");
+    	try {
+			this.mainMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			this.mainMenuAtlas.load(); 
+		} catch (TextureAtlasBuilderException e) {
+			e.printStackTrace();
+		}
     }
     
     public synchronized void loadHeader() {
@@ -126,6 +144,14 @@ public class ResourcesManager {
     public synchronized void unloadHeader() {
     	
     }
+
     
+    public synchronized void loadNewGameScene() {
+
+    }
+    
+    public synchronized void unloadNewGameScene() {
+
+    }
     
 }

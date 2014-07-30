@@ -11,6 +11,7 @@ import com.managers.ResourcesManager;
 import com.scenes.BaseScene;
 import com.scenes.ConnectScene;
 import com.scenes.MainMenuScene;
+import com.scenes.NewGameScene;
 import com.scenes.SplashScene;
 
 public class SceneManager {
@@ -22,7 +23,8 @@ public class SceneManager {
 	
 	private BaseScene splashScene; 
 	private BaseScene connectScene; 
-	private BaseScene mainMenuScene; 
+	private BaseScene mainMenuScene;
+	private BaseScene newGameScene; 
 	
 	public static SceneManager getInstance() {
 		return INSTANCE; 
@@ -31,7 +33,8 @@ public class SceneManager {
 	public enum SceneType {
 		SPLASH_SCENE,
 		CONNECT_SCENE, 
-		MAINMENU_SCENE
+		MAINMENU_SCENE, 
+		NEWGAME_SCENE
 	}
 	
 	//Talvez esse método possa ser private 
@@ -48,6 +51,12 @@ public class SceneManager {
 			break;
 		case CONNECT_SCENE:
 			setScene(connectScene);
+			break; 
+		case MAINMENU_SCENE:
+			setScene(mainMenuScene);
+			break; 
+		case NEWGAME_SCENE:
+			setScene(newGameScene); 
 		default:
 			break;
 		}
@@ -81,7 +90,11 @@ public class SceneManager {
 //	    disposeSplashScene(); 
 	}
 	
-	
+	public void createNewGameScene() {
+		ResourcesManager.getInstance().loadNewGameScene(); 
+		newGameScene = new NewGameScene(); 
+		setScene(newGameScene); 
+	}
 	
 	public BaseScene getCurrentScene() {
 		return currentScene; 

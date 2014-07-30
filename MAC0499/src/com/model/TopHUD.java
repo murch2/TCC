@@ -100,5 +100,4 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 		}
 		return false; 
 	}
-
 }
