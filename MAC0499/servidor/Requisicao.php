@@ -30,6 +30,10 @@ require 'ExecuteQuery.php';
  			case 'SignUp':
  				$result = $exeQuery->SignUpQuery($json);
  				break;
+
+ 			case 'UserInfo':
+ 				$result = $exeQuery->UserInfoQuery($json['userID']);
+ 				break;
  			
  			default:
  				break;

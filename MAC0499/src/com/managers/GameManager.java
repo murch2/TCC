@@ -12,7 +12,9 @@ public class GameManager {
 	private DataInMemory dataInMemory = new DataInMemory(ResourcesManager.getInstance().activity, Constants.FILE_SAVE_DATA);
 	private boolean loggedUser = false; 
 	private String userName; 
-	private String userID; 	
+	private String userID;
+	private int userCoins; 
+	private int userPowerUps; 
 
 	public static GameManager getInstance() {
 		return INSTANCE; 
@@ -48,6 +50,22 @@ public class GameManager {
 
 	public void setUserID(String userID) {
 		this.userID = userID;
+	}
+
+	public int getUserCoins() {
+		return userCoins;
+	}
+
+	public void setUserCoins(int userCoins) {
+		this.userCoins = userCoins;
+	}
+
+	public int getUserPowerUps() {
+		return userPowerUps;
+	}
+
+	public void setUserPowerUps(int userPowerUps) {
+		this.userPowerUps = userPowerUps;
 	}
 	
 }

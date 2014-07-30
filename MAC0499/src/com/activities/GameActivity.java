@@ -70,7 +70,7 @@ public class GameActivity extends BaseGameActivity {
 	            {
 	            	
 	                mEngine.unregisterUpdateHandler(pTimerHandler);
-	                //Tenho que confirmar se a primeira vez deve começar com falso. 
+	                 
 	                if (GameManager.getInstance().getDataInMemory().alreadyLogedInFacebook()) {
 	                	SceneManager.getInstance().createMainMenuScene();
 	                }

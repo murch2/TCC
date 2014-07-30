@@ -1,9 +1,6 @@
-Chegou no SignUp query
-INSERT INTO JOGADOR VALUES ('678359188912185', 'Rodrigo Duarte Louro', 0, 0); 
-Aqui 1
-Chegou no SignUp query
-INSERT INTO JOGADOR VALUES (678359188912185, 'Rodrigo Duarte Louro', 0, 0); 
-Aqui 1
-Chegou no SignUp query
-INSERT INTO JOGADOR VALUES (678359188912185, 'Rodrigo Duarte Louro', 0, 0); 
+
 Aqui 2
+SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+1
+SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;

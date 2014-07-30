@@ -9,12 +9,24 @@ class ExecuteQuery {
 
 	//Tem que mudar de nome pq isso vai ser o switch de tratar as requisições. 
 	function SignUpQuery ($json) {
-		$this->log("Chegou no SignUp query"); 
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
-		$this->log($query); 
-
 		$result = $this->setInfo($query); 
 		return $this->trataResult($result); 
+	}
+
+	function UserInfoQuery($userID) {
+		$query = "SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = " . $userID . ";"; 
+		$this->log($query); 
+		$result = $this->getInfo($query); 
+		$row = pg_fetch_row($result); 
+		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
+		// pra ver se eu encontrei algum cara ou não. 
+		$jsonResult = array('status' => 'ok', 
+							'nome' => $row[0],
+							'moedas' => $row[1],
+							'rodadas' => $row[2]
+							);
+		return $jsonResult; 
 	}
 
 	//Esse affected rows é pra INSERT 

@@ -38,8 +38,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 		fb = new FacebookFacade();
 		createBackground();
 		createWelcomeMessage(); 
-		createFacebookConnectMenu();
-		
+		createFacebookConnectMenu();		
 	}
 	
 	@Override
@@ -118,23 +117,34 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 		//agora se a classe fizer dois dá pra criar uma variavel de estado pra guardar 
 		//qual foi o ultimo que se faz e se pode fazer pq num tem nenhum sendo feito. 
 		if (user != null) {
-			new HTTPPostRequester().asyncPost(this, MakeParameters.makeSignUpParams(user)); 
-			GameManager.getInstance().setLoggedUser(true); 
-//			GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
+			new HTTPPostRequester().asyncPost(this, MakeParameters.signUpParams(user));
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
 			GameManager.getInstance().setUserID(user.getId());
-			//Aqui eu tenho que chamar o layer de loading. (ou na cena que tá sendo criada)
-			SceneManager.getInstance().createMainMenuScene(); 
+			//Aqui eu chamo o layer de loading. 
+		}
+		else {
+			//Deu erro na conexão com o facebook. 
 		}
 	}
 
 	
 	@Override
 	public void onResponse(JSONObject json) {
-
-//		System.out.println("CORRECT = ");
-//		System.out.println(json.toString());
-
+		try {
+			if (json.getString("status").equals("ok")) {
+				//Talvez aqui ou no fim da criação do mainMenuseja retirado o layer de loading. 
+				GameManager.getInstance().setLoggedUser(true); 
+				GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
+				SceneManager.getInstance().createMainMenuScene(); 
+			}
+			else { //Deu merda na inserção do cara. 
+				
+			}
+		} catch (JSONException e) {
+			//Aqui tb deu merda na inserção do cara.
+			e.printStackTrace();
+		}
+		
 	}
 
 }

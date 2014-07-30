@@ -8,11 +8,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.facebook.model.GraphUser;
+import com.managers.GameManager;
 
 //Tentar tirar os static depois 
 public class MakeParameters {
 
-	public static JSONObject makeSignUpParams (GraphUser user) {
+	public static JSONObject signUpParams (GraphUser user) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject(); 
 		try {
@@ -27,4 +28,18 @@ public class MakeParameters {
 		} 
 		return result; 
 	}
+	
+	public static JSONObject getUserInfo(String userID) {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "UserInfo"); 
+			params.put("userID", userID); 
+			result.put("message", params); 
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
+		return result; 
+	}
+	
 }
