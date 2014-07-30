@@ -14,8 +14,10 @@ import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.opengl.util.GLState;
+import org.andengine.util.adt.color.Color;
 
 import com.facebook.Session;
+import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 
@@ -71,11 +73,19 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 	}
 	
 	private void createPowerUps() {
-		
+		String powerUp = "PowerUps: " + GameManager.getInstance().getUserPowerUps(); 
+		powerUps = new Text(0, 0, ResourcesManager.getInstance().font, powerUp, ResourcesManager.getInstance().vbom);
+		powerUps.setPosition(this.backGround.getWidth() * 0.41f, this.backGround.getHeight() * 0.5f);  
+		powerUps.setColor(Color.WHITE); 
+		backGround.attachChild(powerUps);
 	}
 	
 	private void createCoins() {
-		
+		String coinsString = "Coins: " + GameManager.getInstance().getUserCoins(); 
+		coins = new Text(0, 0, ResourcesManager.getInstance().font, coinsString, ResourcesManager.getInstance().vbom);
+		coins.setPosition(this.backGround.getWidth() * 0.8f, this.backGround.getHeight() * 0.5f);  
+		coins.setColor(Color.WHITE); 
+		backGround.attachChild(coins);
 	}
 	
 	@Override
@@ -83,9 +93,6 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_PROFILE:
-			System.out.println("Clicou no menu profile");
-			Session.getActiveSession().closeAndClearTokenInformation(); 
-			
 			return true; 
 
 		default:

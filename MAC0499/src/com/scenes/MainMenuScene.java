@@ -28,14 +28,18 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 	@Override
 	public void createScene() {
-		createBackground();
-		createHUD(); 
+		createBackground();  
 		if (!GameManager.getInstance().isLoggedUser()) {
 			fb = new FacebookFacade(); 
 			fb.login(this); 
 		} else {
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
 		}
+	}
+	
+	private void createItensScene() {
+		//Acho que soh no fim desse metodo o loading poderá sair da tela
+		createHUD();
 	}
 
 	private void createBackground() {
@@ -74,13 +78,13 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	
 	@Override
 	public void onResponse(JSONObject json) {
-		//acho que aqui que sempre será retirado o layer de loading.
 		try {
 			if (json.getString("status").equals("ok")) { 
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
 				GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
 				GameManager.getInstance().setUserName(json.getString("nome")); 
+				createItensScene(); 
 			}
 			else { //Deu merda pra recuperar os dados do cara no banco de dados.  
 				
