@@ -70,13 +70,14 @@ public class GameActivity extends BaseGameActivity {
 	            {
 	            	
 	                mEngine.unregisterUpdateHandler(pTimerHandler);
-	                 
+	                
 	                if (GameManager.getInstance().getDataInMemory().alreadyLogedInFacebook()) {
 	                	SceneManager.getInstance().createMainMenuScene();
 	                }
 //	                Talvez aqui eu tenha que fazer mais alguma verificação pra ver se eu consigo pegar os dados do usuario 
 //	                pra confirmar se ele está mesmo logado. 
 	                else {
+	                	System.out.println("DEBUG - criando connect scene");
 	                	SceneManager.getInstance().createConnectScene();
 	                }
 	            }

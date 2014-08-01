@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
+import android.test.UiThreadTest;
 
 public class HTTPPostRequester {
 
@@ -32,9 +33,9 @@ public class HTTPPostRequester {
 		    post.addHeader("content-type", "application/x-www-form-urlencoded");
 			HttpResponse response = httpClient.execute(post);
 			HttpEntity entity = response.getEntity();
-			if (entity != null)
+			if (entity != null) 
 				return new JSONParser(entity.getContent()).parse();
-			 
+			
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -47,7 +48,8 @@ public class HTTPPostRequester {
 	public void asyncPost(HTTPResponseListener httpResponseListener, JSONObject obj) {
 		new HttpPostRequest(httpResponseListener).execute(url, obj.toString());
 	}
-
+	
+	
 	private class HttpPostRequest extends AsyncTask<String, String, JSONObject> {
 
 		private HTTPResponseListener responseListener;
@@ -64,12 +66,10 @@ public class HTTPPostRequester {
 			} catch (JSONException e) {
 				e.printStackTrace(); 
 			} 
-			System.out.println("DEBUG - dentro da classe estranha obj = " + obj);
 			return HTTPPostRequester.this.post(obj);
 		}
 
 		protected void onPostExecute(JSONObject result) {
-			System.out.println("DEBUG - result na classe estranha : " + result);
 			responseListener.onResponse(result); 
 		}
 	}

@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
+import com.facebook.widget.LoginButton;
 import com.managers.GameManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
@@ -101,6 +102,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_FACEBOOK_CONNECT:
+			System.out.println("DEBUG - chamando o login 2");
 			fb.login(this); 
 			return true; 
 
@@ -120,6 +122,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 			new HTTPPostRequester().asyncPost(this, MakeParameters.signUpParams(user));
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
 			GameManager.getInstance().setUserID(user.getId());
+			System.out.println("DEBUG - O cara está logado na connect scene  " + GameManager.getInstance().getUserName());
 			//Aqui eu chamo o layer de loading. 
 		}
 		else {
@@ -135,10 +138,11 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 				//Talvez aqui ou no fim da criação do mainMenuseja retirado o layer de loading. 
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
+				System.out.println("DEBUG - estou indo da connect scene para o mainMenu");
 				SceneManager.getInstance().createMainMenuScene(); 
 			}
 			else { //Deu merda na inserção do cara. 
-				
+				System.out.println("DEBUG - Deu Merda!");
 			}
 		} catch (JSONException e) {
 			//Aqui tb deu merda na inserção do cara.

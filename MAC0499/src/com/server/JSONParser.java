@@ -25,7 +25,7 @@ public class JSONParser {
 	public JSONObject parse() {
 		try {
 //			Se der certo com 8 ok, mas acho que precisa ser mais. 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 65000);
 			StringBuilder sb = new StringBuilder();
 			String line = null;
 
@@ -35,6 +35,7 @@ public class JSONParser {
 			
 			is.close(); 
 			jsonString = sb.toString(); 
+			//Aqui preciso verificar se eh ok e tals. (pra forçar p erro muda a permissao do log do php
 			result = new JSONObject(jsonString); 
 			
 			return result; 

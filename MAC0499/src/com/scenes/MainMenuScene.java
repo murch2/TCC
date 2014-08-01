@@ -14,6 +14,8 @@ import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
+
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
@@ -29,16 +31,18 @@ import com.util.FacebookFacade;
 public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback, IOnMenuItemClickListener {
 
 	//Talvez isso vá pra uma das classes singleton. 
-	private FacebookFacade fb;
+//	private FacebookFacade fb;
 	private MenuScene menuNewGame; 
 	private final int MENU_NEWGAME = 0;
 
 	@Override
 	public void createScene() {
 		createBackground();  
+		createItensScene(); 
+		//Vou tentar jogar o login pra outra tela por causa do bug
 		if (!GameManager.getInstance().isLoggedUser()) {
-			fb = new FacebookFacade(); 
-			fb.login(this); 
+			System.out.println("DEBUG - Chamando o login 1");
+			new FacebookFacade().login(this); 
 		} else {
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
 		}
@@ -92,11 +96,12 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void onCompleted(GraphUser user, Response response) {
 		if (user != null) {
+			
 			GameManager.getInstance().setUserID(user.getId()); 
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(user.getId()));
 			GameManager.getInstance().setLoggedUser(true);  
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
-			
+			System.out.println("DEBUG - O cara está logado na MainMenuScene " + GameManager.getInstance().getUserName());
 		}
 	}
 	
@@ -119,9 +124,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener#onMenuItemClicked(org.andengine.entity.scene.menu.MenuScene, org.andengine.entity.scene.menu.item.IMenuItem, float, float)
-	 */
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
