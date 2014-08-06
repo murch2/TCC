@@ -17,9 +17,13 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 
 import com.facebook.Request.GraphUserCallback;
+import com.facebook.HttpMethod;
+import com.facebook.Request;
 import com.facebook.Response;
+import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
+import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
@@ -129,7 +133,26 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_NEWGAME:
-			SceneManager.getInstance().createNewGameScene();
+//			SceneManager.getInstance().createNewGameScene();
+			   ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						new FacebookFacade().getFriends(); 
+					}
+				}); 
+			
+//			new Request(
+//				    Session.getActiveSession(),
+//				    "/me/friends",
+//				    null,
+//				    HttpMethod.GET,
+//				    new Request.Callback() {
+//				        public void onCompleted(Response response) {
+//				            System.out.println("BUCETAAAAAA " + response);
+//				        }
+//
+//				    }
+//				).executeAsync();
 			return true; 
 
 		default:

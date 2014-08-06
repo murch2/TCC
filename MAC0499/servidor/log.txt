@@ -1,117 +1,13 @@
-
-Aqui 2
+a
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-1
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-Aqui 1
-Aqui 1
-Aqui 2
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 2
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 1
-Aqui 2
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
-Aqui 2
-SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;
+UserInfo
 SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = 678359188912185;

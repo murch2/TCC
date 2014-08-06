@@ -6,8 +6,13 @@ package com.util;
 
 import java.util.Vector;
 
+import android.os.Bundle;
+
+import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Request.GraphUserCallback;
+import com.facebook.RequestAsyncTask;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.managers.GameManager;
@@ -36,7 +41,7 @@ public class FacebookFacade {
 					//talvez isso precise ser usado todas as vezes, mas por enquanto assim está ok.
 					if (!GameManager.getInstance().getDataInMemory().alreadyLogedInFacebook())
 						session.requestNewReadPermissions(newPermissionsRequest);
-					Request.newMeRequest(session, callback).executeAsync();
+					Request.newMeRequest(session, callback).executeAsync(); 
 				}
 				else {
 	                if (!session.isOpened())
@@ -48,6 +53,58 @@ public class FacebookFacade {
 			}
 		});
 	}
+	
+	public void getFriends () {
+		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
+
+        final Bundle params = new Bundle();
+        params.putString("q", fqlQuery);
+
+        Request request = new Request(Session.getActiveSession(),  "/fql",  params, HttpMethod.GET, new Request.Callback()
+
+        { 
+          public void onCompleted(Response response) 
+             {
+                //Log.i("listttt:::::", "Got results: " + response.toString());
+               try
+               {
+            	   System.out.println("BUCETAAAAA " + response);
+            	   
+//                GraphObject graphObject = response.getGraphObject();
+//                JSONObject jsonObject = graphObject.getInnerJSONObject(); 
+//
+//
+//                Log.v("Fb frn list size:::::", ""+jsonObject .length());  
+
+
+
+               }catch(Exception e){
+                    e.printStackTrace();
+               }
+            }
+            });
+
+            //Request.executeBatchAsync(request);
+
+        RequestAsyncTask task = new RequestAsyncTask(request);
+        task.execute(); 
+     
+        
+        
+//		new Request(
+//			    Session.getActiveSession(),
+//			    "/me/friends",
+//			    null,
+//			    HttpMethod.GET,
+//			    new Request.Callback() {
+//			        public void onCompleted(Response response) {
+//			            System.out.println(response);
+//			        }
+//
+//			    }
+//			).executeAsync();
+	}
+	
 }
 
 

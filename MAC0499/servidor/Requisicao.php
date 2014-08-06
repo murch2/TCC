@@ -18,14 +18,14 @@ require 'ExecuteQuery.php';
 
  	// Se tiver herança o log tem que ir como herança
  	function log ($message) {
- 		$fp = fopen('/home/digao/android/workspace/MAC0499/servidor/log.txt', 'a+') or die ("Permission error");
+ 		$fp = fopen('/home/digao/android/workspace/TCC/MAC0499/servidor/log.txt', 'a+') or die ("Permission error");
  		fwrite($fp, $message . "\n");
  		fclose($fp); 
  	}
 
  	function tratandoRequisicao ($json) { 
- 		$exeQuery = new ExecuteQuery (); 
 
+ 		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':
  				$result = $exeQuery->SignUpQuery($json);
