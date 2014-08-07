@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.facebook.HttpMethod;
 import com.facebook.Request;
+import com.facebook.Request.Callback;
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.RequestAsyncTask;
 import com.facebook.Response;
@@ -54,59 +55,42 @@ public class FacebookFacade {
 		});
 	}
 	
-	public void getFriends () {
-		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
+	//Depois eu tenho que mudar isso pra receber um callback. 
 
+	public void getFriends (final Callback callback) {
+		ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				 faceFriends(callback); 
+			}
+		}); 
+	}
+	
+	private void faceFriends (Callback callback) {
+		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
         final Bundle params = new Bundle();
         params.putString("q", fqlQuery);
-
-        Request request = new Request(Session.getActiveSession(),  "/fql",  params, HttpMethod.GET, new Request.Callback()
-
-        { 
-          public void onCompleted(Response response) 
-             {
-                //Log.i("listttt:::::", "Got results: " + response.toString());
-               try
-               {
-            	   System.out.println("BUCETAAAAA " + response);
-            	   
-//                GraphObject graphObject = response.getGraphObject();
-//                JSONObject jsonObject = graphObject.getInnerJSONObject(); 
-//
-//
-//                Log.v("Fb frn list size:::::", ""+jsonObject .length());  
-
-
-
-               }catch(Exception e){
-                    e.printStackTrace();
-               }
-            }
-            });
-
-            //Request.executeBatchAsync(request);
-
+        Request request = new Request(Session.getActiveSession(),  "/fql",  params, HttpMethod.GET, callback);
         RequestAsyncTask task = new RequestAsyncTask(request);
         task.execute(); 
-     
-        
-        
-//		new Request(
-//			    Session.getActiveSession(),
-//			    "/me/friends",
-//			    null,
-//			    HttpMethod.GET,
-//			    new Request.Callback() {
-//			        public void onCompleted(Response response) {
-//			            System.out.println(response);
-//			        }
-//
-//			    }
-//			).executeAsync();
-	}
+  }
 	
 }
 
+
+
+//	new Request(
+//		    Session.getActiveSession(),
+//		    "/me/friends",
+//		    null,
+//		    HttpMethod.GET,
+//		    new Request.Callback() {
+//		        public void onCompleted(Response response) {
+//		            System.out.println(response);
+//		        }
+//
+//		    }
+//		).executeAsync();
 
 
 

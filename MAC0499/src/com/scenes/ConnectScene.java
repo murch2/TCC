@@ -129,7 +129,6 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 			//Deu erro na conexão com o facebook. 
 		}
 	}
-
 	
 	@Override
 	public void onResponse(JSONObject json) {

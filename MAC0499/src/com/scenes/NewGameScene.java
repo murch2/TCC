@@ -12,9 +12,11 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.util.adt.color.Color;
 
+import com.facebook.android.FbDialog;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.util.Constants;
+import com.util.FacebookFacade;
 
 public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener {
 
@@ -58,7 +60,6 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public void onBackKeyPressed() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -78,7 +79,7 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 		switch (pMenuItem.getID()) {
 		
 			case ITEM_FACEBOOK_FRIEND:
-				System.out.println("Clicou no facebook");
+				SceneManager.getInstance().createNewFriendPickerScene();
 				return true; 
 			case ITEM_RANDOM_OPPONNENT:
 				System.out.println("Clicou no Random");

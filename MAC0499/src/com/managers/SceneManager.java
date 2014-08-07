@@ -10,6 +10,7 @@ import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 import com.managers.ResourcesManager;
 import com.scenes.BaseScene;
 import com.scenes.ConnectScene;
+import com.scenes.FriendPickerScene;
 import com.scenes.MainMenuScene;
 import com.scenes.NewGameScene;
 import com.scenes.SplashScene;
@@ -25,6 +26,7 @@ public class SceneManager {
 	private BaseScene connectScene; 
 	private BaseScene mainMenuScene;
 	private BaseScene newGameScene; 
+	private BaseScene friendPickerScene; 
 	
 	public static SceneManager getInstance() {
 		return INSTANCE; 
@@ -34,7 +36,8 @@ public class SceneManager {
 		SPLASH_SCENE,
 		CONNECT_SCENE, 
 		MAINMENU_SCENE, 
-		NEWGAME_SCENE
+		NEWGAME_SCENE, 
+		FRIENDPICKER_SCENE
 	}
 	
 	//Talvez esse método possa ser private 
@@ -57,6 +60,9 @@ public class SceneManager {
 			break; 
 		case NEWGAME_SCENE:
 			setScene(newGameScene); 
+			break; 
+		case FRIENDPICKER_SCENE:
+			setScene(friendPickerScene);
 		default:
 			break;
 		}
@@ -75,6 +81,8 @@ public class SceneManager {
 	    splashScene = null;
 	}
 
+	//suspeito muito que devo fazer metodos de dispose pra todas as outras cenas assim splashScene. 
+	
 	public void createConnectScene() {
 	    ResourcesManager.getInstance().loadConnectScene(); 
 	    connectScene = new ConnectScene(); 
@@ -94,6 +102,12 @@ public class SceneManager {
 		ResourcesManager.getInstance().loadNewGameScene(); 
 		newGameScene = new NewGameScene(); 
 		setScene(newGameScene); 
+	}
+	
+	public void createNewFriendPickerScene() {
+		ResourcesManager.getInstance().loadFriendPickerScene();  
+		friendPickerScene = new FriendPickerScene(); 
+		setScene(friendPickerScene); 
 	}
 	
 	public BaseScene getCurrentScene() {

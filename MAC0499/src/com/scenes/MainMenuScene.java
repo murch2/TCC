@@ -105,7 +105,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(user.getId()));
 			GameManager.getInstance().setLoggedUser(true);  
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
-			System.out.println("DEBUG - O cara está logado na MainMenuScene " + GameManager.getInstance().getUserName());
 		}
 	}
 	
@@ -133,26 +132,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_NEWGAME:
-//			SceneManager.getInstance().createNewGameScene();
-			   ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						new FacebookFacade().getFriends(); 
-					}
-				}); 
-			
-//			new Request(
-//				    Session.getActiveSession(),
-//				    "/me/friends",
-//				    null,
-//				    HttpMethod.GET,
-//				    new Request.Callback() {
-//				        public void onCompleted(Response response) {
-//				            System.out.println("BUCETAAAAAA " + response);
-//				        }
-//
-//				    }
-//				).executeAsync();
+			SceneManager.getInstance().createNewGameScene();
 			return true; 
 
 		default:

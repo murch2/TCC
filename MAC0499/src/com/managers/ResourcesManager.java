@@ -52,6 +52,10 @@ public class ResourcesManager {
     public ITextureRegion randomOpponentMenuRegion;
     private BuildableBitmapTextureAtlas newGameMenuAtlas;
     
+    //FriendPicker
+    public ITextureRegion friendPickerCellBackGroundRegion; 
+    private BuildableBitmapTextureAtlas friendPickerCellAtlas; 
+    
 	public static ResourcesManager getInstance() {
         return INSTANCE;
     }
@@ -150,7 +154,6 @@ public class ResourcesManager {
     public synchronized void unloadHeader() {
     	
     }
-
     
     public synchronized void loadNewGameScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/newGame/"); 
@@ -169,5 +172,32 @@ public class ResourcesManager {
     public synchronized void unloadNewGameScene() {
 
     }
+    
+    public synchronized void loadFriendPickerScene() {
+    	loadFriendPickerCell(); 
+    }
+    
+    public synchronized void unloadFriendPickerScene() {
+
+    }
+    
+    private synchronized void  loadFriendPickerCell() {
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/friendPicker/"); 
+    	//Arrumar o tamanho 
+    	friendPickerCellAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 410, 125, TextureOptions.BILINEAR); 
+    	friendPickerCellBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "backGroundCell.png");
+    	try {
+			this.friendPickerCellAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			this.friendPickerCellAtlas.load(); 
+		} catch (TextureAtlasBuilderException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    private synchronized void  unloadFriendPickerCell() {
+    	
+    }
+    
+    
     
 }

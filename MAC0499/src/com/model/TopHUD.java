@@ -31,7 +31,6 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 	private Text coins; 
 	private final int MENU_PROFILE = 0; 
 	
-	
 	public TopHUD() {
 		this.setPosition(Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT / 2); 
 		createBackGround(); 
