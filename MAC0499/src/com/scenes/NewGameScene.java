@@ -12,11 +12,8 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.util.adt.color.Color;
 
-import com.facebook.android.FbDialog;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
-import com.util.Constants;
-import com.util.FacebookFacade;
 
 public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener {
 

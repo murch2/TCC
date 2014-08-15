@@ -2,6 +2,7 @@ package com.managers;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.font.Font;
 import org.andengine.opengl.font.FontFactory;
 import org.andengine.opengl.texture.ITexture;
@@ -21,6 +22,10 @@ import com.activities.GameActivity;
 
 public class ResourcesManager {
 	private static final ResourcesManager INSTANCE = new ResourcesManager();
+	
+//	public ITextureRegion anaRegion; 
+	
+	public Sprite teste; 
 	
 	//Ainda acho que essas coisas deveriam ser private. 
 	public Engine engine;
@@ -183,7 +188,6 @@ public class ResourcesManager {
     
     private synchronized void  loadFriendPickerCell() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/friendPicker/"); 
-    	//Arrumar o tamanho 
     	friendPickerCellAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 410, 125, TextureOptions.BILINEAR); 
     	friendPickerCellBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "backGroundCell.png");
     	try {
@@ -195,9 +199,6 @@ public class ResourcesManager {
     }
     
     private synchronized void  unloadFriendPickerCell() {
-    	
     }
-    
-    
     
 }

@@ -4,23 +4,34 @@
  */
 package com.scenes;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.andengine.engine.camera.Camera;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.atlas.bitmap.BuildableBitmapTextureAtlas;
+import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.AsyncTask;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.facebook.Request.GraphUserCallback;
-import com.facebook.HttpMethod;
-import com.facebook.Request;
 import com.facebook.Response;
-import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
@@ -29,6 +40,7 @@ import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.BitmapTextureAtlasSource;
 import com.util.Constants;
 import com.util.FacebookFacade;
 
@@ -42,14 +54,48 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void createScene() {
 		createBackground();  
-		createItensScene(); 
+		createItensScene();  
 		//Vou tentar jogar o login pra outra tela por causa do bug
 		if (!GameManager.getInstance().isLoggedUser()) {
-			System.out.println("DEBUG - Chamando o login 1");
 			new FacebookFacade().login(this); 
 		} else {
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
 		}
+	}
+	
+	private void testeImage(String link) {
+		try {
+	        URL url = new URL(link);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        connection.setDoInput(true);
+	        connection.connect();
+	        InputStream input = connection.getInputStream();
+	        Bitmap myBitmap = BitmapFactory.decodeStream(input);
+	        if (myBitmap != null)
+	        	converter(myBitmap); 
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+	    }
+	}
+	
+	private void converter(Bitmap bit) {
+		BitmapTextureAtlasSource source = new BitmapTextureAtlasSource(bit);
+		BitmapTextureAtlas texture = new BitmapTextureAtlas(ResourcesManager.getInstance().engine.getTextureManager(),
+				bit.getWidth(), bit.getHeight());
+		texture.addTextureAtlasSource(source, 0, 0);
+		ResourcesManager.getInstance().engine.getTextureManager().loadTexture(texture);
+		TextureRegion region = new TextureRegion(texture, 0, 0, texture.getWidth(), texture.getHeight());
+		
+		Sprite foto = new Sprite(0, 0,
+				region, ResourcesManager.getInstance().vbom) {
+			@Override
+			protected void preDraw(GLState pGLState, Camera pCamera) {
+				super.preDraw(pGLState, pCamera);
+				pGLState.enableDither();
+			}
+		};	
+		System.out.println("DEBUG - Colocando a foto");
+		this.attachChild(foto);
 	}
 	
 	private void createItensScene() {

@@ -66,14 +66,44 @@ public class FacebookFacade {
 		}); 
 	}
 	
+//	private void faceFriends (Callback callback) {
+//		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
+//        final Bundle params = new Bundle();
+//        params.putString("q", fqlQuery);
+//        Request request = new Request(Session.getActiveSession(),  "/fql",  params, HttpMethod.GET, callback);
+//        RequestAsyncTask task = new RequestAsyncTask(request);
+//        task.execute(); 
+//  }
+//	
+//	private void faceFriends (Callback callback) {
+//		Bundle params = new Bundle();
+//        params.putString("fields", "name,birthday,picture");
+//        params.putBoolean("redirect", false);
+//        params.putString("height", "200");
+//        params.putString("type", "normal");
+//        params.putString("width", "200");
+//		new Request(
+//			    Session.getActiveSession(),
+//			    "me/friends/",
+//			    params,
+//			    HttpMethod.GET,
+//			    callback
+//			).executeAsync();
+//		
+//	}
+//	
+	
 	private void faceFriends (Callback callback) {
-		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
-        final Bundle params = new Bundle();
-        params.putString("q", fqlQuery);
-        Request request = new Request(Session.getActiveSession(),  "/fql",  params, HttpMethod.GET, callback);
-        RequestAsyncTask task = new RequestAsyncTask(request);
-        task.execute(); 
-  }
+		String fqlQuery = "SELECT uid,name,pic_big FROM user WHERE uid IN " +
+		        "(SELECT uid2 FROM friend WHERE uid1 = me())";
+		Bundle params = new Bundle();
+		params.putString("q", fqlQuery);
+		Session session = Session.getActiveSession();
+		Request request = new Request(session, "/fql", params, HttpMethod.GET, callback); 
+		Request.executeBatchAsync(request); 
+	}
+	
+	
 	
 }
 

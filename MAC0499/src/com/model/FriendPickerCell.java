@@ -4,10 +4,20 @@
  */
 package com.model;
 
+import java.io.File;
+import java.net.URL;
+
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.atlas.bitmap.source.FileBitmapTextureAtlasSource;
+import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
+import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.managers.ResourcesManager;
 
@@ -21,6 +31,7 @@ public class FriendPickerCell extends Entity {
 	//Aqui eu tenho que passar as informações 
 	public FriendPickerCell() {
 		createBackground();
+		
 //		createFriendPicture(); 
 	}
 	
@@ -35,8 +46,14 @@ public class FriendPickerCell extends Entity {
 		};
 		attachChild(backgroundCell);
 	}
-
 	
+//	private void createFriendPicture() {
+//		final String link = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/t1.0-1/p50x50/10491202_674349032641577_3918211576773003285_n.jpg";
+//		File imageFile = new File(link); 
+//		IBitmapTextureAtlasSource fileTextureSource = FileBitmapTextureAtlasSource.create(imageFile); 
+//		ITextureRegion textureRegion = 
+//				BitmapTextureAtlasTextureRegionFactory.createFromSource(mBitmapTextureAtlas, fileTextureSource, 0, 0);
+//	}
 	
 //	private void createFriendPicture() {
 //		//Talvez tenha que tirar o escape de barras que vem com o response. 
