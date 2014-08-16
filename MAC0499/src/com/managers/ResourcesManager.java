@@ -59,6 +59,7 @@ public class ResourcesManager {
     
     //FriendPicker
     public ITextureRegion friendPickerCellBackGroundRegion; 
+    public ITextureRegion defaultPictureRegion; 
     private BuildableBitmapTextureAtlas friendPickerCellAtlas; 
     
 	public static ResourcesManager getInstance() {
@@ -188,8 +189,9 @@ public class ResourcesManager {
     
     private synchronized void  loadFriendPickerCell() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/friendPicker/"); 
-    	friendPickerCellAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 410, 125, TextureOptions.BILINEAR); 
+    	friendPickerCellAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR); 
     	friendPickerCellBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "backGroundCell.png");
+    	defaultPictureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "man_default.png");
     	try {
 			this.friendPickerCellAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			this.friendPickerCellAtlas.load(); 

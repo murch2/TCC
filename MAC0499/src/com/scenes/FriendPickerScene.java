@@ -23,6 +23,8 @@ import com.util.FacebookFacade;
 
 public class FriendPickerScene extends BaseScene implements Callback {
 
+	private JSONObject jsonFriends; 
+	
 	@Override
 	public void createScene() {
 		new FacebookFacade().getFriends(this);
@@ -38,11 +40,31 @@ public class FriendPickerScene extends BaseScene implements Callback {
 	}
 	
 	private void makeCells() {
+		try {
+			JSONArray array = jsonFriends.getJSONArray("data");
+			
+			FriendPickerCell cell; 
+			float offSetY = 10;
+			float currentY = Constants.CAMERA_HEIGHT * 0.7f;
+//			Na verdade todas essas celulas tem que ser colocadas em um scroll 
+			for (int i = 0; i < array.length(); i++) {
+				cell = new FriendPickerCell(array.getJSONObject(i)); 
+				cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, currentY);
+				currentY -= (Constants.HEIGHT_PICKER_CELL + offSetY); 
+				attachChild(cell); 
+			}
+			
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
 		//Aqui vai ter um for e receber um JSON com todos os amigos. 
-		FriendPickerCell cell = new FriendPickerCell();
-		//Essa posição vai mudando com o for
-		cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
-		attachChild(cell); 
+//		FriendPickerCell cell = new FriendPickerCell();
+//		//Essa posição vai mudando com o for
+//		cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
+//		attachChild(cell); 
 	}
 
 	@Override
@@ -66,15 +88,7 @@ public class FriendPickerScene extends BaseScene implements Callback {
 	public void onCompleted(Response response) {
 		
 		GraphObject graphObject = response.getGraphObject();
-		JSONObject json = graphObject.getInnerJSONObject() ;
-		
-		try {
-			System.out.println(json.toString(4));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		jsonFriends = graphObject.getInnerJSONObject() ;
 		createItensScene(); 
 	}
 

@@ -102,12 +102,7 @@ public class FacebookFacade {
 		Request request = new Request(session, "/fql", params, HttpMethod.GET, callback); 
 		Request.executeBatchAsync(request); 
 	}
-	
-	
-	
 }
-
-
 
 //	new Request(
 //		    Session.getActiveSession(),

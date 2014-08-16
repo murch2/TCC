@@ -10,33 +10,50 @@ import java.net.URL;
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.Text;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.atlas.bitmap.source.FileBitmapTextureAtlasSource;
 import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
+import org.andengine.util.adt.color.Color;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.managers.GameManager;
 import com.managers.ResourcesManager;
+import com.util.Constants;
 
 public class FriendPickerCell extends Entity {
 	//Pode ser que não seja sprite
 	private Sprite backgroundCell;
 	private Sprite friendPicture; 
 	private String friendID;
-	
+	private String friendURLPicture; 
+	private String friendNameString;
+	private Text friendNameText;
+	private JSONObject jsonFriendInfo; 
 	
 	//Aqui eu tenho que passar as informações 
-	public FriendPickerCell() {
+	public FriendPickerCell(JSONObject json) {
+		this.jsonFriendInfo = json;
+		try {
+			this.friendID = json.getString("uid");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
 		createBackground();
-		
+//		O create picture precisa do link pra atualizar
+		createPicture(); 
+		createNameText(); 
 //		createFriendPicture(); 
 	}
 	
 	private void createBackground() {
-		backgroundCell = new Sprite(0, 0, 400, 120,
+		backgroundCell = new Sprite(0, 0, Constants.WIDTH_PICKER_CELL, Constants.HEIGHT_PICKER_CELL,
 				ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
@@ -47,48 +64,53 @@ public class FriendPickerCell extends Entity {
 		attachChild(backgroundCell);
 	}
 	
-//	private void createFriendPicture() {
-//		final String link = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/t1.0-1/p50x50/10491202_674349032641577_3918211576773003285_n.jpg";
-//		File imageFile = new File(link); 
-//		IBitmapTextureAtlasSource fileTextureSource = FileBitmapTextureAtlasSource.create(imageFile); 
-//		ITextureRegion textureRegion = 
-//				BitmapTextureAtlasTextureRegionFactory.createFromSource(mBitmapTextureAtlas, fileTextureSource, 0, 0);
-//	}
+	private void createPicture() {
+		friendPicture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion, ResourcesManager.getInstance().vbom) {
+			@Override
+			protected void preDraw(GLState pGLState, Camera pCamera) {
+				super.preDraw(pGLState, pCamera);
+				pGLState.enableDither();
+			}
+		};
+		float x = - Constants.WIDTH_PICKER_CELL * 0.5f + ResourcesManager.getInstance().defaultPictureRegion.getWidth() * 0.5f + 10; 
+		friendPicture.setPosition(x, 0);
+		attachChild(friendPicture); 
+	}
 	
-//	private void createFriendPicture() {
-//		//Talvez tenha que tirar o escape de barras que vem com o response. 
-//		final String link = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/t1.0-1/p50x50/10491202_674349032641577_3918211576773003285_n.jpg";
-//		
-//		try {
-//            ITexture mTexture = new BitmapTexture(ResourcesManager.getInstance().engine.getTextureManager(), new IInputStreamOpener() {
-//                @Override
-//                public InputStream open() throws IOException {
-//
-//                      URL url = new URL(link);
-//
-//                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                        connection.setDoInput(true);
-//                        connection.connect();
-//                        InputStream input = connection.getInputStream();
-//                BufferedInputStream in = new BufferedInputStream(input);    
-//                return in;
-//                }
-//            });
-//mTexture.load();
-//                TextureRegion MyImageFromWeb = TextureRegionFactory.extractFromTexture(mTexture);
-//                
-//                friendPicture = new Sprite(0, 0, 200, 200,
-//        				MyImageFromWeb, ResourcesManager.getInstance().vbom) {
-//        			@Override
-//        			protected void preDraw(GLState pGLState, Camera pCamera) {
-//        				super.preDraw(pGLState, pCamera);
-//        				pGLState.enableDither();
-//        			}
-//        		};
-//        		attachChild(friendPicture);
-//                
-//            } catch (IOException e) {
-//                Debug.e(e);
-//            }
-//	}
+	private void createNameText() {
+		try {
+			friendNameString = this.jsonFriendInfo.getString("name");
+			friendNameText = new Text(0, 0, ResourcesManager.getInstance().font, friendNameString, ResourcesManager.getInstance().vbom);
+			friendNameText.setAnchorCenter(0f, 0.5f); 
+			friendNameText.setPosition(- Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
+			friendNameText.setColor(Color.WHITE); 
+			attachChild(friendNameText); 
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	public String getFriendID() {
+		return friendID;
+	}
+	
+	public void setFriendID(String friendID) {
+		this.friendID = friendID;
+	}
+
+	public String getFriendURLPicture() {
+		return friendURLPicture;
+	}
+
+	public void setFriendURLPicture(String friendURLPicture) {
+		this.friendURLPicture = friendURLPicture;
+	}
+
+	public String getFriendName() {
+		return friendNameString;
+	}
+
+	public void setFriendName(String friendNameString) {
+		this.friendNameString = friendNameString;
+	}
 }
