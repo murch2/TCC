@@ -4,8 +4,6 @@
  */
 package com.scenes;
 
-import java.util.Map;
-
 import org.andengine.entity.scene.background.Background;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
@@ -13,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.facebook.Request.Callback;
-import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphObject;
 import com.managers.SceneManager.SceneType;
@@ -41,8 +38,7 @@ public class FriendPickerScene extends BaseScene implements Callback {
 	
 	private void makeCells() {
 		try {
-			JSONArray array = jsonFriends.getJSONArray("data");
-			
+			JSONArray array = jsonFriends.getJSONArray("data");		
 			FriendPickerCell cell; 
 			float offSetY = 10;
 			float currentY = Constants.CAMERA_HEIGHT * 0.7f;
@@ -50,21 +46,15 @@ public class FriendPickerScene extends BaseScene implements Callback {
 			for (int i = 0; i < array.length(); i++) {
 				cell = new FriendPickerCell(array.getJSONObject(i)); 
 				cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, currentY);
-				currentY -= (Constants.HEIGHT_PICKER_CELL + offSetY); 
+				currentY -= (Constants.HEIGHT_PICKER_CELL + offSetY);
+				System.out.println("DEBUG - VOltou pra cena");
 				attachChild(cell); 
 			}
 			
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (JSONException e) {
 			e.printStackTrace();
 		} 
-		
-		
-		//Aqui vai ter um for e receber um JSON com todos os amigos. 
-//		FriendPickerCell cell = new FriendPickerCell();
-//		//Essa posição vai mudando com o for
-//		cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
-//		attachChild(cell); 
 	}
 
 	@Override

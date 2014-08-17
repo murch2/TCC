@@ -4,28 +4,18 @@
  */
 package com.model;
 
-import java.io.File;
-import java.net.URL;
-
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
-import org.andengine.opengl.texture.atlas.bitmap.source.FileBitmapTextureAtlasSource;
-import org.andengine.opengl.texture.atlas.bitmap.source.IBitmapTextureAtlasSource;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.util.Constants;
+import com.util.ImageDownloader;
 
 public class FriendPickerCell extends Entity {
 	//Pode ser que não seja sprite
@@ -74,9 +64,28 @@ public class FriendPickerCell extends Entity {
 		};
 		float x = - Constants.WIDTH_PICKER_CELL * 0.5f + ResourcesManager.getInstance().defaultPictureRegion.getWidth() * 0.5f + 10; 
 		friendPicture.setPosition(x, 0);
-		attachChild(friendPicture); 
+		attachChild(friendPicture);
+		System.out.println("DEBUG - Colocou a imagem default");
+		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
+			@Override
+			public void run() {
+				String link; 
+				try {
+					link = jsonFriendInfo.getString("pic_big");
+					Sprite updatePicture = ImageDownloader.testeImage(link);
+					updatePicture.setWidth(friendPicture.getWidth());
+					updatePicture.setHeight(friendPicture.getHeight()); 
+					updatePicture.setPosition(friendPicture); 
+					detachChild(friendPicture);
+					friendPicture = updatePicture; 
+					attachChild(friendPicture); 
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		}); 
 	}
-	
+
 	private void createNameText() {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("name");
