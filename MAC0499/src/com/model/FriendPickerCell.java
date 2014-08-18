@@ -6,8 +6,11 @@ package com.model;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
+import org.andengine.entity.scene.IOnAreaTouchListener;
+import org.andengine.entity.scene.ITouchArea;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -17,9 +20,9 @@ import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.ImageDownloader;
 
-public class FriendPickerCell extends Entity {
+public class FriendPickerCell extends Entity implements IOnAreaTouchListener{
 	//Pode ser que não seja sprite
-	private Sprite backgroundCell;
+	public Sprite backgroundCell;
 	private Sprite friendPicture; 
 	private String friendID;
 	private String friendURLPicture; 
@@ -38,7 +41,7 @@ public class FriendPickerCell extends Entity {
 		createBackground();
 //		O create picture precisa do link pra atualizar
 		createPicture(); 
-		createNameText(); 
+		createNameText();
 //		createFriendPicture(); 
 	}
 	
@@ -85,6 +88,11 @@ public class FriendPickerCell extends Entity {
 			}
 		}); 
 	}
+	
+	@Override
+	public void onAttached(){
+		super.onAttached(); 
+	}
 
 	private void createNameText() {
 		try {
@@ -122,4 +130,14 @@ public class FriendPickerCell extends Entity {
 	public void setFriendName(String friendNameString) {
 		this.friendNameString = friendNameString;
 	}
+
+	@Override
+	public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
+			ITouchArea pTouchArea, float pTouchAreaLocalX,
+			float pTouchAreaLocalY) {
+		System.out.println("COCO------- CLICOU NA CELL ---------------");
+		return true;
+	}
+
+	
 }

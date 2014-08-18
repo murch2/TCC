@@ -4,7 +4,13 @@
  */
 package com.scenes;
 
+import org.andengine.engine.camera.Camera;
+import org.andengine.entity.scene.IOnAreaTouchListener;
+import org.andengine.entity.scene.ITouchArea;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,23 +19,50 @@ import org.json.JSONObject;
 import com.facebook.Request.Callback;
 import com.facebook.Response;
 import com.facebook.model.GraphObject;
+import com.managers.ResourcesManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerCell;
 import com.util.Constants;
 import com.util.FacebookFacade;
 
-public class FriendPickerScene extends BaseScene implements Callback {
+public class FriendPickerScene extends BaseScene implements Callback, IOnAreaTouchListener {
 
 	private JSONObject jsonFriends; 
 	
 	@Override
 	public void createScene() {
+		this.setTouchAreaBindingOnActionDownEnabled(true); 
 		new FacebookFacade().getFriends(this);
 	}
 	
 	private void createItensScene () {
 		createBackground();
 		makeCells(); 
+		teste(); 
+	}
+	
+	private void teste() {
+		Sprite backgroundCell = new Sprite(0, 0, Constants.WIDTH_PICKER_CELL, Constants.HEIGHT_PICKER_CELL,
+				ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom) {
+			@Override
+			protected void preDraw(GLState pGLState, Camera pCamera) {
+				super.preDraw(pGLState, pCamera);
+				pGLState.enableDither();
+			}
+			
+			@Override
+		    public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float X, float Y) 
+		    {
+				System.out.println("COCO-----------Entrou no role-------------");
+		        if (pSceneTouchEvent.isActionUp())
+		        {
+		            // execute action
+		        }
+		        return true;
+		    };
+		};
+		registerTouchArea(backgroundCell); 
+		attachChild(backgroundCell);
 	}
 	
 	private void createBackground() {
@@ -48,9 +81,9 @@ public class FriendPickerScene extends BaseScene implements Callback {
 				cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, currentY);
 				currentY -= (Constants.HEIGHT_PICKER_CELL + offSetY);
 				System.out.println("DEBUG - VOltou pra cena");
-				attachChild(cell); 
+				registerTouchArea(cell);
+				attachChild(cell);
 			}
-			
 		} 
 		catch (JSONException e) {
 			e.printStackTrace();
@@ -73,7 +106,6 @@ public class FriendPickerScene extends BaseScene implements Callback {
 		// TODO Auto-generated method stub
 	}
 
-
 	@Override
 	public void onCompleted(Response response) {
 		
@@ -81,5 +113,12 @@ public class FriendPickerScene extends BaseScene implements Callback {
 		jsonFriends = graphObject.getInnerJSONObject() ;
 		createItensScene(); 
 	}
-
+	
+	@Override
+	public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
+			ITouchArea pTouchArea, float pTouchAreaLocalX,
+			float pTouchAreaLocalY) {
+		System.out.println("COCO------- CLICOU NA SCREEN ---------------");
+		return true;
+	}
 }
