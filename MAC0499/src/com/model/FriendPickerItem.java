@@ -1,16 +1,18 @@
 /**
  * @author Rodrigo Duarte Louro
- * @dateAug 7, 2014
+ * @dateAug 18, 2014
  */
 package com.model;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
-import org.andengine.entity.scene.IOnAreaTouchListener;
-import org.andengine.entity.scene.ITouchArea;
+import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.sprite.batch.SpriteGroup;
+import org.andengine.entity.sprite.vbo.ISpriteVertexBufferObject;
 import org.andengine.entity.text.Text;
-import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -20,43 +22,25 @@ import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.ImageDownloader;
 
-public class FriendPickerCell extends Entity implements IOnAreaTouchListener{
-	//Pode ser que não seja sprite
+public class FriendPickerItem extends SpriteMenuItem implements IMenuItem{
+
 	public Sprite backgroundCell;
 	private Sprite friendPicture; 
 	private String friendID;
 	private String friendURLPicture; 
 	private String friendNameString;
 	private Text friendNameText;
-	private JSONObject jsonFriendInfo; 
+	private JSONObject jsonFriendInfo;
 	
-	//Aqui eu tenho que passar as informações 
-	public FriendPickerCell(JSONObject json) {
-		this.jsonFriendInfo = json;
-		try {
-			this.friendID = json.getString("uid");
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} 
-		createBackground();
-//		O create picture precisa do link pra atualizar
+	
+	//PID eh a porra do primeiro int que serve como ID do botão, aqui ele já pode guardar o id do facebook do cara. 
+	public FriendPickerItem(int idFriend, JSONObject friendInfo) { 
+		super(idFriend, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
+		this.jsonFriendInfo = friendInfo; 
 		createPicture(); 
-		createNameText();
-//		createFriendPicture(); 
+		createNameText(); 
 	}
-	
-	private void createBackground() {
-		backgroundCell = new Sprite(0, 0, Constants.WIDTH_PICKER_CELL, Constants.HEIGHT_PICKER_CELL,
-				ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom) {
-			@Override
-			protected void preDraw(GLState pGLState, Camera pCamera) {
-				super.preDraw(pGLState, pCamera);
-				pGLState.enableDither();
-			}
-		};
-		attachChild(backgroundCell);
-	}
-	
+
 	private void createPicture() {
 		friendPicture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion, ResourcesManager.getInstance().vbom) {
 			@Override
@@ -65,10 +49,8 @@ public class FriendPickerCell extends Entity implements IOnAreaTouchListener{
 				pGLState.enableDither();
 			}
 		};
-		float x = - Constants.WIDTH_PICKER_CELL * 0.5f + ResourcesManager.getInstance().defaultPictureRegion.getWidth() * 0.5f + 10; 
-		friendPicture.setPosition(x, 0);
+		friendPicture.setPosition(this.getWidth() * 0.15f, this.getHeight() * 0.5f);
 		attachChild(friendPicture);
-		System.out.println("DEBUG - Colocou a imagem default");
 		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
 			@Override
 			public void run() {
@@ -89,17 +71,12 @@ public class FriendPickerCell extends Entity implements IOnAreaTouchListener{
 		}); 
 	}
 	
-	@Override
-	public void onAttached(){
-		super.onAttached(); 
-	}
-
 	private void createNameText() {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("name");
 			friendNameText = new Text(0, 0, ResourcesManager.getInstance().font, friendNameString, ResourcesManager.getInstance().vbom);
 			friendNameText.setAnchorCenter(0f, 0.5f); 
-			friendNameText.setPosition(- Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
+			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
 			friendNameText.setColor(Color.WHITE); 
 			attachChild(friendNameText); 
 		} catch (JSONException e) {
@@ -132,12 +109,17 @@ public class FriendPickerCell extends Entity implements IOnAreaTouchListener{
 	}
 
 	@Override
-	public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-			ITouchArea pTouchArea, float pTouchAreaLocalX,
-			float pTouchAreaLocalY) {
-		System.out.println("COCO------- CLICOU NA CELL ---------------");
-		return true;
+	public int getID() {
+		return 0;
 	}
 
-	
+	@Override
+	public void onSelected() {
+		System.out.println("DEBUG - ONSELECTED");
+	}
+
+	@Override
+	public void onUnselected() {
+		System.out.println("DEBUG - ONUNSELECTED");
+	}
 }
