@@ -6,6 +6,8 @@ package com.model;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
+import org.andengine.entity.scene.menu.MenuScene;
+import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
@@ -22,7 +24,7 @@ import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.ImageDownloader;
 
-public class FriendPickerItem extends SpriteMenuItem implements IMenuItem{
+public class FriendPickerItem extends SpriteMenuItem {
 
 	public Sprite backgroundCell;
 	private Sprite friendPicture; 
@@ -34,11 +36,14 @@ public class FriendPickerItem extends SpriteMenuItem implements IMenuItem{
 	
 	
 	//PID eh a porra do primeiro int que serve como ID do botão, aqui ele já pode guardar o id do facebook do cara. 
-	public FriendPickerItem(int idFriend, JSONObject friendInfo) { 
-		super(idFriend, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
+	public FriendPickerItem(int idButton, String idFriend, JSONObject friendInfo) { 
+		super(idButton, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
 		this.jsonFriendInfo = friendInfo; 
+		friendID = idFriend; 
 		createPicture(); 
 		createNameText(); 
+		
+
 	}
 
 	private void createPicture() {
@@ -106,20 +111,5 @@ public class FriendPickerItem extends SpriteMenuItem implements IMenuItem{
 
 	public void setFriendName(String friendNameString) {
 		this.friendNameString = friendNameString;
-	}
-
-	@Override
-	public int getID() {
-		return 0;
-	}
-
-	@Override
-	public void onSelected() {
-		System.out.println("DEBUG - ONSELECTED");
-	}
-
-	@Override
-	public void onUnselected() {
-		System.out.println("DEBUG - ONUNSELECTED");
 	}
 }

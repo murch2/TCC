@@ -24,7 +24,7 @@ require 'ExecuteQuery.php';
  	}
 
  	function tratandoRequisicao ($json) { 
-
+ 		
  		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':
@@ -33,6 +33,11 @@ require 'ExecuteQuery.php';
 
  			case 'UserInfo':
  				$result = $exeQuery->UserInfoQuery($json['userID']);
+ 				break;
+
+ 			case 'NewGame':
+ 				$this->log("New Game request"); 
+ 				$result = $exeQuery->NewGameQuery($json['userID'], $json['friendID']); 
  				break;
  			
  			default:

@@ -29,6 +29,7 @@ public class MakeParameters {
 		return result; 
 	}
 	
+//	Acho que talvez não precise do parametro e eu possa pegar do gameManager
 	public static JSONObject getUserInfo(String userID) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();
@@ -42,4 +43,17 @@ public class MakeParameters {
 		return result; 
 	}
 	
+	public static JSONObject newGame() {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "NewGame"); 
+			params.put("userID", GameManager.getInstance().getUserID()); 
+			params.put("friendID", GameManager.getInstance().getFriendID()); 
+			result.put("message", params);
+		} catch (JSONException e) {
+			e.printStackTrace(); 
+		}
+		return result; 
+	}	
 }

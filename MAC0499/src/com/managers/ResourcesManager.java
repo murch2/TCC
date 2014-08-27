@@ -62,7 +62,16 @@ public class ResourcesManager {
     public ITextureRegion defaultPictureRegion; 
     private BuildableBitmapTextureAtlas friendPickerCellAtlas; 
     
-	public static ResourcesManager getInstance() {
+    //ChoiseScene
+    public ITextureRegion btnPlayBigRegion;
+    public ITextureRegion btnPlaySmallRegion;
+    public ITextureRegion roulleteRegion;
+    public ITextureRegion btnRoulleteRegion;
+    public ITextureRegion backgroundRegion;
+    private BuildableBitmapTextureAtlas choiseSceneAtlas;
+    
+    
+    public static ResourcesManager getInstance() {
         return INSTANCE;
     }
 	
@@ -202,5 +211,27 @@ public class ResourcesManager {
     
     private synchronized void  unloadFriendPickerCell() {
     }
+    
+    public synchronized void loadChoiceScene() {
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/choiseScene/");
+    	choiseSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR);
+    	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnPlayBig.png"); //380x80
+        btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnPlaySmall.png");
+        btnRoulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnRoullete.png");
+//        roulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "");
+//        backgroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "");
+        
+        try {
+			this.choiseSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			this.choiseSceneAtlas.load(); 
+		} catch (TextureAtlasBuilderException e) {
+			e.printStackTrace();
+		}
+    }
+    
+    public synchronized void  unloadChoiceScene() {
+    }
+    
+    
     
 }

@@ -14,7 +14,12 @@ public class GameManager {
 	private String userName; 
 	private String userID;
 	private int userCoins; 
-	private int userPowerUps; 
+	private int userPowerUps;
+	private String userPictureURL; 
+	
+	private String friendID;
+	private String friendPictureURL; 
+
 
 	public static GameManager getInstance() {
 		return INSTANCE; 
@@ -67,5 +72,28 @@ public class GameManager {
 	public void setUserPowerUps(int userPowerUps) {
 		this.userPowerUps = userPowerUps;
 	}
-	
+
+	public String getUserPictureURL() {
+		return userPictureURL;
+	}
+
+	public void setUserPictureURL(String userPictureURL) {
+		this.userPictureURL = userPictureURL;
+	}
+
+	public String getFriendID() {
+		return friendID;
+	}
+
+	public void setFriendID(String friendID) {
+		this.friendID = friendID;
+	}
+
+	public String getFriendPictureURL() {
+		return friendPictureURL;
+	}
+
+	public void setFriendPictureURL(String friendPictureURL) {
+		this.friendPictureURL = friendPictureURL;
+	}
 }

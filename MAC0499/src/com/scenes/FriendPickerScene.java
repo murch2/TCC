@@ -4,6 +4,8 @@
  */
 package com.scenes;
 
+import java.util.Vector;
+
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
@@ -18,7 +20,9 @@ import android.view.MenuItem;
 import com.facebook.Request.Callback;
 import com.facebook.Response;
 import com.facebook.model.GraphObject;
+import com.managers.GameManager;
 import com.managers.ResourcesManager;
+import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
 import com.model.FriendPickerMenu;
@@ -30,8 +34,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	private JSONObject jsonFriends; 
 	
 	@Override
-	public void createScene() {
-		this.setTouchAreaBindingOnActionDownEnabled(true); 
+	public void createScene() { 
 		new FacebookFacade().getFriends(this);
 	}
 	
@@ -45,14 +48,18 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	}
 	
 	private void makeFriendsMenu() {
+		JSONArray array;
+		JSONObject json; 
+		IMenuItem item; 
 		try {
-			JSONArray array = jsonFriends.getJSONArray("data");
+			array = jsonFriends.getJSONArray("data");
 			MenuScene menu = new MenuScene(ResourcesManager.getInstance().camera);
 			for (int i = 0; i < array.length(); i++) {
-				JSONObject json = array.getJSONObject(i); 
-				final IMenuItem item = new FriendPickerItem(i, json);
+				json = array.getJSONObject(i); 
+				item = new FriendPickerItem(i, json.getString("uid"), json);
 				menu.addMenuItem(item); 
 			}
+			
 			
 			menu.buildAnimations();
 			menu.setBackgroundEnabled(false);
@@ -104,20 +111,27 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	}
 
 	@Override
-	public void onCompleted(Response response) {
-		
+	public void onCompleted(Response response) {	
 		GraphObject graphObject = response.getGraphObject();
 		jsonFriends = graphObject.getInnerJSONObject() ;
 		createItensScene(); 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener#onMenuItemClicked(org.andengine.entity.scene.menu.MenuScene, org.andengine.entity.scene.menu.item.IMenuItem, float, float)
-	 */
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
-		System.out.println("DEBUG - clicou");
-		return true;
+		
+		FriendPickerItem item = (FriendPickerItem) pMenuItem; 
+		
+		if (item != null) {
+			GameManager.getInstance().setFriendID(item.getFriendID());
+// 		Isso daqui provavelmente vai ter que pegar a foto maior antes, como eu tenho o id eu posso devolver isso do meu banco de dados. 
+//		a foto que eu voou ter no meu banco de dados é a grande já 
+			GameManager.getInstance().setFriendPictureURL(item.getFriendURLPicture()); 
+			SceneManager.getInstance().createChoiceScene(); 
+			return true;
+		}
+		return false; 
+		
 	}
 }

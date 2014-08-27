@@ -8,8 +8,8 @@ DROP TABLE  TURNOPAR CASCADE;
 DROP TABLE  TURNOIMPAR CASCADE; 
 
 CREATE TABLE JOGADOR (
-	id						BIGINT PRIMARY KEY,
-	nome					VARCHAR(255) NOT NULL, 
+	id					BIGINT PRIMARY KEY,
+	nome				VARCHAR(255) NOT NULL, 
 	moedas				INT CHECK (moedas >= 0), 
 	rodadas				INT CHECK (rodadas >= 0)
 );
@@ -47,7 +47,7 @@ CREATE TABLE HISTORICO (
 	PRIMARY KEY (id_jogador, id_tipo_carta),
 	FOREIGN KEY (id_jogador) REFERENCES JOGADOR (id) ON DELETE CASCADE ON UPDATE CASCADE, 
 	FOREIGN KEY (id_tipo_carta) REFERENCES  TIPO_CARTA (id) ON DELETE CASCADE ON UPDATE CASCADE
-); 
+);
 
 CREATE TABLE DESAFIOS (
 	id_jogador1				SERIAL, 
@@ -64,7 +64,7 @@ CREATE TABLE  TURNOPAR (
 	id_jogador1				SERIAL, 
 	id_jogador2				SERIAL, 
 	id_carta 				SERIAL, 
-	pontuacao1 			INT NOT NULL, 
+	pontuacao1 				INT NOT NULL, 
 	pontuacao2	 			INT NOT NULL, 
 
 	PRIMARY KEY (id_jogador1, id_jogador2),
@@ -77,7 +77,7 @@ CREATE TABLE  TURNOIMPAR (
 	id_jogador1				SERIAL, 
 	id_jogador2				SERIAL, 
 	id_carta 				SERIAL, 
-	pontuacao1 			INT NOT NULL, 
+	pontuacao1 				INT NOT NULL, 
 	pontuacao2	 			INT NOT NULL, 
 
 	PRIMARY KEY (id_jogador1, id_jogador2),

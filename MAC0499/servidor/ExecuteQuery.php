@@ -16,7 +16,6 @@ class ExecuteQuery {
 
 	function UserInfoQuery($userID) {
 		$query = "SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = " . $userID . ";"; 
-		$this->log($query); 
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
 		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
@@ -27,6 +26,22 @@ class ExecuteQuery {
 							'rodadas' => $row[2]
 							);
 		return $jsonResult; 
+	}
+
+	function NewGameQuery($userID, $friendID) {
+
+		// Tá com erro porque o int eh muito pequeno pra guardar o id.
+		if ($userID < $friendID)
+			$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 0, 0); ";	
+		else 
+			$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 0, 0); ";	
+
+
+		$this->log($query);
+		$result = $this->setInfo($query); 
+
+		$this->log($result); 
+		return $this->trataResult($result); 
 	}
 
 	//Esse affected rows é pra INSERT 
