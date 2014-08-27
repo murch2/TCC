@@ -151,3 +151,17 @@ New Game request
 INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 0, 0); 
 
 Aqui 1
+New Game request
+
+Aqui 1
+New Game request
+
+Aqui 1
+New Game request
+
+Aqui 1
+New Game request
+INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 0, 0); 
+
+
+Aqui 1

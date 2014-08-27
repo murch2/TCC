@@ -29,19 +29,22 @@ class ExecuteQuery {
 	}
 
 	function NewGameQuery($userID, $friendID) {
+		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
+		$result = $this->setInfo($query); 
+		return $this->criaDesafios($userID, $friendID);
+	}
 
-		// Tá com erro porque o int eh muito pequeno pra guardar o id.
-		if ($userID < $friendID)
-			$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 0, 0); ";	
-		else 
-			$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 0, 0); ";	
-
-
-		$this->log($query);
+	//Essa daqui tinha que ser privada se tiver isso
+	function criaDesafios($userID, $friendID) {
+		
+		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
 		$result = $this->setInfo($query); 
 
-		$this->log($result); 
-		return $this->trataResult($result); 
+		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, 0, 0, 0); ";
+		$result = $this->setInfo($query); 
+		
+		//Aqui tem que retornar um boolean por enquanto. 
+		return $this->trataResult($result); 	
 	}
 
 	//Esse affected rows é pra INSERT 

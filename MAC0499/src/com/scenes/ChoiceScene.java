@@ -6,6 +6,7 @@ package com.scenes;
 
 import org.andengine.entity.scene.background.Background;
 import org.andengine.util.adt.color.Color;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.managers.GameManager;
@@ -51,6 +52,11 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 //	Aqui devolve as informações, devo criar um array de um objeto que contem essas informações, tem que ter um if pra ver se deu tudo ok.  
 	@Override
 	public void onResponse(JSONObject json) {
+		try {
+			System.out.println("Json = " + json.toString(4));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		createItensScene();
 	}
 
