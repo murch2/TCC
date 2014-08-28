@@ -76,5 +76,3 @@ CREATE TABLE HISTORICOESTATISTICA (
 
 INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3); 
 INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3); 
-INSERT INTO TIPO_CARTA (tipo) VALUES ('Teste'); 
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('NomeDeTeste' ,1 ,'www.google.com'); 

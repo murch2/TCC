@@ -19,7 +19,7 @@ class ExecuteQuery {
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
 		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
-		// pra ver se eu encontrei algum cara ou não. 
+		// pra ver se eu encontrei algum cara ou não). 
 		$jsonResult = array('status' => 'ok', 
 							'nome' => $row[0],
 							'moedas' => $row[1],
@@ -38,7 +38,7 @@ class ExecuteQuery {
 	function criaDesafios($userID, $friendID) {
 		
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
-		$result = $this->setInfo($query); 
+		$result = $this->setInfo($query);
 
 		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, 0, 0, 0); ";
 		$result = $this->setInfo($query); 
