@@ -4,6 +4,10 @@ DELETE FROM DICAS;
 ALTER SEQUENCE tipo_carta_id_seq RESTART WITH 1;
 ALTER SEQUENCE cartas_id_seq RESTART WITH 1;
 
+
+INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3); 
+INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3); 
+
 INSERT INTO TIPO_CARTA (tipo) VALUES ('História do Brasil'); 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('Personalidades do Brasil'); 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('História Mundial'); 

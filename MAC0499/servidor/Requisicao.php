@@ -24,7 +24,7 @@ require 'ExecuteQuery.php';
  	}
 
  	function tratandoRequisicao ($json) { 
- 		
+ 		$this->log("tratandoRequisicao");
  		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':

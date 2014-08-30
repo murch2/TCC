@@ -55,8 +55,8 @@ CREATE TABLE DESAFIOS (
 CREATE TABLE HISTORICOJOGO (
 	id_jogador1				BIGINT, 
 	id_jogador2				BIGINT, 
-	vitorias1				INT CHECK (vitorias1 > 0),
-	vitorias2				INT CHECK (vitorias2 > 0), 
+	vitorias1				INT CHECK (vitorias1 >= 0),
+	vitorias2				INT CHECK (vitorias2 >= 0), 
 
 	PRIMARY KEY (id_jogador1, id_jogador2), 
 	FOREIGN KEY (id_jogador1) REFERENCES JOGADOR (id) ON DELETE CASCADE ON UPDATE CASCADE, 
@@ -74,5 +74,4 @@ CREATE TABLE HISTORICOESTATISTICA (
 	FOREIGN KEY (id_tipo_carta) REFERENCES  TIPO_CARTA (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3); 
-INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3); 
+-- Vou fazer o empate e desconsidera-lo nas estatisticas. A pontuação vai ser descrescente e caindo conforme as dicas e o tempo passa.

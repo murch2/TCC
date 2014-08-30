@@ -95,7 +95,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void onCompleted(GraphUser user, Response response) {
 		if (user != null) {
-			
 			GameManager.getInstance().setUserID(user.getId()); 
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(user.getId()));
 			GameManager.getInstance().setLoggedUser(true);  

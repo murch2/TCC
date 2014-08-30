@@ -51,6 +51,7 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID()); 
 			params.put("friendID", GameManager.getInstance().getFriendID()); 
 			result.put("message", params);
+			System.out.println("COCO = " + result.toString(4));
 		} catch (JSONException e) {
 			e.printStackTrace(); 
 		}

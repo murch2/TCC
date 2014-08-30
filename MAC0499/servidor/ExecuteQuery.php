@@ -29,19 +29,27 @@ class ExecuteQuery {
 	}
 
 	function NewGameQuery($userID, $friendID) {
-		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
-		$result = $this->setInfo($query); 
 		return $this->criaDesafios($userID, $friendID);
 	}
 
 	//Essa daqui tinha que ser privada se tiver isso
 	function criaDesafios($userID, $friendID) {
-		
+		$this>log("Cria Desafios"); 
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
 		$result = $this->setInfo($query);
-
+		$this>log("Cria Desafios 2"); 
 		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, 0, 0, 0); ";
-		$result = $this->setInfo($query); 
+		$result = $this->setInfo($query);
+
+		$this>log("Cria Desafios 3"); 
+		if ($userID < $friendID) 
+			$query = "INSERT INTO HISTORICOJOGO VALUES (".$userID.", ".$friendID.", 0, 0); ";
+		else 
+			$query = "INSERT INTO HISTORICOJOGO VALUES (".$friendID.", ".$userID.", 0, 0); ";
+
+		$this>log("Cria Desafios 4"); 
+		$this->log($query);
+		$result = $this->setInfo($query);		
 		
 		//Aqui tem que retornar um boolean por enquanto. 
 		return $this->trataResult($result); 	
@@ -50,17 +58,16 @@ class ExecuteQuery {
 	//Esse affected rows é pra INSERT 
 	function trataResult($result) {
 		if  (!$result) {
-			$this->log("Aqui 1"); 
 			$result = array('status' => 'error');
 
-		}else if (pg_affected_rows($result) == 1) {
-			$this->log("Aqui 2"); 
+		}
+		else if (pg_affected_rows($result) == 1) {
 			$result = array('status' => 'ok');	
 		}
 		else {
-			$this->log("Aqui 3"); 
 			while ($row = pg_fetch_array($result))  
-     				 $result = $result;
+				//Isso aqui tá uma bosta. 
+     			$result = $result;
 		}
 		return $result; 
 	}

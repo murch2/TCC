@@ -22,6 +22,7 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 		//Aqui faz o Request Com as informações, antes eu tenho que setar as coisas do GameManager para fazer o request.
 //		Por enquanto
 		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
+		System.out.println("Fazendo a Requisição");
 	}
 	
 	private void createItensScene () {
@@ -39,8 +40,7 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 
 	@Override
 	public SceneType getSceneType() {
-		// TODO Auto-generated method stub
-		return null;
+		return SceneType.CHOISE_SCENE; 
 	}
 
 	@Override
@@ -53,11 +53,16 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			System.out.println("Json = " + json.toString(4));
+			//Aqui depois eu tenho que perguntar se o status eh ok pra poder continuar.
+			if (json != null) {
+				System.out.println("COCO = " + json.toString(4));
+				createItensScene();
+			}
+			else 
+				System.out.println("COCO FUDEU TUDO");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		createItensScene();
 	}
 
 }
