@@ -1,5 +1,44 @@
-tratandoRequisicao
-tratandoRequisicao
-tratandoRequisicao
-New Game request
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo
+Trata Result 2
+1
+Fim do getInfo
+Trata Result 2
+1
+Trata Result 2
+1
+Depois de criar os desafiosok
+Trata Result 2
+1
+Fim do getInfo
+Trata Result 3
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo
+Trata Result 2
+1
+Fim do getInfo
+Depois de criar os desafiosok
+Fim do getInfo
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo
+Fim do getInfo
+Depois de criar os desafiosok
+Fim do getInfo
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo
+Fim do getInfo
+Depois de criar os desafiosok
+Fim do getInfo
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo
+Fim do getInfo
+Depois de criar os desafiosok
+Fim do getInfo
+Random = 
+SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+Fim do getInfo

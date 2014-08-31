@@ -12,6 +12,7 @@ import com.scenes.BaseScene;
 import com.scenes.ChoiceScene;
 import com.scenes.ConnectScene;
 import com.scenes.FriendPickerScene;
+import com.scenes.GameScene;
 import com.scenes.MainMenuScene;
 import com.scenes.NewGameScene;
 import com.scenes.SplashScene;
@@ -28,7 +29,8 @@ public class SceneManager {
 	private BaseScene mainMenuScene;
 	private BaseScene newGameScene; 
 	private BaseScene friendPickerScene;
-	private BaseScene choiseScene; 
+	private BaseScene choiseScene;
+	private BaseScene gameScene; 
 	
 	public static SceneManager getInstance() {
 		return INSTANCE; 
@@ -41,6 +43,7 @@ public class SceneManager {
 		NEWGAME_SCENE, 
 		FRIENDPICKER_SCENE, 
 		CHOISE_SCENE, 
+		GAME_SCENE
 	}
 	
 	//Talvez esse método possa ser private 
@@ -69,6 +72,9 @@ public class SceneManager {
 			break; 
 		case CHOISE_SCENE:
 			setScene(choiseScene);
+			break; 
+		case GAME_SCENE:
+			setScene(gameScene);
 		default:
 			break;
 		}
@@ -120,6 +126,12 @@ public class SceneManager {
 		ResourcesManager.getInstance().loadChoiceScene();  
 		choiseScene = new ChoiceScene(); 
 		setScene(choiseScene); 
+	}
+	
+	public void createGameScene() {
+		ResourcesManager.getInstance().loadGameScene();  
+		gameScene = new GameScene(); 
+		setScene(gameScene);
 	}
 	
 	public BaseScene getCurrentScene() {

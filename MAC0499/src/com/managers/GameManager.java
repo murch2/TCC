@@ -15,7 +15,8 @@ public class GameManager {
 	private String userID;
 	private int userCoins; 
 	private int userPowerUps;
-	private String userPictureURL; 
+	private String userPictureURL;
+	private int cardID; 
 	
 	private String friendID;
 	private String friendPictureURL; 
@@ -95,5 +96,13 @@ public class GameManager {
 
 	public void setFriendPictureURL(String friendPictureURL) {
 		this.friendPictureURL = friendPictureURL;
+	}
+
+	public int getCardID() {
+		return cardID;
+	}
+
+	public void setCardID(int cardID) {
+		this.cardID = cardID;
 	}
 }

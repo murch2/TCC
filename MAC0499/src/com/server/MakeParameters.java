@@ -51,10 +51,24 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID()); 
 			params.put("friendID", GameManager.getInstance().getFriendID()); 
 			result.put("message", params);
-			System.out.println("COCO = " + result.toString(4));
 		} catch (JSONException e) {
 			e.printStackTrace(); 
 		}
 		return result; 
-	}	
+	}
+	
+	public static JSONObject randomCard() {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "RandomCard"); 
+			params.put("userID", GameManager.getInstance().getUserID()); 
+			params.put("tipoCarta", GameManager.getInstance().getCardID());  
+//			Acho que tb vaii ter que passar o id do amigo. 
+			result.put("message", params);
+		} catch (JSONException e) {
+			e.printStackTrace(); 
+		}
+		return result; 
+	}
 }

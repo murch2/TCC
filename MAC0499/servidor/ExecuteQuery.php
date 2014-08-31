@@ -29,47 +29,102 @@ class ExecuteQuery {
 	}
 
 	function NewGameQuery($userID, $friendID) {
-		return $this->criaDesafios($userID, $friendID);
+		$result = $this->criaDesafios($userID, $friendID); 
+		$this->log("Depois de criar os desafios" . $result['status']);
+		if ($result['status'] == 'ok') {
+			$result = $this->criaHistoricoJogo($userID, $friendID);
+			if ($result['status'] == 'ok') {
+				return $this->getTipoCarta(); 
+			}
+		}
+		return $result; 
 	}
 
-	//Essa daqui tinha que ser privada se tiver isso
+	//Essa daqui tinha que ser privada se tiver isso, e precisa ser enxuta
 	function criaDesafios($userID, $friendID) {
-		$this>log("Cria Desafios"); 
+	
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
 		$result = $this->setInfo($query);
-		$this>log("Cria Desafios 2"); 
+	
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
 		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, 0, 0, 0); ";
 		$result = $this->setInfo($query);
 
-		$this>log("Cria Desafios 3"); 
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
+		return $this->ok(); 
+	}
+
+	function criaHistoricoJogo ($userID, $friendID) {
 		if ($userID < $friendID) 
 			$query = "INSERT INTO HISTORICOJOGO VALUES (".$userID.", ".$friendID.", 0, 0); ";
 		else 
 			$query = "INSERT INTO HISTORICOJOGO VALUES (".$friendID.", ".$userID.", 0, 0); ";
 
-		$this>log("Cria Desafios 4"); 
-		$this->log($query);
 		$result = $this->setInfo($query);		
-		
-		//Aqui tem que retornar um boolean por enquanto. 
-		return $this->trataResult($result); 	
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
+		return $this->ok(); 
 	}
 
-	//Esse affected rows é pra INSERT 
-	function trataResult($result) {
-		if  (!$result) {
-			$result = array('status' => 'error');
+	function getTipoCarta () {
+		$query = "SELECT id, tipo FROM TIPO_CARTA;";	
+		$result = $this->getInfo($query);
+		return $this->trataResult($result); 
+	} 
 
+	function randomCardQuery($userID, $tipoCarta) {
+		$query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
+		$this->log("Random = ");
+		$this->log($query);
+		$result = $this->getInfo($query);
+		if ($this->trataResult($result)['status'] == 'ok') {
+			$row = pg_fetch_array($result);
+			$result = array('status' => 'ok',
+			 				'dados'  => $row);
+		}
+		return $result;
+	}
+
+	// Esse trata result é só pra leitura e precisa receber um parametro de affected rows.
+	function trataResult($result) {
+		if (!$result) {
+			$this->log("Trata Result 2");
+			$result = $this->error(); 
 		}
 		else if (pg_affected_rows($result) == 1) {
-			$result = array('status' => 'ok');	
+			$result = $this->ok(); 
 		}
 		else {
-			while ($row = pg_fetch_array($result))  
-				//Isso aqui tá uma bosta. 
-     			$result = $result;
+			$aux;
+			// Aqui tem que fazer um novo array e ir concatenando as coisas nele.
+			$i = 0; 
+			while ($row = pg_fetch_array($result)) {
+     			$aux[$i] = $row; 
+     			$i++; 
+     		}
+     		$result = array('status' => 'ok',
+							 'dados' => $aux);
 		}
 		return $result; 
+	}
+
+	function error () {
+		$result = array('status' => 'error');
+		return $result;
+	}
+
+	function ok () {
+		$result = array('status' => 'ok');	
+		return $result;
 	}
 	
 	//O erro dessa porra eh na permissão de arquivos. (777 tudo funcionou)
@@ -82,6 +137,9 @@ class ExecuteQuery {
 	function getInfo ($query) {
 		$connection = $this->getConnection(); 
 		$result = pg_query($connection, $query);		
+		//Sei lah se precisa disso
+		// $this->closeConnection($connection);
+		$this->log("Fim do getInfo"); 
 		return $result; 
 	}
 

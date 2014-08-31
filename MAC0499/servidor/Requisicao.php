@@ -24,7 +24,6 @@ require 'ExecuteQuery.php';
  	}
 
  	function tratandoRequisicao ($json) { 
- 		$this->log("tratandoRequisicao");
  		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':
@@ -36,8 +35,11 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'NewGame':
- 				$this->log("New Game request"); 
  				$result = $exeQuery->NewGameQuery($json['userID'], $json['friendID']); 
+ 				break;
+
+ 			case 'RandomCard':
+ 				$result = $exeQuery->randomCardQuery($json['userID'], $json['tipoCarta']); 
  				break;
  			
  			default:

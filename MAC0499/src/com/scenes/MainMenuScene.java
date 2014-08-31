@@ -4,6 +4,8 @@
  */
 package com.scenes;
 
+import org.andengine.engine.handler.timer.ITimerCallback;
+import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
@@ -50,7 +52,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	private void createItensScene() {
 		//Acho que soh no fim desse metodo o loading poderá sair da tela
 		createHUD();
-		createBtnNewGame(); 
+		createBtnNewGame();
 	}
 
 	private void createBackground() {
@@ -105,7 +107,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			if (json.getString("status").equals("ok")) { 
+			if (json != null && json.getString("status").equals("ok")) { 
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
 				GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 

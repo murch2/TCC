@@ -229,8 +229,16 @@ public class ResourcesManager {
 		}
     }
     
-    public synchronized void  unloadChoiceScene() {
+    public synchronized void unloadChoiceScene() {
     }
+    
+    public synchronized void loadGameScene() {
+    	
+    }
+    
+    public synchronized void unloadGameScene() {
+    }
+    
     
     
     
