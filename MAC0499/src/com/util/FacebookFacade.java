@@ -6,6 +6,9 @@ package com.util;
 
 import java.util.Vector;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 
 import com.facebook.HttpMethod;
@@ -18,8 +21,11 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
+import com.server.HTTPPostRequester;
+import com.server.HTTPResponseListener;
+import com.server.MakeParameters;
 
-public class FacebookFacade {
+public class FacebookFacade implements HTTPResponseListener{
 
 	private final Vector<String> PERMISSIONS = new Vector<String>();  
 	private boolean isFetching = false; 
@@ -27,7 +33,6 @@ public class FacebookFacade {
 	public FacebookFacade () {
 		PERMISSIONS.add("user_friends");
 		PERMISSIONS.add("email"); 
-//		PERMISSIONS.add("publish_actions"); 
 	}
 	
 	public void login(final GraphUserCallback callback){
@@ -66,6 +71,65 @@ public class FacebookFacade {
 		}); 
 	}
 	
+	private void faceFriends (Callback callback) {
+		String fqlQuery = "SELECT uid,name,pic_big FROM user WHERE uid IN " +
+		        "(SELECT uid2 FROM friend WHERE uid1 = me())";
+		Bundle params = new Bundle();
+		params.putString("q", fqlQuery);
+		Session session = Session.getActiveSession();
+		Request request = new Request(session, "/fql", params, HttpMethod.GET, callback); 
+		Request.executeBatchAsync(request); 
+	}
+	
+	public void getUserPicture() {
+		System.out.println("Get User Picture");
+		ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				 userPicture(); 
+			}
+		});
+	}
+	
+	private void userPicture() {
+		Bundle params = new Bundle();
+		params.putBoolean("redirect", false);
+		params.putString("height", "300");
+		params.putString("type", "large");
+		params.putString("width", "300");
+		/* make the API call */
+		new Request(
+		    Session.getActiveSession(),
+		    "/me/picture",
+		    params,
+		    HttpMethod.GET,
+		    new Request.Callback() {
+		        public void onCompleted(Response response) {
+//		           Acho que aqui só preciso setar o link no gamemanager e em todo lugar que eu for usar pdevo perguntar se eh null ou não,
+//		        	Além de setar o link no gameManager eu preciso dar update no banco de dados
+//		        	Aqui eu já posso perguntar se é silueta ou não. 
+		        	
+		        	try {
+		        		JSONObject json = response.getGraphObject().getInnerJSONObject().getJSONObject("data");
+						if (!json.getBoolean("is_silhouette")) {
+							GameManager.getInstance().setUserPictureURL(json.getString("url"));
+//							Aqui eu tenho que fazer uma requisição pra setar a foto do cara. 
+							new HTTPPostRequester().asyncPost(FacebookFacade.this, MakeParameters.myPicture()); 
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+		        	
+		        }
+		    }
+		).executeAsync();
+	}
+
+	@Override
+	public void onResponse(JSONObject json) {		
+		
+	}
+	
 //	private void faceFriends (Callback callback) {
 //		String fqlQuery = "SELECT uid,name,pic_square FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me() )";
 //        final Bundle params = new Bundle();
@@ -93,15 +157,7 @@ public class FacebookFacade {
 //	}
 //	
 	
-	private void faceFriends (Callback callback) {
-		String fqlQuery = "SELECT uid,name,pic_big FROM user WHERE uid IN " +
-		        "(SELECT uid2 FROM friend WHERE uid1 = me())";
-		Bundle params = new Bundle();
-		params.putString("q", fqlQuery);
-		Session session = Session.getActiveSession();
-		Request request = new Request(session, "/fql", params, HttpMethod.GET, callback); 
-		Request.executeBatchAsync(request); 
-	}
+	
 }
 
 //	new Request(

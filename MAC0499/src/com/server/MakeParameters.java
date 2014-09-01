@@ -21,8 +21,8 @@ public class MakeParameters {
 			params.put("userID", user.getId()); 
 			params.put("userName", user.getName());
 			params.put("userCoins", 0); 
-			params.put("userPowerUps", 0); 
-			result.put("message", params); 
+			params.put("userPowerUps", 0);
+			result.put("message", params); 	
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} 
@@ -65,6 +65,33 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID()); 
 			params.put("tipoCarta", GameManager.getInstance().getCardID());  
 //			Acho que tb vaii ter que passar o id do amigo. 
+			result.put("message", params);
+		} catch (JSONException e) {
+			e.printStackTrace(); 
+		}
+		return result; 
+	}
+	
+	public static JSONObject randomOpponent() {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "RandomOpponent"); 
+			params.put("userID", GameManager.getInstance().getUserID()); 
+			result.put("message", params);
+		} catch (JSONException e) {
+			e.printStackTrace(); 
+		}
+		return result; 
+	}
+	
+	public static JSONObject myPicture() {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "MyPicture"); 
+			params.put("userID", GameManager.getInstance().getUserID());
+			params.put("url", GameManager.getInstance().getUserPictureURL()); 
 			result.put("message", params);
 		} catch (JSONException e) {
 			e.printStackTrace(); 

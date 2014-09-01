@@ -113,7 +113,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	@Override
 	public void onCompleted(Response response) {	
 		GraphObject graphObject = response.getGraphObject();
-		jsonFriends = graphObject.getInnerJSONObject() ;
+		jsonFriends = graphObject.getInnerJSONObject();
 		createItensScene(); 
 	}
 

@@ -41,6 +41,14 @@ require 'ExecuteQuery.php';
  			case 'RandomCard':
  				$result = $exeQuery->randomCardQuery($json['userID'], $json['tipoCarta']); 
  				break;
+
+ 			case 'RandomOpponent':
+ 				$result = $exeQuery->randomOpponentQuery($json['userID']); 
+ 				break;
+
+			case 'MyPicture':
+ 				$result = $exeQuery->myPictureQuery($json['userID'], $json['url']); 
+ 				break;
  			
  			default:
  				break;

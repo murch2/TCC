@@ -11,7 +11,8 @@ CREATE TABLE JOGADOR (
 	id					BIGINT PRIMARY KEY,
 	nome				VARCHAR(255) NOT NULL, 
 	moedas				INT CHECK (moedas >= 0), 
-	rodadas				INT CHECK (rodadas >= 0)
+	rodadas				INT CHECK (rodadas >= 0), 
+	foto 				VARCHAR(255)
 );
 
 CREATE TABLE TIPO_CARTA (

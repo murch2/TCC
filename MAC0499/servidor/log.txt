@@ -1,44 +1,8 @@
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
 Fim do getInfo
+UPDATE JOGADOR SET foto = https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/t1.0-1/c53.0.320.320/p320x320/381838_200435380037904_66433787_n.jpg WHERE id = 678359188912185;
 Trata Result 2
-1
 Fim do getInfo
-Trata Result 2
-1
-Trata Result 2
-1
-Depois de criar os desafiosok
-Trata Result 2
-1
-Fim do getInfo
-Trata Result 3
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
-Fim do getInfo
-Trata Result 2
-1
-Fim do getInfo
-Depois de criar os desafiosok
-Fim do getInfo
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
+UPDATE JOGADOR SET foto = 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/t1.0-1/c53.0.320.320/p320x320/381838_200435380037904_66433787_n.jpg' WHERE id = 678359188912185;
 Fim do getInfo
 Fim do getInfo
-Depois de criar os desafiosok
-Fim do getInfo
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
-Fim do getInfo
-Fim do getInfo
-Depois de criar os desafiosok
-Fim do getInfo
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
-Fim do getInfo
-Fim do getInfo
-Depois de criar os desafiosok
-Fim do getInfo
-Random = 
-SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = 1 ORDER BY RANDOM() LIMIT 1;
 Fim do getInfo

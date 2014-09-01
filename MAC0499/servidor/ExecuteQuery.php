@@ -83,8 +83,6 @@ class ExecuteQuery {
 
 	function randomCardQuery($userID, $tipoCarta) {
 		$query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
-		$this->log("Random = ");
-		$this->log($query);
 		$result = $this->getInfo($query);
 		if ($this->trataResult($result)['status'] == 'ok') {
 			$row = pg_fetch_array($result);
@@ -92,6 +90,25 @@ class ExecuteQuery {
 			 				'dados'  => $row);
 		}
 		return $result;
+	}
+
+	//Falta fazer não pegar as pessoas que eu tenho jogos. 
+	function randomOpponentQuery($userID) {
+		$query = "SELECT id, nome, foto FROM JOGADOR WHERE id <> ".$userID." ORDER BY RANDOM() LIMIT 1;"; 
+		$result = $this->getInfo($query);
+		if ($this->trataResult($result)['status'] == 'ok') {
+			$row = pg_fetch_array($result);
+			$result = array('status' => 'ok',
+			 				'dados'  => $row);
+		}
+		return $result;
+	}
+
+	function myPictureQuery($userID, $url) {
+		$query = "UPDATE JOGADOR SET foto = '$url' WHERE id = ".$userID.";"; 
+		$this->log($query);
+		$result = $this->setInfo($query); 
+		return $this->trataResult($result); 
 	}
 
 	// Esse trata result é só pra leitura e precisa receber um parametro de affected rows.

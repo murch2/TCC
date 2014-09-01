@@ -119,9 +119,16 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 		//agora se a classe fizer dois dá pra criar uma variavel de estado pra guardar 
 		//qual foi o ultimo que se faz e se pode fazer pq num tem nenhum sendo feito. 
 		if (user != null) {
+			try {
+				System.out.println("Infos do user = " + user.getInnerJSONObject().toString(4));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			new HTTPPostRequester().asyncPost(this, MakeParameters.signUpParams(user));
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
 			GameManager.getInstance().setUserID(user.getId());
+			fb.getUserPicture(); 
 			System.out.println("DEBUG - O cara está logado na connect scene  " + GameManager.getInstance().getUserName());
 			//Aqui eu chamo o layer de loading. 
 		}
@@ -138,6 +145,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
 				System.out.println("DEBUG - estou indo da connect scene para o mainMenu");
+				//Tem que rodar um bagulho aqui pra pegar a foto do cara ainda (PQP)
 				SceneManager.getInstance().createMainMenuScene(); 
 			}
 			else { //Deu merda na inserção do cara. 

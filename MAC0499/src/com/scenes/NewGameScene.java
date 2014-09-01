@@ -11,11 +11,16 @@ import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.util.adt.color.Color;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
+import com.server.HTTPPostRequester;
+import com.server.HTTPResponseListener;
+import com.server.MakeParameters;
 
-public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener {
+public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener, HTTPResponseListener {
 
 	private MenuScene menuNewGame; 
 	private final int ITEM_FACEBOOK_FRIEND = 0;
@@ -79,13 +84,24 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 				SceneManager.getInstance().createNewFriendPickerScene();
 				return true; 
 			case ITEM_RANDOM_OPPONNENT:
-				System.out.println("Clicou no Random");
+				new HTTPPostRequester().asyncPost(this, MakeParameters.randomOpponent());
 				return true; 
 
 			default:
 				break;
 		}
 		return false;
+	}
+
+	@Override
+	public void onResponse(JSONObject json) {
+		try {
+			System.out.println("RANDOM OPPONENT = " + json.toString(4));
+			//Aqui eu tenho que setar as coisas do oponente e ir para a choiceScene.
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
