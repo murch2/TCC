@@ -39,7 +39,7 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'RandomCard':
- 				$result = $exeQuery->randomCardQuery($json['userID'], $json['tipoCarta']); 
+ 				$result = $exeQuery->randomCardQuery($json['userID'], $json['friendID'], $json['tipoCarta']); 
  				break;
 
  			case 'RandomOpponent':
@@ -49,6 +49,20 @@ require 'ExecuteQuery.php';
 			case 'MyPicture':
  				$result = $exeQuery->myPictureQuery($json['userID'], $json['url']); 
  				break;
+
+ 			// Daqui pra baixo não está testado. 
+ 			case 'FinishNewRound':
+ 				$result = $exeQuery->finishNewRoundQuery($json); 
+ 				break;
+
+ 			case 'StartOldRound':
+ 				$result = $exeQuery->startOldRoundQuery($json); 
+ 				break;
+
+ 			case 'FinishOldRound':
+ 				$result = $exeQuery->finishOldRoundQuery($json); 
+ 				break;
+
  			
  			default:
  				break;

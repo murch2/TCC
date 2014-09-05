@@ -79,7 +79,7 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 
 	@Override
 	public boolean onSceneTouchEvent(Scene pScene, TouchEvent pSceneTouchEvent) {
-		GameManager.getInstance().setCardID(1);
+		GameManager.getInstance().setCardTypeID(1);
 		SceneManager.getInstance().createGameScene();
 		System.out.println("Toquei na ChoiceScene");
 		return true; 

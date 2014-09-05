@@ -42,15 +42,25 @@ class ExecuteQuery {
 
 	//Essa daqui tinha que ser privada se tiver isso, e precisa ser enxuta
 	function criaDesafios($userID, $friendID) {
-	
-		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, 0, 0, 0); ";
+		// Podia controlar isso com a pontuação mas foda-se
+		// A ideia é que quando eu crio eu vou jogar. 
+		// (O status = 0 vai representar que ninguem jogou)
+		// (O status = 1 vai representar que o primeiro jogador está jogando)
+		// (O status = 2 vai representar que o primeiro jogador acabou de jogar)
+		// (O status = 3 vai representar que o segundo jogador está jogando)
+		// (O status = 4 vai representar que o segundo jogador acabou de jogar)
+		// Quando o primeiro jogador for jogar e tiver status 4 eu posso mandar as infos pra ele ver e atualizar as infos do jogo
+
+
+		// sempre vai ter que ter 
+		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, -1, -1, 0); ";
 		$result = $this->setInfo($query);
 	
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
 
-		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, 0, 0, 0); ";
+		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, -1, -1, 0); ";
 		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
@@ -81,26 +91,133 @@ class ExecuteQuery {
 		return $this->trataResult($result); 
 	} 
 
-	function randomCardQuery($userID, $tipoCarta) {
+	function randomCardQuery($userID, $friendID, $tipoCarta) {
 		$query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
 		$result = $this->getInfo($query);
-		if ($this->trataResult($result)['status'] == 'ok') {
-			$row = pg_fetch_array($result);
-			$result = array('status' => 'ok',
-			 				'dados'  => $row);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error(); 
 		}
+
+		$row = pg_fetch_array($result);
+		$idCarta = $row['id']; 
+
+		// Aqui eu tenho que atualizar o status e o id da carta (Tenho que testar pq o IME eh uma bosta)
+		$query = "UPDATE DESAFIOS SET id_carta = $idCarta, status = 1 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
+		$this->log("Update = " . $query);
+		$result = $this->setInfo($query);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error(); 
+		}
+
+		$query = "SELECT id, texto FROM dicas WHERE id_carta = $idCarta;"; 
+		$this->log($query);
+		$resultTips = $this->getInfo($query);
+		$arrayTips = $this->trataResult($resultTips);
+
+		if ($arrayTips['status'] == 'error') {
+			return $this->error();
+		}
+
+		$result = array('status' => 'ok',
+		 				'dados'  => array('nomeCarta' => $row['nome'],
+		 								  'foto' => $row['link_foto'],
+		 								  'idCarta' => $idCarta,
+		 								  'dicas' => $arrayTips['dados']));
+		
 		return $result;
+	}
+
+	// Esse nome eh ruim pq isso acotnece quando o cara acaba o primeiro round dele. 
+	// Acho que esse mtodo precisa chamar finishNewRound
+	function finishNewRoundQuery($json) {
+		$score = $json['score']; 
+		$userID = $json['userID']; 
+		$friendID = $json['friendID']; 
+		$correct = $json['correct'];
+		
+		$query = "UPDATE DESAFIOS SET pontuacao1 = $score, status = 2 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
+
+		$result = $this->setInfo($query);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error(); 
+		}
+
+		
+
+		// $query = "UPDATE HISTORICOESTATISTICA SET pontuacao1 = $score, status = 2 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
+
+		// $result = $this->setInfo($query);		
+
+		return $this->ok(); 
+	}
+
+	//Aqui eu só preciso atualizar o status
+	function startOldRoundQuery($json) {
+		// Preciso alem disso devolver a pontuação do cara que já fez o jogo 
+		$score = $json['score']; 
+		$userID = $json['userID']; 
+		$friendID = $json['friendID']; 
+		$query = "UPDATE desafios SET status = 3 WHERE id_jogador1 = $friendID and id_jogador2 = $userID;"; 
+		$this->log("Pontuação = " . $query);
+
+		$result = $this->setInfo($query);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error(); 
+		}
+
+		return $this->ok(); 
+	}
+
+	// Esse vai ser o de quando o cara clicar no game na tela de mainMenu. 
+
+	function finishOldRoundQuery($json) {
+		$score = $json['score']; 
+		$userID = $json['userID']; 
+		$friendID = $json['friendID']; 
+
+		$query = "UPDATE desafios SET pontuacao2 = $score, status = 4 WHERE id_jogador1 = $friendID and id_jogador2 = $userID;"; 
+
+		$result = $this->setInfo($query);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error(); 
+		}
+
+		return $this->ok(); 
 	}
 
 	//Falta fazer não pegar as pessoas que eu tenho jogos. 
 	function randomOpponentQuery($userID) {
-		$query = "SELECT id, nome, foto FROM JOGADOR WHERE id <> ".$userID." ORDER BY RANDOM() LIMIT 1;"; 
+
+		$query = "SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> ".$userID." AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = ".$userID."); "; 
+
 		$result = $this->getInfo($query);
-		if ($this->trataResult($result)['status'] == 'ok') {
-			$row = pg_fetch_array($result);
-			$result = array('status' => 'ok',
-			 				'dados'  => $row);
+		
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
 		}
+
+		$row = pg_fetch_array($result);
+		$idFriend = $row['id']; 
+
+		$result = $this->criaDesafios($userID, $idFriend); 	
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
+		$result = array('status' => 'ok',
+		 				'dados'  => $row);
+		
 		return $result;
 	}
 
@@ -184,4 +301,3 @@ class ExecuteQuery {
 	}
 }
 ?>
-

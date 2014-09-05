@@ -14,6 +14,7 @@ import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.managers.GameManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
@@ -97,8 +98,11 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	public void onResponse(JSONObject json) {
 		try {
 			System.out.println("RANDOM OPPONENT = " + json.toString(4));
-			//Aqui eu tenho que setar as coisas do oponente e ir para a choiceScene.
-			
+			json = json.getJSONObject("dados"); 
+			GameManager.getInstance().setFriendID(json.getString("id")); 
+			GameManager.getInstance().setFriendPictureURL(json.getString("foto"));
+			GameManager.getInstance().setFriendName("nome"); 
+			SceneManager.getInstance().createChoiceScene(); 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -72,8 +72,6 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		}
 		
 		
-		
-		
 //		try {
 //			JSONArray array = jsonFriends.getJSONArray("data");		
 //			FriendPickerCell cell; 
@@ -124,14 +122,12 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		FriendPickerItem item = (FriendPickerItem) pMenuItem; 
 		
 		if (item != null) {
-			GameManager.getInstance().setFriendID(item.getFriendID());
-// 		Isso daqui provavelmente vai ter que pegar a foto maior antes, como eu tenho o id eu posso devolver isso do meu banco de dados. 
-//		a foto que eu voou ter no meu banco de dados é a grande já 
-			GameManager.getInstance().setFriendPictureURL(item.getFriendURLPicture()); 
+			GameManager.getInstance().setFriendID(item.getFriendID()); 
+			GameManager.getInstance().setFriendPictureURL(item.getFriendURLPicture());
+			GameManager.getInstance().setFriendName(item.getFriendName()); 
 			SceneManager.getInstance().createChoiceScene(); 
 			return true;
 		}
 		return false; 
-		
 	}
 }

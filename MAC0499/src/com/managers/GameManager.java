@@ -16,11 +16,12 @@ public class GameManager {
 	private int userCoins; 
 	private int userPowerUps;
 	private String userPictureURL;
-	private int cardID; 
+	private int cardTypeID; 
+//	private int cardID; 
 	
 	private String friendID;
 	private String friendPictureURL; 
-
+	private String friendName; 
 
 	public static GameManager getInstance() {
 		return INSTANCE; 
@@ -98,11 +99,27 @@ public class GameManager {
 		this.friendPictureURL = friendPictureURL;
 	}
 
-	public int getCardID() {
-		return cardID;
+	public int getCardTypeID() {
+		return cardTypeID;
 	}
 
-	public void setCardID(int cardID) {
-		this.cardID = cardID;
+	public void setCardTypeID(int cardID) {
+		this.cardTypeID = cardID;
 	}
+
+	public String getFriendName() {
+		return friendName;
+	}
+
+	public void setFriendName(String friendName) {
+		this.friendName = friendName;
+	}
+
+//	public int getCardID() {
+//		return cardID;
+//	}
+//
+//	public void setCardID(int cardID) {
+//		this.cardID = cardID;
+//	}
 }

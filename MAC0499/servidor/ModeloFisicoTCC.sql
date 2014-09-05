@@ -67,8 +67,8 @@ CREATE TABLE HISTORICOJOGO (
 CREATE TABLE HISTORICOESTATISTICA (
 	id_jogador				SERIAL, 
 	id_tipo_carta			SERIAL, 
-	jogadas					INT CHECK (jogadas > 0), 
-	acertos					INT CHECK (acertos > 0 AND acertos <= jogadas), 
+	jogadas					INT CHECK (jogadas >= 0), 
+	acertos					INT CHECK (acertos >= 0 AND acertos <= jogadas), 
 
 	PRIMARY KEY (id_jogador, id_tipo_carta),
 	FOREIGN KEY (id_jogador) REFERENCES JOGADOR (id) ON DELETE CASCADE ON UPDATE CASCADE, 

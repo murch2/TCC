@@ -70,6 +70,9 @@ public class ResourcesManager {
     public ITextureRegion backgroundRegion;
     private BuildableBitmapTextureAtlas choiseSceneAtlas;
     
+    //GameScene
+    public ITextureRegion btnTipRegion;
+    private BuildableBitmapTextureAtlas gameSceneAtlas; 
     
     public static ResourcesManager getInstance() {
         return INSTANCE;
@@ -233,7 +236,15 @@ public class ResourcesManager {
     }
     
     public synchronized void loadGameScene() {
-    	
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
+    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 60, 60, TextureOptions.BILINEAR);
+    	btnTipRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "tip1.png");
+    	try {
+			this.gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			this.gameSceneAtlas.load(); 
+		} catch (TextureAtlasBuilderException e) {
+			e.printStackTrace();
+		}
     }
     
     public synchronized void unloadGameScene() {
