@@ -46,6 +46,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			new FacebookFacade().login(this); 
 		} else {
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
+//			Aqui eu vou ter que chamar o request de fazer os jogos do cara 
 		}
 	}
 
@@ -107,6 +108,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
+//			createItensScene(); 
 			if (json != null && json.getString("status").equals("ok")) { 
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().setUserCoins(json.getInt("moedas")); 

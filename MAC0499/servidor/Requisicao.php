@@ -63,6 +63,10 @@ require 'ExecuteQuery.php';
  				$result = $exeQuery->finishOldRoundQuery($json); 
  				break;
 
+ 			case 'MyGames':
+ 				$result = $exeQuery->myGamesQuery($json); 
+ 			break;
+
  			
  			default:
  				break;

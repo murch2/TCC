@@ -110,7 +110,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		System.out.println("Cliquei!"); 
 		System.out.println("A dica: \n" + pMenuItem.getUserData());
 		currentRequest = Requests.FINISH_NEWROUND; 
-		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, true));
+		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, false));
 		return true;
 	}
 

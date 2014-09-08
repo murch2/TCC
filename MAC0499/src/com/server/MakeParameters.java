@@ -111,7 +111,7 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID());
 			params.put("friendID", GameManager.getInstance().getFriendID());
 			params.put("score", score);
-			params.put("idTipoCarta", GameManager.getInstance().getCardTypeID()); 
+			params.put("tipoCartaID", GameManager.getInstance().getCardTypeID()); 
 			params.put("correct", correct); 
 			result.put("message", params);
 		} catch (JSONException e) {
@@ -120,7 +120,7 @@ public class MakeParameters {
 		return result; 
 	}
 	
-	public static JSONObject finishOldRound(int score) {
+	public static JSONObject finishOldRound(int score, boolean correct) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();
 		try {
@@ -128,10 +128,26 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID());
 			params.put("friendID", GameManager.getInstance().getFriendID());
 			params.put("score", score);
+			params.put("tipoCartaID", GameManager.getInstance().getCardTypeID()); 
+			params.put("correct", correct);
 			result.put("message", params);
 		} catch (JSONException e) {
 			e.printStackTrace(); 
 		}
+		return result; 
+	}
+	
+//	Acho que da pra pegar a do GM ao inves de passar por parametro o userID
+	public static JSONObject myGames(String userID) {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "MyGames"); 
+			params.put("userID", userID); 
+			result.put("message", params); 
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} 
 		return result; 
 	}
 }

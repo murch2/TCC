@@ -65,7 +65,7 @@ CREATE TABLE HISTORICOJOGO (
 );
 
 CREATE TABLE HISTORICOESTATISTICA (
-	id_jogador				SERIAL, 
+	id_jogador				BIGINT, 
 	id_tipo_carta			SERIAL, 
 	jogadas					INT CHECK (jogadas >= 0), 
 	acertos					INT CHECK (acertos >= 0 AND acertos <= jogadas), 

@@ -1,20 +1,13 @@
 /**
  * @author Rodrigo Duarte Louro
- * @dateAug 18, 2014
+ * @dateSep 8, 2014
  */
 package com.model;
 
 import org.andengine.engine.camera.Camera;
-import org.andengine.entity.Entity;
-import org.andengine.entity.scene.menu.MenuScene;
-import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
-import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.entity.sprite.batch.SpriteGroup;
-import org.andengine.entity.sprite.vbo.ISpriteVertexBufferObject;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -24,8 +17,13 @@ import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.ImageDownloader;
 
-public class FriendPickerItem extends SpriteMenuItem {
-
+public class GameItem extends SpriteMenuItem {
+	
+	private enum Status {
+		PLAY, 
+		POKE, 
+	}
+	
 	public Sprite backgroundCell;
 	private Sprite friendPicture; 
 	private String friendID;
@@ -33,10 +31,13 @@ public class FriendPickerItem extends SpriteMenuItem {
 	private String friendNameString;
 	private Text friendNameText;
 	private JSONObject jsonFriendInfo;
-	
-	
-	//PID eh a porra do primeiro int que serve como ID do botão, aqui ele já pode guardar o id do facebook do cara. 
-	public FriendPickerItem(int idButton, String idFriend, JSONObject friendInfo) { 
+	private Status status; 
+	private int friendScore;
+	private Text friendScoreText; 
+	private int myScore;
+	private Text myScoretext;  
+	 
+	public GameItem(int idButton, String idFriend, JSONObject friendInfo) { 
 		super(idButton, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
 		this.jsonFriendInfo = friendInfo; 
 		friendID = idFriend; 
@@ -109,5 +110,45 @@ public class FriendPickerItem extends SpriteMenuItem {
 
 	public void setFriendName(String friendNameString) {
 		this.friendNameString = friendNameString;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public int getFriendScore() {
+		return friendScore;
+	}
+
+	public void setFriendScore(int friendScore) {
+		this.friendScore = friendScore;
+	}
+	
+	public Text getFriendScoreText() {
+		return friendScoreText;
+	}
+
+	public void setFriendScoreText(Text friendScoreText) {
+		this.friendScoreText = friendScoreText;
+	}
+
+	public int getMyScore() {
+		return myScore;
+	}
+
+	public void setMyScore(int myScore) {
+		this.myScore = myScore;
+	}
+
+	public Text getMyScoretext() {
+		return myScoretext;
+	}
+
+	public void setMyScoretext(Text myScoretext) {
+		this.myScoretext = myScoretext;
 	}
 }

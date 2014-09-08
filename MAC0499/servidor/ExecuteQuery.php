@@ -10,8 +10,22 @@ class ExecuteQuery {
 	//Tem que mudar de nome pq isso vai ser o switch de tratar as requisições. 
 	function SignUpQuery ($json) {
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
-		$result = $this->setInfo($query); 
-		return $this->trataResult($result); 
+		$result = $this->setInfo($query);
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
+		for ($i=1; $i < 5; $i++) { 
+			$query = "INSERT INTO HISTORICOESTATISTICA VALUES (". $json['userID'] .", $i, 0, 0); ";
+			$this->log($query); 
+			$result = $this->setInfo($query);
+			if ($this->trataResult($result)['status'] == 'error') {
+				return $this->error();
+			}
+		}
+
+		return $this->trataResult($result);
 	}
 
 	function UserInfoQuery($userID) {
@@ -19,15 +33,16 @@ class ExecuteQuery {
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
 		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
-		// pra ver se eu encontrei algum cara ou não). 
+		// pra ver se eu encontrei algum cara ou não). (É só retornar erro se der erro igual aos novos que eu estou fazendo)
 		$jsonResult = array('status' => 'ok', 
 							'nome' => $row[0],
 							'moedas' => $row[1],
 							'rodadas' => $row[2]
 							);
-		return $jsonResult; 
+		return $jsonResult;
 	}
 
+	// Mudar esse metodo pra retornar erro, igual aos outros que eu estou fazendo agora. 
 	function NewGameQuery($userID, $friendID) {
 		$result = $this->criaDesafios($userID, $friendID); 
 		$this->log("Depois de criar os desafios" . $result['status']);
@@ -102,7 +117,6 @@ class ExecuteQuery {
 		$row = pg_fetch_array($result);
 		$idCarta = $row['id']; 
 
-		// Aqui eu tenho que atualizar o status e o id da carta (Tenho que testar pq o IME eh uma bosta)
 		$query = "UPDATE DESAFIOS SET id_carta = $idCarta, status = 1 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
 		$this->log("Update = " . $query);
 		$result = $this->setInfo($query);
@@ -136,6 +150,7 @@ class ExecuteQuery {
 		$userID = $json['userID']; 
 		$friendID = $json['friendID']; 
 		$correct = $json['correct'];
+		$tipoCartaID = $json['tipoCartaID'];
 		
 		$query = "UPDATE DESAFIOS SET pontuacao1 = $score, status = 2 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
 
@@ -144,14 +159,19 @@ class ExecuteQuery {
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error(); 
 		}
-
 		
+		if ($correct) {
+			$query = "UPDATE HISTORICOESTATISTICA SET jogadas = jogadas + 1, acertos = acertos + 1
+						WHERE id_jogador = $userID and id_tipo_carta = $tipoCartaID;"; 
+		} 
+		else {
+			$query = "UPDATE HISTORICOESTATISTICA SET jogadas = jogadas + 1
+						WHERE id_jogador = $userID and id_tipo_carta = $tipoCartaID;"; 
+		}
 
-		// $query = "UPDATE HISTORICOESTATISTICA SET pontuacao1 = $score, status = 2 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
+		$result = $this->setInfo($query);		
 
-		// $result = $this->setInfo($query);		
-
-		return $this->ok(); 
+		return $this->trataResult($result);
 	}
 
 	//Aqui eu só preciso atualizar o status
@@ -161,7 +181,7 @@ class ExecuteQuery {
 		$userID = $json['userID']; 
 		$friendID = $json['friendID']; 
 		$query = "UPDATE desafios SET status = 3 WHERE id_jogador1 = $friendID and id_jogador2 = $userID;"; 
-		$this->log("Pontuação = " . $query);
+		
 
 		$result = $this->setInfo($query);
 
@@ -173,21 +193,33 @@ class ExecuteQuery {
 	}
 
 	// Esse vai ser o de quando o cara clicar no game na tela de mainMenu. 
-
+	// Vou criar apenas uma funcao ao inves de duas para o finish OLD e new Round que recebe o status de parametro. 
 	function finishOldRoundQuery($json) {
 		$score = $json['score']; 
 		$userID = $json['userID']; 
 		$friendID = $json['friendID']; 
+		$correct = $json['correct'];
+		$tipoCartaID = $json['tipoCartaID'];
 
 		$query = "UPDATE desafios SET pontuacao2 = $score, status = 4 WHERE id_jogador1 = $friendID and id_jogador2 = $userID;"; 
-
-		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error(); 
 		}
+		
+		if ($correct) {
+			$query = "UPDATE HISTORICOESTATISTICA SET jogadas = jogadas + 1, acertos = acertos + 1
+						WHERE id_jogador = $userID and id_tipo_carta = $tipoCartaID;"; 
+		} 
+		else {
+			$query = "UPDATE HISTORICOESTATISTICA SET jogadas = jogadas + 1
+						WHERE id_jogador = $userID and id_tipo_carta = $tipoCartaID;"; 
+		}
 
-		return $this->ok(); 
+		$result = $this->setInfo($query);		
+
+		return $this->trataResult($result);
+	}
 	}
 
 	//Falta fazer não pegar as pessoas que eu tenho jogos. 
@@ -228,10 +260,17 @@ class ExecuteQuery {
 		return $this->trataResult($result); 
 	}
 
+	function myPictureQuery($json) {
+		$userID = $json['userID']; 
+		$query = ";"; 
+		$this->log($query);
+		$result = $this->setInfo($query); 
+		return $this->trataResult($result); 
+	}
+
 	// Esse trata result é só pra leitura e precisa receber um parametro de affected rows.
 	function trataResult($result) {
 		if (!$result) {
-			$this->log("Trata Result 2");
 			$result = $this->error(); 
 		}
 		else if (pg_affected_rows($result) == 1) {
@@ -239,7 +278,6 @@ class ExecuteQuery {
 		}
 		else {
 			$aux;
-			// Aqui tem que fazer um novo array e ir concatenando as coisas nele.
 			$i = 0; 
 			while ($row = pg_fetch_array($result)) {
      			$aux[$i] = $row; 
@@ -271,9 +309,7 @@ class ExecuteQuery {
 	function getInfo ($query) {
 		$connection = $this->getConnection(); 
 		$result = pg_query($connection, $query);		
-		//Sei lah se precisa disso
-		// $this->closeConnection($connection);
-		$this->log("Fim do getInfo"); 
+		$this->closeConnection($connection);
 		return $result; 
 	}
 
