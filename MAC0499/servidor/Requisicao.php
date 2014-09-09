@@ -31,6 +31,7 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'UserInfo':
+ 				$this->log("Requisicao UserInfoQuery");
  				$result = $exeQuery->UserInfoQuery($json['userID']);
  				break;
 
@@ -50,7 +51,6 @@ require 'ExecuteQuery.php';
  				$result = $exeQuery->myPictureQuery($json['userID'], $json['url']); 
  				break;
 
- 			// Daqui pra baixo não está testado. 
  			case 'FinishNewRound':
  				$result = $exeQuery->finishNewRoundQuery($json); 
  				break;
@@ -64,7 +64,7 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'MyGames':
- 				$result = $exeQuery->myGamesQuery($json); 
+				$result = $exeQuery->myGamesQuery($json);
  			break;
 
  			

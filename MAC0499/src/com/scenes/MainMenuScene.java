@@ -40,12 +40,13 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void createScene() {
 		createBackground();  
-		createItensScene();  
 		//Vou tentar jogar o login pra outra tela por causa do bug
 		if (!GameManager.getInstance().isLoggedUser()) {
 			new FacebookFacade().login(this); 
 		} else {
+//			Acho que nem é aqui que eu to fazendo essa merda
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
+//			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID())); 
 //			Aqui eu vou ter que chamar o request de fazer os jogos do cara 
 		}
 	}
@@ -107,17 +108,24 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	
 	@Override
 	public void onResponse(JSONObject json) {
+		System.out.println("On ResponseEEEEEEEEEEEEEE");
 		try {
-//			createItensScene(); 
+			System.out.println("On Response");
 			if (json != null && json.getString("status").equals("ok")) { 
-				GameManager.getInstance().setLoggedUser(true); 
-				GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
-				GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
-				GameManager.getInstance().setUserName(json.getString("nome")); 
-				createItensScene(); 
+				if (json.getString("requestID").equals("UserInfo")) {
+					System.out.println(json.toString(4));
+					GameManager.getInstance().setLoggedUser(true); 
+					GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
+					GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
+					GameManager.getInstance().setUserName(json.getString("nome")); 
+					createItensScene();
+				}
+				else if (json.getString("requestID").equals("MyGames")) {
+					System.out.println(json.toString(4));
+				}
 			}
 			else { //Deu merda pra recuperar os dados do cara no banco de dados.  
-				
+				System.out.println("Deu merda");
 			}
 		} catch (JSONException e) {
 			//Aqui tb deu merda pra recuperar os dados do cara no BD

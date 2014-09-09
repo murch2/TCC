@@ -29,12 +29,14 @@ class ExecuteQuery {
 	}
 
 	function UserInfoQuery($userID) {
+		$this->log("Metodo UserInfoQuery");
 		$query = "SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = " . $userID . ";"; 
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
 		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
 		// pra ver se eu encontrei algum cara ou não). (É só retornar erro se der erro igual aos novos que eu estou fazendo)
-		$jsonResult = array('status' => 'ok', 
+		$jsonResult = array('status' => 'ok',
+							'requestID' => 'UserInfo',  
 							'nome' => $row[0],
 							'moedas' => $row[1],
 							'rodadas' => $row[2]
@@ -220,7 +222,6 @@ class ExecuteQuery {
 
 		return $this->trataResult($result);
 	}
-	}
 
 	//Falta fazer não pegar as pessoas que eu tenho jogos. 
 	function randomOpponentQuery($userID) {
@@ -260,15 +261,85 @@ class ExecuteQuery {
 		return $this->trataResult($result); 
 	}
 
-	function myPictureQuery($json) {
+	function myGamesQuery($json) {
 		$userID = $json['userID']; 
-		$query = ";"; 
-		$this->log($query);
-		$result = $this->setInfo($query); 
-		return $this->trataResult($result); 
+		$query = "SELECT id_jogador2, pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;"; 
+
+		$result = $this->trataResult($this->getInfo($query)); 
+
+		if ($this->trataResult($result)['status'] == 'error') {
+			return $this->error();
+		}
+
+		$index = 0; 
+		$dados; 
+		foreach ($result['dados'] as $key => $game) {
+			$status = $game['status']; 
+			$opponentID = $game['id_jogador2']; 
+			$this->log("Oponente ID = " . $opponentID);
+
+			// Aqui eu tenho que ver se o jogo do cara é novo. Se o outro cara criou um jogo com ele.
+			if ($status == 0) {
+				$this->log("Status = 0");
+				$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = $opponentID AND id_jogador2 = $userID; "; 
+
+				$this->log($query);
+				$resultAux = $this->getInfo($query); 
+				
+				// Acho que eu posso fazer isso sem while pq eu tenho certeza que eh unico. 
+				$row = pg_fetch_array($resultAux); 
+				$statusAux = $row['status']; 
+				$this->log("StatusAux = " . $statusAux);
+				// Se tiver 2 ou 4 eh minha vez. Se tiver 3 é WO 
+				if ($statusAux == 2) {
+					$dados[$index++] = array('idOpponent' => $opponentID,
+										 'pictureOpponent' => $row['foto'],
+										 'scoreOpponent' => $row['pontuacao1'],
+										 'nameOpponent' => $row['nome'],
+										 'gameStatus' => "PLAY");
+				}
+				elseif ($statusAux == 4) {
+					// Talvez não precise lidar com isso. 
+					// Aqui eu ainda não mandei o meu jogo pro cara pro cara. 
+				} 
+				elseif ($statusAux == 3) {
+					// Aqui é WO
+				}
+			}
+			elseif ($status == 1) {
+				// Aqui dane-se eu tenho qeu apagar as informações desse jogo pq o cara não acabou e quer começar de novo. 
+			}
+			elseif ($status == 2) {
+				// Aqui é o clássico POKE, já joguei e falta o cara jogar. 
+				$this->log("Status = 2");
+				$dados[$index++] = array('idOpponent' => $opponentID,
+										 'pictureOpponent' => $game['foto'],
+										 'scoreOpponent' => $game['pontuacao2'],
+										 'nameOpponent' => $game['nome'],
+										 'gameStatus' => "POKE");
+			} 
+			elseif ($status == 3) {
+				// O cara tá jogando, por enquanto é POKE
+			}
+			elseif ($status == 4) {
+				// O cara já acabou de jogar o que v enviou pra ele, agora preciso buscar informações do que ele mandou pra vc, 
+				// pra decidir se é POKE OU PLAY.
+			}
+
+		}
+		
+		$result = array('status' => 'ok',
+						'requestID' => 'MyGames',  
+						'dados' => $dados);
+	
+
+		return $result; 
 	}
 
 	// Esse trata result é só pra leitura e precisa receber um parametro de affected rows.
+	// acho que tem que fazer um pg_affected_rows(result) com 0 mas ok pro caso do myGamesQuery
 	function trataResult($result) {
 		if (!$result) {
 			$result = $this->error(); 
