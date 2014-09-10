@@ -47,6 +47,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		setBackground(new Background(Color.RED));
 	}
 	
+//	Talvez tivesse que ter uma classe pra esse menu (Pra ele ser scrolavel e tals)
 	private void makeFriendsMenu() {
 		JSONArray array;
 		JSONObject json; 
@@ -70,26 +71,6 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		
-//		try {
-//			JSONArray array = jsonFriends.getJSONArray("data");		
-//			FriendPickerCell cell; 
-//			float offSetY = 10;
-//			float currentY = Constants.CAMERA_HEIGHT * 0.7f;
-////			Na verdade todas essas celulas tem que ser colocadas em um scroll 
-//			for (int i = 0; i < array.length(); i++) {
-//				cell = new FriendPickerCell(array.getJSONObject(i)); 
-//				cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, currentY);
-//				currentY -= (Constants.HEIGHT_PICKER_CELL + offSetY);
-//				System.out.println("DEBUG - VOltou pra cena");
-//				registerTouchArea(cell);
-//				attachChild(cell);
-//			}
-//		} 
-//		catch (JSONException e) {
-//			e.printStackTrace();
-//		} 
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public class GameItem extends SpriteMenuItem {
 	private Text myScoretext;  
 	 
 	public GameItem(int idButton, String idFriend, JSONObject friendInfo) { 
-		super(idButton, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
+		super(idButton, ResourcesManager.getInstance().gameItemBackGroundRegion, ResourcesManager.getInstance().vbom);
 		this.jsonFriendInfo = friendInfo; 
 		friendID = idFriend; 
 		createPicture(); 
@@ -46,7 +46,7 @@ public class GameItem extends SpriteMenuItem {
 	}
 
 	private void createPicture() {
-		friendPicture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion, ResourcesManager.getInstance().vbom) {
+		friendPicture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion2, ResourcesManager.getInstance().vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -60,7 +60,7 @@ public class GameItem extends SpriteMenuItem {
 			public void run() {
 				String link; 
 				try {
-					link = jsonFriendInfo.getString("pic_big");
+					link = jsonFriendInfo.getString("pictureOpponent");
 					Sprite updatePicture = ImageDownloader.testeImage(link);
 					updatePicture.setWidth(friendPicture.getWidth());
 					updatePicture.setHeight(friendPicture.getHeight()); 
@@ -77,7 +77,7 @@ public class GameItem extends SpriteMenuItem {
 	
 	private void createNameText() {
 		try {
-			friendNameString = this.jsonFriendInfo.getString("name");
+			friendNameString = this.jsonFriendInfo.getString("nameOpponent");
 			friendNameText = new Text(0, 0, ResourcesManager.getInstance().font, friendNameString, ResourcesManager.getInstance().vbom);
 			friendNameText.setAnchorCenter(0f, 0.5f); 
 			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  

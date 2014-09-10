@@ -14,6 +14,7 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.util.adt.color.Color;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,8 +22,11 @@ import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
+import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
+import com.model.FriendPickerItem;
+import com.model.GameItem;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
@@ -36,25 +40,25 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 //	private FacebookFacade fb;
 	private MenuScene menuNewGame; 
 	private final int MENU_NEWGAME = 0;
+	private int numRequests;
+	private JSONObject jsonMyGames; 
 
 	@Override
 	public void createScene() {
 		createBackground();  
-		//Vou tentar jogar o login pra outra tela por causa do bug
 		if (!GameManager.getInstance().isLoggedUser()) {
 			new FacebookFacade().login(this); 
 		} else {
-//			Acho que nem é aqui que eu to fazendo essa merda
+			numRequests = 2; 
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
-//			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID())); 
-//			Aqui eu vou ter que chamar o request de fazer os jogos do cara 
+			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
 		}
 	}
 
 	private void createItensScene() {
-		//Acho que soh no fim desse metodo o loading poderá sair da tela
 		createHUD();
 		createBtnNewGame();
+		createMenuMyGames(); 
 	}
 
 	private void createBackground() {
@@ -76,6 +80,33 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		menuNewGame.setOnMenuItemClickListener(this); 
 
 		setChildScene(menuNewGame);
+	}
+	
+	private void createMenuMyGames() {
+		
+		JSONArray array;
+		JSONObject json; 
+		IMenuItem item; 
+		try {
+			array = jsonMyGames.getJSONArray("dados");
+			MenuScene menu = new MenuScene(ResourcesManager.getInstance().camera);
+			for (int i = 0; i < array.length(); i++) {
+				json = array.getJSONObject(i); 
+				item = new GameItem(i, json.getString("idOpponent"), json);
+				menu.addMenuItem(item); 
+			}
+			
+			menu.buildAnimations();
+			menu.setBackgroundEnabled(false);
+			menu.setOnMenuItemClickListener(this); 
+
+			setChildScene(menu);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		
 	}
 
 	//Aqui vou fazer um pop-up pra sair do jogo. 
@@ -100,7 +131,9 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	public void onCompleted(GraphUser user, Response response) {
 		if (user != null) {
 			GameManager.getInstance().setUserID(user.getId()); 
+			numRequests = 2; 
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(user.getId()));
+			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID())); 
 			GameManager.getInstance().setLoggedUser(true);  
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
 		}
@@ -108,20 +141,25 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	
 	@Override
 	public void onResponse(JSONObject json) {
-		System.out.println("On ResponseEEEEEEEEEEEEEE");
 		try {
-			System.out.println("On Response");
 			if (json != null && json.getString("status").equals("ok")) { 
 				if (json.getString("requestID").equals("UserInfo")) {
+					numRequests--; 
 					System.out.println(json.toString(4));
 					GameManager.getInstance().setLoggedUser(true); 
 					GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
 					GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
 					GameManager.getInstance().setUserName(json.getString("nome")); 
-					createItensScene();
 				}
 				else if (json.getString("requestID").equals("MyGames")) {
+					numRequests--;
+					jsonMyGames = json;  
 					System.out.println(json.toString(4));
+				}
+				
+				if (numRequests == 0) {
+//					Aqui vai tirar o loading tb.
+					createItensScene();
 				}
 			}
 			else { //Deu merda pra recuperar os dados do cara no banco de dados.  

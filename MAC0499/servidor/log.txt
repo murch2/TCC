@@ -1,44 +1,8 @@
-Oponente ID = 678655892210891
-1
-1
-Oponente ID = 686035171490949
-1
-1
-Oponente ID = 678655892210891
-1
-Oponente ID = 686035171490949
-1
-Oponente ID = 678655892210891
-SELECT id_jogador1, id_jogador2, pontuacao1, pontuacao2, status FROM DESAFIOS
-						   WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
-Stattus = 2
-Oponente ID = 686035171490949
-SELECT id_jogador1, id_jogador2, pontuacao1, pontuacao2, status FROM DESAFIOS
-						   WHERE id_jogador1 = 686035171490949 AND id_jogador2 = 678359188912185; 
-Stattus = 2
-Oponente ID = 678655892210891
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
-Oponente ID = 686035171490949
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 686035171490949 AND id_jogador2 = 678359188912185; 
-Oponente ID = 678655892210891
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
-Oponente ID = 686035171490949
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 686035171490949 AND id_jogador2 = 678359188912185; 
-Oponente ID = 
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 =  AND id_jogador2 = 678359188912185; 
-Oponente ID = 
-Oponente ID = 
-Status = 0
-SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 =  AND id_jogador2 = 678359188912185; 
-StatusAux = 
-Oponente ID = 
-Status = 2
+Metodo UserInfoQuery
+Metodo UserInfoQuery
+Metodo UserInfoQuery
+Metodo UserInfoQuery
+MyGamesQuery
 Oponente ID = 678655892210891
 Status = 0
 SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
@@ -46,11 +10,39 @@ SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 StatusAux = 2
 Oponente ID = 686035171490949
 Status = 2
-Requisicao UserInfoQuery
 Metodo UserInfoQuery
-Requisicao UserInfoQuery
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 2
+Oponente ID = 686035171490949
+Status = 2
 Metodo UserInfoQuery
-Requisicao UserInfoQuery
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 2
+Oponente ID = 686035171490949
+Status = 2
 Metodo UserInfoQuery
-Requisicao UserInfoQuery
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 2
+Oponente ID = 686035171490949
+Status = 2
 Metodo UserInfoQuery
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 2
+Oponente ID = 686035171490949
+Status = 2

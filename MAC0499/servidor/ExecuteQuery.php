@@ -262,6 +262,7 @@ class ExecuteQuery {
 	}
 
 	function myGamesQuery($json) {
+		$this->log("MyGamesQuery");
 		$userID = $json['userID']; 
 		$query = "SELECT id_jogador2, pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;"; 

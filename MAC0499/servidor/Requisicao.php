@@ -31,7 +31,6 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'UserInfo':
- 				$this->log("Requisicao UserInfoQuery");
  				$result = $exeQuery->UserInfoQuery($json['userID']);
  				break;
 
