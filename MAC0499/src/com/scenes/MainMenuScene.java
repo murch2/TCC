@@ -63,21 +63,21 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		createBtnNewGame();
 		createMenuMyGames(); 
 		
-//		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(10f, new ITimerCallback() 
-//	    {
-//	            public void onTimePassed(final TimerHandler pTimerHandler) 
-//	            {
-//	            	
-//	            	ResourcesManager.getInstance().engine.unregisterUpdateHandler(pTimerHandler);
-//	            	teste();
-//	            }
-//	    }));
+		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(10f, new ITimerCallback() 
+	    {
+	            public void onTimePassed(final TimerHandler pTimerHandler) 
+	            {
+	            	
+	            	ResourcesManager.getInstance().engine.unregisterUpdateHandler(pTimerHandler);
+	            	teste();
+	            }
+	    }));
 	}
 
-//	public void teste() {
-//		BlackLayer loading = new BlackLayer();
-//		this.attachChild(loading); 
-//	}
+	public void teste() {
+		BlackLayer loading = new BlackLayer();
+		this.camera.setHUD(loading); 
+	}
 //	
 	private void createBackground() {
 		setBackground(new Background(Color.BLUE));
