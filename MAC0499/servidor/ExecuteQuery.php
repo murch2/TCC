@@ -29,7 +29,6 @@ class ExecuteQuery {
 	}
 
 	function UserInfoQuery($userID) {
-		$this->log("Metodo UserInfoQuery");
 		$query = "SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = " . $userID . ";"; 
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 

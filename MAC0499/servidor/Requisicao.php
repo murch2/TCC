@@ -31,6 +31,7 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'UserInfo':
+ 				$this->log("UserInfo");
  				$result = $exeQuery->UserInfoQuery($json['userID']);
  				break;
 
@@ -63,9 +64,9 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'MyGames':
+ 				$this->log("MyGames");
 				$result = $exeQuery->myGamesQuery($json);
  			break;
-
  			
  			default:
  				break;

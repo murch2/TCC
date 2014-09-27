@@ -4,6 +4,8 @@
  */
 package com.scenes;
 
+import java.util.Timer;
+
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.background.Background;
@@ -30,6 +32,7 @@ import com.model.GameItem;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.BlackLayer;
 import com.util.Constants;
 import com.util.FacebookFacade;
 import com.util.ImageDownloader;
@@ -59,8 +62,23 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		createHUD();
 		createBtnNewGame();
 		createMenuMyGames(); 
+		
+//		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(10f, new ITimerCallback() 
+//	    {
+//	            public void onTimePassed(final TimerHandler pTimerHandler) 
+//	            {
+//	            	
+//	            	ResourcesManager.getInstance().engine.unregisterUpdateHandler(pTimerHandler);
+//	            	teste();
+//	            }
+//	    }));
 	}
 
+//	public void teste() {
+//		BlackLayer loading = new BlackLayer();
+//		this.attachChild(loading); 
+//	}
+//	
 	private void createBackground() {
 		setBackground(new Background(Color.BLUE));
 	}
@@ -144,21 +162,21 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		try {
 			if (json != null && json.getString("status").equals("ok")) { 
 				if (json.getString("requestID").equals("UserInfo")) {
+					System.out.println("Resposta do userInfo");
 					numRequests--; 
-					System.out.println(json.toString(4));
 					GameManager.getInstance().setLoggedUser(true); 
 					GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
 					GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
 					GameManager.getInstance().setUserName(json.getString("nome")); 
 				}
 				else if (json.getString("requestID").equals("MyGames")) {
+					System.out.println("Resposta do MyGames");
 					numRequests--;
 					jsonMyGames = json;  
-					System.out.println(json.toString(4));
 				}
 				
 				if (numRequests == 0) {
-//					Aqui vai tirar o loading tb.
+					System.out.println("Criando intens scene");
 					createItensScene();
 				}
 			}
@@ -176,7 +194,8 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_NEWGAME:
-			SceneManager.getInstance().createNewGameScene();
+			System.out.println("Cliquei");
+//			SceneManager.getInstance().createNewGameScene();
 			return true; 
 
 		default:
