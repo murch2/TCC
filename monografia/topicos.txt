@@ -1,0 +1,30 @@
+PARTE I - técnica
+	-Agradecimentos
+	-Resumo (português e inglês)
+
+	Capitulo 1: Introdução
+		- Introducão
+		- Motivação (Falar de aprender java ...)
+		- Objetivos
+		- Desafios (Talvez)
+
+	Capitulo 2: Conceitos (talvez outro nome) 
+		- Jogos mobile/multiplayer/sociais (Talvez de pra difivir em subtopicos)
+		- Comunicação em nuvem
+		- Android (Aqui posso falar da loja de quantos apps tem de um monte de referencia)
+		- 
+
+	Capitulo 3: Tecnologias Utilizadas. (Conferir isso no logFile 1 ou 2 que tem todas as tecnologias que eu utilizei)
+		- ADT	
+		- AndEngine
+		- Java
+		- PHP
+		- PostgreeSQL
+		- Nginx
+		- Facebook SDK (Talvez)
+		- GIMP (Talvez)
+
+		(Depois disso talvez eu possa falar um pouco sobre padroes de projeto, Singleton principalmente)
+
+
+PARTE II - subjetiva
