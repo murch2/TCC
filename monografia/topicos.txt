@@ -1,0 +1,62 @@
+	- Agradecimentos
+	- Resumo (português e inglês)
+	- Indice
+	- Lista de tabelas, abreviaturas e afins. 
+
+PARTE I - Técnica
+	Capitulo 1: Introdução
+		- Introducão
+		- Motivação (Falar de aprender java ...)
+		- Objetivos
+		- Desafios (Talvez)
+		- Organização do trabalho. (Muito bom pra encher linguiça)
+
+	Capitulo 2: Conceitos (talvez outro nome) 
+		- Jogos:  
+			- mobile
+			- multijogador
+			- sociais (Talvez de pra difivir em subtopicos)
+		- Comunicação em nuvem
+		- Android (Aqui posso falar da loja, de quanto começou, das versões de quantos apps tem de um monte de referencia)
+
+	Capitulo 3: Tecnologias Utilizadas. (Conferir isso no logFile 1 ou 2 que tem todas as tecnologias que eu utilizei)
+		- Ferramentas
+			- ADT
+			- AndEngine 
+			- PostgreeSQL
+			- Nginx
+			- Facebook SDK (Talvez)
+			- GIMP (Talvez)
+		- Linguagens de Programação
+			- Java
+			- PHP
+			
+		Acho que essa parte aqui vai ter que ser nos Conceitos (Depois disso talvez eu possa falar um pouco sobre padroes de projeto, Singleton principalmente)
+
+	Capitulo 4: Banco de Dados
+		- MER 
+		- DER
+		- Significado (Explicando o que representa cada relação e cada atributo da relação)
+		- Arquivos de criação, e população do banco. 
+	Capitulo 5: Protocolo de comunicação. 
+		- Sintaxe, Semântica e sequências. 
+		- Arquivos PHP (Organização das classes que trabalham com o banco)
+		- Arquivos Java (Organização das classes que se comunicam com o servidor)
+	Capitulo 6: Implementação do jogo
+		- Fluxograma do jogo.
+			- Apresentar aqui ou em outro lugar as principais classes e os padrões de projeto utilizados no jogo.  (Ex: ResourcesManager, SceneManager, etc)
+		- Integração Facebook 
+		- Pontuação. (Talvez)
+	Capitulo 7: Testes
+		- Falar como funcionam os testes para android. 
+		- Falar sobre projeto de testes do projeto. 
+	Capitulo 8: Resultados: 
+		- Falar que deu tudo certo e que estamos todos felizes. 
+	Capitulo 9: Conclusão
+	Capitulo 10: Futuro
+	Capitulo 11: Referencias Bibliográficas
+
+
+PARTE II - subjetiva
+Status API Training Shop Blog About
+© 2014 GitHub, Inc. Terms Privacy Security Contact
