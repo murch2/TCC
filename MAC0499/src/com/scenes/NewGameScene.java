@@ -20,6 +20,7 @@ import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.LoadingLayer;
 
 public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener, HTTPResponseListener {
 
@@ -78,14 +79,19 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
-	
-		switch (pMenuItem.getID()) {
 		
+		LoadingLayer loading = new LoadingLayer();
+		
+		switch (pMenuItem.getID()) {
 			case ITEM_FACEBOOK_FRIEND:
 				SceneManager.getInstance().createNewFriendPickerScene();
+//				loading.insertLoadingLayer(camera); 
+				System.out.println("Cliquei no Facebook");
 				return true; 
 			case ITEM_RANDOM_OPPONNENT:
+				System.out.println("Cliquei no Random Opp");
 				new HTTPPostRequester().asyncPost(this, MakeParameters.randomOpponent());
+//				loading.insertLoadingLayer(camera); 
 				return true; 
 
 			default:
@@ -97,14 +103,29 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			System.out.println("RANDOM OPPONENT = " + json.toString(4));
+			System.out.println("Chegou resposta!!!!!!! COCO");
+			System.out.println("Vai Foder");
+			
+			if (json != null) {
+				System.out.println("Json não eh null");
+				System.out.println(json.toString(4));
+			} else {	
+				System.out.println("Json eh null e a gente se fudeu");
+			}
+			
 			json = json.getJSONObject("dados"); 
+			System.out.println("Fudeu");
 			GameManager.getInstance().setFriendID(json.getString("id")); 
+			System.out.println("UM");
 			GameManager.getInstance().setFriendPictureURL(json.getString("foto"));
-			GameManager.getInstance().setFriendName("nome"); 
+			System.out.println("DOIS");
+			GameManager.getInstance().setFriendName("nome");
+			System.out.println("Vou trocar de cena");
 			SceneManager.getInstance().createChoiceScene(); 
 		} catch (JSONException e) {
+			System.out.println("Caiu no cat");
 			e.printStackTrace();
+			
 		}
 	}
 

@@ -123,6 +123,7 @@ public class SceneManager {
 	}
 	
 	public void createChoiceScene() {
+		System.out.println("AQUI 111111111");
 		ResourcesManager.getInstance().loadChoiceScene();  
 		choiseScene = new ChoiceScene(); 
 		setScene(choiseScene); 

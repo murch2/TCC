@@ -226,6 +226,7 @@ class ExecuteQuery {
 
 	//Falta fazer não pegar as pessoas que eu tenho jogos. 
 	function randomOpponentQuery($userID) {
+		$this->log("Random Opp");
 
 		$query = "SELECT id, nome, foto
 				  FROM JOGADOR 
@@ -233,6 +234,8 @@ class ExecuteQuery {
 				        id NOT IN (SELECT id_jogador2 
 				        	  	   FROM desafios 
 				        	  	   WHERE id_jogador1 = ".$userID."); "; 
+
+		$this->log($query);
 
 		$result = $this->getInfo($query);
 		
@@ -248,6 +251,8 @@ class ExecuteQuery {
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
+
+		$this->log("Deu certo estou devolvendo ok");
 
 		$result = array('status' => 'ok',
 		 				'dados'  => $row);

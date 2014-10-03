@@ -20,20 +20,26 @@ import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.LoadingLayer;
 
 public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListener, IOnSceneTouchListener{
 	
 	@Override
 	public void createScene() {
+		System.out.println("Estou criando a scene ChoiseScene");
 		//Aqui faz o Request Com as informações, antes eu tenho que setar as coisas do GameManager para fazer o request.
 //		Por enquanto
+//		LoadingLayer loading = new LoadingLayer(); 
+//		loading.insertLoadingLayer(camera); 
+		System.out.println("Fazendo Request de newGame");
 		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
 	}
 	
 	private void createItensScene (JSONArray dados) {
 		createBackground();
 		createRoullete(dados); 
-		this.setOnSceneTouchListener(this); 
+		this.setOnSceneTouchListener(this);
+		createHUD();
 	}
 
 	private void createBackground() {

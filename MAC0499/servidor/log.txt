@@ -21,3 +21,116 @@ UserInfo
 Chegou aqui
 MyGames
 MyGamesQuery
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Chegou aqui
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Random Opp
+SELECT id, nome, foto
+				  FROM JOGADOR 
+				  WHERE id <> 678359188912185 AND 
+				        id NOT IN (SELECT id_jogador2 
+				        	  	   FROM desafios 
+				        	  	   WHERE id_jogador1 = 678359188912185); 
+Deu certo estou devolvendo ok

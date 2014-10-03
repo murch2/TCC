@@ -74,7 +74,6 @@ require 'ExecuteQuery.php';
  				break;
  		} 
  		//na verdade vou dar um ok no result ou error. 
- 		sleep(5);
  		$result = json_encode($result); 
  		exit($result); 
  	}

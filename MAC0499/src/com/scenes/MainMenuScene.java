@@ -20,12 +20,13 @@ import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
+import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.model.GameItem;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
-import com.util.BlackLayer;
+import com.util.LoadingLayer;
 import com.util.Constants;
 import com.util.FacebookFacade;
 
@@ -42,10 +43,8 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		createBackground(); 
 		putLoading();
 		if (!GameManager.getInstance().isLoggedUser()) {
-			System.out.println("O CARA JAH ESTA LOGADO");
 			new FacebookFacade().login(this); 
 		} else {
-			System.out.println("TO CHAMANDO REQUESTS");
 			numRequests = 2; 
 			System.out.println("User ID = " + GameManager.getInstance().getUserID());
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
@@ -60,8 +59,8 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	}
 
 	public void putLoading() {
-		BlackLayer loading = new BlackLayer();
-		this.camera.setHUD(loading);
+		LoadingLayer loading = new LoadingLayer();
+		loading.insertLoadingLayer(camera); 
 	}
 	
 	private void createBackground() {
@@ -178,8 +177,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_NEWGAME:
-			System.out.println("Cliquei AQUI FDP");
-//			SceneManager.getInstance().createNewGameScene();
+			SceneManager.getInstance().createNewGameScene();
 			return true; 
 
 		default:
