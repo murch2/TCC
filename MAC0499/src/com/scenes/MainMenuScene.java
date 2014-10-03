@@ -4,33 +4,23 @@
  */
 package com.scenes;
 
-import java.util.Timer;
-
-import org.andengine.engine.handler.timer.ITimerCallback;
-import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
-import org.andengine.entity.sprite.Sprite;
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.provider.CalendarContract.Colors;
 
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
-import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
-import com.model.FriendPickerItem;
 import com.model.GameItem;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
@@ -38,12 +28,9 @@ import com.server.MakeParameters;
 import com.util.BlackLayer;
 import com.util.Constants;
 import com.util.FacebookFacade;
-import com.util.ImageDownloader;
 
 public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback, IOnMenuItemClickListener {
 
-	//Talvez isso vá pra uma das classes singleton. 
-//	private FacebookFacade fb;
 	private MenuScene menuNewGame; 
 	private MenuScene menuMyGames;
 	private final int MENU_NEWGAME = 0;
@@ -52,77 +39,45 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 	@Override
 	public void createScene() {
-		createBackground();
-		createItensScene(); 
-//		if (!GameManager.getInstance().isLoggedUser()) {
-//			new FacebookFacade().login(this); 
-//		} else {
-//			numRequests = 2; 
-//			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
-//			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
-//		}
+		createBackground(); 
+		if (!GameManager.getInstance().isLoggedUser()) {
+			new FacebookFacade().login(this); 
+		} else {
+			numRequests = 2; 
+			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
+			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
+		}
 	}
 
 	private void createItensScene() {
-//		createBtnNewGame();
-//		createMenuMyGames(); 
-		
-		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(5f, new ITimerCallback() {
-	            public void onTimePassed(final TimerHandler pTimerHandler) {            	
-	            	ResourcesManager.getInstance().engine.unregisterUpdateHandler(pTimerHandler);
-	            	teste();
-	            }
-	    }));
+		createBtnNewGame();
+		createMenuMyGames(); 
 	}
 
-	public void teste() {
+	public void putLoading() {
 		BlackLayer loading = new BlackLayer();
 		this.camera.setHUD(loading);
-//		Dŕa pra pegar o Hud com o getHUD e depois fazer ele aparecer de algum jeito. (Acho que vai ter que ser assim)
-		
-//		Sprite teste = new Sprite(0, 0, ResourcesManager.getInstance().newGameMenuRegion,
-//				ResourcesManager.getInstance().vbom) {
-//			
-//			@Override
-//			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-//					float pTouchAreaLocalX, float pTouchAreaLocalY) {
-//				System.out.println("Cliquei na merda!");
-//				return true;
-//			}
-//		};
-//		
-//		teste.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
-//		teste.setColor(Color.BLACK);
-//		teste.setAlpha(0.9f); 
-//		teste.setScaleX(Constants.CAMERA_WIDTH / teste.getWidth());
-//		teste.setScaleY(Constants.CAMERA_HEIGHT / teste.getHeight());
-	
-//		this.menuMyGames.attachChild(teste);
-//		this.menuMyGames.setTouchAreaBindingOnActionDownEnabled(true);
-//		this.menuMyGames.registerTouchArea(teste);
-//		this.camera.setHUD(loading); 
 	}
-//	
+	
 	private void createBackground() {
 		setBackground(new Background(Color.BLUE));
 	}
 	
 	private void createBtnNewGame() {
-//		menuNewGame = new MenuScene(camera);
-//		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
+		menuNewGame = new MenuScene(camera);
+		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
 
 		final IMenuItem itemNewGame = new ScaleMenuItemDecorator(
 				new SpriteMenuItem(MENU_NEWGAME, resourcesManager.newGameMenuRegion, vbom), 0.8f, 1);
 		
-//		menuNewGame.addMenuItem(itemNewGame);
-//		menuNewGame.buildAnimations();
-//		menuNewGame.setBackgroundEnabled(false);
+		menuNewGame.addMenuItem(itemNewGame);
+		menuNewGame.buildAnimations();
+		menuNewGame.setBackgroundEnabled(false);
 
-		//Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
-//		menuNewGame.setOnMenuItemClickListener(this); 
+//		Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
+		menuNewGame.setOnMenuItemClickListener(this); 
 
-//		setChildScene(menuNewGame);
-		attachChild(itemNewGame);
+		setChildScene(menuNewGame);
 	}
 	
 	private void createMenuMyGames() {
