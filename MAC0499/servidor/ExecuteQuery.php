@@ -20,11 +20,13 @@ class ExecuteQuery {
 			$query = "INSERT INTO HISTORICOESTATISTICA VALUES (". $json['userID'] .", $i, 0, 0); ";
 			$this->log($query); 
 			$result = $this->setInfo($query);
+			$this->log($query);
 			if ($this->trataResult($result)['status'] == 'error') {
 				return $this->error();
 			}
 		}
 
+		$this->log("Chegou no fim da insercao");
 		return $this->trataResult($result);
 	}
 

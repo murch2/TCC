@@ -14,6 +14,7 @@ import com.managers.GameManager;
 public class MakeParameters {
 
 	public static JSONObject signUpParams (GraphUser user) {
+		System.out.println("Fazendo SignUpParams");
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject(); 
 		try {

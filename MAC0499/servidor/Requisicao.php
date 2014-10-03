@@ -13,6 +13,7 @@ require 'ExecuteQuery.php';
  	function __construct($json) {
  		$json = json_decode($json, true); 
  		$json = $json['message']; 
+ 		$this->log("Chegou aqui");
  		$this->tratandoRequisicao($json); 
  	}
 
@@ -27,6 +28,7 @@ require 'ExecuteQuery.php';
  		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':
+ 				$this->log("SignUp");
  				$result = $exeQuery->SignUpQuery($json);
  				break;
 
@@ -72,6 +74,7 @@ require 'ExecuteQuery.php';
  				break;
  		} 
  		//na verdade vou dar um ok no result ou error. 
+ 		sleep(5);
  		$result = json_encode($result); 
  		exit($result); 
  	}

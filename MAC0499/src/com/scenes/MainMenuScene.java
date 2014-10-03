@@ -40,10 +40,14 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void createScene() {
 		createBackground(); 
+		putLoading();
 		if (!GameManager.getInstance().isLoggedUser()) {
+			System.out.println("O CARA JAH ESTA LOGADO");
 			new FacebookFacade().login(this); 
 		} else {
+			System.out.println("TO CHAMANDO REQUESTS");
 			numRequests = 2; 
+			System.out.println("User ID = " + GameManager.getInstance().getUserID());
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
 			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
 		}
@@ -52,6 +56,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	private void createItensScene() {
 		createBtnNewGame();
 		createMenuMyGames(); 
+		createHUD(); 
 	}
 
 	public void putLoading() {
@@ -144,7 +149,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		try {
 			if (json != null && json.getString("status").equals("ok")) { 
 				if (json.getString("requestID").equals("UserInfo")) {
-					System.out.println("Resposta do userInfo");
 					numRequests--; 
 					GameManager.getInstance().setLoggedUser(true); 
 					GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
@@ -152,7 +156,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 					GameManager.getInstance().setUserName(json.getString("nome")); 
 				}
 				else if (json.getString("requestID").equals("MyGames")) {
-					System.out.println("Resposta do MyGames");
 					numRequests--;
 					jsonMyGames = json;  
 				}
