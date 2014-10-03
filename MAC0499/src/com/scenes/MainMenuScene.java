@@ -15,10 +15,13 @@ import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.provider.CalendarContract.Colors;
 
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
@@ -42,32 +45,30 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	//Talvez isso vá pra uma das classes singleton. 
 //	private FacebookFacade fb;
 	private MenuScene menuNewGame; 
+	private MenuScene menuMyGames;
 	private final int MENU_NEWGAME = 0;
 	private int numRequests;
 	private JSONObject jsonMyGames; 
 
 	@Override
 	public void createScene() {
-		createBackground();  
-		if (!GameManager.getInstance().isLoggedUser()) {
-			new FacebookFacade().login(this); 
-		} else {
-			numRequests = 2; 
-			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
-			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
-		}
+		createBackground();
+		createItensScene(); 
+//		if (!GameManager.getInstance().isLoggedUser()) {
+//			new FacebookFacade().login(this); 
+//		} else {
+//			numRequests = 2; 
+//			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
+//			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
+//		}
 	}
 
 	private void createItensScene() {
-		createHUD();
-		createBtnNewGame();
-		createMenuMyGames(); 
+//		createBtnNewGame();
+//		createMenuMyGames(); 
 		
-		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(10f, new ITimerCallback() 
-	    {
-	            public void onTimePassed(final TimerHandler pTimerHandler) 
-	            {
-	            	
+		ResourcesManager.getInstance().engine.registerUpdateHandler(new TimerHandler(5f, new ITimerCallback() {
+	            public void onTimePassed(final TimerHandler pTimerHandler) {            	
 	            	ResourcesManager.getInstance().engine.unregisterUpdateHandler(pTimerHandler);
 	            	teste();
 	            }
@@ -76,7 +77,30 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 	public void teste() {
 		BlackLayer loading = new BlackLayer();
-		this.camera.setHUD(loading); 
+		this.camera.setHUD(loading);
+//		Dŕa pra pegar o Hud com o getHUD e depois fazer ele aparecer de algum jeito. (Acho que vai ter que ser assim)
+		
+//		Sprite teste = new Sprite(0, 0, ResourcesManager.getInstance().newGameMenuRegion,
+//				ResourcesManager.getInstance().vbom) {
+//			
+//			@Override
+//			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
+//					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+//				System.out.println("Cliquei na merda!");
+//				return true;
+//			}
+//		};
+//		
+//		teste.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
+//		teste.setColor(Color.BLACK);
+//		teste.setAlpha(0.9f); 
+//		teste.setScaleX(Constants.CAMERA_WIDTH / teste.getWidth());
+//		teste.setScaleY(Constants.CAMERA_HEIGHT / teste.getHeight());
+	
+//		this.menuMyGames.attachChild(teste);
+//		this.menuMyGames.setTouchAreaBindingOnActionDownEnabled(true);
+//		this.menuMyGames.registerTouchArea(teste);
+//		this.camera.setHUD(loading); 
 	}
 //	
 	private void createBackground() {
@@ -84,20 +108,21 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	}
 	
 	private void createBtnNewGame() {
-		menuNewGame = new MenuScene(camera);
-		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
+//		menuNewGame = new MenuScene(camera);
+//		menuNewGame.setPosition(0, 0.15f * Constants.CAMERA_HEIGHT); 
 
 		final IMenuItem itemNewGame = new ScaleMenuItemDecorator(
 				new SpriteMenuItem(MENU_NEWGAME, resourcesManager.newGameMenuRegion, vbom), 0.8f, 1);
 		
-		menuNewGame.addMenuItem(itemNewGame);
-		menuNewGame.buildAnimations();
-		menuNewGame.setBackgroundEnabled(false);
+//		menuNewGame.addMenuItem(itemNewGame);
+//		menuNewGame.buildAnimations();
+//		menuNewGame.setBackgroundEnabled(false);
 
 		//Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
-		menuNewGame.setOnMenuItemClickListener(this); 
+//		menuNewGame.setOnMenuItemClickListener(this); 
 
-		setChildScene(menuNewGame);
+//		setChildScene(menuNewGame);
+		attachChild(itemNewGame);
 	}
 	
 	private void createMenuMyGames() {
@@ -107,18 +132,20 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		IMenuItem item; 
 		try {
 			array = jsonMyGames.getJSONArray("dados");
-			MenuScene menu = new MenuScene(ResourcesManager.getInstance().camera);
+			menuMyGames = new MenuScene(ResourcesManager.getInstance().camera);
 			for (int i = 0; i < array.length(); i++) {
 				json = array.getJSONObject(i); 
 				item = new GameItem(i, json.getString("idOpponent"), json);
-				menu.addMenuItem(item); 
+				item.setPosition(Constants.CAMERA_WIDTH * 0.5f, 300 * i);
+				menuMyGames.addMenuItem(item); 
 			}
 			
-			menu.buildAnimations();
-			menu.setBackgroundEnabled(false);
-			menu.setOnMenuItemClickListener(this); 
+			menuMyGames.buildAnimations();
+			menuMyGames.setBackgroundEnabled(false);
+			menuMyGames.setOnMenuItemClickListener(this); 
 
-			setChildScene(menu);
+			setChildScene(menuMyGames);
+			
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -176,7 +203,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 				}
 				
 				if (numRequests == 0) {
-					System.out.println("Criando intens scene");
 					createItensScene();
 				}
 			}
@@ -194,7 +220,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		switch (pMenuItem.getID()) {
 		case MENU_NEWGAME:
-			System.out.println("Cliquei");
+			System.out.println("Cliquei AQUI FDP");
 //			SceneManager.getInstance().createNewGameScene();
 			return true; 
 

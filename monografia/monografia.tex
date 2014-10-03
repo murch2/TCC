@@ -220,13 +220,12 @@ TODO: Depois que estiver fechado o português traduzir
 \input cap-conceitos         % associado ao arquivo: 'cap-conceitos.tex'
 \input cap-tecnologias       % associado ao arquivo: 'cap-tecnologias.tex'
 \input cap-banco             % associado ao arquivo: 'cap-banco.tex'
-
-% cabeçalho para os apêndices
-\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\appendixname\ \thechapter}} {\MakeUppercase{#1}} }
-\fancyhead[RE,LO]{}
-\appendix
-
-\include{ape-conjuntos}      % associado ao arquivo: 'ape-conjuntos.tex'
+\input cap-protocolo         % associado ao arquivo: 'cap-protocolo.tex'
+\input cap-implementacao     % associado ao arquivo: 'cap-implementacao.tex'
+\input cap-testes            % associado ao arquivo: 'cap-testes.tex'
+\input cap-resultados        % associado ao arquivo: 'cap-resultados.tex'
+\input cap-conclusao         % associado ao arquivo: 'cap-conclusao.tex'
+\input cap-trabalhos         % associado ao arquivo: 'cap-trabalhos.tex'
 
 % ---------------------------------------------------------------------------- %
 % Bibliografia
@@ -234,14 +233,14 @@ TODO: Depois que estiver fechado o português traduzir
 \bibliographystyle{alpha-ime}% citação bibliográfica alpha
 \bibliography{bibliografia}  % associado ao arquivo: 'bibliografia.bib'
 
-% ---------------------------------------------------------------------------- %
-% Índice remissivo
-\index{TBP|see{periodicidade região codificante}}
-\index{DSP|see{processamento digital de sinais}}
-\index{STFT|see{transformada de Fourier de tempo reduzido}}
-\index{DFT|see{transformada discreta de Fourier}}
-\index{Fourier!transformada|see{transformada de Fourier}}
+% % ---------------------------------------------------------------------------- %
+% % Índice remissivo
+% \index{TBP|see{periodicidade região codificante}}
+% \index{DSP|see{processamento digital de sinais}}
+% \index{STFT|see{transformada de Fourier de tempo reduzido}}
+% \index{DFT|see{transformada discreta de Fourier}}
+% \index{Fourier!transformada|see{transformada de Fourier}}
 
-\printindex   % imprime o índice remissivo no documento 
+% \printindex   % imprime o índice remissivo no documento 
 
 \end{document}

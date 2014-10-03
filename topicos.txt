@@ -38,20 +38,31 @@ PARTE I - Técnica
 		- DER
 		- Significado (Explicando o que representa cada relação e cada atributo da relação)
 		- Arquivos de criação, e população do banco. 
+
 	Capitulo 5: Protocolo de comunicação. 
 		- Sintaxe, Semântica e sequências. 
 		- Arquivos PHP (Organização das classes que trabalham com o banco)
 		- Arquivos Java (Organização das classes que se comunicam com o servidor)
+
 	Capitulo 6: Implementação do jogo
 		- Fluxograma do jogo.
 			- Apresentar aqui ou em outro lugar as principais classes e os padrões de projeto utilizados no jogo.  (Ex: ResourcesManager, SceneManager, etc)
+		- Principais Classes
 		- Integração Facebook 
-		- Pontuação. (Talvez)
+		- Mecânica
+		- Novo Jogo
+			- Amigo do Facebook 
+			- Oponente Aleatório
+		- Sistema de Pontuação. (Talvez)
+		- Estatísticas
+
 	Capitulo 7: Testes
 		- Falar como funcionam os testes para android. 
 		- Falar sobre projeto de testes do projeto. 
+
 	Capitulo 8: Resultados: 
 		- Falar que deu tudo certo e que estamos todos felizes. 
+
 	Capitulo 9: Conclusão
 	Capitulo 10: Futuro
 	Capitulo 11: Referencias Bibliográficas

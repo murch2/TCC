@@ -14,6 +14,6 @@ public abstract class BaseSceneWithHUD extends BaseScene {
 //	um Header carregado num HUD e eu vou colocando e tirando das cenas.  
 	public void createHUD() {
 		HUD hud = new TopHUD(); 
-		camera.setHUD(hud); 
-	}	
+		camera.setHUD(hud);
+	}
 }

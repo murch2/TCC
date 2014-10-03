@@ -28,4 +28,27 @@
 \BOOKMARK [1][]{section.4.2}{Modelo Relacional}{chapter.4}% 28
 \BOOKMARK [1][]{section.4.3}{Rela\347\365es}{chapter.4}% 29
 \BOOKMARK [1][]{section.4.4}{Arquivos de cria\347\343o e de inser\347\343o}{chapter.4}% 30
-\BOOKMARK [0][]{appendix.A}{Sequ\352ncias}{part.1}% 31
+\BOOKMARK [0][]{chapter.5}{Protocolo de comunica\347\343o}{part.1}% 31
+\BOOKMARK [1][]{section.5.1}{Sintaxe}{chapter.5}% 32
+\BOOKMARK [1][]{section.5.2}{Sem\342ntica}{chapter.5}% 33
+\BOOKMARK [1][]{section.5.3}{Arquivos PHP}{chapter.5}% 34
+\BOOKMARK [1][]{section.5.4}{Arquivos Java}{chapter.5}% 35
+\BOOKMARK [0][]{chapter.6}{Implementac\343o do Jogo}{part.1}% 36
+\BOOKMARK [1][]{section.6.1}{Fluxograma}{chapter.6}% 37
+\BOOKMARK [1][]{section.6.2}{Principais Classes}{chapter.6}% 38
+\BOOKMARK [1][]{section.6.3}{Integra\347\343o Facebook}{chapter.6}% 39
+\BOOKMARK [1][]{section.6.4}{Mec\342nica}{chapter.6}% 40
+\BOOKMARK [1][]{section.6.5}{Novo Jogo}{chapter.6}% 41
+\BOOKMARK [2][]{subsection.6.5.1}{Amigo do Facebook}{section.6.5}% 42
+\BOOKMARK [2][]{subsection.6.5.2}{Oponente Aleat\363rio}{section.6.5}% 43
+\BOOKMARK [1][]{section.6.6}{Sistema de pontua\347\343o}{chapter.6}% 44
+\BOOKMARK [1][]{section.6.7}{Estat\355sticas}{chapter.6}% 45
+\BOOKMARK [0][]{chapter.7}{Testes}{part.1}% 46
+\BOOKMARK [1][]{section.7.1}{Testes para projetos android}{chapter.7}% 47
+\BOOKMARK [1][]{section.7.2}{Testes neste projeto}{chapter.7}% 48
+\BOOKMARK [0][]{chapter.8}{Resultados}{part.1}% 49
+\BOOKMARK [1][]{section.8.1}{Resultados Esperados}{chapter.8}% 50
+\BOOKMARK [1][]{section.8.2}{Resultados Obtidos}{chapter.8}% 51
+\BOOKMARK [0][]{chapter.9}{Conlus\343o}{part.1}% 52
+\BOOKMARK [0][]{chapter.10}{Trabalhos Futuros}{part.1}% 53
+\BOOKMARK [0][]{chapter*.8}{Refer\352ncias Bibliogr\341ficas}{part.1}% 54

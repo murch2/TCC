@@ -46,6 +46,9 @@ public class ResourcesManager {
     //Header
     public ITextureRegion headerBackgroundRegion;
     public ITextureRegion headerProfileRegion;
+    //loading
+    public ITextureRegion loadingRegion;
+    public ITextureRegion loadingIconRegion; 
     private BuildableBitmapTextureAtlas headerAtlas;
     
     //MainMenu
@@ -159,12 +162,14 @@ public class ResourcesManager {
 		}
     }
     
-  
+    //Vou carregar a prite de loading junto com o header
     public synchronized void loadHeader() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/Header/"); 
-    	headerAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 110, TextureOptions.BILINEAR); 
+    	headerAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 750, 300, TextureOptions.BILINEAR); 
     	headerBackgroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "GreenBar.png");
     	headerProfileRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "profile.png");
+    	loadingRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "pixel.png");
+    	loadingIconRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "loadingIcon.png");
     	try {
 			this.headerAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			this.headerAtlas.load(); 
