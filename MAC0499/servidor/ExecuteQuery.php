@@ -226,25 +226,24 @@ class ExecuteQuery {
 
 	//Falta fazer não pegar as pessoas que eu tenho jogos. 
 	function randomOpponentQuery($userID) {
-		$this->log("Random Opp");
 
 		$query = "SELECT id, nome, foto
 				  FROM JOGADOR 
 				  WHERE id <> ".$userID." AND 
 				        id NOT IN (SELECT id_jogador2 
 				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = ".$userID."); "; 
-
-		$this->log($query);
+				        	  	   WHERE id_jogador1 = ".$userID.") ORDER BY RANDOM() LIMIT 1;"; 
 
 		$result = $this->getInfo($query);
+
+		$this->log("query");
 		
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
 
-		$row = pg_fetch_array($result);
-		$idFriend = $row['id']; 
+		$row = pg_fetch_row($result);
+
 
 		$result = $this->criaDesafios($userID, $idFriend); 	
 
@@ -255,7 +254,9 @@ class ExecuteQuery {
 		$this->log("Deu certo estou devolvendo ok");
 
 		$result = array('status' => 'ok',
-		 				'dados'  => $row);
+		 				'dados'  =>  array('id' => $row[0],
+		 								   'nome' => $row[1],
+		 								   'foto' => $row[2]));
 		
 		return $result;
 	}

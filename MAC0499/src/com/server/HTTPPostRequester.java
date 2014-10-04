@@ -22,8 +22,8 @@ import android.test.UiThreadTest;
 public class HTTPPostRequester {
 
 //	private String url = "http://172.16.4.169:80/Requisicao.php"; //IME
-//	private String url = "http://192.168.0.149/Requisicao.php"; //CASA
-	private String url = "http://192.168.0.7/Requisicao.php"; //AP
+	private String url = "http://192.168.0.149/Requisicao.php"; //CASA
+//	private String url = "http://192.168.0.7/Requisicao.php"; //AP
 
 	
 	public JSONObject post(JSONObject jsonParams) {

@@ -103,9 +103,6 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			System.out.println("Chegou resposta!!!!!!! COCO");
-			System.out.println("Vai Foder");
-			
 			if (json != null) {
 				System.out.println("Json não eh null");
 				System.out.println(json.toString(4));
