@@ -1,234 +1,26 @@
 Chegou aqui
-Chegou aqui
-SignUp
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 1, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 1, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 2, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 2, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 3, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 3, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 4, 0, 0); 
-INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 4, 0, 0); 
-Chegou no fim da insercao
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Random Opp
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Id di amigo no random = 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-count = 
-Id d amigo no random = 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-count = 1
-Id d amigo no random = 
-Deu certo estou devolvendo ok
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-SELECT id, nome, foto
-				  FROM JOGADOR 
-				  WHERE id <> 678359188912185 AND 
-				        id NOT IN (SELECT id_jogador2 
-				        	  	   FROM desafios 
-				        	  	   WHERE id_jogador1 = 678359188912185); 
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-count = 3
-Id d amigo no random = 
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-query
-count = 3
-Id d amigo no random = 
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-query
-count = 1
-Id d amigo no random = 
-Chegou aqui
-UserInfo
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-query
-Deu certo estou devolvendo ok
-Chegou aqui
+Deu certo criadesafios
 Depois de criar os desafiosok
+Criando HistoricoJOGO
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Deu erro no cria historico jogo
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas

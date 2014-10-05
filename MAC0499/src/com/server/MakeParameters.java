@@ -49,6 +49,8 @@ public class MakeParameters {
 		JSONObject result = new JSONObject();
 		try {
 			params.put("requestID", "NewGame"); 
+			System.out.println("Chamando o new game com meu id = " + GameManager.getInstance().getUserID() + "E id " +
+					"do amiguinho = " + GameManager.getInstance().getFriendID());
 			params.put("userID", GameManager.getInstance().getUserID()); 
 			params.put("friendID", GameManager.getInstance().getFriendID()); 
 			result.put("message", params);

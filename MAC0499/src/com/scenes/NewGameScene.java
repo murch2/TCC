@@ -103,24 +103,13 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			if (json != null) {
-				System.out.println("Json não eh null");
-				System.out.println(json.toString(4));
-			} else {	
-				System.out.println("Json eh null e a gente se fudeu");
-			}
-			
-			json = json.getJSONObject("dados"); 
-			System.out.println("Fudeu");
+			json = json.getJSONObject("dados");
 			GameManager.getInstance().setFriendID(json.getString("id")); 
-			System.out.println("UM");
 			GameManager.getInstance().setFriendPictureURL(json.getString("foto"));
-			System.out.println("DOIS");
 			GameManager.getInstance().setFriendName("nome");
-			System.out.println("Vou trocar de cena");
 			SceneManager.getInstance().createChoiceScene(); 
 		} catch (JSONException e) {
-			System.out.println("Caiu no cat");
+			System.out.println("Caiu no catch e deu erro no request de Random Opponent.");
 			e.printStackTrace();
 			
 		}

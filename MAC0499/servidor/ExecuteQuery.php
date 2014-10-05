@@ -50,8 +50,10 @@ class ExecuteQuery {
 		$result = $this->criaDesafios($userID, $friendID); 
 		$this->log("Depois de criar os desafios" . $result['status']);
 		if ($result['status'] == 'ok') {
+			$this->log("Criando HistoricoJOGO");
 			$result = $this->criaHistoricoJogo($userID, $friendID);
 			if ($result['status'] == 'ok') {
+				$this->log("Pegando as cartas");
 				return $this->getTipoCarta(); 
 			}
 		}
@@ -75,6 +77,7 @@ class ExecuteQuery {
 		$result = $this->setInfo($query);
 	
 		if ($this->trataResult($result)['status'] == 'error') {
+			$this->log("Deu erro 1 iF criaDesafios");
 			return $this->error();
 		}
 
@@ -82,8 +85,10 @@ class ExecuteQuery {
 		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
+			$this->log("Deu erro 2 iF criaDesafios");
 			return $this->error();
 		}
+		$this->log("Deu certo criadesafios");
 
 		return $this->ok(); 
 	}
@@ -94,9 +99,12 @@ class ExecuteQuery {
 		else 
 			$query = "INSERT INTO HISTORICOJOGO VALUES (".$friendID.", ".$userID.", 0, 0); ";
 
+		$this->log($query);
+
 		$result = $this->setInfo($query);		
 
 		if ($this->trataResult($result)['status'] == 'error') {
+			$this->log("Deu erro no cria historico jogo");
 			return $this->error();
 		}
 

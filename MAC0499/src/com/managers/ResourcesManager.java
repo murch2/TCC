@@ -72,8 +72,8 @@ public class ResourcesManager {
     public ITextureRegion btnPlaySmallRegion;
     public ITextureRegion roulleteRegion;
     public ITextureRegion btnRoulleteRegion;
-    public ITextureRegion backgroundRegion;
-    private BuildableBitmapTextureAtlas choiseSceneAtlas;
+    public ITextureRegion backgroundChoiceRegion;
+    private BuildableBitmapTextureAtlas choiceSceneAtlas;
     
     //GameScene
     public ITextureRegion btnTipRegion;
@@ -226,16 +226,16 @@ public class ResourcesManager {
     
     public synchronized void loadChoiceScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/choiseScene/");
-    	choiseSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR);
-    	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnPlayBig.png"); //380x80
-        btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnPlaySmall.png");
-        btnRoulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "btnRoullete.png");
-//        roulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "");
-//        backgroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiseSceneAtlas, activity, "");
+    	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR);
+    	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); //380x80
+        btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlaySmall.png");
+        btnRoulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnRoullete.png");
+        backgroundChoiceRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "BackgroundChoice.png");
+//        roulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "");
         
         try {
-			this.choiseSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.choiseSceneAtlas.load(); 
+			this.choiceSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			this.choiceSceneAtlas.load(); 
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}

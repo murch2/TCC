@@ -13,13 +13,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.provider.ContactsContract.CommonDataKinds.Contactables;
+
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
+import com.model.VersusCell;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
+import com.util.Constants;
 import com.util.LoadingLayer;
 
 public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListener, IOnSceneTouchListener{
@@ -31,7 +35,6 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 //		Por enquanto
 //		LoadingLayer loading = new LoadingLayer(); 
 //		loading.insertLoadingLayer(camera); 
-		System.out.println("Fazendo Request de newGame");
 		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
 	}
 	
@@ -40,8 +43,15 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 		createRoullete(dados); 
 		this.setOnSceneTouchListener(this);
 		createHUD();
+		teste(); 
 	}
 
+	private void teste() {
+		VersusCell cell = new VersusCell(); 
+		cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
+		attachChild(cell); 
+	}
+	
 	private void createBackground() {
 		setBackground(new Background(Color.PINK));
 	}
@@ -72,6 +82,8 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 	public void onResponse(JSONObject json) {
 		try {
 			if (json != null) {
+				System.out.println("Recebi o JSON Da choice Scene");
+				System.out.println(json.toString(4));
 				JSONArray dados = json.getJSONArray("dados"); 
 				createItensScene(dados);
 			}
