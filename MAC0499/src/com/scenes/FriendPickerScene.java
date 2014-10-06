@@ -104,6 +104,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		
 		if (item != null) {
 			GameManager.getInstance().setFriendID(item.getFriendID()); 
+			System.out.println("FDP - urlItem = " + item.getFriendURLPicture());
 			GameManager.getInstance().setFriendPictureURL(item.getFriendURLPicture());
 			GameManager.getInstance().setFriendName(item.getFriendName()); 
 			SceneManager.getInstance().createChoiceScene(); 

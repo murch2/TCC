@@ -92,6 +92,7 @@ public class FacebookFacade implements HTTPResponseListener{
 	}
 	
 	private void userPicture() {
+		System.out.println("Chamando User picture");
 		Bundle params = new Bundle();
 		params.putBoolean("redirect", false);
 		params.putString("height", "300");

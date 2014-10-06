@@ -226,7 +226,7 @@ public class ResourcesManager {
     
     public synchronized void loadChoiceScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/choiseScene/");
-    	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR);
+    	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
     	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); //380x80
         btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlaySmall.png");
         btnRoulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnRoullete.png");

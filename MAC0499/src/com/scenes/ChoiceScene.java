@@ -47,9 +47,16 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 	}
 
 	private void teste() {
-		VersusCell cell = new VersusCell(); 
-		cell.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.5f); 
-		attachChild(cell); 
+		System.out.println("Criando minha celula");
+		VersusCell myCell = new VersusCell(GameManager.getInstance().getUserPictureURL()); 
+		myCell.setPosition(myCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f); 
+		attachChild(myCell);
+		
+		System.out.println("Criando celula do amigo");
+		VersusCell friendCell = new VersusCell(GameManager.getInstance().getFriendPictureURL()); 
+		friendCell.setPosition(Constants.CAMERA_WIDTH - friendCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f); 
+		attachChild(friendCell);
+		
 	}
 	
 	private void createBackground() {

@@ -34,12 +34,11 @@ public class FriendPickerItem extends SpriteMenuItem {
 	private Text friendNameText;
 	private JSONObject jsonFriendInfo;
 	
-	
 	//PID eh a porra do primeiro int que serve como ID do botão, aqui ele já pode guardar o id do facebook do cara. 
 	public FriendPickerItem(int idButton, String idFriend, JSONObject friendInfo) { 
 		super(idButton, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
 		this.jsonFriendInfo = friendInfo; 
-		friendID = idFriend; 
+		setFriendID(idFriend); 
 		createPicture(); 
 		createNameText(); 
 	}
@@ -60,13 +59,14 @@ public class FriendPickerItem extends SpriteMenuItem {
 				String link; 
 				try {
 					link = jsonFriendInfo.getString("pic_big");
+					setFriendURLPicture(link);
 					Sprite updatePicture = ImageDownloader.testeImage(link);
 					updatePicture.setWidth(friendPicture.getWidth());
 					updatePicture.setHeight(friendPicture.getHeight()); 
 					updatePicture.setPosition(friendPicture); 
 					detachChild(friendPicture);
 					friendPicture = updatePicture; 
-					attachChild(friendPicture); 
+					attachChild(friendPicture);
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
