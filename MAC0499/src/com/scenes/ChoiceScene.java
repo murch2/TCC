@@ -7,6 +7,7 @@ package com.scenes;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
@@ -29,12 +30,7 @@ import com.util.LoadingLayer;
 public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListener, IOnSceneTouchListener{
 	
 	@Override
-	public void createScene() {
-		System.out.println("Estou criando a scene ChoiseScene");
-		//Aqui faz o Request Com as informações, antes eu tenho que setar as coisas do GameManager para fazer o request.
-//		Por enquanto
-//		LoadingLayer loading = new LoadingLayer(); 
-//		loading.insertLoadingLayer(camera); 
+	public void createScene() { 
 		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
 	}
 	
@@ -43,17 +39,22 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 		createRoullete(dados); 
 		this.setOnSceneTouchListener(this);
 		createHUD();
-		teste(); 
+		createCells(); 
+		if (SceneManager.getInstance().getCurrentLastSceneType().equals(SceneType.NEWGAME_SCENE) || 
+			SceneManager.getInstance().getCurrentLastSceneType().equals(SceneType.FRIENDPICKER_SCENE)) {
+			makeNewGameText(); 
+			//TODO eh uma newGame e o cara tem que ver o label de newGame
+		} else {
+			//TODO pensar na lógica de como mostrar o placar atual para o cara. 
+		}
 	}
 
-	private void teste() {
-		System.out.println("Criando minha celula");
-		VersusCell myCell = new VersusCell(GameManager.getInstance().getUserPictureURL()); 
+	private void createCells() {
+		VersusCell myCell = new VersusCell(GameManager.getInstance().getUserPictureURL(), false, GameManager.getInstance().getUserName()); 
 		myCell.setPosition(myCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f); 
 		attachChild(myCell);
 		
-		System.out.println("Criando celula do amigo");
-		VersusCell friendCell = new VersusCell(GameManager.getInstance().getFriendPictureURL()); 
+		VersusCell friendCell = new VersusCell(GameManager.getInstance().getFriendPictureURL(), true, GameManager.getInstance().getFriendName()); 
 		friendCell.setPosition(Constants.CAMERA_WIDTH - friendCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f); 
 		attachChild(friendCell);
 		
@@ -64,7 +65,21 @@ public class ChoiceScene extends BaseSceneWithHUD implements HTTPResponseListene
 	}
 
 	private void createRoullete(JSONArray dados) {
-		//Aqui vou fazer a animação pro cara poder escolher a porra de um tipo de carta. 
+		//Aqui vou fazer a animação pro cara poder escolher a porra de um tipo de carta.
+		//TODO
+	}
+	
+	private void makeNewGameText() {
+		Text newGameText;
+		newGameText = new Text(0, 0, ResourcesManager.getInstance().font, "NEW GAME!", ResourcesManager.getInstance().vbom);
+		newGameText.setColor(Color.BLACK);
+		newGameText.setScale(2.0f);
+		newGameText.setPosition(Constants.CENTER_X, Constants.CENTER_Y);
+		attachChild(newGameText);
+	}
+	
+	private void makeTotalScore() {
+		//TODO
 	}
 	
 	@Override

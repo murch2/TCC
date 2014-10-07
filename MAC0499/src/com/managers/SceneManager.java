@@ -4,6 +4,8 @@
  */
 package com.managers;
 
+import java.security.acl.LastOwnerException;
+
 import org.andengine.engine.Engine;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
@@ -21,6 +23,7 @@ public class SceneManager {
 	
 	private static final SceneManager INSTANCE = new SceneManager();
 	private SceneType currentSceneType = SceneType.SPLASH_SCENE;
+	private SceneType currentLastSceneType;
 	private BaseScene currentScene;
 	private Engine engine = ResourcesManager.getInstance().engine;
 	
@@ -49,6 +52,7 @@ public class SceneManager {
 	//Talvez esse método possa ser private 
 	public void setScene(BaseScene scene) {
 		engine.setScene(scene);
+		setCurrentLastSceneType(currentSceneType); 
 		currentScene = scene;
 		currentSceneType = scene.getSceneType();
 	}
@@ -123,7 +127,6 @@ public class SceneManager {
 	}
 	
 	public void createChoiceScene() {
-		System.out.println("AQUI 111111111");
 		ResourcesManager.getInstance().loadChoiceScene();  
 		choiseScene = new ChoiceScene(); 
 		setScene(choiseScene); 
@@ -137,5 +140,13 @@ public class SceneManager {
 	
 	public BaseScene getCurrentScene() {
 		return currentScene; 
+	}
+
+	public SceneType getCurrentLastSceneType() {
+		return currentLastSceneType;
+	}
+
+	public void setCurrentLastSceneType(SceneType currentLastSceneType) {
+		this.currentLastSceneType = currentLastSceneType;
 	}
 }

@@ -322,3 +322,191 @@ Depois de criar os desafiosok
 Criando HistoricoJOGO
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 0
+Oponente ID = 686035171490949
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 686035171490949 AND id_jogador2 = 678359188912185; 
+StatusAux = 0
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+query
+Deu erro 1 iF criaDesafios
+Deu certo estou devolvendo ok
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu erro 1 iF criaDesafios
+Depois de criar os desafioserror
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu erro 1 iF criaDesafios
+Depois de criar os desafioserror
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 4;
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Pegando as cartas
+Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 3, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
+SELECT id, texto FROM dicas WHERE id_carta = 3;
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 0
+Oponente ID = 686035171490949
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Oponente ID = 678655892210891
+Status = 0
+SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = 678655892210891 AND id_jogador2 = 678359188912185; 
+StatusAux = 0
+Oponente ID = 686035171490949
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
+Pegando as cartas
+Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
+SELECT id, texto FROM dicas WHERE id_carta = 4;
