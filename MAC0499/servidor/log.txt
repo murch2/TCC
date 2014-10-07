@@ -284,3 +284,41 @@ Depois de criar os desafiosok
 Criando HistoricoJOGO
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas
+Chegou aqui
+UserInfo
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Deu certo criadesafios
+Depois de criar os desafiosok
+Criando HistoricoJOGO
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Pegando as cartas

@@ -31,7 +31,7 @@ class ExecuteQuery {
 	}
 
 	function UserInfoQuery($userID) {
-		$query = "SELECT nome, moedas, rodadas FROM JOGADOR WHERE id = " . $userID . ";"; 
+		$query = "SELECT nome, moedas, rodadas, foto FROM JOGADOR WHERE id = " . $userID . ";"; 
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
 		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
@@ -40,7 +40,8 @@ class ExecuteQuery {
 							'requestID' => 'UserInfo',  
 							'nome' => $row[0],
 							'moedas' => $row[1],
-							'rodadas' => $row[2]
+							'rodadas' => $row[2],
+							'foto' => $row[3]
 							);
 		return $jsonResult;
 	}

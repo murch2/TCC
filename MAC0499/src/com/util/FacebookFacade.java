@@ -92,7 +92,6 @@ public class FacebookFacade implements HTTPResponseListener{
 	}
 	
 	private void userPicture() {
-		System.out.println("Chamando User picture");
 		Bundle params = new Bundle();
 		params.putBoolean("redirect", false);
 		params.putString("height", "300");
@@ -117,7 +116,9 @@ public class FacebookFacade implements HTTPResponseListener{
 //							Aqui eu tenho que fazer uma requisição pra setar a foto do cara. 
 							new HTTPPostRequester().asyncPost(FacebookFacade.this, MakeParameters.myPicture()); 
 						}
+						
 					} catch (JSONException e) {
+						System.out.println("PORRA - Entrei no Catch");
 						e.printStackTrace();
 					}
 		        	

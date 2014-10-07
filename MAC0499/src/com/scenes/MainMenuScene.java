@@ -45,6 +45,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		if (!GameManager.getInstance().isLoggedUser()) {
 			new FacebookFacade().login(this); 
 		} else {
+			System.out.println("PORRA - ELSE ");
 			numRequests = 2; 
 			System.out.println("User ID = " + GameManager.getInstance().getUserID());
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
@@ -152,7 +153,8 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 					GameManager.getInstance().setLoggedUser(true); 
 					GameManager.getInstance().setUserCoins(json.getInt("moedas")); 
 					GameManager.getInstance().setUserPowerUps(json.getInt("rodadas")); 
-					GameManager.getInstance().setUserName(json.getString("nome")); 
+					GameManager.getInstance().setUserName(json.getString("nome"));
+					GameManager.getInstance().setUserPictureURL(json.getString("foto"));
 				}
 				else if (json.getString("requestID").equals("MyGames")) {
 					numRequests--;

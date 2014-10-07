@@ -49,11 +49,11 @@ public class VersusCell extends Sprite {
 			public void run() {
 				System.out.println("URL = " + url);
 				Sprite updatePicture = ImageDownloader.testeImage(url);
-//				updatePicture.setWidth(50f);
-//				updatePicture.setHeight(50f); 
-//				updatePicture.setPosition(friendPicture); 
-//				detachChild(friendPicture);
-//				detachChild(friendPicture);
+				updatePicture.setWidth(friendPicture.getWidth());
+				updatePicture.setHeight(friendPicture.getHeight()); 
+				updatePicture.setPosition(friendPicture); 
+				detachChild(friendPicture);
+				detachChild(friendPicture);
 				friendPicture = updatePicture; 
 				attachChild(friendPicture); 
 			}

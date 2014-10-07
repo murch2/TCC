@@ -128,7 +128,9 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 			new HTTPPostRequester().asyncPost(this, MakeParameters.signUpParams(user));
 			GameManager.getInstance().setUserName(user.getFirstName() + " " + user.getMiddleName() + " " + user.getLastName()); 
 			GameManager.getInstance().setUserID(user.getId());
-			fb.getUserPicture(); 
+			
+			fb.getUserPicture();
+			
 			System.out.println("DEBUG - O cara está logado na connect scene  " + GameManager.getInstance().getUserName());
 			//Aqui eu chamo o layer de loading. 
 		}
