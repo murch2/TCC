@@ -71,7 +71,7 @@ public class ResourcesManager {
     public ITextureRegion btnPlayBigRegion;
     public ITextureRegion btnPlaySmallRegion;
     public ITextureRegion roulleteRegion;
-    public ITextureRegion btnRoulleteRegion;
+    public ITextureRegion btnRotateRegion;
     public ITextureRegion backgroundChoiceRegion;
     private BuildableBitmapTextureAtlas choiceSceneAtlas;
     
@@ -229,7 +229,7 @@ public class ResourcesManager {
     	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
     	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); //380x80
         btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlaySmall.png");
-        btnRoulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnRoullete.png");
+        btnRotateRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnRoullete.png");
         backgroundChoiceRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "BackgroundChoice.png");
 //        roulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "");
         

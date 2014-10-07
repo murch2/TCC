@@ -78,8 +78,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		menuNewGame.addMenuItem(itemNewGame);
 		menuNewGame.buildAnimations();
 		menuNewGame.setBackgroundEnabled(false);
-
-//		Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
+		
 		menuNewGame.setOnMenuItemClickListener(this); 
 
 		setChildScene(menuNewGame);

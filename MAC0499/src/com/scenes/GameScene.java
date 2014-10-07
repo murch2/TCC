@@ -124,6 +124,5 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	                     menu.getChildByIndex(0).getY());
 	    }
 	    return menu;
-
 	}
 }
