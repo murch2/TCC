@@ -55,14 +55,13 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private void createTips(JSONObject json){
 		IMenuItem tipItem;
 		JSONArray tipsArray;
-		try {
-//			GameManager.getInstance().setCardID(json.getJSONObject("dados").getInt("idCarta")); 
+		try {	
 			tipsArray = json.getJSONObject("dados").getJSONArray("dicas");
 			tipsMenu.setPosition(- Constants.CAMERA_WIDTH * 0.4f, 0);
-			float x = 50; 
+			 
 			for (int i = 0; i < 5; i++) {
 				json = tipsArray.getJSONObject(i); 
-				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion, vbom), 0.8f, 1);
+				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion[i], vbom), 0.8f, 1);
 				tipItem.setUserData(json.getString("texto")); 
 				tipsMenu.addMenuItem(tipItem);
 				System.out.println("X depois de add = " + tipsMenu.getChildByIndex(i).getX());
@@ -71,7 +70,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 			tipsMenu.buildAnimations();
 			tipsMenu.setBackgroundEnabled(false);
 			tipsMenu.setOnMenuItemClickListener(this); 
-			tipsMenu = setMenuLayoutToHorizontal(tipsMenu, 30);
+			tipsMenu = setMenuLayoutToHorizontal(tipsMenu, 1);
 			setChildScene(tipsMenu);
 			
 		} catch (JSONException e) {
@@ -109,6 +108,9 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		System.out.println("Cliquei!"); 
 		System.out.println("A dica: \n" + pMenuItem.getUserData());
+		
+//		Isso daqui só é pra fazer quando o cara tiver chutado. 
+		
 		currentRequest = Requests.FINISH_NEWROUND; 
 		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, false));
 		return true;

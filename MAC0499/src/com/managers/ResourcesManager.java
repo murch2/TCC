@@ -70,13 +70,16 @@ public class ResourcesManager {
     //ChoiseScene
     public ITextureRegion btnPlayBigRegion;
     public ITextureRegion btnPlaySmallRegion;
-    public ITextureRegion roulleteRegion;
+    public ITextureRegion roulleteLeftTopRegion;
+    public ITextureRegion roulleteRightTopRegion;
+    public ITextureRegion roulleteRightBotRegion;
+    public ITextureRegion roulleteLeftBotRegion;
     public ITextureRegion btnRotateRegion;
     public ITextureRegion backgroundChoiceRegion;
     private BuildableBitmapTextureAtlas choiceSceneAtlas;
     
     //GameScene
-    public ITextureRegion btnTipRegion;
+    public ITextureRegion[] btnTipRegion;
     private BuildableBitmapTextureAtlas gameSceneAtlas; 
     
     public static ResourcesManager getInstance() {
@@ -226,12 +229,16 @@ public class ResourcesManager {
     
     public synchronized void loadChoiceScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/choiseScene/");
-    	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
-    	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); //380x80
+    	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+    	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); 
         btnPlaySmallRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlaySmall.png");
         btnRotateRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnRoullete.png");
         backgroundChoiceRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "BackgroundChoice.png");
-//        roulleteRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "");
+        backgroundChoiceRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "BackgroundChoice.png");
+        roulleteLeftTopRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "yellowCircle.png");
+        roulleteRightTopRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "blueCircle.png");
+        roulleteLeftBotRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "greenCircle.png");
+        roulleteRightBotRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "purpleCircle.png");
         
         try {
 			this.choiceSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
@@ -245,9 +252,17 @@ public class ResourcesManager {
     }
     
     public synchronized void loadGameScene() {
+    	btnTipRegion = new ITextureRegion[10]; 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
-    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 60, 60, TextureOptions.BILINEAR);
-    	btnTipRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "tip1.png");
+    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
+    	String name = ""; 
+    	for (int i = 0; i < btnTipRegion.length; i++) {
+			name = String.format("tip%d.png", i+1); 
+			System.out.println("name = " + name);
+			btnTipRegion[i] = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, name);
+		}
+    	
+    	
     	try {
 			this.gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			this.gameSceneAtlas.load(); 

@@ -13,7 +13,7 @@ public class SplashScene extends BaseScene {
 
 	@Override
 	public void createScene() {
-		splash = new Sprite(Constants.CAMERA_WIDTH / 2 ,Constants.CAMERA_HEIGHT / 2, resourcesManager.splashRegion, vbom) {
+		splash = new Sprite(Constants.CENTER_X ,Constants.CENTER_Y, resourcesManager.splashRegion, vbom) {
     		@Override
             protected void preDraw(GLState pGLState, Camera pCamera) 
     		{

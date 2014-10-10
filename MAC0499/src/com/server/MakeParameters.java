@@ -68,8 +68,6 @@ public class MakeParameters {
 			params.put("userID", GameManager.getInstance().getUserID());
 			params.put("friendID", GameManager.getInstance().getFriendID());
 			params.put("tipoCarta", GameManager.getInstance().getCardTypeID());  
-			
-//			Acho que tb vaii ter que passar o id do amigo. 
 			result.put("message", params);
 		} catch (JSONException e) {
 			e.printStackTrace(); 
