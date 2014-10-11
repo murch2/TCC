@@ -5,12 +5,14 @@
 package com.scenes;
 
 import org.andengine.engine.camera.Camera;
+import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,8 +48,21 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private void createItensScene (JSONObject json) {
 		createBackground();
 		createTips(json); 
+		teste(); 
 	}
 
+//	Posso ficar trocando de scene com da popUp com a menu, ou tentar tirar a menu, posicionar os items diretamente 
+//	e colocar essa scene por cima com opacidade 0.95 assim sei lah.
+	
+	private void teste () {
+		Scene s = new Scene(); 
+		Sprite t = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.backgroundChoiceRegion, vbom); 
+		t.setWidth(200); 
+		t.setHeight(200);
+		s.attachChild(t); 
+		this.setChildSceneModal(s);
+	}
+	
 	private void createBackground() {
 		setBackground(new Background(Color.BLUE));
 	}
@@ -59,7 +74,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 			tipsArray = json.getJSONObject("dados").getJSONArray("dicas");
 			tipsMenu.setPosition(- Constants.CAMERA_WIDTH * 0.4f, 0);
 			 
-			for (int i = 0; i < 5; i++) {
+			for (int i = 0; i < 10; i++) {
 				json = tipsArray.getJSONObject(i); 
 				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion[i], vbom), 0.8f, 1);
 				tipItem.setUserData(json.getString("texto")); 
@@ -117,14 +132,23 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 
 	private MenuScene setMenuLayoutToHorizontal(MenuScene menu, int padding){
-	    if (menu.getChildCount()<=1) return menu;
-	    System.out.println(menu.getChildByIndex(0).getX());
-	    for(int i=1; i<menu.getChildCount();i++){
-	    	System.out.println("Posicao = " + menu.getChildByIndex(i-1).getX());
+	    if (menu.getChildCount() <= 1) 
+	    	return menu;
+	  
+	    menu.getChildByIndex(0).setPosition(menu.getChildByIndex(0).getX() + 10, 500);
+	    
+	    for (int i = 1; i < menu.getChildCount() / 2; i++) {
 	        menu.getChildByIndex(i).setPosition(
 	                menu.getChildByIndex(i-1).getX()+menu.getChildByIndex(i).getWidth()+padding,
-	                     menu.getChildByIndex(0).getY());
+	                     500);
 	    }
+	    
+	    for (int i = menu.getChildCount() / 2; i < menu.getChildCount(); i++) {
+	        menu.getChildByIndex(i).setPosition(
+	                menu.getChildByIndex(i-5).getX()+padding,
+	                     410);
+	    }
+	    
 	    return menu;
 	}
 }
