@@ -7,6 +7,9 @@
 \contentsline {section}{\numberline {1.1}Motiva\c c\~ao}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Objetivos}{4}{section.1.2}
 \contentsline {section}{\numberline {1.3}Desafios}{4}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}N\~ao conhecimento das linguagens utilizadas}{4}{subsection.1.3.1}
+\contentsline {subsection}{\numberline {1.3.2}Documenta\c c\~ao da engine}{4}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Interface gr\'afica}{4}{subsection.1.3.3}
 \contentsline {section}{\numberline {1.4}Organiza\c c\~ao do Trabalho}{4}{section.1.4}
 \contentsline {chapter}{\numberline {2}Conceitos}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Jogos Moveis}{5}{section.2.1}
