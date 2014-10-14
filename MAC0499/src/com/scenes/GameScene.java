@@ -48,13 +48,13 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private void createItensScene (JSONObject json) {
 		createBackground();
 		createTips(json); 
-		teste(); 
+		createPopup(); 
 	}
 
 //	Posso ficar trocando de scene com da popUp com a menu, ou tentar tirar a menu, posicionar os items diretamente 
 //	e colocar essa scene por cima com opacidade 0.95 assim sei lah.
 	
-	private void teste () {
+	private void createPopup () {
 		Scene s = new Scene(); 
 		Sprite t = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.backgroundChoiceRegion, vbom); 
 		t.setWidth(200); 

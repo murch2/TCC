@@ -8,13 +8,12 @@
 % \section{Jogos}
 % \label{sec:jogos}
 
-% TODO fazer uma breve introdução sobre a história de jogos em geral. 
+% TODO fazer uma breve introdução sobre a história de jogos em geral (Se der tempo). 
 
 %% ------------------------------------------------------------------------- %%
 \section{Jogos Moveis}
 \label{sec:jogos_moveis}
 
-% TODO Fazer um estudo mais aprofundado sobre jogos moveis. 
 % % Na Figura~\ref{fig:humanbeta} texto texto texto texto texto texto texto texto
 
 % % \begin{figure}[!h]
@@ -28,7 +27,20 @@
 \subsection{Jogos multijogador}
 \label{subsec:jogos_multijogador}
 
-TODO Fazer um estudo mais aprofundado sobre jogos multijogador
+	Jogos multijogador são simulações de ambientes onde cada jogador busca atingir um certo
+objetivo através da interação com outros jogadores e com o ambiente \cite{Cecin05:FreeMMG}.
+Esta interação é efetuada de duas maneiras principais: Jogos de tempo real, onde 
+o jogador envia comandos de maneira assíncrona a passagem do tempo no ambiente virtual, um 
+jogo de carros onde o jogador é o piloto, é um exemplo de jogo de tempo real; Jogos
+de turnos, em que o jogador envia comandos de forma síncrona ao tempo virtual. Um jogo de xadrez, 
+onde a partida não avança até que o jogador da vez realize a sua jogada, é um exemplo de jogo
+baseado em turnos \cite{Cecin05:FreeMMG}.
+	
+	Trataremos aqui apenas o caso síncrono, em que o jogo é dividido em turnos.
+O termo ``''Jogos Multijogador``'' será utilizado nesse sentido. Dentre jogos baseados em turnos destacam-se os que promovem algum tipo de duelo entre os jogadores, ou seja, há um vencedor e 
+um perdedor a cada turno e ou, conjunto de turnos. Neste projeto esta é a forma escolhida, 
+a cada x[TODO] turnos é definido um vencedor e a contagem total de partidas é acrescida de 
+uma unidade.
 
 % % Veja na Tabela \ref{tab:amino_acidos}...  texto texto texto texto texto texto
 
