@@ -55,5 +55,5 @@
 \contentsline {section}{\numberline {8.2}Resultados Obtidos}{19}{section.8.2}
 \contentsline {chapter}{\numberline {9}Conlus\~ao}{21}{chapter.9}
 \contentsline {chapter}{\numberline {10}Trabalhos Futuros}{23}{chapter.10}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{25}{chapter*.9}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{25}{chapter*.10}
 \contentsfinish 

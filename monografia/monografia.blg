@@ -3,44 +3,47 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: monografia.aux
 The style file: alpha-ime.bst
 Database file #1: bibliografia.bib
-You've used 4 entries,
+Warning--to sort, need author or key in AndHist
+Warning--to sort, need author or key in AndPro
+You've used 6 entries,
             2543 wiz_defined-function locations,
-            587 strings with 5270 characters,
-and the built_in function-call counts, 1109 in all, are:
-= -- 109
-> -- 32
+            596 strings with 5730 characters,
+and the built_in function-call counts, 1566 in all, are:
+= -- 159
+> -- 34
 < -- 4
 + -- 9
 - -- 8
-* -- 55
-:= -- 189
-add.period$ -- 14
-call.type$ -- 4
-change.case$ -- 21
-chr.to.int$ -- 4
-cite$ -- 4
-duplicate$ -- 45
-empty$ -- 93
+* -- 81
+:= -- 241
+add.period$ -- 21
+call.type$ -- 6
+change.case$ -- 29
+chr.to.int$ -- 6
+cite$ -- 10
+duplicate$ -- 65
+empty$ -- 147
 format.name$ -- 16
-if$ -- 226
+if$ -- 334
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 25
+newline$ -- 36
 num.names$ -- 12
-pop$ -- 32
+pop$ -- 48
 preamble$ -- 1
-purify$ -- 24
+purify$ -- 34
 quote$ -- 0
-skip$ -- 41
+skip$ -- 60
 stack$ -- 0
-substring$ -- 29
-swap$ -- 3
+substring$ -- 45
+swap$ -- 5
 text.length$ -- 4
 text.prefix$ -- 4
 top$ -- 0
-type$ -- 32
-warning$ -- 0
+type$ -- 48
+warning$ -- 2
 while$ -- 8
-width$ -- 5
-write$ -- 55
+width$ -- 7
+write$ -- 81
+(There were 2 warnings)

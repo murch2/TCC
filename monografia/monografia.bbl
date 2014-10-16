@@ -1,5 +1,20 @@
 \begin{thebibliography}{Nun07}
 
+\bibitem[And13]{AndHist}
+Cupcake, donut, eclair, froyo, gingerbread, honeycomb, ice cream sandwich...
+  google android os code names and history.
+\newblock
+  \url{http://hubpages.com/hub/Cupcake-Donut-Eclair-Froyo-Gingerbread-Honeycomb-Android-OS-Version-Codenames-and-Why},
+  Setembro 2013.
+\newblock Acessado em 16 de outubro de 2014.
+
+\bibitem[And14]{AndPro}
+Android: 85% do mercado de smartphones.
+\newblock
+  \url{http://www.meioemensagem.com.br/home/marketing/noticias/2014/08/06/Android-atinge-85-por-cento-do-mercado-de-smartphones.html},
+  Agosto 2014.
+\newblock Acessado em 16 de outubro de 2014.
+
 \bibitem[Cec05]{Cecin05:FreeMMG}
 Fábio~Reis Cecin.
 \newblock Freemmg: uma arquitetura cliente-servidor e par-a-par de suporte a
@@ -13,6 +28,7 @@ Aden Hepburn.
 \newblock
   \url{http://www.digitalbuzzblog.com/infographic-2013-mobile-growth-statistics/},
   Outubro 2013.
+\newblock Acessado em 16 de outubro de 2014.
 
 \bibitem[Mer14]{Mattia14:Android}
 Mattia Mercato.
