@@ -16,16 +16,14 @@ import org.andengine.entity.text.Text;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 
-import com.facebook.Session;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 
-//Por algum motivo desconhecido a origem do HUD não é no canto inferior esquerdo e sim no meio. 
 
 public class TopHUD extends HUD implements IOnMenuItemClickListener {
 
-	private Sprite backGround; 
+	private Sprite background; 
 	private MenuScene profileMenu; 
 	private Text powerUps; 
 	private Text coins; 
@@ -40,7 +38,7 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 	}
 	
 	private void createBackGround() {
-		backGround = new Sprite(0, Constants.CAMERA_HEIGHT * 0.45f,
+		background = new Sprite(0, Constants.CAMERA_HEIGHT * 0.45f,
 				ResourcesManager.getInstance().headerBackgroundRegion, ResourcesManager.getInstance().vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
@@ -48,7 +46,7 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 				pGLState.enableDither();
 			}
 		};	
-		this.attachChild(backGround); 
+		this.attachChild(background); 
 	}
 	
 	private void createMenuProfile() {
@@ -74,17 +72,17 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 	private void createPowerUps() {
 		String powerUp = "PowerUps: " + GameManager.getInstance().getUserPowerUps(); 
 		powerUps = new Text(0, 0, ResourcesManager.getInstance().font, powerUp, ResourcesManager.getInstance().vbom);
-		powerUps.setPosition(this.backGround.getWidth() * 0.41f, this.backGround.getHeight() * 0.5f);  
+		powerUps.setPosition(this.background.getWidth() * 0.41f, this.background.getHeight() * 0.5f);  
 		powerUps.setColor(Color.WHITE); 
-		backGround.attachChild(powerUps);
+		background.attachChild(powerUps);
 	}
 	
 	private void createCoins() {
 		String coinsString = "Coins: " + GameManager.getInstance().getUserCoins(); 
 		coins = new Text(0, 0, ResourcesManager.getInstance().font, coinsString, ResourcesManager.getInstance().vbom);
-		coins.setPosition(this.backGround.getWidth() * 0.8f, this.backGround.getHeight() * 0.5f);  
+		coins.setPosition(this.background.getWidth() * 0.8f, this.background.getHeight() * 0.5f);  
 		coins.setColor(Color.WHITE); 
-		backGround.attachChild(coins);
+		background.attachChild(coins);
 	}
 	
 	@Override

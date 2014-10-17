@@ -4,8 +4,6 @@
  */
 package com.scenes;
 
-import java.util.Vector;
-
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
@@ -15,8 +13,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.view.MenuItem;
-
 import com.facebook.Request.Callback;
 import com.facebook.Response;
 import com.facebook.model.GraphObject;
@@ -25,8 +21,6 @@ import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
-import com.model.FriendPickerMenu;
-import com.util.Constants;
 import com.util.FacebookFacade;
 
 public class FriendPickerScene extends BaseScene implements Callback, IOnMenuItemClickListener {

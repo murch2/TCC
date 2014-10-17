@@ -45,9 +45,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		if (!GameManager.getInstance().isLoggedUser()) {
 			new FacebookFacade().login(this); 
 		} else {
-			System.out.println("PORRA - ELSE ");
-			numRequests = 2; 
-			System.out.println("User ID = " + GameManager.getInstance().getUserID());
+			numRequests = 2;
 			new HTTPPostRequester().asyncPost(this, MakeParameters.getUserInfo(GameManager.getInstance().getUserID()));
 			new HTTPPostRequester().asyncPost(this, MakeParameters.myGames(GameManager.getInstance().getUserID()));  
 		}
@@ -85,10 +83,10 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	}
 	
 	private void createMenuMyGames() {
-		
 		JSONArray array;
 		JSONObject json; 
-		IMenuItem item; 
+		IMenuItem item;
+		
 		try {
 			array = jsonMyGames.getJSONArray("dados");
 			menuMyGames = new MenuScene(ResourcesManager.getInstance().camera);
@@ -105,15 +103,11 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 			setChildScene(menuMyGames);
 			
-			
 		} catch (JSONException e) {
 			e.printStackTrace();
-		}
-
-		
+		}		
 	}
-
-	//Aqui vou fazer um pop-up pra sair do jogo. 
+ 
 	@Override
 	public void onBackKeyPressed() {
 		// TODO Auto-generated method stub
@@ -128,9 +122,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	public void disposeScene() {
 		// TODO Auto-generated method stub
 	}
-
-	//Podia ter uma classe que cuidava disso, e só essa classe seria responsavel pelas respostas do facebook e soh ela implementaria 
-	//a interface usergraphCallback. 
+ 
 	@Override
 	public void onCompleted(GraphUser user, Response response) {
 		if (user != null) {
@@ -164,11 +156,10 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 					createItensScene();
 				}
 			}
-			else { //Deu merda pra recuperar os dados do cara no banco de dados.  
-				System.out.println("Deu merda");
+			else {  
+				System.out.println("DEBUG - Erro ao recuperar dados do usuário");
 			}
 		} catch (JSONException e) {
-			//Aqui tb deu merda pra recuperar os dados do cara no BD
 			e.printStackTrace();
 		}
 	}

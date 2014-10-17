@@ -17,7 +17,6 @@ require 'ExecuteQuery.php';
  		$this->tratandoRequisicao($json); 
  	}
 
- 	// Se tiver herança o log tem que ir como herança
  	function log ($message) {
  		$fp = fopen('/home/digao/android/workspace/TCC/MAC0499/servidor/log.txt', 'a+') or die ("Permission error");
  		fwrite($fp, $message . "\n");
@@ -28,12 +27,10 @@ require 'ExecuteQuery.php';
  		$exeQuery = new ExecuteQuery (); 
  		switch ($json['requestID']) {
  			case 'SignUp':
- 				$this->log("SignUp");
  				$result = $exeQuery->SignUpQuery($json);
  				break;
 
  			case 'UserInfo':
- 				$this->log("UserInfo");
  				$result = $exeQuery->UserInfoQuery($json['userID']);
  				break;
 
@@ -72,8 +69,7 @@ require 'ExecuteQuery.php';
  			
  			default:
  				break;
- 		} 
- 		//na verdade vou dar um ok no result ou error. 
+ 		}
  		$result = json_encode($result); 
  		exit($result); 
  	}

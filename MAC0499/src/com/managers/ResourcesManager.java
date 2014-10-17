@@ -21,13 +21,8 @@ import android.graphics.Color;
 import com.activities.GameActivity;
 
 public class ResourcesManager {
-	private static final ResourcesManager INSTANCE = new ResourcesManager();
-	
-//	public ITextureRegion anaRegion; 
-	
-	public Sprite teste; 
-	
-	//Ainda acho que essas coisas deveriam ser private. 
+	private static final ResourcesManager INSTANCE = new ResourcesManager();  
+	 
 	public Engine engine;
     public GameActivity activity;
     public Camera camera;
@@ -86,7 +81,6 @@ public class ResourcesManager {
         return INSTANCE;
     }
 	
-	//Só deverá ser chamado uma vez. 
     public static void prepareResourcesManager(Engine engine, GameActivity activity, Camera camera, VertexBufferObjectManager vbom) {
         getInstance().engine = engine;
         getInstance().activity = activity;
@@ -112,14 +106,10 @@ public class ResourcesManager {
     	loadConnectGraphics(); 
     }
     
-    //Não sei se precisa desse método pq ele volta pro MainMenu então não sei se é bom 
-//    ficar load e unload no mainMenu (que é muito pesado)
     public synchronized void unloadConnectScene() {
     	System.gc();
     }
-    
-    //Depois tenho que ver o que fazer com as fonts no livro, 
-//    Talvez tenha que ter um desse pra cada tela ou subtipo de font dentro de uma tela
+   
     private synchronized void loadFonts() {
         FontFactory.setAssetBasePath("font/");
         final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
@@ -141,8 +131,7 @@ public class ResourcesManager {
     }
     
     public synchronized void loadMainMenuScene() {
-    	loadFonts();
-    	//o loadHeader talvez tenha que sair daqui. 
+    	loadFonts(); 
     	loadHeader();
     	loadMainMenuGraphics(); 
     }
@@ -165,7 +154,6 @@ public class ResourcesManager {
 		}
     }
     
-    //Vou carregar a prite de loading junto com o header
     public synchronized void loadHeader() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/Header/"); 
     	headerAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 750, 300, TextureOptions.BILINEAR); 
@@ -225,6 +213,7 @@ public class ResourcesManager {
     }
     
     private synchronized void  unloadFriendPickerCell() {
+    
     }
     
     public synchronized void loadChoiceScene() {
@@ -256,13 +245,13 @@ public class ResourcesManager {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
     	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
     	String name = ""; 
+    	
     	for (int i = 0; i < btnTipRegion.length; i++) {
 			name = String.format("tip%d.png", i+1); 
 			System.out.println("name = " + name);
 			btnTipRegion[i] = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, name);
 		}
-    	
-    	
+    		
     	try {
 			this.gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			this.gameSceneAtlas.load(); 
@@ -272,9 +261,7 @@ public class ResourcesManager {
     }
     
     public synchronized void unloadGameScene() {
+    
     }
-    
-    
-    
-    
+
 }

@@ -54,7 +54,6 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 		menuNewGame.buildAnimations();
 		menuNewGame.setBackgroundEnabled(false);
 
-		//Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
 		menuNewGame.setOnMenuItemClickListener(this); 
 
 		setChildScene(menuNewGame);
@@ -86,10 +85,8 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 			case ITEM_FACEBOOK_FRIEND:
 				SceneManager.getInstance().createNewFriendPickerScene();
 //				loading.insertLoadingLayer(camera); 
-				System.out.println("Cliquei no Facebook");
 				return true; 
 			case ITEM_RANDOM_OPPONNENT:
-				System.out.println("Cliquei no Random Opp");
 				new HTTPPostRequester().asyncPost(this, MakeParameters.randomOpponent());
 //				loading.insertLoadingLayer(camera); 
 				return true; 
@@ -109,9 +106,7 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 			GameManager.getInstance().setFriendName("nome");
 			SceneManager.getInstance().createChoiceScene(); 
 		} catch (JSONException e) {
-			System.out.println("Caiu no catch e deu erro no request de Random Opponent.");
 			e.printStackTrace();
-			
 		}
 	}
 

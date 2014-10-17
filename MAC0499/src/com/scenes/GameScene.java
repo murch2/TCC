@@ -52,7 +52,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 
 //	Posso ficar trocando de scene com da popUp com a menu, ou tentar tirar a menu, posicionar os items diretamente 
-//	e colocar essa scene por cima com opacidade 0.95 assim sei lah.
+//	e colocar essa scene por cima com opacidade 0.95.
 	
 	private void createPopup () {
 		Scene s = new Scene(); 
@@ -113,19 +113,12 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		if (currentRequest == Requests.RANDOM_CARD)
 			createItensScene(json);
 		else if (currentRequest == Requests.FINISH_NEWROUND)
-//			Aqui eu tenho que ir pra proxima cena, que nesse caso é o mainMenu.
-			System.out.println("Retornou do finishNewRound");
+			System.out.println("DEBUG - Retornou do finishNewRound devo ir para MainMenu");
 	}
 
-	
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
-			float pMenuItemLocalX, float pMenuItemLocalY) {
-		System.out.println("Cliquei!"); 
-		System.out.println("A dica: \n" + pMenuItem.getUserData());
-		
-//		Isso daqui só é pra fazer quando o cara tiver chutado. 
-		
+			float pMenuItemLocalX, float pMenuItemLocalY) { 
 		currentRequest = Requests.FINISH_NEWROUND; 
 		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, false));
 		return true;

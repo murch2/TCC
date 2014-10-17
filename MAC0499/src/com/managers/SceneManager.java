@@ -4,12 +4,9 @@
  */
 package com.managers;
 
-import java.security.acl.LastOwnerException;
-
 import org.andengine.engine.Engine;
 import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 
-import com.managers.ResourcesManager;
 import com.scenes.BaseScene;
 import com.scenes.ChoiceScene;
 import com.scenes.ConnectScene;
@@ -49,7 +46,6 @@ public class SceneManager {
 		GAME_SCENE
 	}
 	
-	//Talvez esse método possa ser private 
 	public void setScene(BaseScene scene) {
 		engine.setScene(scene);
 		setCurrentLastSceneType(currentSceneType); 
@@ -97,8 +93,8 @@ public class SceneManager {
 	    splashScene = null;
 	}
 
-	//suspeito muito que devo fazer metodos de dispose pra todas as outras cenas assim splashScene. 
-	
+	 
+//	TODO ver metodos dispose
 	public void createConnectScene() {
 	    ResourcesManager.getInstance().loadConnectScene(); 
 	    connectScene = new ConnectScene(); 
@@ -109,9 +105,7 @@ public class SceneManager {
 	public void createMainMenuScene() {
 	    ResourcesManager.getInstance().loadMainMenuScene(); 
 	    mainMenuScene = new MainMenuScene(); 
-	    setScene(mainMenuScene);
-	    //Acho que aqui tem que ter um if se o cara vem da connectScene ai da um dispose nela. 
-//	    disposeSplashScene(); 
+	    setScene(mainMenuScene); 
 	}
 	
 	public void createNewGameScene() {

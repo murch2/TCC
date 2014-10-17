@@ -15,7 +15,7 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.BaseGameActivity;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.view.KeyEvent;
 
 import com.facebook.Session;
 import com.managers.GameManager;
@@ -24,13 +24,10 @@ import com.managers.SceneManager;
 import com.util.Constants;
 
 public class GameActivity extends BaseGameActivity {
-	
-	//Talvez a camera e a engine Tenham que ir para o ResourcesManager. 
+	 
 	private Camera camera; 
 	private ResourcesManager resourcesManager; 
  
-	
-//	(Método para o facebook funcionar)
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  super.onActivityResult(requestCode, resultCode, data);
@@ -55,7 +52,6 @@ public class GameActivity extends BaseGameActivity {
 		pOnCreateResourcesCallback.onCreateResourcesFinished();
 	}
 
-	//Primeira cena criada
 	@Override
 	public void onCreateScene(OnCreateSceneCallback pOnCreateSceneCallback)
 			throws IOException {
@@ -64,20 +60,15 @@ public class GameActivity extends BaseGameActivity {
 
 	@Override
 	public void onPopulateScene(Scene pScene, OnPopulateSceneCallback pOnPopulateSceneCallback) {
-		mEngine.registerUpdateHandler(new TimerHandler(2f, new ITimerCallback() 
-	    {
-	            public void onTimePassed(final TimerHandler pTimerHandler) 
-	            {
+		mEngine.registerUpdateHandler(new TimerHandler(2f, new ITimerCallback() {
+	            public void onTimePassed(final TimerHandler pTimerHandler) {
 	            	
 	                mEngine.unregisterUpdateHandler(pTimerHandler);
 	                
 	                if (GameManager.getInstance().getDataInMemory().alreadyLogedInFacebook()) {
 	                	SceneManager.getInstance().createMainMenuScene();
 	                }
-//	                Talvez aqui eu tenha que fazer mais alguma verificação pra ver se eu consigo pegar os dados do usuario 
-//	                pra confirmar se ele está mesmo logado. 
 	                else {
-	                	System.out.println("DEBUG - criando connect scene");
 	                	SceneManager.getInstance().createConnectScene();
 	                }
 	            }
@@ -95,12 +86,11 @@ public class GameActivity extends BaseGameActivity {
 		super.onDestroy(); 
 	}
 	
-//	@Override
-//	public boolean onKeyDown(int keyCode, KeyEvent event) {  
-//	    if (keyCode == KeyEvent.KEYCODE_BACK) {
-//	        SceneManager.getInstance().getCurrentScene().onBackKeyPressed();
-//	    }
-//	    return false; 
-//	}
-
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {  
+	    if (keyCode == KeyEvent.KEYCODE_BACK) {
+	        SceneManager.getInstance().getCurrentScene().onBackKeyPressed();
+	    }
+	    return false; 
+	}
 }

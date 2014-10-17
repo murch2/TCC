@@ -9,8 +9,7 @@ import org.json.JSONObject;
 
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
-
-//Tentar tirar os static depois 
+ 
 public class MakeParameters {
 
 	public static JSONObject signUpParams (GraphUser user) {
@@ -30,7 +29,6 @@ public class MakeParameters {
 		return result; 
 	}
 	
-//	Acho que talvez não precise do parametro e eu possa pegar do gameManager
 	public static JSONObject getUserInfo(String userID) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();
@@ -102,8 +100,6 @@ public class MakeParameters {
 		return result; 
 	}
 
-//	Preciso testar isso daqui pq o IME é uma merda. Talvez de pra fazer esse e o metodo 
-//	finishOldRound no mesmo metodo passando uma flag se eh novo ou velho 
 	public static JSONObject finishNewRound(int score, boolean correct) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();
@@ -138,7 +134,6 @@ public class MakeParameters {
 		return result; 
 	}
 	
-//	Acho que da pra pegar a do GM ao inves de passar por parametro o userID
 	public static JSONObject myGames(String userID) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();

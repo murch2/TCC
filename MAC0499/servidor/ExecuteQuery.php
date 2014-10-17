@@ -7,7 +7,6 @@ class ExecuteQuery {
 	function __construct() {
  	}
 
-	//Tem que mudar de nome pq isso vai ser o switch de tratar as requisições. 
 	function SignUpQuery ($json) {
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
 		$result = $this->setInfo($query);
@@ -26,7 +25,6 @@ class ExecuteQuery {
 			}
 		}
 
-		$this->log("Chegou no fim da insercao");
 		return $this->trataResult($result);
 	}
 
@@ -49,21 +47,16 @@ class ExecuteQuery {
 	// Mudar esse metodo pra retornar erro, igual aos outros que eu estou fazendo agora. 
 	function NewGameQuery($userID, $friendID) {
 		$result = $this->criaDesafios($userID, $friendID); 
-		$this->log("Depois de criar os desafios" . $result['status']);
 		if ($result['status'] == 'ok') {
-			$this->log("Criando HistoricoJOGO");
 			$result = $this->criaHistoricoJogo($userID, $friendID);
 			if ($result['status'] == 'ok') {
-				$this->log("Pegando as cartas");
 				return $this->getTipoCarta(); 
 			}
 		}
 		return $result; 
 	}
 
-	//Essa daqui tinha que ser privada se tiver isso, e precisa ser enxuta
 	function criaDesafios($userID, $friendID) {
-		// Podia controlar isso com a pontuação mas foda-se
 		// A ideia é que quando eu crio eu vou jogar. 
 		// (O status = 0 vai representar que ninguem jogou)
 		// (O status = 1 vai representar que o primeiro jogador está jogando)
@@ -72,8 +65,6 @@ class ExecuteQuery {
 		// (O status = 4 vai representar que o segundo jogador acabou de jogar)
 		// Quando o primeiro jogador for jogar e tiver status 4 eu posso mandar as infos pra ele ver e atualizar as infos do jogo
 
-
-		// sempre vai ter que ter 
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, -1, -1, 0); ";
 		$result = $this->setInfo($query);
 	
@@ -155,8 +146,6 @@ class ExecuteQuery {
 		return $result;
 	}
 
-	// Esse nome eh ruim pq isso acotnece quando o cara acaba o primeiro round dele. 
-	// Acho que esse mtodo precisa chamar finishNewRound
 	function finishNewRoundQuery($json) {
 		$score = $json['score']; 
 		$userID = $json['userID']; 
@@ -186,9 +175,7 @@ class ExecuteQuery {
 		return $this->trataResult($result);
 	}
 
-	//Aqui eu só preciso atualizar o status
 	function startOldRoundQuery($json) {
-		// Preciso alem disso devolver a pontuação do cara que já fez o jogo 
 		$score = $json['score']; 
 		$userID = $json['userID']; 
 		$friendID = $json['friendID']; 
@@ -204,8 +191,6 @@ class ExecuteQuery {
 		return $this->ok(); 
 	}
 
-	// Esse vai ser o de quando o cara clicar no game na tela de mainMenu. 
-	// Vou criar apenas uma funcao ao inves de duas para o finish OLD e new Round que recebe o status de parametro. 
 	function finishOldRoundQuery($json) {
 		$score = $json['score']; 
 		$userID = $json['userID']; 
@@ -233,7 +218,6 @@ class ExecuteQuery {
 		return $this->trataResult($result);
 	}
 
-	//Falta fazer não pegar as pessoas que eu tenho jogos. 
 	function randomOpponentQuery($userID) {
 
 		$query = "SELECT id, nome, foto
@@ -253,14 +237,11 @@ class ExecuteQuery {
 
 		$row = pg_fetch_row($result);
 
-
 		$result = $this->criaDesafios($userID, $idFriend); 	
 
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
-
-		$this->log("Deu certo estou devolvendo ok");
 
 		$result = array('status' => 'ok',
 		 				'dados'  =>  array('id' => $row[0],
@@ -294,9 +275,7 @@ class ExecuteQuery {
 		foreach ($result['dados'] as $key => $game) {
 			$status = $game['status']; 
 			$opponentID = $game['id_jogador2']; 
-			$this->log("Oponente ID = " . $opponentID);
 
-			// Aqui eu tenho que ver se o jogo do cara é novo. Se o outro cara criou um jogo com ele.
 			if ($status == 0) {
 				$this->log("Status = 0");
 				$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
@@ -326,7 +305,7 @@ class ExecuteQuery {
 				}
 			}
 			elseif ($status == 1) {
-				// Aqui dane-se eu tenho qeu apagar as informações desse jogo pq o cara não acabou e quer começar de novo. 
+				// Aqui eu tenho que apagar as informações desse jogo pq o cara não acabou e quer começar de novo. 
 			}
 			elseif ($status == 2) {
 				// Aqui é o clássico POKE, já joguei e falta o cara jogar. 
@@ -355,8 +334,6 @@ class ExecuteQuery {
 		return $result; 
 	}
 
-	// Esse trata result é só pra leitura e precisa receber um parametro de affected rows.
-	// acho que tem que fazer um pg_affected_rows(result) com 0 mas ok pro caso do myGamesQuery
 	function trataResult($result) {
 		if (!$result) {
 			$result = $this->error(); 
@@ -387,7 +364,6 @@ class ExecuteQuery {
 		return $result;
 	}
 	
-	//O erro dessa porra eh na permissão de arquivos. (777 tudo funcionou)
  	function log($message) {
  		$fp = fopen('/home/digao/android/workspace/TCC/MAC0499/servidor/log.txt', 'a+') or die ("Permission error");
  		fwrite($fp, $message . "\n");
@@ -401,7 +377,6 @@ class ExecuteQuery {
 		return $result; 
 	}
 
-	//Pensar aqui em um jeito de devolver ok, ou not ok. 
 	function setInfo ($query) {
 		$connection = $this->getConnection(); 
 		$result = pg_query($connection, $query);		
@@ -413,13 +388,11 @@ class ExecuteQuery {
 		pg_close($connection); 
 	}
 
-	//Preciso fechar as conexões
 	function getConnection () {
 		$info = new InfoDB (); 
 		$string = "host = ".$info->getHost() ." port = ". $info->getPort() ." dbname = " .$info->getDBName() ." user = ". $info->getUser() ." password = " 
 . $info->getPasswd(); 
 
-		//Isso aqui retorna um int que indica se a conexão falhou ou nao.
 		$connection = pg_connect($string) or die ('Error connecting to DataBase'); 
 		return $connection; 
 	}

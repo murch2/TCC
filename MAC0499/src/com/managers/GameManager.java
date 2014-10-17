@@ -17,7 +17,6 @@ public class GameManager {
 	private int userPowerUps;
 	private String userPictureURL;
 	private int cardTypeID; 
-//	private int cardID; 
 	
 	private String friendID;
 	private String friendPictureURL; 
@@ -114,12 +113,4 @@ public class GameManager {
 	public void setFriendName(String friendName) {
 		this.friendName = friendName;
 	}
-
-//	public int getCardID() {
-//		return cardID;
-//	}
-//
-//	public void setCardID(int cardID) {
-//		this.cardID = cardID;
-//	}
 }

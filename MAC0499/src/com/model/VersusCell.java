@@ -31,10 +31,8 @@ public class VersusCell extends Sprite {
 	private Text middleNameText;
 	
 	boolean isFriend;
-//	Acho que o verdadeiro limite é 7 mas tenho que testar com a fonte final do jogo
 	public final int MAX_CHAR_NAME = 8; 
 	
-//	Precisa fazer uma porra de imagem pra colocaar aqui
 	public VersusCell(String url, boolean isFriend, String name) {
 		super(0, 0, 
 				ResourcesManager.getInstance().backgroundChoiceRegion.getWidth(),
@@ -46,8 +44,7 @@ public class VersusCell extends Sprite {
 		createPicture(url);
 		createName(name); 
 		
-//		Perguntar de algum jito se o jogo é novo ou não. 
-		
+// TODO Ver se o jogo é novo ou não.
 	}
 	
 	
@@ -79,8 +76,7 @@ public class VersusCell extends Sprite {
 			}
 		}); 
 	}
-	
-//	Ver de separar em nome e sobrenome. 
+	 
 	private void createName (String name) {
 		JSONObject names = nameTreatment(name); 
 		String middleName = ""; 
