@@ -41,7 +41,6 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 		setBackground(new Background(Color.RED));
 	}
 	
-//	Talvez tivesse que ter uma classe pra esse menu (Pra ele ser scrolavel e tals)
 	private void makeFriendsMenu() {
 		JSONArray array;
 		JSONObject json; 
@@ -53,8 +52,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 				json = array.getJSONObject(i); 
 				item = new FriendPickerItem(i, json.getString("uid"), json);
 				menu.addMenuItem(item); 
-			}
-			
+			}		
 			
 			menu.buildAnimations();
 			menu.setBackgroundEnabled(false);
