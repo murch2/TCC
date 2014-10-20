@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  19 OCT 2014 23:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  20 OCT 2014 11:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -731,24 +731,24 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 9.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 31.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 47.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 52.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 52.
 [9]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 73.
+(babel)             in language  on input line 70.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 86.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 89.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 92.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 98.
+(babel)             in language  on input line 95.
 ) (./cap-banco.tex
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
@@ -917,27 +917,33 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 
-Underfull \hbox (badness 6608) in paragraph at lines 10--10
+Underfull \hbox (badness 1960) in paragraph at lines 10--10
 []\T1/cmr/m/n/10.95 Cupcake, do-nut, eclair, froyo, gin-ger-bread, ho-ney-comb,
  ice cream sandwich...
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--10
+Underfull \hbox (badness 8075) in paragraph at lines 10--10
 \T1/cmr/m/n/10.95 go-o-gle an-droid os code na-mes and his-tory.  [][]$http : /
  / hubpages . com / hub /
  []
 
 
-Overfull \hbox (45.17554pt too wide) in paragraph at lines 10--10
+Overfull \hbox (64.74734pt too wide) in paragraph at lines 10--10
 \T1/cmr/m/n/10.95 Cupcake-[]Donut-[]Eclair-[]Froyo-[]Gingerbread-[]Honeycomb-[]
 Android-[]OS-[]Version-[]Codenames-[]and-[]Why$[][],
  []
 
 
-Underfull \hbox (badness 2197) in paragraph at lines 38--38
-[]\T1/cmr/m/n/10.95 Mattia Mer-cato.  A doce his-tó-ria do an-droid.  [][]$http
- : / / www . androidpit . com . br /
+Underfull \hbox (badness 2961) in paragraph at lines 17--17
+[]\T1/cmr/m/n/10.95 Android: 85 [][]$http : / / www . meioemensagem . com . br 
+/ home / marketing / noticias / 2014 /
+ []
+
+
+Underfull \hbox (badness 2772) in paragraph at lines 37--37
+[]\T1/cmr/m/n/10.95 Aden Hep-burn.  In-fo-graphic: 2013 mo-bile growth sta-tis-
+tics.  [][]$http : / / www .
  []
 
 )
@@ -956,7 +962,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `monografia.out' has not changed.
 (rerunfilecheck)             Checksum: 43ED96D51A38A3F06CA3DA9FE0C04C92;3569.
 Package rerunfilecheck Info: File `monografia.brf' has not changed.
-(rerunfilecheck)             Checksum: 4C833E107FDCA74A0D3D60D332738EAA;638.
+(rerunfilecheck)             Checksum: 210EC238548D5FE8ACE582DD7841AEDF;685.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -964,10 +970,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 10689 strings out of 493304
- 157675 string characters out of 6139871
+ 10695 strings out of 493304
+ 157721 string characters out of 6139871
  289576 words of memory out of 5000000
- 13822 multiletter control sequences out of 15000+600000
+ 13826 multiletter control sequences out of 15000+600000
  22326 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  36i,12n,43p,501b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -984,10 +990,10 @@ sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 fti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on monografia.pdf (41 pages, 1114094 bytes).
+Output written on monografia.pdf (41 pages, 1116350 bytes).
 PDF statistics:
- 652 PDF objects out of 1000 (max. 8388607)
- 585 compressed objects within 6 object streams
- 128 named destinations out of 1000 (max. 500000)
+ 658 PDF objects out of 1000 (max. 8388607)
+ 591 compressed objects within 6 object streams
+ 130 named destinations out of 1000 (max. 500000)
  467 words of extra memory for PDF output out of 10000 (max. 10000000)
 
