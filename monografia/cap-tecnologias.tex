@@ -67,13 +67,17 @@ dos dados gerados pelas relações entre os jogadores. A versão utilizada foi a 9.
 servidor de proxy de email, que possui código aberto, escrito por Igor Sysoev\footnote{1970, Almaty, Kazakhstan} desde 2005. De acordo com a NetCraft\footnote{NetCraft: \url{http://www.netcraft.com/}} o nginx é utilizado por 20,34\% dos sites mais movimentados da internet \cite{Nginx:Description}. 
 
 	O principal motivo pela escolha do nginx como servidor do projeto se deu pelo seu menor consumo
-de memória com relação ao Apache\footnote{Apache: http://www.apache.org/} já que a idéia do projeto é que o maior número possível de requisições sejam tratadas concomitantemente, o consumo de memória foi um ponto vital nesta decisão. 
+de memória com relação ao Apache\footnote{Apache: \url{http://www.apache.org/}} já que a idéia do projeto é que o maior número possível de requisições sejam tratadas concomitantemente, o consumo de memória foi um ponto vital nesta decisão. 
 
 %% ------------------------------------------------------------------------- %%
 \subsection{Facebook SDK}
 \label{sec:facebook_sdk}
 
-TODO falar sobre o Facebook SDK.
+	O Facebook developers\footnote{Facebook Developers: \url{https://developers.facebook.com/}} (site 
+direcionado para desenvolvedores que utilizam alguma ferramenta desponibilizada pelo facebook), possui um SDK específico para a plataforma android. Com o uso deste mecanismo é possível que qualquer aplicação android possa iteragir de diversas maneiras com a rede social. 
+
+	Neste projeto a funcionalidade de login, método que faz com que o aplicativo tenha acesso a 
+informações como nome, idade, foto, etc, além da requisição de dados dos amigos do usuário, foram os métodos utilizados do SDK e viabilizaram a funionalidade multijogador na implementação do jogo. 
 
 %% ------------------------------------------------------------------------- %%
 % \subsection{GIMP}
