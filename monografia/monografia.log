@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  17 OCT 2014 21:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  19 OCT 2014 23:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -733,22 +733,22 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 50.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 55.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 55.
 [9]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 63.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 66.
+(babel)             in language  on input line 73.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 85.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 81.
+(babel)             in language  on input line 88.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 87.
+(babel)             in language  on input line 94.
 ) (./cap-banco.tex
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
@@ -956,7 +956,7 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package rerunfilecheck Info: File `monografia.out' has not changed.
 (rerunfilecheck)             Checksum: 43ED96D51A38A3F06CA3DA9FE0C04C92;3569.
 Package rerunfilecheck Info: File `monografia.brf' has not changed.
-(rerunfilecheck)             Checksum: E15C106F72FE00917F2F4AB8691FF296;469.
+(rerunfilecheck)             Checksum: 4C833E107FDCA74A0D3D60D332738EAA;638.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -964,13 +964,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  ) 
 Here is how much of TeX's memory you used:
- 10673 strings out of 493304
- 157430 string characters out of 6139871
+ 10688 strings out of 493304
+ 157663 string characters out of 6139871
  289576 words of memory out of 5000000
- 13814 multiletter control sequences out of 15000+600000
+ 13822 multiletter control sequences out of 15000+600000
  22326 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,12n,43p,497b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,43p,501b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
@@ -984,10 +984,10 @@ sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 fti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on monografia.pdf (41 pages, 1107762 bytes).
+Output written on monografia.pdf (41 pages, 1113117 bytes).
 PDF statistics:
- 628 PDF objects out of 1000 (max. 8388607)
- 561 compressed objects within 6 object streams
- 120 named destinations out of 1000 (max. 500000)
+ 649 PDF objects out of 1000 (max. 8388607)
+ 582 compressed objects within 6 object streams
+ 127 named destinations out of 1000 (max. 500000)
  467 words of extra memory for PDF output out of 10000 (max. 10000000)
 

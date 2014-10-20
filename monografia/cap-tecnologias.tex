@@ -35,32 +35,39 @@ um plugin para a IDE Eclipse\footnote{Eclipse: \url{https://www.eclipse.org/}} d
 1987, Schriesheim, Alemanha} voltada unicamente para a plataforma android. Sua primeira versão foi
 implementada durante o ano de 2010. 
 
-	O papel de uma engine no desenvolvimento de jogos é auxiliar o desenvolvedor com abstrações
-de alto nível, para que se evite complicações e preocupações com detalhes de níveis mais baixos.
-A AndEngine oferece suporte a propriedades físicas como gravidade, peso, densidade, velocidade, 
-elasticidade, entre outros. A renderização de imagens na tela, detecção de toques simples e múltiplos,
-transições entre cenas e suporte a efeitos de sons são apenas algumas das facilidades que essa engine 
-possui. 
+	O papel de uma engine no desenvolvimento de jogos é auxiliar o desenvolvedor com abstrações de 
+alto nível, para que se evite complicações e preocupações com detalhes de níveis mais baixos. A AndEngine oferece suporte a propriedades físicas como gravidade, peso, densidade, velocidade,elasticidade, entre outros. A renderização de imagens na tela, detecção de toques simples e múltiplos,transições entre cenas e suporte a efeitos de sons são apenas algumas das facilidades que essa engine possui. 
 
-	A principal característica da engine criada por Nicolas Gramlich é que além de totalmente gratuita,
-ela possui código aberto e pode ser incorporada por qualquer pessoa a qualquer jogo, tendo fins lucrativos ou não. Isso fez com que se criasse uma comunidade de desenvolvedores que utilizam a engine, e por possuir código aberto qualquer pessoa pode propor mudanças, corrigir erros, e principalmente criar novas extensões que possam ser utilizadas por qualquer pessoa sem a necessidade
+	A principal característica da engine criada por Nicolas Gramlich é que além de totalmente gratuita
+,ela possui código aberto e pode ser incorporada por qualquer pessoa a qualquer jogo, tendo fins lucrativos ou não. Isso fez com que se criasse uma comunidade de desenvolvedores que utilizam a engine, e por possuir código aberto qualquer pessoa pode propor mudanças, corrigir erros, e principalmente criar novas extensões que possam ser utilizadas por qualquer pessoa sem a necessidade
 de atualização ou que se faça uma nova publicação para a adição da nova funcionalidade. Este processo
 é mais simples e occore de maneira natural, fazendo com que a AndEngine permaneça em constante evolução. 
 
 	Neste Projeto foi utilizada a ultima versão da AndEngine\footnote{Disponível em: \url{https://github.com/nicolasgramlich/AndEngine/tree/GLES2-AnchorCenter}}, nesta versão a engine trabalha com
-a nova versão da biblioteca gráfica OpenGL ES 2.0, além de fazer com que todos os objetos utlizados tenham como ponto de ancora (utilizados para posicionamento na tela) o seu centro geométrico. 
+a nova versão da biblioteca gráfica OpenGL ES 2.0, além de fazer com que todos os objetos utlizados tenham como ponto de ancora (utilizados para posicionamento na tela) o seu centro geométrico.
 
 %% ------------------------------------------------------------------------- %%
 \subsection{PostgreSQL}
 \label{sec:postgreSQL}
 
-TODO falar sobre o PostgreeSQL, é open source, criado no ano x, utilizei a versão y e é mantido so site z. 
+	O PostgreSQL é um SGBD Relacional, utilizado para armazenar informações de soluções de 
+informática em todas as áreas de negócios existentes, bem como administrar o acesso a estas informações \cite{PostgreSQL}. 
+
+	Este SGBD possui código aberto sob a licença BSD\footnote{BSD: Berkeley Software Distribution}
+e com isso o uso deste sistema em aplicações comerciais é autorizado de maneira gratuita \cite{PostgreSQL}.
+
+	Neste projeto o PostgreeSQL foi a ferramenta utilizada para fazer a recuperação e a persistência 
+dos dados gerados pelas relações entre os jogadores. A versão utilizada foi a 9.1.13, lançada em 20 de março de 2014. 
 
 %% ------------------------------------------------------------------------- %%
 \subsection{Nginx}
 \label{sec:nginx}
 
-TODO falar sobre o Nginx. 
+	Nginx\footnote{Lê-se engine x} é um servidor proxy HTTP e reverso, bem como um 
+servidor de proxy de email, que possui código aberto, escrito por Igor Sysoev\footnote{1970, Almaty, Kazakhstan} desde 2005. De acordo com a NetCraft\footnote{NetCraft: \url{http://www.netcraft.com/}} o nginx é utilizado por 20,34\% dos sites mais movimentados da internet \cite{Nginx:Description}. 
+
+	O principal motivo pela escolha do nginx como servidor do projeto se deu pelo seu menor consumo
+de memória com relação ao Apache\footnote{Apache: http://www.apache.org/} já que a idéia do projeto é que o maior número possível de requisições sejam tratadas concomitantemente, o consumo de memória foi um ponto vital nesta decisão. 
 
 %% ------------------------------------------------------------------------- %%
 \subsection{Facebook SDK}

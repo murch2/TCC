@@ -5,45 +5,46 @@ The style file: alpha-ime.bst
 Database file #1: bibliografia.bib
 Warning--to sort, need author or key in AndHist
 Warning--to sort, need author or key in AndPro
-You've used 6 entries,
+Warning--to sort, need author or key in Nginx:Description
+You've used 8 entries,
             2543 wiz_defined-function locations,
-            596 strings with 5730 characters,
-and the built_in function-call counts, 1566 in all, are:
-= -- 159
-> -- 34
-< -- 4
-+ -- 9
-- -- 8
-* -- 81
-:= -- 241
-add.period$ -- 21
-call.type$ -- 6
-change.case$ -- 29
-chr.to.int$ -- 6
-cite$ -- 10
-duplicate$ -- 65
-empty$ -- 147
-format.name$ -- 16
-if$ -- 334
+            606 strings with 5895 characters,
+and the built_in function-call counts, 2048 in all, are:
+= -- 204
+> -- 43
+< -- 5
++ -- 11
+- -- 10
+* -- 107
+:= -- 308
+add.period$ -- 26
+call.type$ -- 8
+change.case$ -- 36
+chr.to.int$ -- 8
+cite$ -- 14
+duplicate$ -- 91
+empty$ -- 199
+format.name$ -- 20
+if$ -- 440
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 36
-num.names$ -- 12
-pop$ -- 48
+missing$ -- 2
+newline$ -- 45
+num.names$ -- 15
+pop$ -- 66
 preamble$ -- 1
-purify$ -- 34
+purify$ -- 45
 quote$ -- 0
-skip$ -- 60
+skip$ -- 81
 stack$ -- 0
-substring$ -- 45
-swap$ -- 5
-text.length$ -- 4
-text.prefix$ -- 4
+substring$ -- 60
+swap$ -- 7
+text.length$ -- 5
+text.prefix$ -- 5
 top$ -- 0
-type$ -- 48
-warning$ -- 2
-while$ -- 8
-width$ -- 7
-write$ -- 81
-(There were 2 warnings)
+type$ -- 60
+warning$ -- 3
+while$ -- 10
+width$ -- 9
+write$ -- 103
+(There were 3 warnings)
