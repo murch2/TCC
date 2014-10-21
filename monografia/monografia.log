@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  20 OCT 2014 11:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  20 OCT 2014 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -507,46 +507,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 140--145
  []
 
 
-Overfull \hbox (5.83379pt too wide) in paragraph at lines 151--153
-\T1/cmr/m/n/10.95 sá-vel pelo sis-tema) pos-sui uma loja on-line de apli-ca-ti-
-vos,a go-o-gle play (https://play.google.com/store)
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 164.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 164.
 [5]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 164.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 171.
+(babel)             in language  on input line 164.
  [6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 172--177
+Underfull \hbox (badness 10000) in paragraph at lines 165--170
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+Underfull \hbox (badness 10000) in paragraph at lines 171--173
 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 178.
 [7]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 178.
  [8
 
 ] (./monografia.toc
@@ -559,106 +553,106 @@ Package babel Info: Redefining portuges shorthand "|
 \openout5 = `monografia.toc'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 181.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 181.
  [10]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 181.
 
-Overfull \hbox (6.58871pt too wide) in paragraph at lines 189--195
+Overfull \hbox (6.58871pt too wide) in paragraph at lines 182--188
 [][] 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 199.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 199.
 [11
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 199.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 199.
  [12
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 199.
  (./monografia.lof)
 \tf@lof=\write6
 \openout6 = `monografia.lof'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 200.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 200.
  [13]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 200.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 200.
  [14
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 207.
+(babel)             in language  on input line 200.
  (./monografia.lot)
 \tf@lot=\write7
 \openout7 = `monografia.lot'.
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 211.
+(babel)             in language  on input line 204.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 211.
+(babel)             in language  on input line 204.
  [15]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 211.
+(babel)             in language  on input line 204.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 211.
+(babel)             in language  on input line 204.
  [16
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 212.
  [1
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 212.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 219.
+(babel)             in language  on input line 212.
 
 [2] (./cap-introducao.tex
 Cap\'{\i }tulo 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 82.
+(babel)             in language  on input line 83.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 89.
+(babel)             in language  on input line 93.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 89.
+(babel)             in language  on input line 93.
 [3
 
 ]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 100.
+(babel)             in language  on input line 101.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 113.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 119.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 127.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 134.
+(babel)             in language  on input line 135.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 141.
+(babel)             in language  on input line 142.
 ) (./cap-conceitos.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -690,27 +684,30 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 87.
 [5
 
-] <./figuras/T-Mobile_G1.png, id=409, 149.96025pt x 120.45pt>
+] <./figuras/T-Mobile_G1.png, id=421, 149.96025pt x 120.45pt>
 File: ./figuras/T-Mobile_G1.png Graphic file (type png)
 
 <use ./figuras/T-Mobile_G1.png>
-Package pdftex.def Info: ./figuras/T-Mobile_G1.png used on input line 94.
+Package pdftex.def Info: ./figuras/T-Mobile_G1.png used on input line 93.
 (pdftex.def)             Requested size: 187.33015pt x 150.47205pt.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 106.
 
-<./figuras/android.jpg, id=416, 602.25pt x 579.16376pt>
+<./figuras/android.jpg, id=426, 602.25pt x 579.16376pt>
 File: ./figuras/android.jpg Graphic file (type jpg)
 
 <use ./figuras/android.jpg>
-Package pdftex.def Info: ./figuras/android.jpg used on input line 127.
+Package pdftex.def Info: ./figuras/android.jpg used on input line 125.
 (pdftex.def)             Requested size: 234.16628pt x 225.19247pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 131.
+(babel)             in language  on input line 133.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 131.
- [6 <./figuras/T-Mobile_G1.png>])
-(./cap-tecnologias.tex
+(babel)             in language  on input line 133.
+[6 <./figuras/T-Mobile_G1.png>]) (./cap-tecnologias.tex
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
@@ -731,30 +728,41 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 9.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 47.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 52.
+(babel)             in language  on input line 51.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 52.
+(babel)             in language  on input line 51.
 [9]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 60.
+(babel)             in language  on input line 59.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 69.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 86.
+(babel)             in language  on input line 85.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 89.
+(babel)             in language  on input line 88.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 95.
-) (./cap-banco.tex
+(babel)             in language  on input line 100.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 105.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 105.
+ [10]) (./cap-banco.tex
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [10]
+ [11]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 2.
+ [12
+
+]
 Cap\'{\i }tulo 4.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
@@ -771,14 +779,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [11
-
-]
+ [13]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [12
+ [14
 
 ]
 Cap\'{\i }tulo 5.
@@ -797,12 +803,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [13]
+ [15]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [14
+ [16
 
 ]
 Cap\'{\i }tulo 6.
@@ -831,12 +837,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [15]
+ [17]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [16]
+ [18]
 Cap\'{\i }tulo 7.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
@@ -849,14 +855,14 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [17
+ [19
 
 ]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [18
+ [20
 
 ]
 Cap\'{\i }tulo 8.
@@ -871,12 +877,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [19]
+ [21]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [20
+ [22
 
 ]
 Cap\'{\i }tulo 9.
@@ -887,12 +893,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [21]
+ [23]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
- [22
+ [24
 
 ]
 Cap\'{\i }tulo 10.
@@ -900,15 +906,15 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 )
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 234.
+(babel)             in language  on input line 227.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 234.
- [23]
+(babel)             in language  on input line 227.
+ [25]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 234.
+(babel)             in language  on input line 227.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 234.
- [24
+(babel)             in language  on input line 227.
+ [26
 
 ] (./monografia.bbl (./monografia.brf)
 \tf@brf=\write8
@@ -946,37 +952,49 @@ Underfull \hbox (badness 2772) in paragraph at lines 37--37
 tics.  [][]$http : / / www .
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+[]\T1/cmr/m/n/10.95 Bndes faz es-tudo so-bre ga-mes no bra-sil para es-ti-mu-la
+r in-dús-tria.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--44
+\T1/cmr/m/n/10.95 http://computerworld.com.br/negocios/2014/04/02/bndes-faz-est
+udo-sobre-games-
+ []
+
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 248.
+(babel)             in language  on input line 241.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 248.
- [25
+(babel)             in language  on input line 241.
+ [27
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 248.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
  (./monografia.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
 Package rerunfilecheck Info: File `monografia.out' has not changed.
-(rerunfilecheck)             Checksum: 43ED96D51A38A3F06CA3DA9FE0C04C92;3569.
+(rerunfilecheck)             Checksum: 4FFA452119B86D0FAFF5612B4C967486;3554.
 Package rerunfilecheck Info: File `monografia.brf' has not changed.
-(rerunfilecheck)             Checksum: 210EC238548D5FE8ACE582DD7841AEDF;685.
+(rerunfilecheck)             Checksum: 400BEB27F12F2A8DE592C065241FF664;839.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 241.
  ) 
 Here is how much of TeX's memory you used:
- 10695 strings out of 493304
- 157721 string characters out of 6139871
- 289576 words of memory out of 5000000
- 13826 multiletter control sequences out of 15000+600000
+ 10709 strings out of 493304
+ 157913 string characters out of 6139871
+ 290576 words of memory out of 5000000
+ 13834 multiletter control sequences out of 15000+600000
  22326 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,12n,43p,501b,477s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,43p,501b,478s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
@@ -990,10 +1008,10 @@ sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/s
 hare/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/typ
 e1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 fti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb>
-Output written on monografia.pdf (41 pages, 1116350 bytes).
+Output written on monografia.pdf (43 pages, 1118783 bytes).
 PDF statistics:
- 658 PDF objects out of 1000 (max. 8388607)
- 591 compressed objects within 6 object streams
- 130 named destinations out of 1000 (max. 500000)
+ 682 PDF objects out of 1000 (max. 8388607)
+ 612 compressed objects within 7 object streams
+ 136 named destinations out of 1000 (max. 500000)
  467 words of extra memory for PDF output out of 10000 (max. 10000000)
 
