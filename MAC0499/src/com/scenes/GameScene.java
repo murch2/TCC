@@ -13,6 +13,7 @@ import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.Text;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +25,7 @@ import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
+import com.model.TipLayer;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
@@ -33,6 +35,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	
 	private MenuScene tipsMenu = new MenuScene(ResourcesManager.getInstance().camera);
 	private Requests currentRequest; 
+	private TipLayer tipLayer; 
 	
 	private enum Requests {
 		RANDOM_CARD, 
@@ -47,20 +50,22 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 	private void createItensScene (JSONObject json) {
 		createBackground();
-		createTips(json); 
-		createPopup(); 
+		createTips(json);  
 	}
-
-//	Posso ficar trocando de scene com da popUp com a menu, ou tentar tirar a menu, posicionar os items diretamente 
-//	e colocar essa scene por cima com opacidade 0.95.
 	
-	private void createPopup () {
-		Scene s = new Scene(); 
-		Sprite t = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.backgroundChoiceRegion, vbom); 
-		t.setWidth(200); 
-		t.setHeight(200);
-		s.attachChild(t); 
-		this.setChildSceneModal(s);
+	private void createTipLayer(String tipString) {
+		tipsMenu.setUserData(tipsMenu.getOnMenuItemClickListener());
+		tipsMenu.setOnMenuItemClickListener(null); 
+		tipLayer = new TipLayer(){
+			@Override
+			public void onDetached() {
+				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData()); 
+				super.onDetached();
+			}
+		};
+		tipLayer.registerMenu(this);
+		tipLayer.setTipText(tipString); 
+		tipsMenu.attachChild(tipLayer);
 	}
 	
 	private void createBackground() {
@@ -79,12 +84,11 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion[i], vbom), 0.8f, 1);
 				tipItem.setUserData(json.getString("texto")); 
 				tipsMenu.addMenuItem(tipItem);
-				System.out.println("X depois de add = " + tipsMenu.getChildByIndex(i).getX());
 			}
 			
 			tipsMenu.buildAnimations();
 			tipsMenu.setBackgroundEnabled(false);
-			tipsMenu.setOnMenuItemClickListener(this); 
+			tipsMenu.setOnMenuItemClickListener(this);  
 			tipsMenu = setMenuLayoutToHorizontal(tipsMenu, 1);
 			setChildScene(tipsMenu);
 			
@@ -119,8 +123,10 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) { 
-		currentRequest = Requests.FINISH_NEWROUND; 
-		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, false));
+		
+		createTipLayer(pMenuItem.getUserData().toString()); 
+//		currentRequest = Requests.FINISH_NEWROUND; 
+//		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound(3459, false));
 		return true;
 	}
 

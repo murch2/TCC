@@ -11,9 +11,14 @@ class ExecuteQuery {
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
 		$result = $this->setInfo($query);
 
+
+		$this->log("SignUp 1");
+
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
+
+		$this->log("SignUp 2");
 
 		for ($i=1; $i < 5; $i++) { 
 			$query = "INSERT INTO HISTORICOESTATISTICA VALUES (". $json['userID'] .", $i, 0, 0); ";
@@ -25,7 +30,10 @@ class ExecuteQuery {
 			}
 		}
 
-		return $this->trataResult($result);
+		$this->log("SignUp 3");
+
+
+		return $this->ok();
 	}
 
 	function UserInfoQuery($userID) {
@@ -66,6 +74,7 @@ class ExecuteQuery {
 		// Quando o primeiro jogador for jogar e tiver status 4 eu posso mandar as infos pra ele ver e atualizar as infos do jogo
 
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, -1, -1, 0); ";
+		$this->log("Query que está dando erro = " . $query);
 		$result = $this->setInfo($query);
 	
 		if ($this->trataResult($result)['status'] == 'error') {

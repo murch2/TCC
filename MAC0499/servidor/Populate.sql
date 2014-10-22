@@ -4,8 +4,9 @@ DELETE FROM DICAS;
 ALTER SEQUENCE tipo_carta_id_seq RESTART WITH 1;
 ALTER SEQUENCE cartas_id_seq RESTART WITH 1;
 
-INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3, null); 
-INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3, null); 
+INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3, 'https://scontent-b-mia.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10696211_712180428858437_2864614006783494214_n.jpg?oh=37f839472ca06d5a2f48d67f5e9750db&oe=54BBDB2A'); 
+INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3, 'https://scontent-b-mia.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10511227_668037466624053_2740939400989464565_n.jpg?oh=18d33e1052b5f8c061aff8794e3d36e1&oe=54BAE839'); 
+INSERT INTO JOGADOR VALUES (678359188912185,'Rodrigo Duarte Louro',3,3, 'https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/381838_200435380037904_66433787_n.jpg?oh=c97436e0cec6445c3ab6f4c218b8062a&oe=54ED65BD&__gda__=1421544218_d009ab474940c47fe5631bfc2cfbfbdc'); 
 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('História do Brasil'); 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('Personalidades do Brasil'); 

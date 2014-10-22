@@ -59,7 +59,7 @@ CREATE TABLE HISTORICOJOGO (
 	vitorias2				INT CHECK (vitorias2 >= 0), 
 
 	PRIMARY KEY (id_jogador1, id_jogador2), 
-	FOREIGN KEY (id_jogador1, id_jogador2) REFERENCES DESAFIOS (id_jogador1, id_jogador2) ON DELETE CASCADE ON UPDATE CASCADE, 
+	FOREIGN KEY (id_jogador1, id_jogador2) REFERENCES DESAFIOS (id_jogador1, id_jogador2) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE HISTORICOESTATISTICA (

@@ -75,6 +75,9 @@ public class ResourcesManager {
     
     //GameScene
     public ITextureRegion[] btnTipRegion;
+    public ITextureRegion btnMoreTipsRegion;
+    public ITextureRegion btnAnswerRegion;
+    
     private BuildableBitmapTextureAtlas gameSceneAtlas; 
     
     public static ResourcesManager getInstance() {
@@ -243,7 +246,7 @@ public class ResourcesManager {
     public synchronized void loadGameScene() {
     	btnTipRegion = new ITextureRegion[10]; 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
-    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
+    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 700, 600, TextureOptions.BILINEAR);
     	String name = ""; 
     	
     	for (int i = 0; i < btnTipRegion.length; i++) {
@@ -251,6 +254,10 @@ public class ResourcesManager {
 			System.out.println("name = " + name);
 			btnTipRegion[i] = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, name);
 		}
+    	
+    	btnMoreTipsRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "moreTips.png");
+    	btnAnswerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "answer.png");
+
     		
     	try {
 			this.gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));

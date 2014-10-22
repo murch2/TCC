@@ -10,6 +10,9 @@ public class Constants {
 	public static final int HEIGHT_PICKER_CELL = 120; 
 	public static final float CENTER_X = CAMERA_WIDTH * 0.5f; 
 	public static final float CENTER_Y = CAMERA_HEIGHT * 0.5f; 
+	public static String MAX_TIP = "                                                                                 " +
+	"                                                                                                              " +
+	"                                                                                                              "; 
 	
 	private Constants () {
 		throw new AssertionError();

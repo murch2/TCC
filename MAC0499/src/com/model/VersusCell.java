@@ -65,6 +65,7 @@ public class VersusCell extends Sprite {
 		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
 			@Override
 			public void run() {
+				System.out.println("Foto = " + url);
 				Sprite updatePicture = ImageDownloader.testeImage(url);
 				updatePicture.setWidth(picture.getWidth());
 				updatePicture.setHeight(picture.getHeight()); 
