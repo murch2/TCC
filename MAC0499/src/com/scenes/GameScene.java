@@ -35,7 +35,8 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	
 	private MenuScene tipsMenu = new MenuScene(ResourcesManager.getInstance().camera);
 	private Requests currentRequest; 
-	private TipLayer tipLayer; 
+	private TipLayer tipLayer;
+	private String cardName; 
 	
 	private enum Requests {
 		RANDOM_CARD, 
@@ -49,6 +50,11 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 
 	private void createItensScene (JSONObject json) {
+		try {
+			cardName = json.getJSONObject("dados").getString("nomeCarta");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		createBackground();
 		createTips(json);  
 	}
@@ -56,10 +62,22 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private void createTipLayer(String tipString) {
 		tipsMenu.setUserData(tipsMenu.getOnMenuItemClickListener());
 		tipsMenu.setOnMenuItemClickListener(null); 
-		tipLayer = new TipLayer(){
+		tipLayer = new TipLayer(cardName){
 			@Override
 			public void onDetached() {
-				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData()); 
+				if (tipLayer.tryToAnswer) {
+//					Fazer feedback de certo ou errado aqui
+					if (tipLayer.answerString != null && tipLayer.answerString.equals(cardName)) {
+						System.out.println("YOU ROCK!!!");
+//						Fazer um layer Com a foto do cara. escrito que vc venceu e bla bla bla
+					} else {
+						
+					}
+				} 
+				else {
+//					Acho que aqui num precisa fazer nada. 
+				}
+				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData());
 				super.onDetached();
 			}
 		};
@@ -73,6 +91,11 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 	
 	private void createTips(JSONObject json){
+		try {
+			System.out.println("PORRA = " + json.toString(4));
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
 		IMenuItem tipItem;
 		JSONArray tipsArray;
 		try {	
@@ -83,6 +106,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 				json = tipsArray.getJSONObject(i); 
 				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion[i], vbom), 0.8f, 1);
 				tipItem.setUserData(json.getString("texto")); 
+//				dados -> nomeCarta
 				tipsMenu.addMenuItem(tipItem);
 			}
 			

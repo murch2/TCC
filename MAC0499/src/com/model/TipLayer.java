@@ -12,7 +12,9 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
+import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 
 import android.R;
@@ -32,27 +34,30 @@ import com.util.Constants;
 public class TipLayer extends Sprite {
 
 	private Text tipText; 
+	public String answerString; 
 	private IMenuItem moreTipsItem; 
 	private IMenuItem answerItem;
 	private final int MORE_TIPS = 1; 
 	private final int ANSWER = 2; 
+	public boolean tryToAnswer = false; 
 	//	Esse layer precisa de um botão que quando clicado executa um callback passado na criação (que vai deixar o 
 	//	layer invisivel no game) 
 	//	Também precisa de algum jeito desabilitar o toque do menu de trás quando o layer estiver aparecendo
 
-	public TipLayer() {
+	public TipLayer(String cardName) {
 		super(0, 0, 400, 500, ResourcesManager.getInstance().backgroundChoiceRegion, ResourcesManager.getInstance().vbom); 
 		setAlpha(0.85f); 
 		setPosition(Constants.CENTER_X + 200 , Constants.CENTER_Y);
 		createTipText();
-		createButtons(); 
+		createButtons();
 	}
 
 	private void createTipText() {
-		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, ResourcesManager.getInstance().vbom);
-		tipText.setAnchorCenterX(0.0f);
+		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, new TextOptions(HorizontalAlign.CENTER), 
+				ResourcesManager.getInstance().vbom);
+		tipText.setAnchorCenterX(0.5f);
 		tipText.setAnchorCenterY(1.0f);
-		tipText.setPosition(getWidth() * 0.05f, getHeight() * 0.95f);
+		tipText.setPosition(getWidth() * 0.5f, getHeight() * 0.95f);
 		tipText.setColor(Color.BLACK);
 		attachChild(tipText); 
 	}
@@ -87,6 +92,7 @@ public class TipLayer extends Sprite {
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) {
+					tryToAnswer = true; 
 					answerItem.setScale(0.8f);
 					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
 						@Override
@@ -107,7 +113,8 @@ public class TipLayer extends Sprite {
 
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
-											System.out.println("SE PAH" + nameEditText.getText().toString());
+											answerString = nameEditText.getText().toString();
+											moreTipsItem.getParent().detachSelf();
 										}
 									}); 
 
