@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.managers.GameManager;
+import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
@@ -72,7 +73,9 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadNewGameScene(); 
 	}
 
 	@Override
@@ -84,11 +87,9 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 		switch (pMenuItem.getID()) {
 			case ITEM_FACEBOOK_FRIEND:
 				SceneManager.getInstance().createNewFriendPickerScene();
-//				loading.insertLoadingLayer(camera); 
 				return true; 
 			case ITEM_RANDOM_OPPONNENT:
 				new HTTPPostRequester().asyncPost(this, MakeParameters.randomOpponent());
-//				loading.insertLoadingLayer(camera); 
 				return true; 
 
 			default:

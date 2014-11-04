@@ -20,6 +20,7 @@ import com.facebook.Response;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import com.managers.GameManager;
+import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
@@ -44,7 +45,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 	
 	@Override
 	public void onBackKeyPressed() {
-
+		
 	}
 
 	@Override
@@ -54,7 +55,9 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 
 	@Override
 	public void disposeScene() {
-
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadConnectScene(); 
 	}
 
 	//Mudar para uma imagem talvez depois. 

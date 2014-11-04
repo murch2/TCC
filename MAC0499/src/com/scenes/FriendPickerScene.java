@@ -77,7 +77,9 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadFriendPickerScene();  
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import org.andengine.ui.IGameInterface.OnCreateSceneCallback;
 import com.scenes.BaseScene;
 import com.scenes.ChoiceScene;
 import com.scenes.ConnectScene;
+import com.scenes.EndGameScene;
 import com.scenes.FriendPickerScene;
 import com.scenes.GameScene;
 import com.scenes.MainMenuScene;
@@ -31,6 +32,8 @@ public class SceneManager {
 	private BaseScene friendPickerScene;
 	private BaseScene choiseScene;
 	private BaseScene gameScene; 
+	private BaseScene endGameScene; 
+	
 	
 	public static SceneManager getInstance() {
 		return INSTANCE; 
@@ -43,7 +46,8 @@ public class SceneManager {
 		NEWGAME_SCENE, 
 		FRIENDPICKER_SCENE, 
 		CHOISE_SCENE, 
-		GAME_SCENE
+		GAME_SCENE, 
+		ENDGAME_SCENE,
 	}
 	
 	public void setScene(BaseScene scene) {
@@ -75,6 +79,8 @@ public class SceneManager {
 			break; 
 		case GAME_SCENE:
 			setScene(gameScene);
+		case ENDGAME_SCENE: 
+			setScene(endGameScene); 
 		default:
 			break;
 		}
@@ -130,6 +136,12 @@ public class SceneManager {
 		ResourcesManager.getInstance().loadGameScene();  
 		gameScene = new GameScene(); 
 		setScene(gameScene);
+	}
+	
+	public void createEndGameScene() {
+		ResourcesManager.getInstance().loadEndGameScene();  
+		endGameScene = new EndGameScene(); 
+		setScene(endGameScene);
 	}
 	
 	public BaseScene getCurrentScene() {

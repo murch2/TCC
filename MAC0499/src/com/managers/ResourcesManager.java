@@ -105,59 +105,82 @@ public class ResourcesManager {
     }
     
     public synchronized void loadConnectScene() {
-    	loadFonts(); 
-    	loadConnectGraphics(); 
+    	if (font == null) {
+    		createFont(); 
+    	}
+    	
+    	if (facebookConnectMenuAtlas == null) {
+    		createConnectGraphics(); 
+    	}
+    	font.load(); 
+    	facebookConnectMenuAtlas.load();
     }
     
-    public synchronized void unloadConnectScene() {
-    	System.gc();
-    }
-   
-    private synchronized void loadFonts() {
-        FontFactory.setAssetBasePath("font/");
-        final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "font.ttf", 35, true, Color.WHITE, 2, Color.BLACK);
-        font.load();
-    }
-    
-    private synchronized void loadConnectGraphics() {
+    public void createConnectGraphics() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/connect/"); 
     	facebookConnectMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 470, 120, TextureOptions.BILINEAR); 
     	facebookConnectRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(facebookConnectMenuAtlas, activity, "facebookLoginBtn.png");
-    	
     	try {
-			this.facebookConnectMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.facebookConnectMenuAtlas.load(); 
+			facebookConnectMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
+    public synchronized void unloadConnectScene() {
+    	facebookConnectMenuAtlas.unload(); 
+    	System.gc();
+    }
+   
+    private void createFont() {
+    	FontFactory.setAssetBasePath("font/");
+        final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "font.ttf", 35, true, Color.WHITE, 2, Color.BLACK);
+    }
+    
+    private synchronized void loadConnectGraphics() {
+    	
+    }
+    
     public synchronized void loadMainMenuScene() {
-    	loadFonts(); 
-    	loadHeader();
-    	loadMainMenuGraphics(); 
+    	if (font == null) {
+    		createFont(); 
+    	}
+    	 
+    	if (headerAtlas == null) {
+    		createHeader(); 
+    	}
+    	
+    	if (mainMenuAtlas == null) {
+    		createMainMenuGraphics(); 
+    	}
+    	
+    	font.load();
+    	headerAtlas.load();
+    	mainMenuAtlas.load(); 
     }
 
     public synchronized void unloadMainMenuScene() {
-
+    	headerAtlas.unload();
+    	mainMenuAtlas.unload();
     }
     
-    private synchronized void loadMainMenuGraphics() {
+    private synchronized void createMainMenuGraphics() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/mainMenu/"); 
     	mainMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR); 
     	newGameMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnNewGame.png");
     	gameItemBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "backGroundCell.png");
     	defaultPictureRegion2 = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "man_default.png");
     	try {
-			this.mainMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.mainMenuAtlas.load(); 
+			mainMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			 
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
-    public synchronized void loadHeader() {
+
+    public synchronized void createHeader() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/Header/"); 
     	headerAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 750, 300, TextureOptions.BILINEAR); 
     	headerBackgroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "GreenBar.png");
@@ -165,61 +188,67 @@ public class ResourcesManager {
     	loadingRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "pixel.png");
     	loadingIconRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(headerAtlas, activity, "loadingIcon.png");
     	try {
-			this.headerAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.headerAtlas.load(); 
+			this.headerAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1))); 
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
-    public synchronized void unloadHeader() {
-    	
+    public synchronized void loadNewGameScene() {
+    	if (newGameMenuAtlas == null) {
+    		createNewGameScene(); 
+    	}
+    	newGameMenuAtlas.load();
     }
     
-    public synchronized void loadNewGameScene() {
+    private void createNewGameScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/newGame/"); 
     	newGameMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 390, 180, TextureOptions.BILINEAR); 
     	facebookFriendsMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(newGameMenuAtlas, activity, "btnFacebookFriends.png");
     	randomOpponentMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(newGameMenuAtlas, activity, "btnRandomOpponent.png");
     	try {
-			this.newGameMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.newGameMenuAtlas.load(); 
+			newGameMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1))); 
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
-    
     public synchronized void unloadNewGameScene() {
-
+    	newGameMenuAtlas.unload(); 
     }
     
     public synchronized void loadFriendPickerScene() {
-    	loadFriendPickerCell(); 
+    	if (friendPickerCellAtlas == null) {
+    		createFriendPickerCell(); 
+    	}
+    	friendPickerCellAtlas.load(); 
     }
     
     public synchronized void unloadFriendPickerScene() {
-
+    	friendPickerCellAtlas.unload(); 
     }
     
-    private synchronized void  loadFriendPickerCell() {
+    private void createFriendPickerCell() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/friendPicker/"); 
     	friendPickerCellAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 490, 210, TextureOptions.BILINEAR); 
     	friendPickerCellBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "backGroundCell.png");
     	defaultPictureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(friendPickerCellAtlas, activity, "man_default.png");
     	try {
 			this.friendPickerCellAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.friendPickerCellAtlas.load(); 
+			
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
-    private synchronized void  unloadFriendPickerCell() {
-    
+    public synchronized void loadChoiceScene() {
+    	if (choiceSceneAtlas == null) {
+    		createChoiceScene();
+    	}
+    	choiceSceneAtlas.load(); 
     }
     
-    public synchronized void loadChoiceScene() {
+    public synchronized void createChoiceScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/choiseScene/");
     	choiceSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
     	btnPlayBigRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "btnPlayBig.png"); 
@@ -233,17 +262,24 @@ public class ResourcesManager {
         roulleteRightBotRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(choiceSceneAtlas, activity, "purpleCircle.png");
         
         try {
-			this.choiceSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.choiceSceneAtlas.load(); 
+			choiceSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
     public synchronized void unloadChoiceScene() {
+    	choiceSceneAtlas.unload(); 
     }
     
     public synchronized void loadGameScene() {
+    	if (gameSceneAtlas == null) {
+    		createGameScene(); 
+    	}
+    	gameSceneAtlas.load();
+    }
+    
+    public synchronized void createGameScene() {
     	btnTipRegion = new ITextureRegion[10]; 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
     	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 700, 600, TextureOptions.BILINEAR);
@@ -257,18 +293,27 @@ public class ResourcesManager {
     	
     	btnMoreTipsRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "moreTips.png");
     	btnAnswerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "answer.png");
-
     		
     	try {
-			this.gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
-			this.gameSceneAtlas.load(); 
+			gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+			 
 		} catch (TextureAtlasBuilderException e) {
 			e.printStackTrace();
 		}
     }
     
     public synchronized void unloadGameScene() {
-    
+    	gameSceneAtlas.unload();
     }
+    
+    public synchronized void loadEndGameScene() {
+//        Aqui vou precisar de um botão de next. 
+    }
+    
+    public synchronized void unloadEndGameScene() {
+        
+    }
+    
+    
 
 }

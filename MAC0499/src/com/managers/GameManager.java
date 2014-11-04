@@ -16,7 +16,11 @@ public class GameManager {
 	private int userCoins; 
 	private int userPowerUps;
 	private String userPictureURL;
-	private int cardTypeID; 
+	private int cardTypeID;
+	private String cardName; 
+	private int myScore; 
+	private boolean win; 
+	private String cardPictureURL; 
 	
 	private String friendID;
 	private String friendPictureURL; 
@@ -112,5 +116,37 @@ public class GameManager {
 
 	public void setFriendName(String friendName) {
 		this.friendName = friendName;
+	}
+
+	public int getMyScore() {
+		return myScore;
+	}
+
+	public void setMyScore(int myScore) {
+		this.myScore = myScore;
+	}
+
+	public String getCardName() {
+		return cardName;
+	}
+
+	public void setCardName(String cardName) {
+		this.cardName = cardName;
+	}
+
+	public boolean isWin() {
+		return win;
+	}
+
+	public void setWin(boolean win) {
+		this.win = win;
+	}
+
+	public String getCardPictureURL() {
+		return cardPictureURL;
+	}
+
+	public void setCardPictureURL(String cardPictureURL) {
+		this.cardPictureURL = cardPictureURL;
 	}
 }

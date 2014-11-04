@@ -4,14 +4,12 @@
  */
 package com.scenes;
 
-import org.andengine.entity.Entity;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,9 +26,9 @@ import com.model.GameItem;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
-import com.util.LoadingLayer;
 import com.util.Constants;
 import com.util.FacebookFacade;
+import com.util.LoadingLayer;
 
 public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback, IOnMenuItemClickListener {
 
@@ -56,7 +54,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	private void createItensScene() {
 		createBtnNewGame();
 		createMenuMyGames(); 
-		createHUD(); 
+		createHUD();
 	}
 
 	public void putLoading() {
@@ -122,7 +120,9 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadMainMenuScene(); 
 	}
  
 	@Override

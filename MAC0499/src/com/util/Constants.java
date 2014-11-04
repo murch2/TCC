@@ -14,6 +14,9 @@ public class Constants {
 	"                                                                                                              " +
 	"                                                                                                              "; 
 	
+	public static final int INITIAL_SCORE = 20000; 
+	public static final int SCORE_LOSE_BY_TIP = 1500;
+	
 	private Constants () {
 		throw new AssertionError();
 	}

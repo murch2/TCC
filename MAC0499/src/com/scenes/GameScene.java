@@ -14,6 +14,8 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
+import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +25,7 @@ import android.view.MenuItem;
 
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
+import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
 import com.model.TipLayer;
@@ -37,6 +40,9 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private Requests currentRequest; 
 	private TipLayer tipLayer;
 	private String cardName; 
+	private String cardPictureURL;
+	private Text myScoreText;
+	private boolean[] tipsRead; 
 	
 	private enum Requests {
 		RANDOM_CARD, 
@@ -51,12 +57,18 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 	private void createItensScene (JSONObject json) {
 		try {
+			System.out.println("Json = " + json.toString(4));
 			cardName = json.getJSONObject("dados").getString("nomeCarta");
+			GameManager.getInstance().setCardName(cardName); 
+			cardPictureURL = json.getJSONObject("dados").getString("foto"); 
+			GameManager.getInstance().setCardPictureURL(cardPictureURL); 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		GameManager.getInstance().setMyScore(Constants.INITIAL_SCORE);
 		createBackground();
 		createTips(json);  
+		createMyScoreText(); 
 	}
 	
 	private void createTipLayer(String tipString) {
@@ -65,20 +77,23 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		tipLayer = new TipLayer(cardName){
 			@Override
 			public void onDetached() {
+				boolean tryToAnswer = false; 
 				if (tipLayer.tryToAnswer) {
-//					Fazer feedback de certo ou errado aqui
+					tryToAnswer = true; 
+//					colocar o layer de loading. 
 					if (tipLayer.answerString != null && tipLayer.answerString.equals(cardName)) {
-						System.out.println("YOU ROCK!!!");
-//						Fazer um layer Com a foto do cara. escrito que vc venceu e bla bla bla
+						GameManager.getInstance().setWin(true); 
 					} else {
-						
-					}
+						GameManager.getInstance().setWin(false); 
+					} 
 				} 
 				else {
 //					Acho que aqui num precisa fazer nada. 
 				}
 				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData());
 				super.onDetached();
+				if (tryToAnswer)
+					SceneManager.getInstance().createEndGameScene();
 			}
 		};
 		tipLayer.registerMenu(this);
@@ -101,12 +116,13 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		try {	
 			tipsArray = json.getJSONObject("dados").getJSONArray("dicas");
 			tipsMenu.setPosition(- Constants.CAMERA_WIDTH * 0.4f, 0);
-			 
+			tipsRead = new boolean[10]; 
+			
 			for (int i = 0; i < 10; i++) {
+				tipsRead[i] = false; 
 				json = tipsArray.getJSONObject(i); 
 				tipItem = new ScaleMenuItemDecorator(new SpriteMenuItem(i, resourcesManager.btnTipRegion[i], vbom), 0.8f, 1);
 				tipItem.setUserData(json.getString("texto")); 
-//				dados -> nomeCarta
 				tipsMenu.addMenuItem(tipItem);
 			}
 			
@@ -121,6 +137,16 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		}
 	}
 	
+	private void createMyScoreText() { 		
+		myScoreText = new Text(0, 0, ResourcesManager.getInstance().font, "Pontos: " + String.valueOf(GameManager.getInstance().getMyScore()), 
+				new TextOptions(HorizontalAlign.LEFT), 
+				ResourcesManager.getInstance().vbom);
+		myScoreText.setColor(Color.WHITE);
+		myScoreText.setAnchorCenter(0.0f, 0.5f);
+		myScoreText.setPosition(10, Constants.CAMERA_HEIGHT * 0.05f);
+		attachChild(myScoreText); 
+	}
+	
 	@Override
 	public void onBackKeyPressed() {
 		// TODO Auto-generated method stub
@@ -133,13 +159,17 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		camera.setHUD(null); 
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadGameScene();  
 	}
  
 	@Override
 	public void onResponse(JSONObject json) {
 		if (currentRequest == Requests.RANDOM_CARD)
 			createItensScene(json);
+		
 		else if (currentRequest == Requests.FINISH_NEWROUND)
 			System.out.println("DEBUG - Retornou do finishNewRound devo ir para MainMenu");
 	}
@@ -147,6 +177,13 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) { 
+		
+		int id = pMenuItem.getID();
+		if (tipsRead[id] == false) {
+			GameManager.getInstance().setMyScore(GameManager.getInstance().getMyScore() - Constants.SCORE_LOSE_BY_TIP);
+			myScoreText.setText("Pontos: " + String.valueOf(GameManager.getInstance().getMyScore())); 
+			tipsRead[id] = true; 
+		}
 		
 		createTipLayer(pMenuItem.getUserData().toString()); 
 //		currentRequest = Requests.FINISH_NEWROUND; 

@@ -254,7 +254,9 @@ HTTPResponseListener, IOnMenuItemClickListener {
 
 	@Override
 	public void disposeScene() {
-		// TODO Auto-generated method stub
+		this.detachSelf();
+		this.dispose();
+		ResourcesManager.getInstance().unloadMainMenuScene(); 
 	}
 
 	@Override

@@ -33,12 +33,12 @@ import com.util.Constants;
 
 public class TipLayer extends Sprite {
 
-	private Text tipText; 
+	private Text tipText;
 	public String answerString; 
 	private IMenuItem moreTipsItem; 
 	private IMenuItem answerItem;
 	private final int MORE_TIPS = 1; 
-	private final int ANSWER = 2; 
+	private final int ANSWER = 2;
 	public boolean tryToAnswer = false; 
 	//	Esse layer precisa de um botão que quando clicado executa um callback passado na criação (que vai deixar o 
 	//	layer invisivel no game) 
@@ -53,7 +53,8 @@ public class TipLayer extends Sprite {
 	}
 
 	private void createTipText() {
-		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, new TextOptions(HorizontalAlign.CENTER), 
+		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, 
+				new TextOptions(HorizontalAlign.CENTER), 
 				ResourcesManager.getInstance().vbom);
 		tipText.setAnchorCenterX(0.5f);
 		tipText.setAnchorCenterY(1.0f);
@@ -91,6 +92,7 @@ public class TipLayer extends Sprite {
 
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				System.out.println("Toquei na tela!");
 				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) {
 					tryToAnswer = true; 
 					answerItem.setScale(0.8f);

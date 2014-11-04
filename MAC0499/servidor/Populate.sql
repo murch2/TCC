@@ -14,28 +14,28 @@ INSERT INTO TIPO_CARTA (tipo) VALUES ('História Mundial');
 INSERT INTO TIPO_CARTA (tipo) VALUES ('Astros e Estrelas'); 
 
 
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Monteiro Lobato' , 1, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Guimarães Rosa' , 1, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Fernando Henrique Cardoso' , 1, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Floriano Peixoto' , 1, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Barão do Rio Branco' , 1, 'www.google.com');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Monteiro Lobato' , 1, 'http://www.estudopratico.com.br/wp-content/uploads/2014/03/biografia-de-monteiro-lobato.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Guimarães Rosa' , 1, 'http://www.infoescola.com/wp-content/uploads/2014/01/guimaraes-rosa.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Barão do Rio Branco' , 1, 'http://sistemas.mre.gov.br/kitweb/datafiles/IRBr/pt-br/image/barao_riobranco.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Floriano Peixoto' , 1, 'http://4.bp.blogspot.com/-1zex0RJ7uzc/Ty6Of9NQDDI/AAAAAAAAANo/FzHCaCGho2c/s1600/floriano.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Fernando Henrique Cardoso' , 1, 'http://img.saraivaconteudo.com.br/Clipart/Photo/131/32876_.jpg');
 
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Airton Senna' , 2, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Chico Buarque' , 2, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Leila Diniz' , 2, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Guga' , 2, 'www.google.com');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Guga' , 2, 'http://www.educadora.am.br/wp-content/uploads/2014/08/guga.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Leila Diniz' , 2, 'http://2.bp.blogspot.com/_L6XJUhBk6SY/TRKFa46kGRI/AAAAAAAAQ78/hntce54xq1o/s400/digitalizar0003.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Chico Buarque' , 2, 'http://www.jornalopcao.com.br/wp-content/uploads/2014/06/100_9002.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Ayrton Senna' , 2, 'http://vejasp.abril.com.br/blogs/pop/files/2014/05/21_03ayrton1394128188_ayrton_senna_Divulga.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Silvio Santos' , 2, 'http://i0.statig.com.br/fw/5a/1q/2g/5a1q2grpje8pw2tfktp0jor5f.jpg');
 
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('George Washington' , 3, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Bach' , 3, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Mozart' , 3, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Vivaldi' , 3, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Sigmund Freud' , 3, 'www.google.com');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Vivaldi' , 3, 'http://www.operamundi.com.br/media/images/vivaldi-940x626.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Mozart' , 3, 'http://www.salzburg.info/website/var/tmp/image-thumbnails/0/1104/thumb__contentGalleryBig/0102_mozart_001.jpeg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Bach' , 3, 'http://www.swbachfestival.org/Southwest%20Bach%20Festival/bach/bach1.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('George Washington' , 3, 'http://patriotupdate.com/wp-content/uploads/2014/05/george-washington.jpg');
 
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Leonardo de Caprio' , 4, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Bette Davis' , 4, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Michael Jackson' , 4, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('George Lucas' , 4, 'www.google.com');
-INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Madonna' , 4, 'www.google.com');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('George Lucas' , 4, 'http://img3.wikia.nocookie.net/__cb20111008202038/labyrinth/images/a/a1/139924-george-lucas.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Michael Jackson' , 4, 'http://mesademistura.clix.pt/wp-content/uploads/2014/06/Michaeljacksonnovo.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Leonardo de Caprio' , 4, 'http://jornaldehojecdn.s3.amazonaws.com/media/leonardo-dicaprio-hd-Image.jpg');
+INSERT INTO CARTAS (nome, id_tipo_carta, link_foto) VALUES ('Bette Davis' , 4, 'http://iv1.lisimg.com/image/1034943/600full-bette-davis.jpg');
+
 
 -- Monteiro Lobato
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,1,'Fundou a Companhia Petróleo do Brasil'); 
@@ -73,7 +73,7 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (8,3,'Em 1875 foi nomeado Cônsul
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,3,'Nasceu no Rio de Janeiro em 20 de abril de 1845');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,3,'Costuma-se dizer que foi ele quem traçou o mapa do Brasil');
 
--- Floriano Peixoto
+-- FLoriano Peixoto
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,4,'Em 1857 tornou-se soldado e em 1861 entrou para a escola militar');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,4,'Durante o seu governo se preocupou com a ordem pública');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (3,4,'Ficou conhecido como "Marechal de Ferro"');
@@ -156,7 +156,6 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,10,'Nasceu em 12 de dezembro d
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,10,'Estréia na televisão em 1958 como locutor de comerciais');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,10,'É dono de 33 empresas entre seguradora, banco e rede de televisão');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,10,'Em 1989 tenta concorrer a Presidência da República');
-
 -- Vivaldi
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,11,'Faleceu no ano de 1741');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,11,'Viajou com suas óperas por diversos países');
@@ -168,8 +167,7 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,11,'Sua obra mais conhecida e 
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,11,'Foi convidado pelo Rei Carlos VI a se estabelecer na corte em Viena');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,11,'Iniciou a carreira como professor de música aos 25 anos');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,11,'Nasceu em Veneza, Itália em 1678');
-
--- Mozart1
+-- Mozart
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,12,'Compositor Alemão nascido em 1756');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,12,'Aos 3 anos de idade, já revelava aptidão para a música');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (3,12,'Aprendeu piano sem nunca ter recebido uma aula');
@@ -180,7 +178,6 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,12,'Devido a uma saúde frági
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,12,'Foi enterrado em uma vala comum sem nenhuma testemunha');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,12,'Em 1769 em companhia de seu pai realiza um turnê pela Itália');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,12,'Instalou-se em Viena, e casou-se em 1782');
-
 -- Bach
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,13,'Percursor da música moderna, marcou o fim da era barroca');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,13,'Teve dois casamentos e vinte filhos');
@@ -192,7 +189,6 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,13,'Em 1720 morre sua espoosa,
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,13,'Um dos maiores musicos da história');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,13,'Morreu em Leipzig, Alemanha, em 28 de julho de 1750');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,13,'Nasceu em Eisenbach, Alemanha, em 21 de março de 1685');
-
 -- George Washington
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,14,'Foi presidente 2 vezes, e se recusou a exercer o 3º mandato');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,14,'Em seu testamento pediu para seus escravos serem libertos');
@@ -204,7 +200,6 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,14,'Faleceu em Virginia, EUA e
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,14,'Em 1759 se casa com uma viúva rica');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,14,'Nasceu na Virginia, EUA em 22 de fevereiro de 1732');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,14,'Primeiro presidente norte-americano, eleito em 4 de março de 1789');
-
 -- George Lucas
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,15,'Nasceu em 14 de maio de 1944, na Califórnia, EUA');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,15,'Desprezado pelos críticos e idolatrado por uma legião interminável de fãs');
@@ -216,8 +211,8 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,15,'Recebeu duas indicações 
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,15,'Fundou a Industrial Light Magic');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,15,'Invenou com Steven Spielberg o personagem Indiana Jones');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,15,'No auge do sucesso, divorcia-se de forma conturbada de sua esposa');
-
 -- Michael Jackson
+
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,16,'Dono dos direitos de todas as músicas dos Beatles');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,16,'Atingiu ao longo de sua carreira recordes insuperáveis de vendagem');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (3,16,'Em 1971 se lançou em carreira solo');
@@ -228,8 +223,8 @@ INSERT INTO DICAS (id, id_carta, texto) VALUES (7,16,'É um dos maiores fenômen
 INSERT INTO DICAS (id, id_carta, texto) VALUES (8,16,'Gerou polêmica com a mudança da cor de sua pele');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (9,16,'Escreveu em parceria com Lionel Ritchie, a canção We Are The World');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (10,16,'Recebeu em 1984 oito prêmios Grammy');
-
 -- Leonardo de Caprio
+
 INSERT INTO DICAS (id, id_carta, texto) VALUES (1,17,'Fez seu primeiro comercial de TV aos seis anos');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (2,17,'Nasceu em 11 de novembro de 1974 nos EUA');
 INSERT INTO DICAS (id, id_carta, texto) VALUES (3,17,'Assinou um contrato aos 14 anos de idade para trabalhar em comerciais educacionais');

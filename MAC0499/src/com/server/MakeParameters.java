@@ -7,6 +7,8 @@ package com.server;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.provider.CalendarContract.Colors;
+
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
  
@@ -100,16 +102,22 @@ public class MakeParameters {
 		return result; 
 	}
 
-	public static JSONObject finishNewRound(int score, boolean correct) {
+	public static JSONObject finishNewRound() {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject();
 		try {
 			params.put("requestID", "FinishNewRound"); 
 			params.put("userID", GameManager.getInstance().getUserID());
 			params.put("friendID", GameManager.getInstance().getFriendID());
-			params.put("score", score);
+			boolean correct = GameManager.getInstance().isWin(); 
+			params.put("correct", correct);
+			if (correct) {
+				params.put("score", GameManager.getInstance().getMyScore());
+			} 
+			else {
+				params.put("score", 0);
+			}
 			params.put("tipoCartaID", GameManager.getInstance().getCardTypeID()); 
-			params.put("correct", correct); 
 			result.put("message", params);
 		} catch (JSONException e) {
 			e.printStackTrace(); 

@@ -22,9 +22,9 @@ import com.managers.ResourcesManager;
 
 public class ImageDownloader {
 	 
-	
 	public static Sprite testeImage(String link) {
 		try {
+			System.out.println("Link para o endGame = " + link);
 	        URL url = new URL(link);
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 	        connection.setDoInput(true);
