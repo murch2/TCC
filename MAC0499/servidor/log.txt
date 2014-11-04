@@ -1,11 +1,5 @@
 Chegou aqui
 Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
 SignUp 1
 SignUp 2
 INSERT INTO HISTORICOESTATISTICA VALUES (678359188912185, 1, 0, 0); 
@@ -35,8 +29,16 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 9, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 9;
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
+Deu certo criadesafios
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 16, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 16;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -46,31 +48,8 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 12;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
+Update = UPDATE DESAFIOS SET id_carta = 11, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 11;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -87,8 +66,19 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 5, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 5;
+Update = UPDATE DESAFIOS SET id_carta = 9, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 9;
+Chegou aqui
+Chegou aqui
+MyGames
+MyGamesQuery
+Chegou aqui
+Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
+Deu certo criadesafios
+INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
+Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 12;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -109,136 +99,8 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 19, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 19;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 9, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 9;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 2, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 2;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 8, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 8;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 7, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 7;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 6, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 6;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 2, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 2;
+Update = UPDATE DESAFIOS SET id_carta = 5, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 5;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -251,45 +113,6 @@ Chegou aqui
 Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
 SELECT id, texto FROM dicas WHERE id_carta = 15;
 Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 9, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 9;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 6, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 6;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -303,581 +126,12 @@ Update = UPDATE DESAFIOS SET id_carta = 5, status = 1 WHERE id_jogador1 = 678359
 SELECT id, texto FROM dicas WHERE id_carta = 5;
 Chegou aqui
 Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 16, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 16;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 5, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 5;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 1, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 1;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 3, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 3;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 16, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 16;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-query
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, , 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 7, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 7;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 1, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 1;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 2, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 2;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 2, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 2;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 12;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 10, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 10;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 7, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 7;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 19, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 19;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 8, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 8;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 17, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 17;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 12;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 13, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 13;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 13, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 13;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 13, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 13;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 1, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 1;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 17, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 17;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 16, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 16;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 12;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 7, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 7;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 10, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 10;
-Chegou aqui
 Chegou aqui
 MyGames
 MyGamesQuery
 Chegou aqui
 Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
 Deu erro 1 iF criaDesafios
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 10, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 10;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 11, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 11;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 8, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 8;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-query
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, , 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 11, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 11;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 12, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 12;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 8, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 8;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 4, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 4;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 1, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 1;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu erro 1 iF criaDesafios
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -894,61 +148,6 @@ Chegou aqui
 MyGames
 MyGamesQuery
 Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 5, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 5;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 18, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 18;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 686035171490949, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 686035171490949, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 6, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 686035171490949;
-SELECT id, texto FROM dicas WHERE id_carta = 6;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
-Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
-Deu certo criadesafios
-INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
-Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 15, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 15;
-Chegou aqui
-Chegou aqui
-MyGames
-MyGamesQuery
-Chegou aqui
 Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 678655892210891, 1, -1, -1, 0); 
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
@@ -961,9 +160,8 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 14, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 14;
-Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 13, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 13;
 Chegou aqui
 Chegou aqui
 MyGames
@@ -973,9 +171,8 @@ Query que está dando erro = INSERT INTO DESAFIOS VALUES (678359188912185, 67865
 Deu certo criadesafios
 INSERT INTO HISTORICOJOGO VALUES (678359188912185, 678655892210891, 0, 0); 
 Chegou aqui
-Update = UPDATE DESAFIOS SET id_carta = 17, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
-SELECT id, texto FROM dicas WHERE id_carta = 17;
-Chegou aqui
+Update = UPDATE DESAFIOS SET id_carta = 9, status = 1 WHERE id_jogador1 = 678359188912185 and id_jogador2 = 678655892210891;
+SELECT id, texto FROM dicas WHERE id_carta = 9;
 Chegou aqui
 Chegou aqui
 MyGames

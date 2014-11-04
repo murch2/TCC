@@ -138,10 +138,10 @@ public class ResourcesManager {
         font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "font.ttf", 35, true, Color.WHITE, 2, Color.BLACK);
     }
     
-    private synchronized void loadConnectGraphics() {
-    	
-    }
-    
+//    private synchronized void loadConnectGraphics() {
+//    	
+//    }
+//    
     public synchronized void loadMainMenuScene() {
     	if (font == null) {
     		createFont(); 

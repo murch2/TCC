@@ -51,6 +51,15 @@ public class TipLayer extends Sprite {
 		createTipText();
 		createButtons();
 	}
+	
+//	@Override
+//	public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
+//			float pTouchAreaLocalX, float pTouchAreaLocalY) {
+//		
+//		System.out.println("TO TOCANDO NESSA MERDA!!!!!");
+//		
+//		return true; 
+//	}
 
 	private void createTipText() {
 		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, 
@@ -64,29 +73,6 @@ public class TipLayer extends Sprite {
 	}
 
 	public void createButtons() {
-		moreTipsItem = new ScaleMenuItemDecorator(new SpriteMenuItem(MORE_TIPS, ResourcesManager.getInstance().btnMoreTipsRegion,
-				ResourcesManager.getInstance().vbom), 0.8f, 1){
-
-			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				moreTipsItem.setScale(0.8f);
-
-				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
-					@Override
-					public void onTimePassed(TimerHandler pTimerHandler) {
-						moreTipsItem.setScale(1.0f);
-						moreTipsItem.getParent().detachSelf();
-					}
-				});
-
-				this.registerUpdateHandler(timer); 
-				return true; 
-			}
-		};
-		moreTipsItem.setAnchorCenter(0.0f, 0.0f); 
-		moreTipsItem.setPosition(15, 50);
-		attachChild(moreTipsItem);
-
 		answerItem = new ScaleMenuItemDecorator(new SpriteMenuItem(ANSWER, ResourcesManager.getInstance().btnAnswerRegion,
 				ResourcesManager.getInstance().vbom), 0.8f, 1){
 
@@ -94,7 +80,6 @@ public class TipLayer extends Sprite {
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				System.out.println("Toquei na tela!");
 				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) {
-					tryToAnswer = true; 
 					answerItem.setScale(0.8f);
 					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
 						@Override
@@ -115,6 +100,7 @@ public class TipLayer extends Sprite {
 
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
+											tryToAnswer = true; 
 											answerString = nameEditText.getText().toString();
 											moreTipsItem.getParent().detachSelf();
 										}
@@ -124,6 +110,8 @@ public class TipLayer extends Sprite {
 
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
+											tryToAnswer = false; 
+											answerItem.getParent().detachSelf();
 										}
 										
 									});
@@ -149,11 +137,40 @@ public class TipLayer extends Sprite {
 		answerItem.setAnchorCenter(1.0f, 0.0f); 
 		answerItem.setPosition(getWidth() - 15, 50);
 		attachChild(answerItem);
+		
+		moreTipsItem = new ScaleMenuItemDecorator(new SpriteMenuItem(MORE_TIPS, ResourcesManager.getInstance().btnMoreTipsRegion,
+				ResourcesManager.getInstance().vbom), 0.8f, 1){
+
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				moreTipsItem.setScale(0.8f);
+
+				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
+					@Override
+					public void onTimePassed(TimerHandler pTimerHandler) {
+						moreTipsItem.setScale(1.0f);
+						moreTipsItem.getParent().detachSelf();
+					}
+				});
+
+				this.registerUpdateHandler(timer); 
+				return true; 
+			}
+		};
+		moreTipsItem.setAnchorCenter(0.0f, 0.0f); 
+		moreTipsItem.setPosition(15, 50);
+		attachChild(moreTipsItem);
+
 	}
 
 	public void registerMenu(Scene scene) {
-		scene.registerTouchArea(moreTipsItem); 
-		scene.registerTouchArea(answerItem); 
+		scene.registerTouchArea(answerItem);
+		scene.registerTouchArea(moreTipsItem);
+	}
+	
+	public void unregister(Scene scene) {
+		scene.unregisterTouchArea(answerItem);
+		scene.unregisterTouchArea(moreTipsItem);
 	}
 
 	public void setTipText(String tipString) {

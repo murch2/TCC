@@ -5,6 +5,8 @@
 package com.scenes;
 
 import org.andengine.engine.camera.Camera;
+import org.andengine.engine.handler.timer.ITimerCallback;
+import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
@@ -15,13 +17,17 @@ import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
@@ -43,7 +49,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	private String cardPictureURL;
 	private Text myScoreText;
 	private boolean[] tipsRead; 
-	
+	private IMenuItem answerItem; 
 	private enum Requests {
 		RANDOM_CARD, 
 		FINISH_NEWROUND
@@ -68,19 +74,89 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		GameManager.getInstance().setMyScore(Constants.INITIAL_SCORE);
 		createBackground();
 		createTips(json);  
-		createMyScoreText(); 
+		createMyScoreText();
+//		teste(); 
+	}
+	
+	public void teste() {
+		answerItem = new ScaleMenuItemDecorator(new SpriteMenuItem(0, ResourcesManager.getInstance().btnAnswerRegion,
+				ResourcesManager.getInstance().vbom), 0.8f, 1){
+
+			@Override
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				System.out.println("Toquei na tela!");
+				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) { 
+					answerItem.setScale(0.8f);
+					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
+						@Override
+						public void onTimePassed(TimerHandler pTimerHandler) {
+							answerItem.setScale(1.0f);
+							ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
+
+								@Override
+								public void run() {
+									final EditText nameEditText = new EditText(ResourcesManager.getInstance().activity); 
+
+									AlertDialog.Builder builder = new AlertDialog.Builder(ResourcesManager.getInstance().activity); 
+									builder.setTitle("Quem é?");
+									builder.setMessage("Digite o nome da personalidade");
+									builder.setView(nameEditText);
+
+									builder.setPositiveButton("Enter", new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+//											answerString = nameEditText.getText().toString();
+//											moreTipsItem.getParent().detachSelf();
+										}
+									}); 
+
+									builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(DialogInterface dialog, int which) {
+										}
+										
+									});
+
+									final AlertDialog alert = builder.create();
+									alert.show(); 
+//									alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {            
+//										@Override
+//										public void onClick(View v) {
+//											alert.dismiss(); 
+//										}
+//									});
+								}
+							});
+						}
+					});
+
+					this.registerUpdateHandler(timer); 
+				}
+				return true;
+			}
+		};
+		answerItem.setAnchorCenter(1.0f, 0.0f); 
+		answerItem.setPosition(200, 200);
+		registerTouchArea(answerItem); 
+		attachChild(answerItem);
+
 	}
 	
 	private void createTipLayer(String tipString) {
 		tipsMenu.setUserData(tipsMenu.getOnMenuItemClickListener());
-		tipsMenu.setOnMenuItemClickListener(null); 
+		tipsMenu.setOnMenuItemClickListener(null);
+		final Scene s = this; 
+		
 		tipLayer = new TipLayer(cardName){
 			@Override
 			public void onDetached() {
+				unregister(s); 
+
 				boolean tryToAnswer = false; 
 				if (tipLayer.tryToAnswer) {
 					tryToAnswer = true; 
-//					colocar o layer de loading. 
 					if (tipLayer.answerString != null && tipLayer.answerString.equals(cardName)) {
 						GameManager.getInstance().setWin(true); 
 					} else {
@@ -91,9 +167,9 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 //					Acho que aqui num precisa fazer nada. 
 				}
 				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData());
-				super.onDetached();
-				if (tryToAnswer)
+				if (tipLayer.tryToAnswer)
 					SceneManager.getInstance().createEndGameScene();
+				super.onDetached();
 			}
 		};
 		tipLayer.registerMenu(this);
