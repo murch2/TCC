@@ -77,8 +77,11 @@ public class ResourcesManager {
     public ITextureRegion[] btnTipRegion;
     public ITextureRegion btnMoreTipsRegion;
     public ITextureRegion btnAnswerRegion;
+    private BuildableBitmapTextureAtlas gameSceneAtlas;
     
-    private BuildableBitmapTextureAtlas gameSceneAtlas; 
+    //EndGameScene
+    public ITextureRegion btnNextRegion;
+    private BuildableBitmapTextureAtlas endGameSceneAtlas;
     
     public static ResourcesManager getInstance() {
         return INSTANCE;
@@ -307,11 +310,26 @@ public class ResourcesManager {
     }
     
     public synchronized void loadEndGameScene() {
-//        Aqui vou precisar de um botão de next. 
+    	if (endGameSceneAtlas == null) {
+    		createEndGameScene(); 
+    	}
+    	endGameSceneAtlas.load(); 
+    }
+    
+    private synchronized void createEndGameScene() {
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/endGame/");
+    	endGameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+    	btnNextRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(endGameSceneAtlas, activity, "btNext.png");
+        
+        try {
+        	endGameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
+		} catch (TextureAtlasBuilderException e) {
+			e.printStackTrace();
+		}
     }
     
     public synchronized void unloadEndGameScene() {
-        
+        endGameSceneAtlas.unload(); 
     }
     
     
