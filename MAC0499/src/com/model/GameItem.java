@@ -4,10 +4,17 @@
  */
 package com.model;
 
+import java.util.StringTokenizer;
+
 import org.andengine.engine.camera.Camera;
+import org.andengine.engine.handler.timer.ITimerCallback;
+import org.andengine.engine.handler.timer.TimerHandler;
+import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
+import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -19,6 +26,7 @@ import com.util.ImageDownloader;
 
 public class GameItem extends SpriteMenuItem {
 	
+//	Posso tentar colocar um newGame. 
 	private enum Status {
 		PLAY, 
 		POKE, 
@@ -33,16 +41,34 @@ public class GameItem extends SpriteMenuItem {
 	private JSONObject jsonFriendInfo;
 	private Status status; 
 	private int friendScore;
-	private Text friendScoreText; 
+	private Text friendScoreText;
+	private Text myNameText; 
 	private int myScore;
-	private Text myScoretext;  
+	private Text myScoretext;
+	private Sprite statusSprite; 
+	
+	public final int MAX_CHAR_NAME = 5;
 	 
-	public GameItem(int idButton, String idFriend, JSONObject friendInfo) { 
+	public GameItem(int idButton, String idFriend, JSONObject friendInfo) {
 		super(idButton, ResourcesManager.getInstance().gameItemBackGroundRegion, ResourcesManager.getInstance().vbom);
+		try {
+			System.out.println("AQUI" + friendInfo.toString(4));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 		this.jsonFriendInfo = friendInfo; 
 		friendID = idFriend; 
 		createPicture(); 
-		createNameText(); 
+		createFriendNameText();
+		createMyText();
+//		createScore();
+		createStatus();
+	}
+	
+	public void createStatus() {
+		statusSprite = new Sprite(getWidth() * 0.85f, getHeight() * 0.5f, ResourcesManager.getInstance().btnStatusPlayRegion,
+				ResourcesManager.getInstance().vbom);
+		attachChild(statusSprite);
 	}
 
 	private void createPicture() {
@@ -75,17 +101,54 @@ public class GameItem extends SpriteMenuItem {
 		}); 
 	}
 	
-	private void createNameText() {
+//	private void createStatusButton() {
+//		
+//		statusButton = new ScaleMenuItemDecorator(new SpriteMenuItem(0, ResourcesManager.getInstance().,
+//				ResourcesManager.getInstance().vbom), 0.8f, 1){
+//
+//			@Override
+//			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
+//				statusButton.setScale(0.8f);
+//
+//				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
+//					@Override
+//					public void onTimePassed(TimerHandler pTimerHandler) {
+//						statusButton.setScale(1.0f);
+//						System.out.println("Clicando no StatusButton");
+//					}
+//				});
+//
+//				this.registerUpdateHandler(timer); 
+//				return true; 
+//			}
+//		};
+//		statusButton.setScaleX(0.1f); 
+//		statusButton.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.7f);
+//		this.registerTouchArea(statusButton);
+//		attachChild(statusButton);
+//
+//	}
+	
+	private void createFriendNameText() {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("nameOpponent");
+			friendNameString = nameTreatment(friendNameString); 
 			friendNameText = new Text(0, 0, ResourcesManager.getInstance().font, friendNameString, ResourcesManager.getInstance().vbom);
 			friendNameText.setAnchorCenter(0f, 0.5f); 
-			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
+			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.27f, Constants.HEIGHT_PICKER_CELL * 0.7f);  
 			friendNameText.setColor(Color.WHITE); 
 			attachChild(friendNameText); 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} 
+	}
+	
+	public void createMyText() { 
+		myNameText = new Text(0, 0, ResourcesManager.getInstance().font, "eu", ResourcesManager.getInstance().vbom);
+		myNameText.setAnchorCenter(0.0f, 0.5f); 
+		myNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.6f, Constants.HEIGHT_PICKER_CELL * 0.7f);  
+		myNameText.setColor(Color.WHITE); 
+		attachChild(myNameText);
 	}
 	
 	public String getFriendID() {
@@ -150,5 +213,19 @@ public class GameItem extends SpriteMenuItem {
 
 	public void setMyScoretext(Text myScoretext) {
 		this.myScoretext = myScoretext;
+	}
+	
+	private String nameTreatment(String name) {
+		StringTokenizer str = new StringTokenizer(name);  
+		
+		if (str.hasMoreTokens()) {
+			name = str.nextToken(); 
+			
+			if (name.length() > MAX_CHAR_NAME) {
+				name = name.substring(0, MAX_CHAR_NAME - 1);
+				name = name + ".";
+			}
+		}
+		return name; 
 	}
 }

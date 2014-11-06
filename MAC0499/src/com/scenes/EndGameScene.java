@@ -164,6 +164,7 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 
 	@Override
 	public void disposeScene() {
+		this.unregisterTouchArea(btnNext); 
 		this.detachSelf();
 		this.dispose();
 		ResourcesManager.getInstance().unloadChoiceScene();  

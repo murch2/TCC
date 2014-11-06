@@ -50,6 +50,7 @@ public class ResourcesManager {
     public ITextureRegion newGameMenuRegion;
     public ITextureRegion gameItemBackGroundRegion;
     public ITextureRegion defaultPictureRegion2;
+    public ITextureRegion btnStatusPlayRegion; 
     private BuildableBitmapTextureAtlas mainMenuAtlas;
     
     //NewGame
@@ -174,6 +175,7 @@ public class ResourcesManager {
     	newGameMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnNewGame.png");
     	gameItemBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "backGroundCell.png");
     	defaultPictureRegion2 = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "man_default.png");
+    	btnStatusPlayRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnStatusPlay.png");
     	try {
 			mainMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			 
