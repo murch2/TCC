@@ -45,7 +45,7 @@ public class TipLayer extends Sprite {
 	//	Também precisa de algum jeito desabilitar o toque do menu de trás quando o layer estiver aparecendo
 
 	public TipLayer(String cardName) {
-		super(0, 0, 400, 500, ResourcesManager.getInstance().backgroundChoiceRegion, ResourcesManager.getInstance().vbom); 
+		super(0, 0, 400, 500, ResourcesManager.getInstance().backgroundTipLayerRegion, ResourcesManager.getInstance().vbom); 
 		setAlpha(0.85f); 
 		setPosition(Constants.CENTER_X + 200 , Constants.CENTER_Y);
 		createTipText();
@@ -67,8 +67,7 @@ public class TipLayer extends Sprite {
 				ResourcesManager.getInstance().vbom);
 		tipText.setAnchorCenterX(0.5f);
 		tipText.setAnchorCenterY(1.0f);
-		tipText.setPosition(getWidth() * 0.5f, getHeight() * 0.95f);
-		tipText.setColor(Color.BLACK);
+		tipText.setPosition(getWidth() * 0.5f, getHeight() * 0.93f);
 		attachChild(tipText); 
 	}
 

@@ -99,7 +99,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 					@Override
 					public void onTimePassed(TimerHandler pTimerHandler) {
 						newGameItem.setScale(1.0f);
-						System.out.println("Clicando no New Game!!!");
+						SceneManager.getInstance().createNewGameScene(); 
 					}
 				});
 
@@ -225,7 +225,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			float pDistanceX, float pDistanceY) {
 		
 		if(swipe) {
-			System.out.println("SWIPE TRUE!");
 			if(pDistanceY < 0) {
 				
 				if(getChildScene().getY() + getChildScene().getHeight() * 0.5 > -1000){

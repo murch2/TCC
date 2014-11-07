@@ -78,6 +78,7 @@ public class ResourcesManager {
     public ITextureRegion[] btnTipRegion;
     public ITextureRegion btnMoreTipsRegion;
     public ITextureRegion btnAnswerRegion;
+    public ITextureRegion backgroundTipLayerRegion; 
     private BuildableBitmapTextureAtlas gameSceneAtlas;
     
     //EndGameScene
@@ -97,8 +98,8 @@ public class ResourcesManager {
     
     public synchronized void loadSplashScene() { 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/splash/"); 
-    	splashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR); 
-    	splashRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(splashTextureAtlas, activity, "splashScreen.png", 0, 0); 
+    	splashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 500, 810, TextureOptions.BILINEAR); 
+    	splashRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(splashTextureAtlas, activity, "SplashScreen.png", 0, 0); 
     	splashTextureAtlas.load();
     }
     
@@ -139,7 +140,8 @@ public class ResourcesManager {
     private void createFont() {
     	FontFactory.setAssetBasePath("font/");
         final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "font.ttf", 35, true, Color.WHITE, 2, Color.BLACK);
+        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(),
+        		"font.ttf", 35, true, Color.WHITE, 0, Color.BLACK);
     }
     
 //    private synchronized void loadConnectGraphics() {
@@ -287,7 +289,7 @@ public class ResourcesManager {
     public synchronized void createGameScene() {
     	btnTipRegion = new ITextureRegion[10]; 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
-    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 700, 600, TextureOptions.BILINEAR);
+    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
     	String name = ""; 
     	
     	for (int i = 0; i < btnTipRegion.length; i++) {
@@ -298,7 +300,7 @@ public class ResourcesManager {
     	
     	btnMoreTipsRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "moreTips.png");
     	btnAnswerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "answer.png");
-    		
+    	backgroundTipLayerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "tipLayerBackground.png");	
     	try {
 			gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			 
