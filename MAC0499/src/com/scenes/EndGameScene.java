@@ -39,7 +39,8 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 	private Text titleText; 
 	private Text nameText;
 	private Text scoreText;
-	private IMenuItem btnNext; 
+	private IMenuItem btnNext;
+	private Sprite border; 
 	
 //	Tenho que passar se o cara perdeu ou ganhou e a foto do cara no gameManager. 
 	@Override
@@ -51,29 +52,46 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 	private void createItensScene() {
 		createBackground();
 		createTitle(); 
-		createPicture();
+		createBorder(); 
+		createPicture();		
 		createName();
 		createScore(); 
 		createNextButton(); 
 	}
 	
 	private void createBackground() {
-		setBackground(new Background(Color.CYAN));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
+	}
+	
+	private void createBorder() {
+		border = new Sprite(0, 0, ResourcesManager.getInstance().borderRegion, ResourcesManager.getInstance().vbom) {
+			@Override
+			protected void preDraw(GLState pGLState, Camera pCamera) {
+				super.preDraw(pGLState, pCamera);
+				pGLState.enableDither();
+			}
+		};
+		border.setPosition(Constants.CENTER_X, Constants.CENTER_Y); 
+		border.setAnchorCenter(0.5f, 0.5f); 
+		border.setZIndex(5);
+		attachChild(border);
+		
 	}
 	
 	private void createTitle() {
 		String text; 
 		
 		if (GameManager.getInstance().isWin())
-			text = "Você Acertou!"; 
+			text = "Acertou!"; 
 		else 
-			text = "Você Errou!"; 
+			text = "Errado!"; 
 		
-		titleText = new Text(0, 0, ResourcesManager.getInstance().font, text, new TextOptions(HorizontalAlign.CENTER), vbom);
+		titleText = new Text(0, 0, ResourcesManager.getInstance().gameFont, text, new TextOptions(HorizontalAlign.CENTER), vbom);
 		titleText.setColor(Color.WHITE);
 		titleText.setAnchorCenter(0.5f, 0.5f);
 		titleText.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.8f);
-		attachChild(titleText); 
+		attachChild(titleText);
 	}
 	
 	private void createPicture() {
@@ -88,7 +106,9 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 		picture.setHeight(300); 
 		
 		picture.setPosition(Constants.CENTER_X, Constants.CENTER_Y);
+		picture.setZIndex(2); 
 		attachChild(picture);
+		sortChildren();
 		
 		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
 			@Override
@@ -99,27 +119,29 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 				updatePicture.setPosition(picture); 
 				detachChild(picture);
 				picture = updatePicture; 
-				attachChild(picture); 
+				picture.setZIndex(2);
+				attachChild(picture);
+				sortChildren();
 			}
 		}); 
 	}
 	
 	private void createName() {
-		nameText = new Text(0, 0, ResourcesManager.getInstance().font, GameManager.getInstance().getCardName(), new TextOptions(HorizontalAlign.CENTER), vbom);
+		nameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, GameManager.getInstance().getCardName(), new TextOptions(HorizontalAlign.CENTER), vbom);
 		nameText.setColor(Color.WHITE);
 		nameText.setAnchorCenter(0.5f, 0.5f);
-		nameText.setPosition(picture.getX(), picture.getY() - picture.getHeight() * 0.5f - 25);
+		nameText.setPosition(picture.getX(), picture.getY() - picture.getHeight() * 0.5f - 40);
 		attachChild(nameText);
 	}
 	
 	public void createScore() {
-		String score = "Pontuação: "; 
+		String score = "Pontos: "; 
 		if (GameManager.getInstance().isWin())
 			score = score + GameManager.getInstance().getMyScore(); 
 		else 
 			score = score + "0"; 
 		
-		scoreText = new Text(0, 0, ResourcesManager.getInstance().font, score, new TextOptions(HorizontalAlign.CENTER), vbom);
+		scoreText = new Text(0, 0, ResourcesManager.getInstance().gameFont, score, new TextOptions(HorizontalAlign.CENTER), vbom);
 		scoreText.setColor(Color.WHITE);
 		scoreText.setAnchorCenter(0.5f, 0.5f);
 		scoreText.setPosition(nameText.getX(), nameText.getY() - nameText.getHeight() * 0.5f - 25);
@@ -147,8 +169,8 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 			}
 		};
 		btnNext.setAnchorCenter(1.0f, 0.0f); 
-		btnNext.setPosition(Constants.CAMERA_WIDTH - 30, 50);
-		this.registerTouchArea(btnNext);
+		btnNext.setPosition(Constants.CAMERA_WIDTH - 30, 30);
+		registerTouchArea(btnNext);
 		attachChild(btnNext);
 	}
 

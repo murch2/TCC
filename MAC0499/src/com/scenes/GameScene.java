@@ -9,6 +9,8 @@ import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.scene.background.ParallaxBackground;
+import org.andengine.entity.scene.background.ParallaxBackground.ParallaxEntity;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
@@ -43,6 +45,7 @@ import com.util.Constants;
 public class GameScene extends BaseScene implements HTTPResponseListener, IOnMenuItemClickListener {
 	
 	private MenuScene tipsMenu = new MenuScene(ResourcesManager.getInstance().camera);
+	private Sprite title; 
 	private Requests currentRequest; 
 	private TipLayer tipLayer;
 	private String cardName; 
@@ -73,9 +76,15 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		}
 		GameManager.getInstance().setMyScore(Constants.INITIAL_SCORE);
 		createBackground();
+		createTitle(); 
 		createTips(json);  
 		createMyScoreText();
-//		teste(); 
+		
+	}
+	
+	public void createTitle() {
+		title = new Sprite(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.75f, resourcesManager.gameTitleRegion, vbom); 
+		attachChild(title);
 	}
 	
 	public void teste() {
@@ -178,7 +187,8 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 	
 	private void createBackground() {
-		setBackground(new Background(Color.BLUE));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
 	}
 	
 	private void createTips(JSONObject json){
@@ -214,12 +224,13 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 	
 	private void createMyScoreText() { 		
-		myScoreText = new Text(0, 0, ResourcesManager.getInstance().font, "Pontos: " + String.valueOf(GameManager.getInstance().getMyScore()), 
+		myScoreText = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Pontos: " + String.valueOf(GameManager.getInstance().getMyScore()), 
 				new TextOptions(HorizontalAlign.LEFT), 
 				ResourcesManager.getInstance().vbom);
 		myScoreText.setColor(Color.WHITE);
-		myScoreText.setAnchorCenter(0.0f, 0.5f);
-		myScoreText.setPosition(10, Constants.CAMERA_HEIGHT * 0.05f);
+		myScoreText.setScale(1.5f); 
+		myScoreText.setAnchorCenter(0.5f, 0.5f);
+		myScoreText.setPosition(Constants.CAMERA_WIDTH * 0.5f, Constants.CAMERA_HEIGHT * 0.1f);
 		attachChild(myScoreText); 
 	}
 	
@@ -271,18 +282,18 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	    if (menu.getChildCount() <= 1) 
 	    	return menu;
 	  
-	    menu.getChildByIndex(0).setPosition(menu.getChildByIndex(0).getX() + 10, 500);
+	    menu.getChildByIndex(0).setPosition(menu.getChildByIndex(0).getX() + 10, 400);
 	    
 	    for (int i = 1; i < menu.getChildCount() / 2; i++) {
 	        menu.getChildByIndex(i).setPosition(
 	                menu.getChildByIndex(i-1).getX()+menu.getChildByIndex(i).getWidth()+padding,
-	                     500);
+	                     400);
 	    }
 	    
 	    for (int i = menu.getChildCount() / 2; i < menu.getChildCount(); i++) {
 	        menu.getChildByIndex(i).setPosition(
 	                menu.getChildByIndex(i-5).getX()+padding,
-	                     410);
+	                     310);
 	    }
 	    
 	    return menu;

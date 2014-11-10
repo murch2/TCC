@@ -28,6 +28,10 @@ public class ResourcesManager {
     public Camera camera;
     public VertexBufferObjectManager vbom;
     
+    //General
+    public ITextureRegion blueBackground; 
+    private BitmapTextureAtlas generalTextureAtlas;
+    
     //Splash
     public ITextureRegion splashRegion; 
     private BitmapTextureAtlas splashTextureAtlas;
@@ -36,7 +40,8 @@ public class ResourcesManager {
     public ITextureRegion facebookConnectRegion;
     private BuildableBitmapTextureAtlas facebookConnectMenuAtlas; 
     
-    public Font font; 
+    public Font gameFont;
+    public Font arialFont; 
 
     //Header
     public ITextureRegion headerBackgroundRegion;
@@ -79,10 +84,14 @@ public class ResourcesManager {
     public ITextureRegion btnMoreTipsRegion;
     public ITextureRegion btnAnswerRegion;
     public ITextureRegion backgroundTipLayerRegion; 
+    public ITextureRegion gameBackgrounRegion;
+    public ITextureRegion gameTitleRegion;
     private BuildableBitmapTextureAtlas gameSceneAtlas;
+    
     
     //EndGameScene
     public ITextureRegion btnNextRegion;
+    public ITextureRegion borderRegion;
     private BuildableBitmapTextureAtlas endGameSceneAtlas;
     
     public static ResourcesManager getInstance() {
@@ -101,6 +110,11 @@ public class ResourcesManager {
     	splashTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 500, 810, TextureOptions.BILINEAR); 
     	splashRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(splashTextureAtlas, activity, "SplashScreen.png", 0, 0); 
     	splashTextureAtlas.load();
+    	
+    	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
+    	generalTextureAtlas = new BitmapTextureAtlas(activity.getTextureManager(), 500, 810, TextureOptions.BILINEAR); 
+    	blueBackground = BitmapTextureAtlasTextureRegionFactory.createFromAsset(generalTextureAtlas, activity, "teste1.png", 0, 0); 
+    	generalTextureAtlas.load();
     }
     
     public synchronized void unloadSplashScene() {
@@ -110,14 +124,14 @@ public class ResourcesManager {
     }
     
     public synchronized void loadConnectScene() {
-    	if (font == null) {
+    	if (gameFont == null) {
     		createFont(); 
     	}
     	
     	if (facebookConnectMenuAtlas == null) {
     		createConnectGraphics(); 
     	}
-    	font.load(); 
+    	gameFont.load(); 
     	facebookConnectMenuAtlas.load();
     }
     
@@ -139,17 +153,28 @@ public class ResourcesManager {
    
     private void createFont() {
     	FontFactory.setAssetBasePath("font/");
-        final ITexture mainFontTexture = new BitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-        font = FontFactory.createStrokeFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(),
-        		"font.ttf", 35, true, Color.WHITE, 0, Color.BLACK);
+        
+    	final ITexture mainFontTexture = new BitmapTextureAtlas(engine.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+        gameFont = FontFactory.createFromAsset(activity.getFontManager(), mainFontTexture, activity.getAssets(), "gamefont.ttf", 30, true, Color.WHITE);
+        gameFont.load(); 
+        
+        final ITexture arialFontTexture = new BitmapTextureAtlas(engine.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+        arialFont = FontFactory.createFromAsset(activity.getFontManager(), arialFontTexture, activity.getAssets(), "arial.ttf", 30, true, Color.WHITE);
+        arialFont.load();
     }
+    
+//    final ITexture fontTexture = new BitmapTextureAtlas(this.getTextureManager(), 256, 256, TextureOptions.BILINEAR);    
+//    this.mFont = FontFactory.createFromAsset(this.getFontManager(), fontTexture, this.getAssets(), &quot;Plok.ttf&quot;, 48, true, Color.WHITE);
+//    4
+//    this.mFont.load();
+
     
 //    private synchronized void loadConnectGraphics() {
 //    	
 //    }
 //    
     public synchronized void loadMainMenuScene() {
-    	if (font == null) {
+    	if (gameFont == null) {
     		createFont(); 
     	}
     	 
@@ -161,7 +186,7 @@ public class ResourcesManager {
     		createMainMenuGraphics(); 
     	}
     	
-    	font.load();
+    	gameFont.load();
     	headerAtlas.load();
     	mainMenuAtlas.load(); 
     }
@@ -289,7 +314,7 @@ public class ResourcesManager {
     public synchronized void createGameScene() {
     	btnTipRegion = new ITextureRegion[10]; 
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/game/");
-    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
+    	gameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 2048, 1024, TextureOptions.BILINEAR);
     	String name = ""; 
     	
     	for (int i = 0; i < btnTipRegion.length; i++) {
@@ -298,9 +323,11 @@ public class ResourcesManager {
 			btnTipRegion[i] = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, name);
 		}
     	
-    	btnMoreTipsRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "moreTips.png");
-    	btnAnswerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "answer.png");
-    	backgroundTipLayerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "tipLayerBackground.png");	
+    	btnMoreTipsRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "gameButton.png");
+    	btnAnswerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "gameButton.png");
+    	backgroundTipLayerRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "tipLayerBackground.png");
+    	gameBackgrounRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "teste1.png");
+    	gameTitleRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(gameSceneAtlas, activity, "title.png");
     	try {
 			gameSceneAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1)));
 			 
@@ -322,7 +349,8 @@ public class ResourcesManager {
     
     private synchronized void createEndGameScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/endGame/");
-    	endGameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 256, 256, TextureOptions.BILINEAR);
+    	endGameSceneAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 512, 512, TextureOptions.BILINEAR);
+    	borderRegion =  BitmapTextureAtlasTextureRegionFactory.createFromAsset(endGameSceneAtlas, activity, "endGameLayer.png");
     	btnNextRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(endGameSceneAtlas, activity, "btNext.png");
         
         try {

@@ -88,7 +88,7 @@ public class VersusCell extends Sprite {
 			e.printStackTrace();
 		}
 		
-		nameText = new Text(0, 0, ResourcesManager.getInstance().font, name, ResourcesManager.getInstance().vbom);
+		nameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, name, ResourcesManager.getInstance().vbom);
 		nameText.setColor(Color.BLACK);
 		if (isFriend) {
 			nameText.setAnchorCenter(0f, 0.5f);
@@ -100,7 +100,7 @@ public class VersusCell extends Sprite {
 		}
 		attachChild(nameText);
 		
-		middleNameText = new Text(0, 0, ResourcesManager.getInstance().font, middleName, ResourcesManager.getInstance().vbom);
+		middleNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, middleName, ResourcesManager.getInstance().vbom);
 		middleNameText.setColor(Color.BLACK);
 		if (isFriend) {
 			middleNameText.setAnchorCenter(0f, 0.5f);

@@ -8,6 +8,10 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
+import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,11 +25,13 @@ import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
+import com.util.Constants;
 import com.util.FacebookFacade;
 
 public class FriendPickerScene extends BaseScene implements Callback, IOnMenuItemClickListener {
 
 	private JSONObject jsonFriends; 
+	private Text title; 
 	
 	@Override
 	public void createScene() { 
@@ -34,12 +40,22 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	
 	private void createItensScene () {
 		createBackground();
+		createTitle(); 
 		makeFriendsMenu();  
 	}
 	
 	private void createBackground() {
-		setBackground(new Background(Color.RED));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
 	}
+	
+	private void createTitle() {
+		title = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Select a \n Facebook Friend!", new TextOptions(HorizontalAlign.CENTER), vbom);
+		title.setColor(0f, 0f, 139.0f/255); 
+		title.setScale(1.5f);
+		title.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.8f); 
+		attachChild(title);
+	} 
 	
 	private void makeFriendsMenu() {
 		JSONArray array;

@@ -44,7 +44,7 @@ public class LoadingLayer extends HUD {
 	}
 	
 	private void createLoadingRotation() {
-		LoopEntityModifier rotationLoop = new LoopEntityModifier(new RotationModifier(1.0f, 0, -360));
+		LoopEntityModifier rotationLoop = new LoopEntityModifier(new RotationModifier(1.0f, 0, 360));
 		loadingIcon.registerEntityModifier(rotationLoop); 
 	}
 	

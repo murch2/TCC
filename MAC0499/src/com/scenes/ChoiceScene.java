@@ -147,7 +147,7 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	}
 
 	private void createNewGameText() {
-		newGameText = new Text(0, 0, ResourcesManager.getInstance().font,
+		newGameText = new Text(0, 0, ResourcesManager.getInstance().gameFont,
 				"NEW GAME!", vbom);
 		newGameText.setColor(Color.BLACK);
 		newGameText.setScale(2.0f);

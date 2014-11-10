@@ -39,7 +39,9 @@ public class TipLayer extends Sprite {
 	private IMenuItem answerItem;
 	private final int MORE_TIPS = 1; 
 	private final int ANSWER = 2;
-	public boolean tryToAnswer = false; 
+	private final int MAX_CHAR = 18; 
+	public boolean tryToAnswer = false;
+	
 	//	Esse layer precisa de um botão que quando clicado executa um callback passado na criação (que vai deixar o 
 	//	layer invisivel no game) 
 	//	Também precisa de algum jeito desabilitar o toque do menu de trás quando o layer estiver aparecendo
@@ -62,12 +64,14 @@ public class TipLayer extends Sprite {
 //	}
 
 	private void createTipText() {
-		tipText = new Text(0, 0, ResourcesManager.getInstance().font, Constants.MAX_TIP, 
+		tipText = new Text(0, 0, ResourcesManager.getInstance().arialFont, Constants.MAX_TIP, 
 				new TextOptions(HorizontalAlign.CENTER), 
 				ResourcesManager.getInstance().vbom);
 		tipText.setAnchorCenterX(0.5f);
 		tipText.setAnchorCenterY(1.0f);
-		tipText.setPosition(getWidth() * 0.5f, getHeight() * 0.93f);
+		tipText.setScale(1.3f);
+		tipText.setColor(Color.BLACK);
+		tipText.setPosition(getWidth() * 0.5f, getHeight() * 0.9f);
 		attachChild(tipText); 
 	}
 
@@ -77,7 +81,6 @@ public class TipLayer extends Sprite {
 
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				System.out.println("Toquei na tela!");
 				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) {
 					answerItem.setScale(0.8f);
 					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
@@ -134,8 +137,16 @@ public class TipLayer extends Sprite {
 			}
 		};
 		answerItem.setAnchorCenter(1.0f, 0.0f); 
-		answerItem.setPosition(getWidth() - 15, 50);
+		answerItem.setPosition(getWidth() - 40, 50);
 		attachChild(answerItem);
+		
+		Text answerText = new Text(answerItem.getWidth() * 0.5f, answerItem.getHeight() * 0.5f, ResourcesManager.getInstance().arialFont, "Responder", 
+				new TextOptions(HorizontalAlign.CENTER), 
+				ResourcesManager.getInstance().vbom);
+		
+		answerText.setScale(0.95f); 
+		answerText.setColor(255.0f/255, 239.0f/255, 191.0f/255);  
+		answerItem.attachChild(answerText); 
 		
 		moreTipsItem = new ScaleMenuItemDecorator(new SpriteMenuItem(MORE_TIPS, ResourcesManager.getInstance().btnMoreTipsRegion,
 				ResourcesManager.getInstance().vbom), 0.8f, 1){
@@ -152,13 +163,20 @@ public class TipLayer extends Sprite {
 					}
 				});
 
-				this.registerUpdateHandler(timer); 
+				this.registerUpdateHandler(timer); 	
 				return true; 
 			}
 		};
 		moreTipsItem.setAnchorCenter(0.0f, 0.0f); 
-		moreTipsItem.setPosition(15, 50);
+		moreTipsItem.setPosition(40, 50);
 		attachChild(moreTipsItem);
+		
+		Text moreTipsText = new Text(moreTipsItem.getWidth() * 0.5f, moreTipsItem.getHeight() * 0.5f, ResourcesManager.getInstance().arialFont, "+ Dicas", 
+				new TextOptions(HorizontalAlign.CENTER), 
+				ResourcesManager.getInstance().vbom);
+		
+		moreTipsText.setColor(255.0f/255, 239.0f/255, 191.0f/255);  
+		moreTipsItem.attachChild(moreTipsText); 
 
 	}
 
@@ -173,7 +191,7 @@ public class TipLayer extends Sprite {
 	}
 
 	public void setTipText(String tipString) {
-		this.tipText.setText(getNormalisedString(tipString, 20)); 
+		this.tipText.setText(getNormalisedString(tipString, MAX_CHAR)); 
 	}
 
 	private String getNormalisedString(String string, float textWidth){

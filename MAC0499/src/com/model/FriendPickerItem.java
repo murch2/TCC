@@ -76,7 +76,7 @@ public class FriendPickerItem extends SpriteMenuItem {
 	private void createNameText() {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("name");
-			friendNameText = new Text(0, 0, ResourcesManager.getInstance().font, friendNameString, ResourcesManager.getInstance().vbom);
+			friendNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, friendNameString, ResourcesManager.getInstance().vbom);
 			friendNameText.setAnchorCenter(0f, 0.5f); 
 			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
 			friendNameText.setColor(Color.WHITE); 

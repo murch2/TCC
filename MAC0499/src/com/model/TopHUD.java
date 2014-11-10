@@ -21,7 +21,7 @@ import com.managers.ResourcesManager;
 import com.util.Constants;
 
 
-public class TopHUD extends HUD implements IOnMenuItemClickListener {
+public class TopHUD extends HUD {
 
 	private Sprite background; 
 	private MenuScene profileMenu; 
@@ -31,70 +31,70 @@ public class TopHUD extends HUD implements IOnMenuItemClickListener {
 	
 	public TopHUD() {
 		this.setPosition(Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT / 2); 
-		createBackGround(); 
-		createMenuProfile();
+//		createBackGround(); 
+//		createMenuProfile();
 		createPowerUps(); 
 		createCoins(); 
 	}
 	
 	private void createBackGround() {
-		background = new Sprite(0, Constants.CAMERA_HEIGHT * 0.45f,
-				ResourcesManager.getInstance().headerBackgroundRegion, ResourcesManager.getInstance().vbom) {
-			@Override
-			protected void preDraw(GLState pGLState, Camera pCamera) {
-				super.preDraw(pGLState, pCamera);
-				pGLState.enableDither();
-			}
-		};	
-		this.attachChild(background); 
+//		background = new Sprite(0, Constants.CAMERA_HEIGHT * 0.45f,
+//				ResourcesManager.getInstance().headerBackgroundRegion, ResourcesManager.getInstance().vbom) {
+//			@Override
+//			protected void preDraw(GLState pGLState, Camera pCamera) {
+//				super.preDraw(pGLState, pCamera);
+//				pGLState.enableDither();
+//			}
+//		};	
+//		this.attachChild(background); 
 	}
 	
-	private void createMenuProfile() {
-		profileMenu = new MenuScene(ResourcesManager.getInstance().camera); 
-		final IMenuItem profileItem = new ScaleMenuItemDecorator(
-				new SpriteMenuItem(MENU_PROFILE, ResourcesManager.getInstance().headerProfileRegion, ResourcesManager.getInstance().vbom), 0.8f, 1);
-		
-		createProfileText(profileItem); 
-		
-		profileMenu.addMenuItem(profileItem);
-		profileMenu.buildAnimations();
-		profileMenu.setBackgroundEnabled(false);
-		profileMenu.setOnMenuItemClickListener(this);  
-		profileMenu.setPosition(profileItem.getWidth() / 2 - Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT * 0.45f); 
-
-		this.setChildScene(profileMenu); 
-	}
-	
+//	private void createMenuProfile() {
+//		profileMenu = new MenuScene(ResourcesManager.getInstance().camera); 
+//		final IMenuItem profileItem = new ScaleMenuItemDecorator(
+//				new SpriteMenuItem(MENU_PROFILE, ResourcesManager.getInstance().headerProfileRegion, ResourcesManager.getInstance().vbom), 0.8f, 1);
+//		
+//		createProfileText(profileItem); 
+//		
+//		profileMenu.addMenuItem(profileItem);
+//		profileMenu.buildAnimations();
+//		profileMenu.setBackgroundEnabled(false);
+//		profileMenu.setOnMenuItemClickListener(this);  
+//		profileMenu.setPosition(profileItem.getWidth() / 2 - Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT * 0.45f); 
+//
+//		this.setChildScene(profileMenu); 
+//	}
+//	
 	private void createProfileText(IMenuItem item) {
 		
 	}
 	
 	private void createPowerUps() {
-		String powerUp = "PowerUps: " + GameManager.getInstance().getUserPowerUps(); 
-		powerUps = new Text(0, 0, ResourcesManager.getInstance().font, powerUp, ResourcesManager.getInstance().vbom);
-		powerUps.setPosition(this.background.getWidth() * 0.41f, this.background.getHeight() * 0.5f);  
-		powerUps.setColor(Color.WHITE); 
-		background.attachChild(powerUps);
+		String powerUp = "Especiais: " + GameManager.getInstance().getUserPowerUps(); 
+		powerUps = new Text(- Constants.CAMERA_WIDTH * 0.48f, Constants.CAMERA_HEIGHT * 0.45f, ResourcesManager.getInstance().gameFont, powerUp, ResourcesManager.getInstance().vbom);
+		powerUps.setScale(0.95f); 
+		powerUps.setAnchorCenter(0.0f, 0.5f);
+		attachChild(powerUps);
 	}
 	
 	private void createCoins() {
-		String coinsString = "Coins: " + GameManager.getInstance().getUserCoins(); 
-		coins = new Text(0, 0, ResourcesManager.getInstance().font, coinsString, ResourcesManager.getInstance().vbom);
-		coins.setPosition(this.background.getWidth() * 0.8f, this.background.getHeight() * 0.5f);  
-		coins.setColor(Color.WHITE); 
-		background.attachChild(coins);
+		String coinsString = "Moedas: " + GameManager.getInstance().getUserCoins(); 
+		coins = new Text(Constants.CAMERA_WIDTH * 0.48f, Constants.CAMERA_HEIGHT * 0.45f, ResourcesManager.getInstance().gameFont, coinsString, ResourcesManager.getInstance().vbom);
+		coins.setScale(0.95f); 
+		coins.setAnchorCenter(1.0f, 0.5f); 
+		attachChild(coins);
 	}
 	
-	@Override
-	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
-			float pMenuItemLocalX, float pMenuItemLocalY) {
-		switch (pMenuItem.getID()) {
-		case MENU_PROFILE:
-			return true; 
-
-		default:
-			break;
-		}
-		return false; 
-	}
+//	@Override
+//	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
+//			float pMenuItemLocalX, float pMenuItemLocalY) {
+//		switch (pMenuItem.getID()) {
+//		case MENU_PROFILE:
+//			return true; 
+//
+//		default:
+//			break;
+//		}
+//		return false; 
+//	}
 }

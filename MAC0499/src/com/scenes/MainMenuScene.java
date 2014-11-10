@@ -94,7 +94,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				newGameItem.setScale(0.8f);
-
 				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
 					@Override
 					public void onTimePassed(TimerHandler pTimerHandler) {
@@ -229,7 +228,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 				
 				if(getChildScene().getY() + getChildScene().getHeight() * 0.5 > -1000){
 					newGameItem.setY(newGameItem.getY() + 20); 
-					getChildScene().setY(getChildScene().getY() + 20);
+					getChildScene().setY(getChildScene().getY()	 + 20);
 				}
 			}
 			else if(pDistanceY > 0){

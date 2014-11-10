@@ -85,14 +85,14 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 	}
 	
 	private void createFacebookConnectText(IMenuItem item) {
-		Text text = new Text(0, 0, resourcesManager.font, "Login with Facebook", vbom);
+		Text text = new Text(0, 0, resourcesManager.gameFont, "Login with Facebook", vbom);
 		text.setPosition(item.getWidth() * 0.5f, item.getHeight() * 0.5f);  
 		text.setColor(Color.WHITE); 
 		item.attachChild(text); 
 	}
 	
 	private void createWelcomeMessage() {
-		Text text = new Text(0, 0, resourcesManager.font, "Welcome!\n Connect with Facebook\n and gain bonus! ", vbom);
+		Text text = new Text(0, 0, resourcesManager.gameFont, "Welcome!\n Connect with Facebook\n and gain bonus! ", vbom);
 		text.setPosition(Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT * 0.8f);
 		text.setColor(Color.WHITE);
 		attachChild(text);
