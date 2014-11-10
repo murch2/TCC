@@ -4,6 +4,8 @@
  */
 package com.model;
 
+import java.util.StringTokenizer;
+
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.Entity;
 import org.andengine.entity.scene.menu.MenuScene;
@@ -32,7 +34,9 @@ public class FriendPickerItem extends SpriteMenuItem {
 	private String friendURLPicture; 
 	private String friendNameString;
 	private Text friendNameText;
+	private Text friendMiddleNameText; 
 	private JSONObject jsonFriendInfo;
+	private final int MAX_CHAR_NAME = 12; 
 	
 	public FriendPickerItem(int idButton, String idFriend, JSONObject friendInfo) { 
 		super(idButton, ResourcesManager.getInstance().friendPickerCellBackGroundRegion, ResourcesManager.getInstance().vbom);
@@ -76,11 +80,23 @@ public class FriendPickerItem extends SpriteMenuItem {
 	private void createNameText() {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("name");
-			friendNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, friendNameString, ResourcesManager.getInstance().vbom);
-			friendNameText.setAnchorCenter(0f, 0.5f); 
-			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.25f, Constants.HEIGHT_PICKER_CELL * 0.3f);  
-			friendNameText.setColor(Color.WHITE); 
-			attachChild(friendNameText); 
+			JSONObject normalizedName = nameTreatment(friendNameString);
+			String name = normalizedName.getString("name");
+			friendNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, name, ResourcesManager.getInstance().vbom);
+			friendNameText.setAnchorCenter(0.5f, 0.5f); 
+			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.6f, Constants.HEIGHT_PICKER_CELL * 0.78f);  
+			friendNameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
+			attachChild(friendNameText);
+			
+			
+			String middleName = normalizedName.getString("middleName");
+			friendMiddleNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, middleName, ResourcesManager.getInstance().vbom);
+			friendMiddleNameText.setAnchorCenter(0.5f, 0.5f); 
+			friendMiddleNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.6f, Constants.HEIGHT_PICKER_CELL * 0.35f);  
+			friendMiddleNameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
+			attachChild(friendMiddleNameText);
+			
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} 
@@ -108,5 +124,35 @@ public class FriendPickerItem extends SpriteMenuItem {
 
 	public void setFriendName(String friendNameString) {
 		this.friendNameString = friendNameString;
+	}
+	
+	private JSONObject nameTreatment(String name) {
+		StringTokenizer str = new StringTokenizer(name); 
+		String strName = "";
+		String strMiddleName = "";  
+		JSONObject result = new JSONObject(); 
+		
+		if (str.hasMoreTokens()) {
+			strName = str.nextToken(); 
+			if (strName.length() > MAX_CHAR_NAME) {
+				strName = strName.substring(0, MAX_CHAR_NAME - 1);
+				strName.concat("."); 
+			}
+			if (str.hasMoreTokens()) { 
+				strMiddleName = str.nextToken();
+				System.out.println("MiddleName = " + strMiddleName);
+				if (strMiddleName.length() > MAX_CHAR_NAME) {
+					strMiddleName = strMiddleName.substring(0, MAX_CHAR_NAME - 1);
+					strMiddleName.concat(".");
+				}
+			}
+			try {
+				result.put("name", strName);
+				result.put("middleName", strMiddleName);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} 
+		}
+		return result; 
 	}
 }

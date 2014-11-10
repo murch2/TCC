@@ -8,6 +8,13 @@ INSERT INTO JOGADOR VALUES (678655892210891,'Ana Carolina Anjos',3,3, 'https://s
 INSERT INTO JOGADOR VALUES (686035171490949,'Ronaldo Duarte Louro',3,3, 'https://scontent-b-mia.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10511227_668037466624053_2740939400989464565_n.jpg?oh=18d33e1052b5f8c061aff8794e3d36e1&oe=54BAE839'); 
 INSERT INTO JOGADOR VALUES (678359188912185,'Rodrigo Duarte Louro',3,3, 'https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/381838_200435380037904_66433787_n.jpg?oh=c97436e0cec6445c3ab6f4c218b8062a&oe=54ED65BD&__gda__=1421544218_d009ab474940c47fe5631bfc2cfbfbdc'); 
 
+-- TODO Fazer pegar daqui pra tirar ScreenShot
+INSERT INTO JOGADOR VALUES (100000054807641,'Daniel Paulino Alves',3,3, 'https://scontent-a-mia.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/1450206_705755686102918_1192310898_n.jpg?oh=0f29bb2cca32f52e628173ec62898140&oe=54D32634'); 
+
+INSERT INTO JOGADOR VALUES (834336940,'Rafael Carmo',3,3, 'https://scontent-a-mia.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/1613827_10152649165581941_1832780578512311990_n.jpg?oh=fd0b1dcf481cb67a3f32a901441610fb&oe=55207597'); 
+
+INSERT INTO JOGADOR VALUES (100002194000205,'Renata Dantas',3,3, 'https://fbcdn-sphotos-f-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/10646744_685195901563537_5798702077653289710_n.jpg?oh=1a9d4e56dba346bedca73c1554dfba4b&oe=54E3281D&__gda__=1424565413_1c93dae8fa975919b562d66e4ed68d93'); 
+
 INSERT INTO TIPO_CARTA (tipo) VALUES ('História do Brasil'); 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('Personalidades do Brasil'); 
 INSERT INTO TIPO_CARTA (tipo) VALUES ('História Mundial'); 

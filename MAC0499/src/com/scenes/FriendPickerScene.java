@@ -8,6 +8,7 @@ import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
@@ -30,8 +31,7 @@ import com.util.FacebookFacade;
 
 public class FriendPickerScene extends BaseScene implements Callback, IOnMenuItemClickListener {
 
-	private JSONObject jsonFriends; 
-	private Text title; 
+	private JSONObject jsonFriends;  
 	
 	@Override
 	public void createScene() { 
@@ -50,11 +50,19 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 	}
 	
 	private void createTitle() {
-		title = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Select a \n Facebook Friend!", new TextOptions(HorizontalAlign.CENTER), vbom);
+		Text title = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Select a", new TextOptions(HorizontalAlign.CENTER), vbom);
 		title.setColor(0f, 0f, 139.0f/255); 
-		title.setScale(1.5f);
-		title.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.8f); 
+		title.setScale(1.35f);
+		title.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.85f); 
 		attachChild(title);
+		
+		Text title2 = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Facebook Friend", new TextOptions(HorizontalAlign.CENTER), vbom);
+		title2.setColor(0f, 0f, 139.0f/255); 
+		title2.setScale(1.35f);
+		title2.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.75f); 
+		attachChild(title2);
+		
+		
 	} 
 	
 	private void makeFriendsMenu() {
@@ -66,7 +74,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 			MenuScene menu = new MenuScene(ResourcesManager.getInstance().camera);
 			for (int i = 0; i < array.length(); i++) {
 				json = array.getJSONObject(i); 
-				item = new FriendPickerItem(i, json.getString("uid"), json);
+				item = new ScaleMenuItemDecorator(new FriendPickerItem(i, json.getString("uid"), json), 0.8f, 1.0f);
 				menu.addMenuItem(item); 
 			}		
 			
