@@ -119,7 +119,9 @@ class ExecuteQuery {
 	} 
 
 	function randomCardQuery($userID, $friendID, $tipoCarta) {
-		$query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
+		// $query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
+		$query = "SELECT id, nome, link_foto FROM cartas WHERE id = 9;"; 
+
 		$result = $this->getInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
