@@ -72,5 +72,3 @@ CREATE TABLE HISTORICOESTATISTICA (
 	FOREIGN KEY (id_jogador) REFERENCES JOGADOR (id) ON DELETE CASCADE ON UPDATE CASCADE, 
 	FOREIGN KEY (id_tipo_carta) REFERENCES  TIPO_CARTA (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
--- Vou fazer o empate e desconsidera-lo nas estatisticas. A pontuação vai ser descrescente e caindo conforme as dicas e o tempo passa.
