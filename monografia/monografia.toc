@@ -31,29 +31,36 @@
 \contentsline {section}{\numberline {4.1}Modelo Conceitual}{13}{section.4.1}
 \contentsline {section}{\numberline {4.2}Modelo Relacional}{13}{section.4.2}
 \contentsline {section}{\numberline {4.3}Rela\c c\~oes}{13}{section.4.3}
-\contentsline {section}{\numberline {4.4}Arquivos de cria\c c\~ao e de inser\c c\~ao}{13}{section.4.4}
-\contentsline {chapter}{\numberline {5}Protocolo de comunica\c c\~ao}{15}{chapter.5}
-\contentsline {section}{\numberline {5.1}Sintaxe}{15}{section.5.1}
-\contentsline {section}{\numberline {5.2}Sem\^antica}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}Arquivos PHP}{15}{section.5.3}
-\contentsline {section}{\numberline {5.4}Arquivos Java}{15}{section.5.4}
-\contentsline {chapter}{\numberline {6}Implementac\~ao do Jogo}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Fluxograma}{17}{section.6.1}
-\contentsline {section}{\numberline {6.2}Principais Classes}{17}{section.6.2}
-\contentsline {section}{\numberline {6.3}Integra\c c\~ao Facebook}{17}{section.6.3}
-\contentsline {section}{\numberline {6.4}Mec\^anica}{17}{section.6.4}
-\contentsline {section}{\numberline {6.5}Novo Jogo}{17}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Amigo do Facebook}{17}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Oponente Aleat\'orio}{17}{subsection.6.5.2}
-\contentsline {section}{\numberline {6.6}Sistema de pontua\c c\~ao}{17}{section.6.6}
-\contentsline {section}{\numberline {6.7}Estat\IeC {\'\i }sticas}{18}{section.6.7}
-\contentsline {chapter}{\numberline {7}Testes}{19}{chapter.7}
-\contentsline {section}{\numberline {7.1}Testes para projetos android}{19}{section.7.1}
-\contentsline {section}{\numberline {7.2}Testes neste projeto}{19}{section.7.2}
-\contentsline {chapter}{\numberline {8}Resultados}{21}{chapter.8}
-\contentsline {section}{\numberline {8.1}Resultados Esperados}{21}{section.8.1}
-\contentsline {section}{\numberline {8.2}Resultados Obtidos}{21}{section.8.2}
-\contentsline {chapter}{\numberline {9}Conlus\~ao}{23}{chapter.9}
-\contentsline {chapter}{\numberline {10}Trabalhos Futuros}{25}{chapter.10}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{27}{chapter*.10}
+\contentsline {subsection}{\numberline {4.3.1}Jogador}{13}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}TipoCarta}{13}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Carta}{14}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Dicas}{14}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Desafios}{14}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Historico\_Jogo}{14}{subsection.4.3.6}
+\contentsline {subsection}{\numberline {4.3.7}Historico\_Estatistica}{15}{subsection.4.3.7}
+\contentsline {section}{\numberline {4.4}Arquivos de cria\c c\~ao e de inser\c c\~ao}{15}{section.4.4}
+\contentsline {chapter}{\numberline {5}Protocolo de comunica\c c\~ao}{17}{chapter.5}
+\contentsline {section}{\numberline {5.1}Sintaxe}{17}{section.5.1}
+\contentsline {section}{\numberline {5.2}Sem\^antica}{17}{section.5.2}
+\contentsline {section}{\numberline {5.3}Arquivos PHP}{17}{section.5.3}
+\contentsline {section}{\numberline {5.4}Arquivos Java}{17}{section.5.4}
+\contentsline {chapter}{\numberline {6}Implementac\~ao do Jogo}{19}{chapter.6}
+\contentsline {section}{\numberline {6.1}Fluxograma}{19}{section.6.1}
+\contentsline {section}{\numberline {6.2}Principais Classes}{19}{section.6.2}
+\contentsline {section}{\numberline {6.3}Integra\c c\~ao Facebook}{19}{section.6.3}
+\contentsline {section}{\numberline {6.4}Mec\^anica}{19}{section.6.4}
+\contentsline {section}{\numberline {6.5}Novo Jogo}{19}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Amigo do Facebook}{19}{subsection.6.5.1}
+\contentsline {subsection}{\numberline {6.5.2}Oponente Aleat\'orio}{19}{subsection.6.5.2}
+\contentsline {section}{\numberline {6.6}Sistema de pontua\c c\~ao}{19}{section.6.6}
+\contentsline {section}{\numberline {6.7}Estat\IeC {\'\i }sticas}{20}{section.6.7}
+\contentsline {chapter}{\numberline {7}Testes}{21}{chapter.7}
+\contentsline {section}{\numberline {7.1}Testes para projetos android}{21}{section.7.1}
+\contentsline {section}{\numberline {7.2}Testes neste projeto}{21}{section.7.2}
+\contentsline {chapter}{\numberline {8}Resultados}{23}{chapter.8}
+\contentsline {section}{\numberline {8.1}Resultados Esperados}{23}{section.8.1}
+\contentsline {section}{\numberline {8.2}Resultados Obtidos}{23}{section.8.2}
+\contentsline {chapter}{\numberline {9}Conlus\~ao}{25}{chapter.9}
+\contentsline {chapter}{\numberline {10}Trabalhos Futuros}{27}{chapter.10}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{29}{chapter*.17}
 \contentsfinish 

@@ -19,12 +19,177 @@ chaves primárias e/ou estrangeiras.
 \section{Relações}
 \label{sec:relacoes}
 
-TODO Aqui vou explicar o que siginifica cada relação e explicar algum de seus atributos (Talvez todos)
+	Foram necessárias sete tabelas para armazenar os dados necessários para a implementação do jogo.
+
+\subsection{Jogador}
+	
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+\underline{id} & nome & moedas & epeciais & foto \\
+\hline
+
+\end{tabular}
+\caption{Tabela Jogador}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id} - 
+\item \textbf{nome} - 
+\item \textbf{moedas} - 
+\item \textbf{epeciais} - 
+\item \textbf{foto} - 
+\end{itemize}
+
+\subsection{TipoCarta}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|}
+
+\hline
+\underline{id} & tipo\\
+\hline
+
+\end{tabular}
+\caption{Tabela TipoCarta}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id} - 
+\item \textbf{tipo} - 
+\end{itemize}
+
+\subsection{Carta}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|}
+
+\hline
+\underline{id} & nome & id\_tipo\_carta & link\_foto\\
+\hline
+
+\end{tabular}
+\caption{Tabela Carta}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id} - 
+\item \textbf{nome} - 
+\item \textbf{id\_tipo\_carta} - 
+\item \textbf{link\_foto} - 
+\end{itemize}
+
+\subsection{Dicas}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|}
+
+\hline
+\underline{id} & id\_carta & texto\\
+\hline
+
+\end{tabular}
+\caption{Tabela Dicas}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id} - 
+\item \textbf{id\_carta} - 
+\item \textbf{texto} - 
+\end{itemize}
+
+\subsection{Desafios}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|
+c|c|}
+
+\hline
+\underline{id\_jogador1} & \underline{id\_jogador2} & id\_carta & pontuacao1 \\ 
+\hline
+pontuacao2 & status \\
+\cline{1-2}
+
+\end{tabular}
+\caption{Tabela Desafios}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id\_jogador1} - 
+\item \textbf{id\_jogador2} - 
+\item \textbf{id\_carta} - 
+\item \textbf{pontuacao1} - 
+\item \textbf{pontuacao2} - 
+\item \textbf{status} - 
+\end{itemize}
+
+\subsection{Historico\_Jogo}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|}
+
+\hline
+\underline{id\_jogador1} & \underline{id\_jogador2} & vitorias1 & vitorias2 \\
+\hline
+
+\end{tabular}
+\caption{Tabela Historico\_Jogo}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id\_jogador1} - 
+\item \textbf{id\_jogador2} - 
+\item \textbf{vitorias1} - 
+\item \textbf{vitorias2} - 
+\end{itemize}
+
+\subsection{Historico\_Estatistica}
+
+\begin{table}[!h]
+\large
+\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+
+\hline
+\underline{id\_jogador} & \underline{id\_tipo\_carta} & jogadas & acertos \\
+\hline
+
+\end{tabular}
+\caption{Tabela Historico\_Estatistica}
+\end{table}
+
+\begin{itemize}
+\item \textbf{id\_jogador} - 
+\item \textbf{id\_tipo\_carta} - 
+\item \textbf{jogadas} - 
+\item \textbf{acertos} - 
+\end{itemize}
+
 
 % %% ------------------------------------------------------------------------- %%
 \section{Arquivos de criação e de inserção}
 \label{sec:arquivos}
 
-TODO Aqui vou explicar sobre os arquivos de criação e inserção do banco de dados que rodam com /i
+	Foram criados dois arquivos com extensão sql para fazer a criação das tabelas do 
+banco de dados: 
+\begin{itemize}
+\item{\textbf{ModeloFisico}} - Arquivo de criação do banco 
+\item{\textbf{Populate}} - Arquivo que popula o banco de dados com alguns jogadores e cartas para
+que os testes ... 
+\end{itemize} 
+
 
 % %% ------------------------------------------------------------------------- %%
