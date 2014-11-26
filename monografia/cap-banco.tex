@@ -22,6 +22,8 @@ chaves primárias e/ou estrangeiras.
 	Foram necessárias sete tabelas para armazenar os dados necessários para a implementação do jogo.
 
 \subsection{Jogador}
+
+	A tabela Jogador armazena os dados dos usuários utilizados pelo jogo.
 	
 \begin{table}[!h]
 \large
@@ -37,14 +39,17 @@ chaves primárias e/ou estrangeiras.
 \end{table}
 
 \begin{itemize}
-\item \textbf{id} - 
-\item \textbf{nome} - 
-\item \textbf{moedas} - 
-\item \textbf{epeciais} - 
-\item \textbf{foto} - 
+\item \textbf{id} - É a chave primária da tabela, se trata do id do facebook do jogador.
+\item \textbf{nome} - Nome completo do jogador, informação retirada do perfil no facebook.
+\item \textbf{moedas} - Quantidade de moedas que o jogador possui. 
+\item \textbf{epeciais} - Quantidade de especiais que o jogador possui.
+\item \textbf{foto} - Url da foto de perfil do facebook. 
 \end{itemize}
 
+\newpage
 \subsection{TipoCarta}
+
+	A tabela TipoCarta armazena todos os possíveis tipos de cartas utilizados no jogo.
 
 \begin{table}[!h]
 \large
@@ -60,11 +65,13 @@ chaves primárias e/ou estrangeiras.
 \end{table}
 
 \begin{itemize}
-\item \textbf{id} - 
-\item \textbf{tipo} - 
+\item \textbf{id} - Chave primária da tabela, trata-se de um id sequencial.
+\item \textbf{tipo} - Nome do tipo de carta.
 \end{itemize}
 
 \subsection{Carta}
+
+	A tabela carta armazena os dados referentes a cada carta cadastrada no jogo. 
 
 \begin{table}[!h]
 \large
@@ -80,13 +87,15 @@ chaves primárias e/ou estrangeiras.
 \end{table}
 
 \begin{itemize}
-\item \textbf{id} - 
-\item \textbf{nome} - 
-\item \textbf{id\_tipo\_carta} - 
-\item \textbf{link\_foto} - 
+\item \textbf{id} - Chave primária da tabela, trata-se de um id sequencial.
+\item \textbf{nome} - Nome da personalidade representada na carta.  
+\item \textbf{id\_tipo\_carta} - Chave estrangeira que representa qual o tipo da carta.
+\item \textbf{link\_foto} - Url da foto da personalidade.
 \end{itemize}
 
 \subsection{Dicas}
+
+	A tabela dicas representa cada uma das dicas presentes nas cartas do jogo. São 10 dicas para cada carta
 
 \begin{table}[!h]
 \large
@@ -102,12 +111,17 @@ chaves primárias e/ou estrangeiras.
 \end{table}
 
 \begin{itemize}
-\item \textbf{id} - 
-\item \textbf{id\_carta} - 
-\item \textbf{texto} - 
+\item \textbf{id} - Faz parte da chave primária da tabela, e representa o numeéro da dica de uma determinada carta, podendo ter valores entre 1 e 10. 
+\item \textbf{id\_carta} - Faz parte da chave primária da tabela e é também chave estrangeira que representa 
+de qual carta se trata a dica.
+\item \textbf{texto} - Texto de um fato sobre a biografia da personalidade da carta.
 \end{itemize}
 
 \subsection{Desafios}
+
+	A tabela de desafios representa os dois últimos turnos jogados por dois jogadores que estão competindo. Nesta 
+tabela o jogador 1 representa o desafiante e o jogador 2 o desafiado. Como a cada turno o desafiado manda
+um jogo de volta para o desafiante, este torna-se desafiado e aquele o desafiante, alternando assim os papéis. 
 
 \begin{table}[!h]
 \large
@@ -126,15 +140,27 @@ pontuacao2 & status \\
 \end{table}
 
 \begin{itemize}
-\item \textbf{id\_jogador1} - 
-\item \textbf{id\_jogador2} - 
-\item \textbf{id\_carta} - 
-\item \textbf{pontuacao1} - 
-\item \textbf{pontuacao2} - 
-\item \textbf{status} - 
+\item \textbf{id\_jogador1} - Faz parte da chave primária da tabela, representa o id do jogador desafiante. 
+\item \textbf{id\_jogador2} - Faz parte da chave primária da tabela, representa o id do jogador desafiado. 
+\item \textbf{id\_carta} - Representa a carta utilizada no último turno que o jogador desafiante enviou para o desafiado. 
+\item \textbf{pontuacao1} - Quantidade de pontos obtidos pelo desafiante no turno corrente.
+\item \textbf{pontuacao2} - Quantidade de pontos obtidos pelo desafiado no turno corrente.
+\item \textbf{status} - Trata-se de um inteiro entre 0 e 4 que representa o estado do turno. 
+
+\begin{itemize}
+\item \textbf{0}: Representa que nenhum dos jogadores jogou este turno.
+\item \textbf{1}: Representa que o desafiante está jogando.
+\item \textbf{2}: Representa que o desafiante já enviou o desafio.
+\item \textbf{3}: Representa que o desafiado está jogando.
+\item \textbf{4}: Representa que o desafiado já respondeu o desafio.
+\end{itemize}
 \end{itemize}
 
 \subsection{Historico\_Jogo}
+
+	A tabela Historico\_Jogo guarda o placar total do jogo. Fazendo a totalização de todos os turnos desde
+o primeiro. Nesta tabela o id do jogador 1 é sempre numericamente menor do que o do jogador 2, fazendo com 
+que a recuperação dos dados seja feita de maneira mais simples.
 
 \begin{table}[!h]
 \large
@@ -150,13 +176,16 @@ pontuacao2 & status \\
 \end{table}
 
 \begin{itemize}
-\item \textbf{id\_jogador1} - 
-\item \textbf{id\_jogador2} - 
-\item \textbf{vitorias1} - 
-\item \textbf{vitorias2} - 
+\item \textbf{id\_jogador1} - Faz parte da chave primária da tabela, representa um dos jogadores. 
+\item \textbf{id\_jogador2} - Faz parte da chave primária da tabela, representa um dos jogadores. 
+\item \textbf{vitorias1} - Quantidade de vitórias totais do jogador 1.
+\item \textbf{vitorias2} - Quantidade de vitórias totais do jogador 2.
 \end{itemize}
 
 \subsection{Historico\_Estatistica}
+
+	A tabela Historico\_Estatistica guarda informações estatísticas sobre o desempenho de cada jogador em 
+determinado tipo de carta. 
 
 \begin{table}[!h]
 \large
@@ -172,10 +201,10 @@ pontuacao2 & status \\
 \end{table}
 
 \begin{itemize}
-\item \textbf{id\_jogador} - 
-\item \textbf{id\_tipo\_carta} - 
-\item \textbf{jogadas} - 
-\item \textbf{acertos} - 
+\item \textbf{id\_jogador} - Faz parte da chave primária da tabela, representa um jogador. 
+\item \textbf{id\_tipo\_carta} - Faz parte da chave primária da tablea, representa um tipo de carta jogado. 
+\item \textbf{jogadas} - Quantidade de vezes em que o tipo de carta foi jogado pelo jogador
+\item \textbf{acertos} - Quantidade de vezes em que o jogador acertou a personalidade jogando este tipo de carta. 
 \end{itemize}
 
 
