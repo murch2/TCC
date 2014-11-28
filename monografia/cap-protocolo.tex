@@ -2,15 +2,38 @@
 \chapter{Protocolo de comunicação}
 \label{cap:protocolo_de_comunicacao}
 
-	Para que a troca de informações entre o jogo e o web service fosse feita de maneira confiáve le bem definida, 
-foi criado um protocolo de comunicação
+	Para que a troca de informações entre o jogo e o web service fosse feita de maneira confiável e bem definida, 
+foi criado um protocolo de comunicação. 
+
 % 	TODO Aqui falar que foi criado um protocolo de comunicação utilizado entre 
 % jogo e servidor ... [Aqui eu já falei que eh JSON e bla bla bla]
 %% ------------------------------------------------------------------------- %%
 \section{Sintaxe}
 \label{sec:sintaxe}
 
+\subsection{Estrutura de Dados}
 	
+	A estrutura JSON\footnote{JavaScript Oriented Notation} foi utilizada no protocolo. JSON
+é uma formatação leve de troca de dados, em formato texto e completamente independente de linguagem.\cite{JSON}
+	
+	JSON está constituído em duas estruturas:
+	\begin{itemize}
+		\item{Uma coleção de pares chave/valor}
+		\item{Uma lista ordenada de valores}
+	\end{itemize}
+
+	O protocolo utiliza conjuntamente estas duas estruturas para a transmissão de dados.
+
+\subsection{Campos Obrigatórios}
+	
+	Nos objetos JSON utilizados para comunicação, foram definidos campos obrigatórios, 
+que precisam estar presentes para que qualquer requisição seja respondida. São eles:
+
+\begin{itemize}
+\item{teste}
+\end{itemize}
+
+
 TODO Descrever aqui a sintaxe utilizada no protocolo, sintaxe é apenas a descrição 
 de como eh feito o JSON.
 
@@ -18,7 +41,7 @@ de como eh feito o JSON.
 \section{Semântica}
 \label{sec:}
 
-TODO Descrever aqui a semântica utilizada no protocol. Aqui eu descrevo o que cada
+TODO Descrever aqui a semântica utilizada no protocolo. Aqui eu descrevo o que cada
 campo do JSON significa. 
 
 % %% ------------------------------------------------------------------------- %%

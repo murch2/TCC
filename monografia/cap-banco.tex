@@ -2,24 +2,32 @@
 \chapter{Banco de Dados}
 \label{cap:baco_de_dados}
 
+	Para que as informações necessárias ao funcionamento correto do jogo pudessem ser recuperadas de 
+maneira eficiente e consistente foi modelado um banco de dados relacional utilizando o SGBD PostgreSQL.
 %% ------------------------------------------------------------------------- %%
-\section{Modelo Conceitual}
-\label{sec:modelo_conceitual}
+% \section{Modelo Conceitual}
+% \label{sec:modelo_conceitual}
 
-TODO Aqui vai a figura do diagrama conceitual do projeto (DER) que demonstra as relações entre as entidades. 
+% TODO Aqui vai a figura do diagrama conceitual do projeto (DER) que demonstra as relações entre as entidades. 
 
 % %% ------------------------------------------------------------------------- %%
 \section{Modelo Relacional}
 \label{sec:modelo_relacional}
 
-TODO Aqui eu faço o modelo relacional (figura) demonstrando as tabelas do banco de dados e suas respectivas
-chaves primárias e/ou estrangeiras. 
+	Foram necessárias sete relações para armazenar os dados.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=.80\textwidth]{MR} 
+  \caption{Modelo Relacional}
+\end{figure}
+
+	Na figura os campos sublinhados representam as chaves primárias da relação, já as setas representam 
+as respectivas chaves estrangeiras.
 
 % %% ------------------------------------------------------------------------- %%
 \section{Relações}
 \label{sec:relacoes}
-
-	Foram necessárias sete tabelas para armazenar os dados necessários para a implementação do jogo.
 
 \subsection{Jogador}
 
@@ -46,7 +54,6 @@ chaves primárias e/ou estrangeiras.
 \item \textbf{foto} - Url da foto de perfil do facebook. 
 \end{itemize}
 
-\newpage
 \subsection{TipoCarta}
 
 	A tabela TipoCarta armazena todos os possíveis tipos de cartas utilizados no jogo.
@@ -117,6 +124,8 @@ de qual carta se trata a dica.
 \item \textbf{texto} - Texto de um fato sobre a biografia da personalidade da carta.
 \end{itemize}
 
+\newpage
+
 \subsection{Desafios}
 
 	A tabela de desafios representa os dois últimos turnos jogados por dois jogadores que estão competindo. Nesta 
@@ -182,10 +191,12 @@ que a recuperação dos dados seja feita de maneira mais simples.
 \item \textbf{vitorias2} - Quantidade de vitórias totais do jogador 2.
 \end{itemize}
 
+\newpage
 \subsection{Historico\_Estatistica}
 
 	A tabela Historico\_Estatistica guarda informações estatísticas sobre o desempenho de cada jogador em 
 determinado tipo de carta. 
+
 
 \begin{table}[!h]
 \large
@@ -215,10 +226,18 @@ determinado tipo de carta.
 	Foram criados dois arquivos com extensão sql para fazer a criação das tabelas do 
 banco de dados: 
 \begin{itemize}
-\item{\textbf{ModeloFisico}} - Arquivo de criação do banco 
-\item{\textbf{Populate}} - Arquivo que popula o banco de dados com alguns jogadores e cartas para
-que os testes ... 
+\item{\textbf{ModeloFisico}} - O arquivo ModeloFisico.sql executa toda a criação de toda a estrutura (tabelas, chaves primárias, chaves estrangeiras, etc) presentes no banco de dados de Biografia.
+
+\item{\textbf{Populate}} - O arquivo Populate.sql popula o banco de dados com uma quantidade de dados suficiente
+para que alguns testes envolvendo jogadores diferentes, e cartas diferentes possam ser executados.
+
 \end{itemize} 
+
+	Ambos os arquivos podem ser executados através da linha de comando. Dentro do SGBD PostgreSQL basta digitar:
+
+``\textbackslash i Nome\_do\_arquivo'' para que o mesmo seja executado. 
+
+
 
 
 % %% ------------------------------------------------------------------------- %%
