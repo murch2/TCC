@@ -7,14 +7,9 @@ package com.model;
 import java.util.StringTokenizer;
 
 import org.andengine.engine.camera.Camera;
-import org.andengine.engine.handler.timer.ITimerCallback;
-import org.andengine.engine.handler.timer.TimerHandler;
-import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
-import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
-import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -26,7 +21,6 @@ import com.util.ImageDownloader;
 
 public class GameItem extends SpriteMenuItem {
 	
-//	Posso tentar colocar um newGame. 
 	private enum Status {
 		PLAY, 
 		POKE, 
@@ -51,17 +45,11 @@ public class GameItem extends SpriteMenuItem {
 	 
 	public GameItem(int idButton, String idFriend, JSONObject friendInfo) {
 		super(idButton, ResourcesManager.getInstance().gameItemBackGroundRegion, ResourcesManager.getInstance().vbom);
-		try {
-			System.out.println("AQUI" + friendInfo.toString(4));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
 		this.jsonFriendInfo = friendInfo; 
 		friendID = idFriend; 
 		createPicture(); 
 		createFriendNameText();
 		createMyText();
-//		createScore();
 		createStatus();
 	}
 	
@@ -87,7 +75,7 @@ public class GameItem extends SpriteMenuItem {
 				String link; 
 				try {
 					link = jsonFriendInfo.getString("pictureOpponent");
-					Sprite updatePicture = ImageDownloader.testeImage(link);
+					Sprite updatePicture = ImageDownloader.downloadImage(link);
 					updatePicture.setWidth(friendPicture.getWidth());
 					updatePicture.setHeight(friendPicture.getHeight()); 
 					updatePicture.setPosition(friendPicture); 
@@ -100,34 +88,6 @@ public class GameItem extends SpriteMenuItem {
 			}
 		}); 
 	}
-	
-//	private void createStatusButton() {
-//		
-//		statusButton = new ScaleMenuItemDecorator(new SpriteMenuItem(0, ResourcesManager.getInstance().,
-//				ResourcesManager.getInstance().vbom), 0.8f, 1){
-//
-//			@Override
-//			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-//				statusButton.setScale(0.8f);
-//
-//				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
-//					@Override
-//					public void onTimePassed(TimerHandler pTimerHandler) {
-//						statusButton.setScale(1.0f);
-//						System.out.println("Clicando no StatusButton");
-//					}
-//				});
-//
-//				this.registerUpdateHandler(timer); 
-//				return true; 
-//			}
-//		};
-//		statusButton.setScaleX(0.1f); 
-//		statusButton.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.7f);
-//		this.registerTouchArea(statusButton);
-//		attachChild(statusButton);
-//
-//	}
 	
 	private void createFriendNameText() {
 		try {

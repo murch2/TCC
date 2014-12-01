@@ -17,17 +17,10 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 
-import android.R;
 import android.app.AlertDialog;
-import android.app.Notification.Action;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
-import com.facebook.Request.Callback;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 
@@ -41,10 +34,6 @@ public class TipLayer extends Sprite {
 	private final int ANSWER = 2;
 	private final int MAX_CHAR = 18; 
 	public boolean tryToAnswer = false;
-	
-	//	Esse layer precisa de um botão que quando clicado executa um callback passado na criação (que vai deixar o 
-	//	layer invisivel no game) 
-	//	Também precisa de algum jeito desabilitar o toque do menu de trás quando o layer estiver aparecendo
 
 	public TipLayer(String cardName) {
 		super(0, 0, 400, 500, ResourcesManager.getInstance().backgroundTipLayerRegion, ResourcesManager.getInstance().vbom); 
@@ -53,15 +42,6 @@ public class TipLayer extends Sprite {
 		createTipText();
 		createButtons();
 	}
-	
-//	@Override
-//	public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-//			float pTouchAreaLocalX, float pTouchAreaLocalY) {
-//		
-//		System.out.println("TO TOCANDO NESSA MERDA!!!!!");
-//		
-//		return true; 
-//	}
 
 	private void createTipText() {
 		tipText = new Text(0, 0, ResourcesManager.getInstance().arialFont, Constants.MAX_TIP, 

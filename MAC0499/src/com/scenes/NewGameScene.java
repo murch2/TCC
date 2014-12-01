@@ -21,7 +21,6 @@ import com.managers.SceneManager.SceneType;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
-import com.util.LoadingLayer;
 
 public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener, HTTPResponseListener {
 
@@ -81,8 +80,6 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
-		
-		LoadingLayer loading = new LoadingLayer();
 		
 		switch (pMenuItem.getID()) {
 			case ITEM_FACEBOOK_FRIEND:

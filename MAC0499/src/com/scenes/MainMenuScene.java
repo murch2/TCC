@@ -14,9 +14,7 @@ import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
-import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
-import org.andengine.input.touch.detector.ClickDetector;
 import org.andengine.input.touch.detector.ScrollDetector;
 import org.andengine.input.touch.detector.ScrollDetector.IScrollDetectorListener;
 import org.andengine.input.touch.detector.SurfaceScrollDetector;
@@ -42,18 +40,13 @@ import com.util.LoadingLayer;
 
 public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListener, GraphUserCallback, IOnMenuItemClickListener, IScrollDetectorListener, IOnSceneTouchListener{
 
-	
-//	O menu new game vai virar apenas um item
 	private IMenuItem newGameItem;
 	
 	private MenuScene menuMyGames;
-	private final int MENU_NEWGAME = 0;
 	private final int GAME_ITEM = 1;
 	private int numRequests;
 	private JSONObject jsonMyGames; 
-	private Sprite statusSprite; 
 	private SurfaceScrollDetector scrollDetector = null;
-	private ClickDetector clickDetector = null;
 	private boolean swipe = false;
 
 	@Override
@@ -188,9 +181,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 					createItensScene();
 				}
 			}
-			else {  
-				System.out.println("DEBUG - Erro ao recuperar dados do usuário");
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -202,9 +192,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 		
 		switch (pMenuItem.getID()) {
 		case GAME_ITEM:
-//			Aqui eu tenho que ir pra choice scene sem escolher na verdade. e vendo o outro placar.
-			System.out.println("Chamar a choice scene se o status do botão for play");
-//			SceneManager.getInstance().createNewGameScene();
 			return true; 
 		default:
 			break;
@@ -238,8 +225,6 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 				}
             }
 		}
-		else 
-			System.out.println("FDP");
 	}
 
 	@Override

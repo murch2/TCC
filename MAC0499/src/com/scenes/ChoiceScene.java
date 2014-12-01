@@ -155,10 +155,6 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		attachChild(newGameText);
 	}
 
-	private void createTotalScore() {
-		// TODO
-	}
-
 	private void shuffleRoullete() {
 		timer = new TimerHandler(0.1f, true, new ITimerCallback() {
 			int count = 0;
@@ -262,12 +258,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
-			if (json != null) {
-				JSONArray dados = json.getJSONArray("dados");
-				createItensScene(dados);
-			} else {
-				System.out.println("DEBUG - Json Nulo");
-			}
+			JSONArray dados = json.getJSONArray("dados");
+			createItensScene(dados);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -298,7 +290,6 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		return false;
 	}
 
-//TODO	Transferir esse metodo para um modulo de uma classe no package util
 	private MenuScene setMenuLayoutToHorizontal(MenuScene menu, int padding) {
 		if (menu.getChildCount() <= 1)
 			return menu;

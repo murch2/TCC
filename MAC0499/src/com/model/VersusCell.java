@@ -8,9 +8,7 @@ import java.util.StringTokenizer;
 
 import org.andengine.engine.camera.Camera;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.entity.sprite.vbo.ISpriteVertexBufferObject;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
@@ -19,10 +17,6 @@ import org.json.JSONObject;
 import com.managers.ResourcesManager;
 import com.util.Constants;
 import com.util.ImageDownloader;
-
-import android.content.res.Resources;
-import android.provider.CalendarContract.Colors;
-import android.text.InputFilter.LengthFilter;
 
 public class VersusCell extends Sprite {
 	
@@ -66,7 +60,7 @@ public class VersusCell extends Sprite {
 			@Override
 			public void run() {
 				System.out.println("Foto = " + url);
-				Sprite updatePicture = ImageDownloader.testeImage(url);
+				Sprite updatePicture = ImageDownloader.downloadImage(url);
 				updatePicture.setWidth(picture.getWidth());
 				updatePicture.setHeight(picture.getHeight()); 
 				updatePicture.setPosition(picture); 

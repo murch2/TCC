@@ -7,18 +7,10 @@ package com.model;
 import java.util.StringTokenizer;
 
 import org.andengine.engine.camera.Camera;
-import org.andengine.entity.Entity;
-import org.andengine.entity.scene.menu.MenuScene;
-import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
-import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.entity.sprite.batch.SpriteGroup;
-import org.andengine.entity.sprite.vbo.ISpriteVertexBufferObject;
 import org.andengine.entity.text.Text;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.util.GLState;
-import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,7 +55,7 @@ public class FriendPickerItem extends SpriteMenuItem {
 				try {
 					link = jsonFriendInfo.getString("pic_big");
 					setFriendURLPicture(link);
-					Sprite updatePicture = ImageDownloader.testeImage(link);
+					Sprite updatePicture = ImageDownloader.downloadImage(link);
 					updatePicture.setWidth(friendPicture.getWidth());
 					updatePicture.setHeight(friendPicture.getHeight()); 
 					updatePicture.setPosition(friendPicture); 
@@ -87,7 +79,6 @@ public class FriendPickerItem extends SpriteMenuItem {
 			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.6f, Constants.HEIGHT_PICKER_CELL * 0.78f);  
 			friendNameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
 			attachChild(friendNameText);
-			
 			
 			String middleName = normalizedName.getString("middleName");
 			friendMiddleNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, middleName, ResourcesManager.getInstance().vbom);
@@ -140,7 +131,6 @@ public class FriendPickerItem extends SpriteMenuItem {
 			}
 			if (str.hasMoreTokens()) { 
 				strMiddleName = str.nextToken();
-				System.out.println("MiddleName = " + strMiddleName);
 				if (strMiddleName.length() > MAX_CHAR_NAME) {
 					strMiddleName = strMiddleName.substring(0, MAX_CHAR_NAME - 1);
 					strMiddleName.concat(".");

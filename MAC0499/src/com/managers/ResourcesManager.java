@@ -2,7 +2,6 @@ package com.managers;
 
 import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
-import org.andengine.entity.sprite.Sprite;
 import org.andengine.opengl.font.Font;
 import org.andengine.opengl.font.FontFactory;
 import org.andengine.opengl.texture.ITexture;
@@ -163,16 +162,6 @@ public class ResourcesManager {
         arialFont.load();
     }
     
-//    final ITexture fontTexture = new BitmapTextureAtlas(this.getTextureManager(), 256, 256, TextureOptions.BILINEAR);    
-//    this.mFont = FontFactory.createFromAsset(this.getFontManager(), fontTexture, this.getAssets(), &quot;Plok.ttf&quot;, 48, true, Color.WHITE);
-//    4
-//    this.mFont.load();
-
-    
-//    private synchronized void loadConnectGraphics() {
-//    	
-//    }
-//    
     public synchronized void loadMainMenuScene() {
     	if (gameFont == null) {
     		createFont(); 
@@ -363,7 +352,4 @@ public class ResourcesManager {
     public synchronized void unloadEndGameScene() {
         endGameSceneAtlas.unload(); 
     }
-    
-    
-
 }

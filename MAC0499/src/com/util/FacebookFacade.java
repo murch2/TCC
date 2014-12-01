@@ -5,18 +5,20 @@
 package com.util;
 
 import java.util.Vector;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import android.os.Bundle;
+
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Request.Callback;
 import com.facebook.Request.GraphUserCallback;
-import com.facebook.RequestAsyncTask;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
-import com.managers.GameManager;	
+import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
@@ -101,7 +103,6 @@ public class FacebookFacade implements HTTPResponseListener{
 		        		JSONObject json = response.getGraphObject().getInnerJSONObject().getJSONObject("data");
 						if (!json.getBoolean("is_silhouette")) {
 							GameManager.getInstance().setUserPictureURL(json.getString("url"));
-//TODO						Fazer uma requisição para setar a foto do usuário
 							new HTTPPostRequester().asyncPost(FacebookFacade.this, MakeParameters.myPicture()); 
 						}		
 					} catch (JSONException e) {

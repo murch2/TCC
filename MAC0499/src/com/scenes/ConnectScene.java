@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
-import com.facebook.widget.LoginButton;
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.managers.SceneManager;
@@ -59,8 +58,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 		this.dispose();
 		ResourcesManager.getInstance().unloadConnectScene(); 
 	}
-
-	//Mudar para uma imagem talvez depois. 
+ 
 	private void createBackground() {
 		setBackground(new Background(Color.BLACK));
 	}
@@ -77,8 +75,7 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 		facebookMenu.addMenuItem(facebookConnectItem);
 		facebookMenu.buildAnimations();
 		facebookMenu.setBackgroundEnabled(false);
-
-		//Poderia ter uma classe aqui que é responsavel por isso. (O click do botão de menu). 
+ 
 		facebookMenu.setOnMenuItemClickListener(this); 
 
 		setChildScene(facebookMenu);
@@ -130,9 +127,6 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 				GameManager.getInstance().setLoggedUser(true); 
 				GameManager.getInstance().getDataInMemory().saveData(Constants.FACEBOOK_LOGIN, true);
 				SceneManager.getInstance().createMainMenuScene(); 
-			}
-			else { 
-				System.out.println("DEBUG - Erro na inserção do usuário");
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

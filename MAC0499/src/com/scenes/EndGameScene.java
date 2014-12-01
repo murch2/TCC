@@ -7,7 +7,6 @@ package com.scenes;
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
-import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
@@ -20,8 +19,6 @@ import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.view.MenuItem;
 
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
@@ -42,10 +39,8 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 	private IMenuItem btnNext;
 	private Sprite border; 
 	
-//	Tenho que passar se o cara perdeu ou ganhou e a foto do cara no gameManager. 
 	@Override
 	public void createScene() {
-//		Aqui eu preciso ver se eh new round mesmo. 
 		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound()); 
 	}
 	
@@ -113,7 +108,7 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
 			@Override
 			public void run() {
-				Sprite updatePicture = ImageDownloader.testeImage(GameManager.getInstance().getCardPictureURL());
+				Sprite updatePicture = ImageDownloader.downloadImage(GameManager.getInstance().getCardPictureURL());
 				updatePicture.setWidth(300);
 				updatePicture.setHeight(300); 
 				updatePicture.setPosition(picture); 
@@ -199,9 +194,7 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 				createItensScene();
 		} catch (JSONException e) {
 			e.printStackTrace();
-		}
-		
-		
+		}		
 	}
 
 }

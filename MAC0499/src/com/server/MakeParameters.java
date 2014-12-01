@@ -7,15 +7,12 @@ package com.server;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.provider.CalendarContract.Colors;
-
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
  
 public class MakeParameters {
 
 	public static JSONObject signUpParams (GraphUser user) {
-		System.out.println("Fazendo SignUpParams");
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject(); 
 		try {
@@ -49,8 +46,6 @@ public class MakeParameters {
 		JSONObject result = new JSONObject();
 		try {
 			params.put("requestID", "NewGame"); 
-			System.out.println("Chamando o new game com meu id = " + GameManager.getInstance().getUserID() + "E id " +
-					"do amiguinho = " + GameManager.getInstance().getFriendID());
 			params.put("userID", GameManager.getInstance().getUserID()); 
 			params.put("friendID", GameManager.getInstance().getFriendID()); 
 			result.put("message", params);

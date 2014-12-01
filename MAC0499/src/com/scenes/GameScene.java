@@ -4,13 +4,9 @@
  */
 package com.scenes;
 
-import org.andengine.engine.camera.Camera;
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
 import org.andengine.entity.scene.Scene;
-import org.andengine.entity.scene.background.Background;
-import org.andengine.entity.scene.background.ParallaxBackground;
-import org.andengine.entity.scene.background.ParallaxBackground.ParallaxEntity;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
@@ -28,14 +24,12 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.managers.GameManager;
 import com.managers.ResourcesManager;
 import com.managers.SceneManager;
 import com.managers.SceneManager.SceneType;
-import com.model.FriendPickerItem;
 import com.model.TipLayer;
 import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
@@ -66,7 +60,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 	private void createItensScene (JSONObject json) {
 		try {
-			System.out.println("Json = " + json.toString(4));
 			cardName = json.getJSONObject("dados").getString("nomeCarta");
 			GameManager.getInstance().setCardName(cardName); 
 			cardPictureURL = json.getJSONObject("dados").getString("foto"); 
@@ -87,13 +80,12 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		attachChild(title);
 	}
 	
-	public void teste() {
+	public void createTextDialog() {
 		answerItem = new ScaleMenuItemDecorator(new SpriteMenuItem(0, ResourcesManager.getInstance().btnAnswerRegion,
 				ResourcesManager.getInstance().vbom), 0.8f, 1){
 
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
-				System.out.println("Toquei na tela!");
 				if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN) { 
 					answerItem.setScale(0.8f);
 					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
@@ -115,8 +107,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 										@Override
 										public void onClick(DialogInterface dialog, int which) {
-//											answerString = nameEditText.getText().toString();
-//											moreTipsItem.getParent().detachSelf();
 										}
 									}); 
 
@@ -130,12 +120,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 
 									final AlertDialog alert = builder.create();
 									alert.show(); 
-//									alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {            
-//										@Override
-//										public void onClick(View v) {
-//											alert.dismiss(); 
-//										}
-//									});
 								}
 							});
 						}
@@ -163,7 +147,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 			public void onDetached() {
 				unregister(s); 
 
-				boolean tryToAnswer = false; 
 				if (tipLayer.tryToAnswer) {
 					tryToAnswer = true; 
 					if (tipLayer.answerString != null && tipLayer.answerString.equals(cardName)) {
@@ -173,7 +156,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 					} 
 				} 
 				else {
-//					Acho que aqui num precisa fazer nada. 
 				}
 				tipsMenu.setOnMenuItemClickListener((IOnMenuItemClickListener) tipsMenu.getUserData());
 				if (tipLayer.tryToAnswer)
@@ -192,11 +174,6 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	}
 	
 	private void createTips(JSONObject json){
-		try {
-			System.out.println("PORRA = " + json.toString(4));
-		} catch (JSONException e1) {
-			e1.printStackTrace();
-		}
 		IMenuItem tipItem;
 		JSONArray tipsArray;
 		try {	
@@ -256,9 +233,8 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	public void onResponse(JSONObject json) {
 		if (currentRequest == Requests.RANDOM_CARD)
 			createItensScene(json);
-		
 		else if (currentRequest == Requests.FINISH_NEWROUND)
-			System.out.println("DEBUG - Retornou do finishNewRound devo ir para MainMenu");
+			;
 	}
 
 	@Override
