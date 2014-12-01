@@ -11,28 +11,20 @@ class ExecuteQuery {
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
 		$result = $this->setInfo($query);
 
-
-		$this->log("SignUp 1");
-
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
 		}
 
-		$this->log("SignUp 2");
-
 		for ($i=1; $i < 5; $i++) { 
 			$query = "INSERT INTO HISTORICOESTATISTICA VALUES (". $json['userID'] .", $i, 0, 0); ";
-			$this->log($query); 
+		
 			$result = $this->setInfo($query);
-			$this->log($query);
+		
 			if ($this->trataResult($result)['status'] == 'error') {
 				return $this->error();
 			}
 		}
-
-		$this->log("SignUp 3");
-
-
+		
 		return $this->ok();
 	}
 
@@ -74,11 +66,11 @@ class ExecuteQuery {
 		// Quando o primeiro jogador for jogar e tiver status 4 eu posso mandar as infos pra ele ver e atualizar as infos do jogo
 
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, -1, -1, 0); ";
-		$this->log("Query que está dando erro = " . $query);
+	
 		$result = $this->setInfo($query);
 	
 		if ($this->trataResult($result)['status'] == 'error') {
-			$this->log("Deu erro 1 iF criaDesafios");
+		
 			return $this->error();
 		}
 
@@ -86,10 +78,10 @@ class ExecuteQuery {
 		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
-			$this->log("Deu erro 2 iF criaDesafios");
+		
 			return $this->error();
 		}
-		$this->log("Deu certo criadesafios");
+	
 
 		return $this->ok(); 
 	}
@@ -100,12 +92,12 @@ class ExecuteQuery {
 		else 
 			$query = "INSERT INTO HISTORICOJOGO VALUES (".$friendID.", ".$userID.", 0, 0); ";
 
-		$this->log($query);
+	
 
 		$result = $this->setInfo($query);		
 
 		if ($this->trataResult($result)['status'] == 'error') {
-			$this->log("Deu erro no cria historico jogo");
+		
 			return $this->error();
 		}
 
@@ -132,7 +124,7 @@ class ExecuteQuery {
 		$idCarta = $row['id']; 
 
 		$query = "UPDATE DESAFIOS SET id_carta = $idCarta, status = 1 WHERE id_jogador1 = $userID and id_jogador2 = $friendID;"; 
-		$this->log("Update = " . $query);
+	
 		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
@@ -140,7 +132,7 @@ class ExecuteQuery {
 		}
 
 		$query = "SELECT id, texto FROM dicas WHERE id_carta = $idCarta;"; 
-		$this->log($query);
+	
 		$resultTips = $this->getInfo($query);
 		$arrayTips = $this->trataResult($resultTips);
 
@@ -240,7 +232,7 @@ class ExecuteQuery {
 
 		$result = $this->getInfo($query);
 
-		$this->log("query");
+	
 		
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
@@ -264,13 +256,13 @@ class ExecuteQuery {
 
 	function myPictureQuery($userID, $url) {
 		$query = "UPDATE JOGADOR SET foto = '$url' WHERE id = ".$userID.";"; 
-		$this->log($query);
+	
 		$result = $this->setInfo($query); 
 		return $this->trataResult($result); 
 	}
 
 	function myGamesQuery($json) {
-		$this->log("MyGamesQuery");
+	
 		$userID = $json['userID']; 
 		$query = "SELECT id_jogador2, pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;"; 
@@ -288,17 +280,17 @@ class ExecuteQuery {
 			$opponentID = $game['id_jogador2']; 
 
 			if ($status == 0) {
-				$this->log("Status = 0");
+			
 				$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = $opponentID AND id_jogador2 = $userID; "; 
 
-				$this->log($query);
+			
 				$resultAux = $this->getInfo($query); 
 				
 				// Acho que eu posso fazer isso sem while pq eu tenho certeza que eh unico. 
 				$row = pg_fetch_array($resultAux); 
 				$statusAux = $row['status']; 
-				$this->log("StatusAux = " . $statusAux);
+			
 				// Se tiver 2 ou 4 eh minha vez. Se tiver 3 é WO 
 				if ($statusAux == 2) {
 					$dados[$index++] = array('idOpponent' => $opponentID,
@@ -320,7 +312,7 @@ class ExecuteQuery {
 			}
 			elseif ($status == 2) {
 				// Aqui é o clássico POKE, já joguei e falta o cara jogar. 
-				$this->log("Status = 2");
+			
 				$dados[$index++] = array('idOpponent' => $opponentID,
 										 'pictureOpponent' => $game['foto'],
 										 'scoreOpponent' => $game['pontuacao2'],

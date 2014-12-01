@@ -15,6 +15,11 @@ Android: 85% do mercado de smartphones.
   Agosto 2014.
 \newblock Acessado em 16 de outubro de 2014.
 
+\bibitem[Bro13]{AndEngineBook}
+Jayme~Schroeder/Brian Broyles.
+\newblock {\em AndEngine for Android Game Development Cookbook}.
+\newblock Packt, 2013.
+
 \bibitem[Cec05]{Cecin05:FreeMMG}
 Fábio~Reis Cecin.
 \newblock Freemmg: uma arquitetura cliente-servidor e par-a-par de suporte a

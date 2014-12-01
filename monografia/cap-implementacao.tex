@@ -1,11 +1,11 @@
-%% ------------------------------------------------------------------------- %\%
+% %% ------------------------------------------------------------------------- %\%
 \chapter{Implementacão do Jogo}
 \label{cap:implementacao_do_jogo}
 
 	Neste capítulo serão abordadas as principais características e funcionalidades implementadas
 no jogo. 
 
-%% ------------------------------------------------------------------------- %%
+% %% ------------------------------------------------------------------------- %%
 \section{Fluxo de Telas}
 \label{sec:fluxograma}
 
@@ -16,13 +16,13 @@ no jogo.
 \end{figure}
 
 	A figura acima representa os possíveis fluxos de telas do jogo Biografia. Todas as sessões
-são iniciadas a partir da tela \textit{Spash Scene} que nada mais é do que a tela de loading do jogo. 
+são iniciadas a partir da tela \textit{Splash Scene}, que nada mais é do que a tela de loading do jogo. 
 
-	Caso seja a primeira sessão do usuário, o jogo o redireciona para a tela \textit{Connect Scene}, esta 
+	Caso seja a primeira sessão do usuário, o jogo o redireciona para a tela \textit{Connect Scene}. Esta 
 tela pede que o usuário forneça informações da sua conta no facebook para o jogo. Após a obtenção destes dados, 
 ou caso não seja a primeira sessão do usuário, este é redirecionado para a tela \textit{Main Menu}. 
 
-	Na tela Main Menu o jogador pode tomar dois possíveis caminhos. O primeiro é a criação de um novo jogo, caso 
+	Na tela Main Menu o jogador pode tomar dois possíveis caminhos. O primeiro é a criação de um novo jogo. Caso 
 este caminho seja o escolhido, o jogo é redirecionado para a tela \textit{New Game Scene}. Nesta tela o usuário 
 pode escolher jogar contra um oponente aleatório e ser redirecionado para a tela \textit{Choice Scene} ou jogar
 contra um amigo do facebook, neste caso o jogador será redirecionado para a tela \textit{Friend Picker Scene} 
@@ -42,19 +42,18 @@ a vez dele mandar um novo desafio para o oponente, sendo assim ele é então redir
 Choice Scene} para que seja sorteado um novo tipo de carta e dar prosseguimento ao jogo. Caso o jogador já esteja 
 mandando um novo desafio para o oponente, ele é redirecionado para o \textit{Main Menu}, dando fim ao fluxo 
 do jogo.
-	
 
-% %% ------------------------------------------------------------------------- %%
+% % %% ------------------------------------------------------------------------- %%
 \section{Principais Classes}
 \label{sec:principais_classes}
 
 \subsection{GameActivity}
 
-	Em aplicações android o conceito de activity é de vital importância. Basicamente activities são espaço 
+	Em aplicações android o conceito de activity é de vital importância. Basicamente uma activity é um espaço 
 na tela em que se pode desenhar qualquer tipo de aplicação, além de ser o ponto inicial de uma aplicação 
 android. 
 
-	Em Biografia a única activity implementada se chama \textit{GameActivity}, esta classe herda da classe 
+	Em Biografia, a única activity implementada se chama \textit{GameActivity}. Esta classe herda da classe 
 \textit{BaseGameActivity}, presente na andEngine, a capacidade de iniciar o jogo, instanciar os primeiros objetos,
 além de chamar a primeira cena do jogo. 
 
@@ -97,7 +96,7 @@ classes diferentes o utilizem. Alguns exemplos de valores guardados pelo GameMan
 	\textit{BaseScene} é uma classe abstrata que representa uma cena genérica. No jogo todas as cenas herdam da 
 classe \textit{BaseScene}, o que uniformiza a implementação de qualquer trecho de código relacionado as cenas. 
 
-	A \textit{BaseScene} possui quatro métodos abstratos que devem sem implementados por qualquer classe que
+	A \textit{BaseScene} possui quatro métodos abstratos que devem ser implementados por qualquer classe que
 queira herdar suas configurações. São eles:
 
 \begin{itemize}
@@ -148,14 +147,13 @@ desta rede social.
 % %% ------------------------------------------------------------------------- %%
 
 \section{Novo Jogo}
-\label{subsec:novo_jogo}
+\label{sec:novo_jogo}
 
 	A partir do momento em que as informações do facebook do usuário são compartilhadas com o 
 jogo, este pode iniciar novas partidas. Em Biografia existem duas maneiras de se começar um novo 
 jogo. São elas: 
 
 \subsection{Amigo do Facebook}
-\label{subsec:amigo_facebook}
 
 	Ao ser escolhida a opção de criar um novo jogo com amigos do facebook, é feita uma requisição 
 ao mesmo para que sejam compartilhadas as informações sobre listas de amigos que possuem o aplicativo
@@ -165,25 +163,8 @@ corresponde a um amigo que está apto a ser escolhido para o ínicio de um novo jo
 % %% ------------------------------------------------------------------------- %%
 
 \subsection{Oponente Aleatório}
-\label{sec:oponente_aleatorio}
 
 	A opção de oponente aleatório dá ao jogador a chance de poder iniciar uma nova partida
 contra qualquer outro jogador cadastrado na base de dados do Biografia. É feita uma requisição ao 
 servidor que busca um oponente, de maneira aleatória, que o jogador ainda não tenha partida iniciada, 
 devolvendo ao jogo as informações desse oponente para que a nova partida seja jogada. 
-
-% %% ------------------------------------------------------------------------- %%
-
-% \section{Sistema de pontuação}
-% \label{sec:sistema_pontuacao}
-
-% TODO Descrever como são feitas as contas que definem a pontuação do jogo.
-
-% % %% ------------------------------------------------------------------------- %%
-
-% \section{Estatísticas}
-% \label{sec:estatisticas}
-
-% TODO Apresentar as estatísticas que são salvas e persistidas no banco de dados
-
-% %% ------------------------------------------------------------------------- %%

@@ -101,7 +101,7 @@ um desafio. Essa requisição salva as informações do turno na tabela desafio em q
 \begin{itemize}
 	\item{userID: Identificador do jogador.}
 	\item{friendID: Identificador do oponente.}
-	\item{score: Quantidade de pontos alcançada pelo jogador.}
+	\item{score: Quantidade de pontos alcançados pelo jogador.}
 	\item{tipoCartaID: Identificador do tipo da carta jogado. Utilizado para atualizar a tabela Historico\_
 Estatistica}
 	\item{correct: Booleano que indica se o jogador acertou ou não o nome da personalidade.}
@@ -125,13 +125,14 @@ formato JSON.
 	A classe TrataRequisicao é a classe que recebe todas as requisições feitas ao servidor. Nesta classe é feita 
 a decodificação do JSON recebido através da função \textit{json\_decode} do php. 
 
-	Após a decodificação é verificado se o JSON recebido possui o campo \textit{message}, em caso afirmativo 
-o novo JSON a ser considerado é o que se encontra como valor da chave \textit{message}. Então é feita a chamada da função \textit{tratandoRequisicao} que verifica se a chave requestID existe e contém um valor válido para 
-requisição, novamente em caso afirmativo um objeto da classe ExecuteQuery é instanciado e o método
+	Após a decodificação é verificado se o JSON recebido possui o campo \textit{message} e, em caso afirmativo, 
+o novo JSON a ser considerado é o que se encontra como valor da chave \textit{message}. Então é feita a chamada da função \textit{tratandoRequisicao}, que verifica se a chave requestID existe e contém um valor válido para 
+requisição. Novamente em caso afirmativo um objeto da classe ExecuteQuery é instanciado e o método
 predefinido de acordo com o contéudo da chave requestID é chamado. 
 
-	Em qualquer caso não afirmativo é feita a montagem de um objeto JSON que contém um único campo cuja a chave é
-\textit{status} e o valor \textit{error}, que representa que a requisição não foi executada com sucesso. 
+	Em qualquer caso não afirmativo é feita a montagem de um objeto JSON que contém um único campo, possuindo a 
+chave \textit{status} e o valor \textit{error}, que indica que a requisição não foi executada com 
+sucesso. 
 
 \subsection{ExecuteQuery}
 
@@ -182,7 +183,7 @@ a classe HTTPPostRequester.
 \subsection{JSONParser}
 
 	A classe JSONParser existe apenas para fazer a tradução da resposta do servidor para um objeto JSONObject
-do java. A classe é chamada duarante o tratamento da resposta de todas as requisições e o objeto populado por
+do Java. A classe é chamada durante o tratamento da resposta de todas as requisições, e o objeto populado por
 ela é retornado como resposta para as classes que pediram as informações do servidor. 
 
 \subsection{Fluxo da requisição}
@@ -199,7 +200,7 @@ servidor. Os passos a serem seguidos são:
 \begin{itemize}
 
 \item{\textbf{Passo 1}}: Primeiramente é necessário que a classe que deseja se comunicar com o servidor
-implemente a interface HTTPResponseListener. Tornando-se obrigada, portanto, a ter um método que trata a resposta do servidor.
+implemente a interface HTTPResponseListener, tornando-se obrigada, portanto, a ter um método que trata a resposta do servidor.
 
 \item{\textbf{Passo 2}}: O segundo passo é fazer uma chamada ao método correto, de acordo com a requisição, a 
 classe MakeParameters, tendo como resposta um objeto JSON populado com os paramêtros a serem passados ao 

@@ -129,7 +129,7 @@ de qual carta se trata a dica.
 \subsection{Desafios}
 
 	A tabela de desafios representa os dois últimos turnos jogados por dois jogadores que estão competindo. Nesta 
-tabela o jogador 1 representa o desafiante e o jogador 2 o desafiado. Como a cada turno o desafiado manda
+tabela, o jogador 1 representa o desafiante e o jogador 2 o desafiado. Como a cada turno o desafiado manda
 um jogo de volta para o desafiante, este torna-se desafiado e aquele o desafiante, alternando assim os papéis. 
 Por esse estilo de jogo cada partida possui duas tuplas na tabela desafios, uma que representa o turno de ida, 
 e outra, que possui chave primária trocada, ou seja o jogador 1 vira jogador 2 e vice-versa, que representa o
@@ -170,7 +170,7 @@ pontuacao2 & status \\
 
 \subsection{Historico\_Jogo}
 
-	A tabela Historico\_Jogo guarda o placar total do jogo. Fazendo a totalização de todos os turnos desde
+	A tabela Historico\_Jogo guarda o placar total do jogo, fazendo a totalização de todos os turnos desde
 o primeiro. Nesta tabela o id do jogador 1 é sempre numericamente menor do que o do jogador 2, fazendo com 
 que a consulta SQL utilizada para a recuperação dos dados seja feita de maneira mais simples.
 

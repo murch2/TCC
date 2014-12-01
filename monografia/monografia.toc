@@ -68,13 +68,15 @@
 \contentsline {chapter}{\numberline {8}Conclus\~ao}{29}{chapter.8}
 \contentsline {chapter}{\numberline {9}Trabalhos Futuros}{31}{chapter.9}
 \contentsline {part}{II\hspace {1em}Parte Subjetiva}{33}{part.2}
-\contentsline {chapter}{\numberline {10}Subjtivo}{35}{chapter.10}
-\contentsline {section}{\numberline {10.1}Desafios}{35}{section.10.1}
+\contentsline {chapter}{\numberline {10}Subjetivo}{35}{chapter.10}
+\contentsline {section}{\numberline {10.1}Desafios e frustra\c c\~oes}{35}{section.10.1}
 \contentsline {subsection}{\numberline {10.1.1}N\~ao conhecimento das linguagens utilizadas}{35}{subsection.10.1.1}
 \contentsline {subsection}{\numberline {10.1.2}Documenta\c c\~ao da engine}{35}{subsection.10.1.2}
 \contentsline {subsection}{\numberline {10.1.3}Interface gr\'afica}{35}{subsection.10.1.3}
-\contentsline {chapter}{\numberline {11}Disciplinas Relevantes}{37}{chapter.11}
-\contentsline {section}{\numberline {11.1}Disciplina1}{37}{section.11.1}
-\contentsline {section}{\numberline {11.2}Disciplina 2}{37}{section.11.2}
-\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{39}{chapter*.20}
+\contentsline {section}{\numberline {10.2}Disciplinas Relevantes para o desenvolvimento do trabalho}{36}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}\textbf {MAC0122 Princ\IeC {\'\i }pios de Desenvolvimento de Algoritmos}}{36}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}\textbf {MAC0242 Laborat\'orio de Programa\c c\~ao II }}{36}{subsection.10.2.2}
+\contentsline {subsection}{\numberline {10.2.3}\textbf {MAC0439 Laborat\'orio de Bancos de Dados}}{36}{subsection.10.2.3}
+\contentsline {subsection}{\numberline {10.2.4}\textbf {MAC0448 Programa\c c\~ao para Redes de Computadores}}{36}{subsection.10.2.4}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{37}{chapter*.20}
 \contentsfinish 

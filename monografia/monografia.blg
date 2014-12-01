@@ -8,45 +8,45 @@ Warning--to sort, need author or key in AndPro
 Warning--to sort, need author or key in AndHist
 Warning--to sort, need author or key in Nginx:Description
 Warning--to sort, need author or key in JSON
-You've used 12 entries,
+You've used 13 entries,
             2543 wiz_defined-function locations,
-            626 strings with 6482 characters,
-and the built_in function-call counts, 3044 in all, are:
-= -- 304
-> -- 61
-< -- 7
-+ -- 15
-- -- 14
-* -- 158
-:= -- 449
-add.period$ -- 39
-call.type$ -- 12
-change.case$ -- 54
-chr.to.int$ -- 12
-cite$ -- 22
-duplicate$ -- 138
-empty$ -- 303
-format.name$ -- 27
-if$ -- 661
+            631 strings with 6589 characters,
+and the built_in function-call counts, 3312 in all, are:
+= -- 327
+> -- 69
+< -- 8
++ -- 17
+- -- 16
+* -- 171
+:= -- 494
+add.period$ -- 42
+call.type$ -- 13
+change.case$ -- 58
+chr.to.int$ -- 13
+cite$ -- 23
+duplicate$ -- 154
+empty$ -- 328
+format.name$ -- 31
+if$ -- 716
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 4
-newline$ -- 66
-num.names$ -- 21
-pop$ -- 102
+missing$ -- 6
+newline$ -- 71
+num.names$ -- 24
+pop$ -- 111
 preamble$ -- 1
-purify$ -- 67
+purify$ -- 73
 quote$ -- 0
-skip$ -- 118
+skip$ -- 128
 stack$ -- 0
-substring$ -- 90
-swap$ -- 11
-text.length$ -- 7
-text.prefix$ -- 6
+substring$ -- 97
+swap$ -- 12
+text.length$ -- 8
+text.prefix$ -- 7
 top$ -- 0
-type$ -- 88
+type$ -- 92
 warning$ -- 5
-while$ -- 14
-width$ -- 14
-write$ -- 153
+while$ -- 16
+width$ -- 15
+write$ -- 165
 (There were 5 warnings)
