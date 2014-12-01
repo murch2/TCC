@@ -24,7 +24,7 @@ class ExecuteQuery {
 				return $this->error();
 			}
 		}
-		
+
 		return $this->ok();
 	}
 
@@ -32,8 +32,6 @@ class ExecuteQuery {
 		$query = "SELECT nome, moedas, rodadas, foto FROM JOGADOR WHERE id = " . $userID . ";"; 
 		$result = $this->getInfo($query); 
 		$row = pg_fetch_row($result); 
-		//Aqui eu tenho que fazer o array (Talvez aqui e em todos eu precise montar o array com o requestID), aqui tem que ter um if tb.
-		// pra ver se eu encontrei algum cara ou não). (É só retornar erro se der erro igual aos novos que eu estou fazendo)
 		$jsonResult = array('status' => 'ok',
 							'requestID' => 'UserInfo',  
 							'nome' => $row[0],
@@ -44,7 +42,6 @@ class ExecuteQuery {
 		return $jsonResult;
 	}
 
-	// Mudar esse metodo pra retornar erro, igual aos outros que eu estou fazendo agora. 
 	function NewGameQuery($userID, $friendID) {
 		$result = $this->criaDesafios($userID, $friendID); 
 		if ($result['status'] == 'ok') {
@@ -57,31 +54,20 @@ class ExecuteQuery {
 	}
 
 	function criaDesafios($userID, $friendID) {
-		// A ideia é que quando eu crio eu vou jogar. 
-		// (O status = 0 vai representar que ninguem jogou)
-		// (O status = 1 vai representar que o primeiro jogador está jogando)
-		// (O status = 2 vai representar que o primeiro jogador acabou de jogar)
-		// (O status = 3 vai representar que o segundo jogador está jogando)
-		// (O status = 4 vai representar que o segundo jogador acabou de jogar)
-		// Quando o primeiro jogador for jogar e tiver status 4 eu posso mandar as infos pra ele ver e atualizar as infos do jogo
-
 		$query = "INSERT INTO DESAFIOS VALUES (".$userID.", ".$friendID.", 1, -1, -1, 0); ";
 	
 		$result = $this->setInfo($query);
 	
 		if ($this->trataResult($result)['status'] == 'error') {
-		
 			return $this->error();
 		}
 
 		$query = "INSERT INTO DESAFIOS VALUES (".$friendID.", ".$userID.", 1, -1, -1, 0); ";
 		$result = $this->setInfo($query);
 
-		if ($this->trataResult($result)['status'] == 'error') {
-		
+		if ($this->trataResult($result)['status'] == 'error') {		
 			return $this->error();
 		}
-	
 
 		return $this->ok(); 
 	}
@@ -92,12 +78,9 @@ class ExecuteQuery {
 		else 
 			$query = "INSERT INTO HISTORICOJOGO VALUES (".$friendID.", ".$userID.", 0, 0); ";
 
-	
-
 		$result = $this->setInfo($query);		
 
-		if ($this->trataResult($result)['status'] == 'error') {
-		
+		if ($this->trataResult($result)['status'] == 'error') {		
 			return $this->error();
 		}
 
@@ -111,9 +94,7 @@ class ExecuteQuery {
 	} 
 
 	function randomCardQuery($userID, $friendID, $tipoCarta) {
-		// $query = "SELECT id, nome, link_foto FROM cartas WHERE id_tipo_carta = $tipoCarta ORDER BY RANDOM() LIMIT 1;"; 
 		$query = "SELECT id, nome, link_foto FROM cartas WHERE id = 9;"; 
-
 		$result = $this->getInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
@@ -184,7 +165,6 @@ class ExecuteQuery {
 		$friendID = $json['friendID']; 
 		$query = "UPDATE desafios SET status = 3 WHERE id_jogador1 = $friendID and id_jogador2 = $userID;"; 
 		
-
 		$result = $this->setInfo($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
@@ -287,11 +267,9 @@ class ExecuteQuery {
 			
 				$resultAux = $this->getInfo($query); 
 				
-				// Acho que eu posso fazer isso sem while pq eu tenho certeza que eh unico. 
 				$row = pg_fetch_array($resultAux); 
 				$statusAux = $row['status']; 
 			
-				// Se tiver 2 ou 4 eh minha vez. Se tiver 3 é WO 
 				if ($statusAux == 2) {
 					$dados[$index++] = array('idOpponent' => $opponentID,
 										 'pictureOpponent' => $row['foto'],
@@ -300,18 +278,16 @@ class ExecuteQuery {
 										 'gameStatus' => "PLAY");
 				}
 				elseif ($statusAux == 4) {
-					// Talvez não precise lidar com isso. 
-					// Aqui eu ainda não mandei o meu jogo pro cara pro cara. 
+					
 				} 
 				elseif ($statusAux == 3) {
-					// Aqui é WO
+					
 				}
 			}
 			elseif ($status == 1) {
-				// Aqui eu tenho que apagar as informações desse jogo pq o cara não acabou e quer começar de novo. 
+				
 			}
 			elseif ($status == 2) {
-				// Aqui é o clássico POKE, já joguei e falta o cara jogar. 
 			
 				$dados[$index++] = array('idOpponent' => $opponentID,
 										 'pictureOpponent' => $game['foto'],
@@ -320,11 +296,10 @@ class ExecuteQuery {
 										 'gameStatus' => "POKE");
 			} 
 			elseif ($status == 3) {
-				// O cara tá jogando, por enquanto é POKE
+
 			}
 			elseif ($status == 4) {
-				// O cara já acabou de jogar o que v enviou pra ele, agora preciso buscar informações do que ele mandou pra vc, 
-				// pra decidir se é POKE OU PLAY.
+
 			}
 
 		}

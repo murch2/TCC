@@ -13,7 +13,6 @@ require 'ExecuteQuery.php';
  	function __construct($json) {
  		$json = json_decode($json, true); 
  		$json = $json['message']; 
- 		$this->log("Chegou aqui");
  		$this->tratandoRequisicao($json); 
  	}
 
@@ -63,7 +62,6 @@ require 'ExecuteQuery.php';
  				break;
 
  			case 'MyGames':
- 				$this->log("MyGames");
 				$result = $exeQuery->myGamesQuery($json);
  			break;
  			
