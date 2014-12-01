@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  1 DEC 2014 12:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.30)  1 DEC 2014 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,7 +658,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 71.
 [5
 
-] <./figuras/T-Mobile_G1.png, id=565, 149.96025pt x 120.45pt>
+] <./figuras/T-Mobile_G1.png, id=572, 149.96025pt x 120.45pt>
 File: ./figuras/T-Mobile_G1.png Graphic file (type png)
 
 <use ./figuras/T-Mobile_G1.png>
@@ -667,7 +667,7 @@ Package pdftex.def Info: ./figuras/T-Mobile_G1.png used on input line 77.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 90.
 
-<./figuras/android.jpg, id=570, 602.25pt x 579.16376pt>
+<./figuras/android.jpg, id=577, 602.25pt x 579.16376pt>
 File: ./figuras/android.jpg Graphic file (type jpg)
 
 <use ./figuras/android.jpg>
@@ -743,7 +743,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 14.
-<./figuras/MR.png, id=653, 650.43pt x 409.53pt>
+<./figuras/MR.png, id=660, 650.43pt x 409.53pt>
 File: ./figuras/MR.png Graphic file (type png)
  <use ./figuras/MR.png>
 Package pdftex.def Info: ./figuras/MR.png used on input line 21.
@@ -862,7 +862,7 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 189.
 
-<./figuras/FluxoGramaProtocolo.png, id=714, 672.5125pt x 356.33125pt>
+<./figuras/FluxoGramaProtocolo.png, id=721, 672.5125pt x 356.33125pt>
 File: ./figuras/FluxoGramaProtocolo.png Graphic file (type png)
 
 <use ./figuras/FluxoGramaProtocolo.png>
@@ -891,7 +891,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 9.
-<./figuras/FluxogramaTelas.png, id=729, 824.07875pt x 454.69875pt>
+<./figuras/FluxogramaTelas.png, id=736, 824.07875pt x 454.69875pt>
 File: ./figuras/FluxogramaTelas.png Graphic file (type png)
 
 <use ./figuras/FluxogramaTelas.png>
@@ -946,6 +946,26 @@ Package babel Info: Redefining portuges shorthand "|
 Cap\'{\i }tulo 7.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
+<./figuras/screen1.png, id=756, 208.1376pt x 346.896pt>
+File: ./figuras/screen1.png Graphic file (type png)
+
+<use ./figuras/screen1.png>
+Package pdftex.def Info: ./figuras/screen1.png used on input line 12.
+(pdftex.def)             Requested size: 140.50119pt x 234.18173pt.
+
+<./figuras/screen2.png, id=757, 195.129pt x 325.215pt>
+File: ./figuras/screen2.png Graphic file (type png)
+
+<use ./figuras/screen2.png>
+Package pdftex.def Info: ./figuras/screen2.png used on input line 13.
+(pdftex.def)             Requested size: 140.50119pt x 234.16951pt.
+
+<./figuras/screen3.png, id=758, 195.129pt x 325.215pt>
+File: ./figuras/screen3.png Graphic file (type png)
+
+<use ./figuras/screen3.png>
+Package pdftex.def Info: ./figuras/screen3.png used on input line 14.
+(pdftex.def)             Requested size: 140.50119pt x 234.16951pt.
 ) (./cap-conclusao.tex
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
@@ -953,7 +973,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
  [27
 
-]
+ <./figuras/screen1.png> <./figuras/screen2.png> <./figuras/screen3.png>]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining portuges shorthand "|
@@ -1016,6 +1036,8 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 27.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 33.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 43.
 Package babel Info: Redefining portuges shorthand "|
@@ -1101,7 +1123,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 263.
 Package rerunfilecheck Info: File `monografia.out' has not changed.
-(rerunfilecheck)             Checksum: 8934E59155CF7D2460B514A654A6330D;5329.
+(rerunfilecheck)             Checksum: 3F0D44FE0FC3FF885EF91DC1350BB09B;5396.
 Package rerunfilecheck Info: File `monografia.brf' has not changed.
 (rerunfilecheck)             Checksum: DFB7405368189F0432836B5EDE793811;933.
 
@@ -1111,13 +1133,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
  ) 
 Here is how much of TeX's memory you used:
- 11097 strings out of 493304
- 161713 string characters out of 6139871
+ 11114 strings out of 493304
+ 162098 string characters out of 6139871
  315856 words of memory out of 5000000
- 14145 multiletter control sequences out of 15000+600000
+ 14158 multiletter control sequences out of 15000+600000
  24783 words of font info for 57 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 36i,12n,43p,589b,1115s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,43p,590b,1115s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/
 fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-supe
@@ -1134,10 +1156,10 @@ frm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/sh
 are/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type
 1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
 ti1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on monografia.pdf (53 pages, 1318680 bytes).
+Output written on monografia.pdf (53 pages, 3095250 bytes).
 PDF statistics:
- 937 PDF objects out of 1000 (max. 8388607)
- 846 compressed objects within 9 object streams
- 206 named destinations out of 1000 (max. 500000)
- 666 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 949 PDF objects out of 1000 (max. 8388607)
+ 852 compressed objects within 9 object streams
+ 207 named destinations out of 1000 (max. 500000)
+ 689 words of extra memory for PDF output out of 10000 (max. 10000000)
 

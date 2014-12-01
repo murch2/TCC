@@ -79,7 +79,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 
 			setChildScene(menu);
 			
-			menu.setPosition(menu.getX(), menu.getY() - 200);
+			menu.setPosition(menu.getX(), menu.getY() - 50	);
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
