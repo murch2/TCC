@@ -5,8 +5,6 @@
 	Para que a troca de informações entre o jogo e o web service fosse feita de maneira confiável e bem definida, 
 foi criado um protocolo de comunicação. 
 
-% 	TODO Aqui falar que foi criado um protocolo de comunicação utilizado entre 
-% jogo e servidor ... [Aqui eu já falei que eh JSON e bla bla bla]
 %% ------------------------------------------------------------------------- %%
 \section{Sintaxe}
 \label{sec:sintaxe}
@@ -30,32 +28,187 @@ foi criado um protocolo de comunicação.
 que precisam estar presentes para que qualquer requisição seja respondida. São eles:
 
 \begin{itemize}
-\item{teste}
+\item{\textbf{message}:} Todas as informações do JSON precisam estar dentro da chave \textit{message}. Toda a informação 
+que estiver fora da chave \textit{message} é desconsiderada, e caso a chave \textit{message} não exista o servidor retorna um código 
+de erro. 
+\item{\textbf{requestId}:} Todas as possíveis requisições possuem um identificador único. Este identificador
+precisa ser passado como paramêtro dentro da chave \textit{requestId}, caso o conteúdo dessa chave não seja um identificador conhecido ou este campo não exista, o servidor retornará um código de erro. 
 \end{itemize}
 
 
-TODO Descrever aqui a sintaxe utilizada no protocolo, sintaxe é apenas a descrição 
-de como eh feito o JSON.
+\subsection{Outros Campos}
+
+	Os demais campos de conteúdo do JSON podem seguir qualquer formato, desde que sejam consistentes e que 
+contenham as informações necessárias para cada requisição.
 
 % %% ------------------------------------------------------------------------- %%
+\newpage
 \section{Semântica}
 \label{sec:}
 
-TODO Descrever aqui a semântica utilizada no protocolo. Aqui eu descrevo o que cada
-campo do JSON significa. 
+	Para descrever a semântica do protocolo serão explicados dois exemplos de possíveis requisições:
+	
+\subsection{Requisição \textit{SignUp}}
+
+	A requisição \textit{SignUp} é executada apenas uma vez para cada usuário. Essa requisição faz com 
+que o banco de dados cadastre o usuário na tabela jogador, o que faz com que o usuário se torne apto a receber
+e enviar desafios.
+	O JSON passado ao servidor para tal requisição deve seguir o seguinte formato: \\
+
+\begin{lstlisting}[language=json,firstnumber=1][!h]
+{
+	"message": {
+		"requestId"    : "SignUp",
+		"userID"       : "12345678",
+	 	"userName",    : "Rodrigo Duarte",
+	 	"userCoins"    : "10", 
+	 	"userPowerUps" : "10"
+	}
+}
+\end{lstlisting}
+
+	Para essa requisição, além dos campos obrigatórios, são necessários os campos:
+
+\begin{itemize}
+	\item{userID: Identificador do usuário no facebook, que servirá como identificador do jogador.}
+	\item{userName: Nome do usuário utilizado no facebook, que será o nome do usuário no jogo.}
+	\item{userCoins: Quantidade inicial de moedas que o jogador possui.}
+	\item{userPowerUps: Quantidade inicial de especiais que o jogador possui.}
+\end{itemize}
+
+\subsection{Requisição \textit{FinishOldRound}}
+
+	A requisição \textit{FinishOldRound} é executada ao fim do turno quando o jogador está respondendo 
+um desafio. Essa requisição salva as informações do turno na tabela desafio em que o jogador que acabou de jogar
+é o jogador desafiado. 
+	O JSON passado ao servidor para tal requisição deve seguir o seguinte formato: \\
+
+\begin{lstlisting}[language=json,firstnumber=1][!h]
+{
+	"message": {
+		"requestId"    : "FinishOldRound",
+		"userID"       : "12345678",
+	 	"friendID",    : "87654321",
+	 	"score"        : "2000", 
+	 	"tipoCartaID"  : "2", 
+	 	"correct"      : "true"
+	}
+}
+\end{lstlisting}
+
+	Para essa requisição, além dos campos obrigatórios, são necessários os campos:
+
+\begin{itemize}
+	\item{userID: Identificador do jogador.}
+	\item{friendID: Identificador do oponente.}
+	\item{score: Quantidade de pontos alcançada pelo jogador.}
+	\item{tipoCartaID: Identificador do tipo da carta jogado. Utilizado para atualizar a tabela Historico\_
+Estatistica}
+	\item{correct: Booleano que indica se o jogador acertou ou não o nome da personalidade.}
+\end{itemize}
 
 % %% ------------------------------------------------------------------------- %%
-\section{Arquivos PHP}
+\section{Servidor}
 \label{sec:arquivos_php}
 
-Explicar a estrutura e como funcionam os arquivos php que lidam com o protocolo de comunicação
-(Talvez seja necessário dividir em subtópicos)
+% \subsection{Nginx}
+
+% TODO falar sobre o Nginx
+
+	Do lado do servidor as classes php \textit{TrataRequisicao} e \textit{ExecuteQuery} além de 
+um arquivo chamado infoDB, que guarda informações da conexão com o banco de dados, foram implementados
+e são responsáveis por toda a comunicação com o banco de dados, além de montarem a resposta das requisições em 
+formato JSON. 
+
+\subsection{TrataRequisicao}
+
+	A classe TrataRequisicao é a classe que recebe todas as requisições feitas ao servidor. Nesta classe é feita 
+a decodificação do JSON recebido através da função \textit{json\_decode} do php. 
+
+	Após a decodificação é verificado se o JSON recebido possui o campo \textit{message}, em caso afirmativo 
+o novo JSON a ser considerado é o que se encontra como valor da chave \textit{message}. Então é feita a chamada da função \textit{tratandoRequisicao} que verifica se a chave requestID existe e contém um valor válido para 
+requisição, novamente em caso afirmativo um objeto da classe ExecuteQuery é instanciado e o método
+predefinido de acordo com o contéudo da chave requestID é chamado. 
+
+	Em qualquer caso não afirmativo é feita a montagem de um objeto JSON que contém um único campo cuja a chave é
+\textit{status} e o valor \textit{error}, que representa que a requisição não foi executada com sucesso. 
+
+\subsection{ExecuteQuery}
+
+	A classe ExecuteQuery é a classe que executa as chamadas SQL no banco de dados. Existe um método
+nessa classe para cada possível requisição que o servidor trata. Cada método recebe um objeto JSON que deve 
+possuir os paramêtros necessários para a execução da consulta ao banco.
+
+	Existem duas funções auxiliares que são chamadas por qualquer método que trata requisições, a função
+\textit{getInfo} e a função \textit{setInfo}, a primeira executa apenas operações de leitura de dados do banco, já a segunda executa as operações de escrita no banco. Ambas fazem tratamento da conexão com o banco, abrindo-a e fechando-a nos devidos momentos. 
+
+	Em todos os casos em que a requisição é executada com sucesso é retornado um objeto JSON com um campo contendo
+a chave \textit{status} e valor \textit{ok}, além dos outros dados necessários para a correta resposta da requisição. Nos casos de falta de dados necessários, ou erro na conexão com o banco de dados, ou qualquer outro
+erro que venha a acontecer durante o tratamento da requisição é retornado um JSON de erro contento uma única chave \textit{status} com valor \textit{error}. 
 
 % %% ------------------------------------------------------------------------- %%
-\section{Arquivos Java}
+\section{Jogo}
 \label{sec:arquivos}
 
-Explicar a estrutura e como funcionam os arquivos java que lidam com o protocolo de comunicação
-(Talvez seja necessário dividir em subtópicos)
+	Do lado do jogo foi criado um pequeno conjunto de classes que tem como objetivo abstrair a comunicação 
+com o servidor.
+
+\subsection{HTTPResponseListener}
+	
+	A classe HTTPResponseListener é uma interface java que faz com que todas as classes que a implementem 
+sejam obrigadas a possuir um método chamado \textit{onResponse}, utilizado para receber a resposta da requisição
+feita ao servidor.
+
+\subsection{HTTPPostRequester}
+	
+	A classe HTTPPostRequester é a classe que de fato executa a requisição ao servidor. Esta classe guarda em um
+atributo privado o endereço ip do servidor além de possuir uma classe interna chamada HttpPostRequest que herda 
+da classe AsyncTask (presente no pacote android.os) a capacidade de executar código em segundo plano, ou seja, 
+fazer com que a classe que fez a requisição não fique travada enquanto a resposta não chega.
+
+	O método \textit{asynPost} cria uma nova instância da classe HttpPostRequest e faz com que a requisição 
+para o banco de dados seja feita de maneira assíncrona. 
+
+\subsection{MakeParameters}
+	
+	A classe MakeParameters é responsável pela montagem dos objetos JSON que serão passados ao servidor, 
+se trata de um conjunto de métodos estáticos, onde cada um dos métodos representa uma requisição.
+	
+	Todas as classes que desejam trocar informações com o servidor precisam chamar um método da 
+classe MakeParameters que seja correspondente a requisição desejada, tal método retorna um objeto JSON
+populado com todos os paramêtros necessários para a requisição. Posteriormente esse objeto JSON é repassado 
+a classe HTTPPostRequester.
+
+\subsection{JSONParser}
+
+	A classe JSONParser existe apenas para fazer a tradução da resposta do servidor para um objeto JSONObject
+do java. A classe é chamada duarante o tratamento da resposta de todas as requisições e o objeto populado por
+ela é retornado como resposta para as classes que pediram as informações do servidor. 
+
+\subsection{Fluxo da requisição}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=.70\textwidth]{FluxoGramaProtocolo} 
+  \caption{Fluxo executado pelo jogo para uma requisição}
+\end{figure}
+
+	A figura acima mostra um fluxograma seguido por uma classe de exemplo do jogo para obter informações do 
+servidor. Os passos a serem seguidos são: 
+
+\begin{itemize}
+
+\item{\textbf{Passo 1}}: Primeiramente é necessário que a classe que deseja se comunicar com o servidor
+implemente a interface HTTPResponseListener. Tornando-se obrigada, portanto, a ter um método que trata a resposta do servidor.
+
+\item{\textbf{Passo 2}}: O segundo passo é fazer uma chamada ao método correto, de acordo com a requisição, a 
+classe MakeParameters, tendo como resposta um objeto JSON populado com os paramêtros a serem passados ao 
+servidor. 
+
+\item{\textbf{Passo 3}}: Posteriormente é feita a chamada ao método a asynPost da classe HTTPPostRequester, 
+que executa a requisição em segundo plano e após a chegada da resposta devolve o JSON com os dados pedidos
+a classe que os pediu.
+\end{itemize}
+
 
 % %% ------------------------------------------------------------------------- %%

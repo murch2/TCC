@@ -1,6 +1,6 @@
 %% ------------------------------------------------------------------------- %\%
 \chapter{Banco de Dados}
-\label{cap:baco_de_dados}
+\label{cap:banco_de_dados}
 
 	Para que as informações necessárias ao funcionamento correto do jogo pudessem ser recuperadas de 
 maneira eficiente e consistente foi modelado um banco de dados relacional utilizando o SGBD PostgreSQL.
@@ -118,7 +118,7 @@ as respectivas chaves estrangeiras.
 \end{table}
 
 \begin{itemize}
-\item \textbf{id} - Faz parte da chave primária da tabela, e representa o numeéro da dica de uma determinada carta, podendo ter valores entre 1 e 10. 
+\item \textbf{id} - Faz parte da chave primária da tabela, e representa o número da dica de uma determinada carta, podendo ter valores entre 1 e 10. 
 \item \textbf{id\_carta} - Faz parte da chave primária da tabela e é também chave estrangeira que representa 
 de qual carta se trata a dica.
 \item \textbf{texto} - Texto de um fato sobre a biografia da personalidade da carta.
@@ -131,6 +131,9 @@ de qual carta se trata a dica.
 	A tabela de desafios representa os dois últimos turnos jogados por dois jogadores que estão competindo. Nesta 
 tabela o jogador 1 representa o desafiante e o jogador 2 o desafiado. Como a cada turno o desafiado manda
 um jogo de volta para o desafiante, este torna-se desafiado e aquele o desafiante, alternando assim os papéis. 
+Por esse estilo de jogo cada partida possui duas tuplas na tabela desafios, uma que representa o turno de ida, 
+e outra, que possui chave primária trocada, ou seja o jogador 1 vira jogador 2 e vice-versa, que representa o
+turno de volta. 
 
 \begin{table}[!h]
 \large
@@ -169,7 +172,7 @@ pontuacao2 & status \\
 
 	A tabela Historico\_Jogo guarda o placar total do jogo. Fazendo a totalização de todos os turnos desde
 o primeiro. Nesta tabela o id do jogador 1 é sempre numericamente menor do que o do jogador 2, fazendo com 
-que a recuperação dos dados seja feita de maneira mais simples.
+que a consulta SQL utilizada para a recuperação dos dados seja feita de maneira mais simples.
 
 \begin{table}[!h]
 \large
@@ -223,10 +226,10 @@ determinado tipo de carta.
 \section{Arquivos de criação e de inserção}
 \label{sec:arquivos}
 
-	Foram criados dois arquivos com extensão sql para fazer a criação das tabelas do 
+	Foram criados dois arquivos com extensão SQL para fazer a criação das tabelas do 
 banco de dados: 
 \begin{itemize}
-\item{\textbf{ModeloFisico}} - O arquivo ModeloFisico.sql executa toda a criação de toda a estrutura (tabelas, chaves primárias, chaves estrangeiras, etc) presentes no banco de dados de Biografia.
+\item{\textbf{ModeloFisico}} - O arquivo ModeloFisico.sql executa a criação de toda a estrutura (tabelas, chaves primárias, chaves estrangeiras, etc) presente no banco de dados de Biografia.
 
 \item{\textbf{Populate}} - O arquivo Populate.sql popula o banco de dados com uma quantidade de dados suficiente
 para que alguns testes envolvendo jogadores diferentes, e cartas diferentes possam ser executados.

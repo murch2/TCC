@@ -45,7 +45,7 @@
 % \emph{Thesis are random access. Do NOT feel obliged to read a thesis from beginning to end.}
 Os jogos eletrônicos se tornaram cada vez mais presentes no dia a dia das pessoas. O 
 primeiro jogo de computador foi criado em 1958 por Willian Higinbotham e Robert Dvorak. 
-Chamava-se ``Tennis for Two'' e se tratava de uma simulação de uma partida de tênis, 
+Chamava-se ``Tennis for Two'' e se tratava da simulação de uma partida de tênis, 
 não havia placar e a tela era feita de um cinescópio de fósforo verde monocromático 
 \cite{Nunes07:social} Desde então os jogos acompanharam a enorme evolução da computação. 
 Com o advento e a popularização da internet a criação de aparelhos eletrônicos que possibilitassem com que todas as pessoas ficassem conectadas de maneira mais simples e por períodos maiores era questão de tempo. 
@@ -76,7 +76,7 @@ fonte de dados. Jogos que utilizam tais dados ficaram conhecidos como jogos soci
 	Diante disto, a proposta de trabalho consiste no desenvolvimento de um jogo com sistema multijogador para a 
 plataforma android, que utiliza um Web Service para fazer a persistência de dados. Será um quiz inspirado no jogo de tabuleiro 
 ``Biografia'', da empresa Algazarra, onde são expostos fatos sobre a vida de personalidades conhecidas e, 
-através desses fatos, o jogador adivinhará quem é a personalidade.
+através desses fatos, o jogador terá como objetivo descobrir quem é a personalidade.
 
 
 %% ------------------------------------------------------------------------- %%
@@ -89,7 +89,7 @@ passou a ter uma indústria especializada e um número muito grande de pequenas e 
 ao desenvolvimento de jogos. 
 
 	A maior motivação para este trabalho é desenvolver uma aplicação para a plataforma android, pois com a 
-experiência adquirida no desenvolvimento de jogos para plataformas móveis da apple, obtive grande interesse pela área.  A oportunidade do maior aprofundamento na linguagem Java também é um dos fatores de motivação, uma vez que não tive grande contato com tal linguagem durante a graduação, além de aplicar diferentes áreas do conhecimento adquirido no curso de Bacharelado em Ciência da Computação. 
+experiência adquirida no desenvolvimento de jogos para plataformas móveis da apple\footnote{Apple: \url{http://www.apple.com}}, obtive grande interesse pela área.  A oportunidade do maior aprofundamento na linguagem Java também é um dos fatores de motivação, uma vez que não tive grande contato com tal linguagem durante a graduação, além de aplicar diferentes áreas do conhecimento adquirido no curso de Bacharelado em Ciência da Computação. 
 
 % Considerações preliminares\footnote{Nota de rodapé (não abuse).}\index{genoma!projetos}.
 % % index permite acrescentar um item no indice remissivo
@@ -102,41 +102,11 @@ experiência adquirida no desenvolvimento de jogos para plataformas móveis da app
 \label{sec:objetivo}
 
 	Desenvolver um jogo multijogador para plataforma android, em que o objetivo seja descobrir uma 
-personalidade utilizando o menor número de dicas possíveis. O jogo se comunicará com um web service para realizar a troca de informações entre banco de dados e o aplicativo, tornando possível a opção multijogador, que se realizará de maneira síncrona. O jogo será desenvolvido com auxilio da game engine AndEngine e será escrito em Java, utilizando o ambiente ADT.
+personalidade utilizando o menor número de dicas possíveis. O jogo se comunicará com um web service para realizar a troca de informações entre banco de dados e o aplicativo, tornando possível a opção multijogador, que se realizará de maneira síncrona. O jogo será desenvolvido com auxílio da game engine AndEngine e será escrito em Java, utilizando o ambiente ADT.
 
 % Texto texto texto texto texto texto texto texto texto texto texto texto texto
 % texto texto texto texto texto texto texto texto texto texto texto texto texto
 % texto texto texto texto texto texto.
-
-%% ------------------------------------------------------------------------- %%
-% Eu acho que esses desafios do jeito que eu estou escrevendo está muito informal e 
-% deve ficar no fim da monografia
-\section{Desafios}
-\label{sec:desafios}
-
-	Os principais desafios encontrados durante o desenvolvimento desse projeto foram: 
-
-\subsection{Não conhecimento das linguagens utilizadas}
-	Uma das principais dificuldades no andamento do projeto foi justamente um de seus maiores 
-objetivos: O aprendizado de linguagens que tive pouco contato durante a graduação. As duas
-principais linguagens utilizadas no projeto foram Java e PHP. Durante o desenvolvimento de 
-um jogo relativamente extenso, o desconhecimento de estruturas e facilidades 
-oferecidas pela linguagem são empecilhos que tornam tarefas simples demorarem mais tempo
-do que o esperado.  
-
-\subsection{Documentação da engine}
-	A andEngine [Ref ao site da andEngine] possui grande número de usuários, e um fórum bastante 
-ativo, o que ajuda muito em momentos de dúvidas sobre como instanciar certos objetos e utilizar
-alguns de seus métodos. Porém a falta de documentação faz com que o processo de implementação seja 
-muito ligado a pesquisa sobre a engine. Este foi um ponto que fez com que atividades, que
-a princípio, supondo que existisse uma documentação da biblioteca, seriam rápidas, 
-se tornassem dependentes de repetidas buscas e experimentos.
-
-\subsection{Interface gráfica}
-	A total falta de conhecimento sobre ferramentas de modelagem gráfica foi outro ponto
-impactante no trabalho. Como a parte gráfica de um jogo é um fator determinante 
-para seu sucesso, empreguei uma parte do tempo reservado ao trabalho aprendendo a
-utilizar o programa GIMP.
 
 %% ------------------------------------------------------------------------- %%
 \section{Organização do Trabalho}
@@ -145,4 +115,11 @@ utilizar o programa GIMP.
 	No Capítulo~\ref{cap:conceitos}, são apresentados conceitos sobre assuntos 
 utilizados corriqueiramente no texto. No Capítulo~\ref{cap:tecnologias_utilizadas} 
 são descritas todas as ferramentas e tecnologias utilizadas no projeto. No Capítulo
-... TODO
+~\ref{cap:banco_de_dados} é explicada toda a estrutura do banco de dados utilizado
+para a persistência das informações necessárias. No Capítulo~\ref{cap:protocolo_de_comunicacao}
+é explicada a sintaxe e a semântica do protocolo desenvolvido para a comunicação 
+entre o jogo e o web service. No Capítulo~\ref{cap:implementacao_do_jogo} são mostrados
+os pontos mais importantes da implementação do jogo. No Capítulo~\ref{cap:resultados}
+são apresentados os resultados do projeto. No Capítulo~\ref{cap:conclusao} é feita a 
+conclusão do projeto e finalmente no Capítulo~\ref{cap:trabalhos_futuros} são apresentados alguns 
+dos possíveis trabalhos futuros em cima deste jogo. 

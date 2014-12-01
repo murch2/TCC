@@ -56,8 +56,38 @@
 % ---------------------------------------------------------------------------- %
 % Opções de listing usados para o código fonte
 % Ref: http://en.wikibooks.org/wiki/LaTeX/Packages/Listings
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{white},
+    literate=
+     *{0}{{{\color{black}0}}}{1}
+      {1}{{{\color{black}1}}}{1}
+      {2}{{{\color{black}2}}}{1}
+      {3}{{{\color{black}3}}}{1}
+      {4}{{{\color{black}4}}}{1}
+      {5}{{{\color{black}5}}}{1}
+      {6}{{{\color{black}6}}}{1}
+      {7}{{{\color{black}7}}}{1}
+      {8}{{{\color{black}8}}}{1}
+      {9}{{{\color{black}9}}}{1}
+      {:}{{{\color{black}{:}}}}{1}
+      {,}{{{\color{black}{,}}}}{1}
+      {\{}{{{\color{black}{\{}}}}{1}
+      {\}}{{{\color{black}{\}}}}}{1}
+      {[}{{{\color{black}{[}}}}{1}
+      {]}{{{\color{black}{]}}}}{1},
+}
+
 \lstset{ %
-language=Java,                  % choose the language of the code
+language=json,                  % choose the language of the code
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
 numbers=left,                   % where to put the line-numbers
 numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
@@ -89,6 +119,7 @@ framexrightmargin=10pt
 % cabeçalho para as páginas das seções anteriores ao capítulo 1 (frontmatter)
 \fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
 \setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
 \fancyhead[LE]{\thepage\hspace{2em}\footnotesize{\leftmark}}
 \fancyhead[RE,LO]{}
 \fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
@@ -124,21 +155,28 @@ framexrightmargin=10pt
     Orientador: Prof. Dr. Marco Dimas Gubitoso\\
     
     \vskip 0.5cm
-    \normalsize{São Paulo, 29 de setembro de 2014}
+    \normalsize{São Paulo, 01 de dezembro de 2014}
 \end{center}
 
 % ---------------------------------------------------------------------------- %
 % Agradecimentos:
 % Se o candidato não quer fazer agradecimentos, deve simplesmente eliminar esta página 
 \chapter*{Agradecimentos}
-TODO colar os Agradecimentos aqui.
+
+  Agradeço a todos os funcionários e professores do Instituto de Matemática e Estatística da
+Universidade de São Paulo por todo o aprendizado que me foi oferecido. Agradeço em especial o 
+professor doutor Marco Dimas Gubitoso pela orientação deste trabalho. 
+  Agradeço os meus colegas de curso, do BCC 2010, sem vocês não teria 
+chegado até este ponto do curso. Agradeço principalmente a minha família e a minha namorada
+que estiveram sempre do meu lado me apoiando e me dando forças nos momentos mais difíceis, 
+sem vocês eu não seria nada.
 
 % ---------------------------------------------------------------------------- %
 % Resumo
 \chapter*{Resumo}
 
 \noindent LOURO, R. D. \textbf{Jogo para a plataforma android utilizando web service}. 
-2014. TODO p.
+2014.
 Monografia - Instituto de Matemática e Estatística,
 Universidade de São Paulo, São Paulo, 2014.
 \\
@@ -147,33 +185,20 @@ Universidade de São Paulo, São Paulo, 2014.
 planeta \cite{Phones:2015}, com isso a indústria de jogos, que movimenta cerca de 3 bilhões de dólares todos os anos no brasil \cite{Industria:2014} ganhou uma grande plataforma até então pouco utilizada para seus produtos.
 
     O sistema operacional android é utilizado atualmente por 85\% dos celulares\cite{AndPro}. A Google\footnote{Google: \url{
-http://www.google.com.br}}(empresa responsável pelo sistema) possui uma loja online de aplicativos, a Google Play\footnote{Google Play: \url{http://play.google.com/store}} com mais de 1,3 milhão de aplicativos, dentre os quais mais de 50\% tratam-se de jogos. 
+http://www.google.com.br}}, empresa responsável pelo sistema, possui uma loja online de aplicativos, a Google Play\footnote{Google Play: \url{http://play.google.com/store}} com mais de 1,3 milhão de aplicativos, dentre os quais mais de 50\% tratam-se de jogos. 
 
     Dentre tais jogos destacam-se os que possuem a opção multijogador. Os jogos multijogadores tratam-se daqueles em que de 
 alguma maneira existe troca de informações entre usuários, e que não deixam a sensação do jogador estar jogando sozinho.
 
     Neste contexto, este trabalho consiste no desenvolvimento de um jogo multijogador para o sistema android utilizando web 
-service para a persistência de dados fazendo com que seja possível a troca de informações entre jogoogadores. 
+service para a persistência de dados fazendo com que seja possível a troca de informações entre jogadores. 
 
     Utilizando o ADT, a engine AndEngine e as ferramentas disponibilizadas pelo Facebook foi possível implementar um protótipo 
-jogável para dispositivos com sistema operacional android disponível em TODO link aqui. \\
+jogável para dispositivos com sistema operacional android.\\
 
-\noindent \textbf{Palavras-chave:} jogo multijogador, jogo android, andEngine, web service. 
+\noindent \textbf{Palavras-chave:} jogo, multijogador, android, andEngine, web service. 
 % ---------------------------------------------------------------------------- %
-% Abstract
-\chapter*{Abstract}
-\noindent LOURO, R. D. \textbf{Game for android platform with cloud communication}. 
-2014. TODO p.
-Dissertation (Graduation) - Institute of Mathematics and Statistics, 
-University of São Paulo, São Paulo, 2014.
-\\
 
-TODO: Depois que estiver fechado o português traduzir
-\\
-
-\noindent \textbf{Keywords:} keyword1, keyword2, keyword3.
-
-% ---------------------------------------------------------------------------- %
 % Sumário
 \tableofcontents    % imprime o sumário
 
@@ -183,16 +208,11 @@ TODO: Depois que estiver fechado o português traduzir
         ADT          & Ferramentas de Desenvolvedor Android(\emph{Android Development Tools})\\
         SDK          & Kit de Desenvolvimento de Software (\emph{Software Development Kit})\\
         GIMP         & Programa de manipulação de imagem do GNU (\emph{GNU Image Manipulation Program})\\
-        
+        JSON         & JavaScript Oriented Notation\\ 
+        IDE          & Ambiente Integrado de Desenvolvimento (\emph{Integrated Development Environment})\\ 
+        SGBD         & Sistema Genrenciados de Banco de Dados (\emph{Data Base Management System})\\
+        SQL          & Linguagem de Consulta Estruturada (\emph{Structured Query Language})\\
 \end{tabular}
-
-% ---------------------------------------------------------------------------- %
-% \chapter{Lista de Símbolos - Acho que não vou precisar}
-% \begin{tabular}{ll}
-%         $\omega$    & Frequência angular\\
-%         $\psi$      & Função de análise \emph{wavelet}\\
-%         $\Psi$      & Transformada de Fourier de $\psi$\\
-% \end{tabular}
 
 % ---------------------------------------------------------------------------- %
 % Listas de figuras e tabelas criadas automaticamente
@@ -217,10 +237,14 @@ TODO: Depois que estiver fechado o português traduzir
 \input cap-banco             % associado ao arquivo: 'cap-banco.tex'
 \input cap-protocolo         % associado ao arquivo: 'cap-protocolo.tex'
 \input cap-implementacao     % associado ao arquivo: 'cap-implementacao.tex'
-\input cap-testes            % associado ao arquivo: 'cap-testes.tex'
 \input cap-resultados        % associado ao arquivo: 'cap-resultados.tex'
 \input cap-conclusao         % associado ao arquivo: 'cap-conclusao.tex'
 \input cap-trabalhos         % associado ao arquivo: 'cap-trabalhos.tex'
+
+\part{Parte Subjetiva}
+
+\input cap-subjetivo         % associado ao arquivo: 'cap-subjetivo.tex'
+\input cap-disciplinas       % associado ao arquivo: 'cap-disciplinas.tex'
 
 % ---------------------------------------------------------------------------- %
 % Bibliografia

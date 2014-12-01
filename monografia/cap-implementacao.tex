@@ -2,65 +2,188 @@
 \chapter{Implementacão do Jogo}
 \label{cap:implementacao_do_jogo}
 
-TODO Talvez fazer uma breve introdução do que é este capítulo. 
+	Neste capítulo serão abordadas as principais características e funcionalidades implementadas
+no jogo. 
+
 %% ------------------------------------------------------------------------- %%
-\section{Fluxograma}
+\section{Fluxo de Telas}
 \label{sec:fluxograma}
-TODO Colocar uma figura que represente o fluxograma do jogo, além de fazer uma breve explicação sobre a mesma.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=.70\textwidth]{FluxogramaTelas} 
+  \caption{Fluxograma de telas do jogo}
+\end{figure}
+
+	A figura acima representa os possíveis fluxos de telas do jogo Biografia. Todas as sessões
+são iniciadas a partir da tela \textit{Spash Scene} que nada mais é do que a tela de loading do jogo. 
+
+	Caso seja a primeira sessão do usuário, o jogo o redireciona para a tela \textit{Connect Scene}, esta 
+tela pede que o usuário forneça informações da sua conta no facebook para o jogo. Após a obtenção destes dados, 
+ou caso não seja a primeira sessão do usuário, este é redirecionado para a tela \textit{Main Menu}. 
+
+	Na tela Main Menu o jogador pode tomar dois possíveis caminhos. O primeiro é a criação de um novo jogo, caso 
+este caminho seja o escolhido, o jogo é redirecionado para a tela \textit{New Game Scene}. Nesta tela o usuário 
+pode escolher jogar contra um oponente aleatório e ser redirecionado para a tela \textit{Choice Scene} ou jogar
+contra um amigo do facebook, neste caso o jogador será redirecionado para a tela \textit{Friend Picker Scene} 
+que apresentará um menu com os amigos que ele pode desafiar, sendo posteriormente redirecionado para a tela 
+\textit{Choice Scene}. O segundo caminho possível a partir do \textit{Main Menu} é responder um desafio, neste caso o jogador será diretamente redirecionado para a tela \textit{Choice Scene}. 
+
+	Na tela \textit{Choice Scene} o usuário sorteia um tipo de carta a ser jogado se ele é o desafiante,
+e caso contrário, seja o desafiado, apenas lhe é mostrado qual tipo de carta o desafio possui. Qualquer que seja 
+o papel do jogador, a partir deste ponto a próxima tela será a \textit{Game Scene}. 
+
+	A \textit{Game Scene} é a tela em que são apresentadas as dicas ao jogador, que deve tentar acertar qual a 
+personalidade da carta a partir das informações contidas nas dicas. Quando o usuário tenta responder, ele é 
+finalmente redirecionado para a tela \textit{End Game}, que mostra o resultado final, ou seja, se o jogador acertou a personalidade ou não, e qual a pontuação atingida. 
+
+	A partir de então existem dois possíveis caminhos. Caso o jogador esteja respondendo um desafio, agora é 
+a vez dele mandar um novo desafio para o oponente, sendo assim ele é então redirecionado para a tela \textit{
+Choice Scene} para que seja sorteado um novo tipo de carta e dar prosseguimento ao jogo. Caso o jogador já esteja 
+mandando um novo desafio para o oponente, ele é redirecionado para o \textit{Main Menu}, dando fim ao fluxo 
+do jogo.
+	
 
 % %% ------------------------------------------------------------------------- %%
 \section{Principais Classes}
 \label{sec:principais_classes}
 
-TODO Apresentar aqui as principais classes do jogo (ResourcesManager, SceneManager, etc) explicando padrões
-de projeto adotados além de detalhes da implementação. 
+\subsection{GameActivity}
 
-% %% ------------------------------------------------------------------------- %%
-\section{Integração Facebook}
-\label{sec:integracao_facebook}
+	Em aplicações android o conceito de activity é de vital importância. Basicamente activities são espaço 
+na tela em que se pode desenhar qualquer tipo de aplicação, além de ser o ponto inicial de uma aplicação 
+android. 
 
-TODO Aqui vou explicar o que foi utilizado do Facebook SDK. (talvez dividir em subtpicos como:
-Pegando informações do usuário, dando share na pontuação, etc.)
+	Em Biografia a única activity implementada se chama \textit{GameActivity}, esta classe herda da classe 
+\textit{BaseGameActivity}, presente na andEngine, a capacidade de iniciar o jogo, instanciar os primeiros objetos,
+além de chamar a primeira cena do jogo. 
+
+\subsection{ResourcesManager}
+
+	A classe \textit{ResourcesManager} é responsável por todos os recursos utilizados no jogo, entende-se por 
+recursos as imagens, as fontes e os sons utilizados no jogo. 
+
+	\textit{ResourcesManager} é uma classe singleton\footnote{Padrão de projeto que garante a existência de 
+apenas uma instância da classe} que possui dois métodos para cada entidade do jogo que precisa instanciar 
+recursos. Um método de \textit{load} que carrega estes recursos na memória e os deixam prontos para serem 
+utilizados, e um método de \textit{unload} que libera a memória utilizada por estes recursos, tornando a 
+utilização dos mesmos impossibilitada. 
+
+\subsection{SceneManager}
+
+	A classe \textit{SceneManager} é responsável pela transição de cenas do jogo e também se trata de uma classe 
+singleton. 
+
+	É a classe \textit{SceneManager} que executa toda a lógica da troca de cena, no escopo dessa classe existe um 
+método \textit{create} para cada cena presente no jogo. Este método deve ser chamado sempre que se deseja trocar 
+a cena corrente por outra, nele é instanciado um novo objeto que representa a nova cena a ser inserida no jogo, 
+além de ser feita a chamada ao método \textit{setScene} presente da classe Engine do jogo(andEngine), que é a 
+responsável por desenhar a nova cena na tela de fato. 
+
+\subsection{GameManager}
+
+	O \textit{GameManager} é uma classe singleton que é responsável por guardar valores que classes sem relação 
+precisam compartilhar, fazendo com que estes valores sejam buscados no servidor apenas uma única vez embora 
+classes diferentes o utilizem. Alguns exemplos de valores guardados pelo GameManager são: 
+
+\begin{itemize}
+\item {\textit{UserName}:} Variável que guarda o nome do jogador.  
+\item {\textit{userPictureURL}:} Variável que guarda o link da foto do jogador.
+\item {\textit{friendPictureURL}:} Variável que guarda o link da foto do oponente. 
+\end{itemize}
+
+\subsection{BaseScene}
+
+	\textit{BaseScene} é uma classe abstrata que representa uma cena genérica. No jogo todas as cenas herdam da 
+classe \textit{BaseScene}, o que uniformiza a implementação de qualquer trecho de código relacionado as cenas. 
+
+	A \textit{BaseScene} possui quatro métodos abstratos que devem sem implementados por qualquer classe que
+queira herdar suas configurações. São eles:
+
+\begin{itemize}
+\item {\textit{createScence}:} Construtor da cena. 
+\item {\textit{onBackKeyPressed}:} Chamado quando o botão voltar, presente em todos os celulares android, é pressionado
+\item {\textit{getSceneType}:} Método que retorna qual cena está sendo mostrada.
+\item {\textit{disposeScene}:} Método chamado quando a cena será retirada da tela. É responsável por fazer a chamada ao método correspondente do \textit{ResourcesManager} que libera a memória utilizada. 
+\end{itemize}
+
+\subsection{FacebookFacade}
+
+	\textit{FacebookFacade} é a classe responsável por abstrair as requisições de informações ao facebook. Se uma 
+classe necessita de informações do facebook, ela precisa instanciar um novo objeto \textit{FacebookFacade} e 
+fazer a chamada ao método que executa a requisição desejada. Os métodos presentes na classe 
+\textit{FacebookFacade} são:
+
+\begin{itemize}
+\item {\textit{login}:} Método que pede permissões para o compartilhamento de informações entre o facebook e o jogo.
+\item {\textit{getFriends}:} Método que retorna a lista de amigos que possui o jogo
+\item {\textit{getUserPicture}:} Método que retorna a url da foto do usuário cujo identificador foi passado como parâmetro.	
+\end{itemize}
 
 % %% ------------------------------------------------------------------------- %%
 \section{Mecânica}
 \label{sec:mecanica}
 
-TODO Apresentar aqui como funciona o mecanismo utilizado pelo jogo além de explicitar como se decide
-qual dos jogadores foi vitorioso. 
+	Biografia é um jogo baseado em turnos que só pode ser jogado contra um oponente por vez.
+
+	Um turno é começado pelo jogador desafiante, este sorteia uma carta que será a carta daquele turno, 
+posteriormente o desafiante tenta descobrir qual a personalidade da carta sorteada através das dicas, 
+ganhando então uma quantidade de pontos. Feito isso o desafiante termina seu turno, fazendo com que o jogador 
+desafiado tenha a vez. O jogador desafiado responderá o turno jogando exatamente a mesma carta que foi jogada 
+pelo desafiante, com o objetivo de fazer mais pontos que ele. Ao fim do turno do jogador desafiado, aquele 
+jogador, desafiante ou desafiado, que obter a maior quantidade de pontos é então declarado vencedor daquele 
+turno, acrescentando 1 ponto ao placar geral que marca a quantidade de turnos vencidos, dando então fim ao 
+turno corrente e liberando o próximo a ser iniciado. 
+
+% %% ------------------------------------------------------------------------- %%
+\section{Integração Facebook}
+\label{sec:integracao_facebook}
+	
+	A integração do facebook com o jogo Biografia fez com que o jogo se tornasse mais pessoal, 
+e principalmente social. Através do compartilhamento de informações do facebook com o jogo, tornou-se possível 
+mostrar informações como nome e foto do usuário durante o fluxo do jogo, além de ter sido de vital
+importância para fazer com que a opção multijogador fosse viável, através da busca pela lista de amigos
+desta rede social. 
 
 % %% ------------------------------------------------------------------------- %%
 
 \section{Novo Jogo}
 \label{subsec:novo_jogo}
 
-TODO falar que existem duas maneiras de se começar um novo jogo.
+	A partir do momento em que as informações do facebook do usuário são compartilhadas com o 
+jogo, este pode iniciar novas partidas. Em Biografia existem duas maneiras de se começar um novo 
+jogo. São elas: 
 
 \subsection{Amigo do Facebook}
 \label{subsec:amigo_facebook}
 
-TODO Dizer aqui como o facebook faz para te mostrar seus amigos no jogo, possibilitando com que 
-o usuário comece um novo jogo com algum deles. 
+	Ao ser escolhida a opção de criar um novo jogo com amigos do facebook, é feita uma requisição 
+ao mesmo para que sejam compartilhadas as informações sobre listas de amigos que possuem o aplicativo
+Biografia instalado. Após a requisição ser completada é mostrado ao jogador um menu, onde cada item 
+corresponde a um amigo que está apto a ser escolhido para o ínicio de um novo jogo.
 
 % %% ------------------------------------------------------------------------- %%
 
 \subsection{Oponente Aleatório}
 \label{sec:oponente_aleatorio}
 
-TODO Dizer aqui como o jogo faz para sugerir um novo jogo com um oponente aleatório. 
+	A opção de oponente aleatório dá ao jogador a chance de poder iniciar uma nova partida
+contra qualquer outro jogador cadastrado na base de dados do Biografia. É feita uma requisição ao 
+servidor que busca um oponente, de maneira aleatória, que o jogador ainda não tenha partida iniciada, 
+devolvendo ao jogo as informações desse oponente para que a nova partida seja jogada. 
 
 % %% ------------------------------------------------------------------------- %%
 
-\section{Sistema de pontuação}
-\label{sec:sistema_pontuacao}
+% \section{Sistema de pontuação}
+% \label{sec:sistema_pontuacao}
 
-TODO Descrever como são feitas as contas que definem a pontuação do jogo.
+% TODO Descrever como são feitas as contas que definem a pontuação do jogo.
 
-% %% ------------------------------------------------------------------------- %%
+% % %% ------------------------------------------------------------------------- %%
 
-\section{Estatísticas}
-\label{sec:estatisticas}
+% \section{Estatísticas}
+% \label{sec:estatisticas}
 
-TODO Apresentar as estatísticas que são salvas e persistidas no banco de dados
+% TODO Apresentar as estatísticas que são salvas e persistidas no banco de dados
 
 % %% ------------------------------------------------------------------------- %%

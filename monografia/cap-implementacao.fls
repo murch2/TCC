@@ -1,0 +1,7 @@
+PWD /home/digao/android/workspace/TCC/monografia
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/digao/android/workspace/TCC/monografia/cap-implementacao.tex
+OUTPUT /home/digao/android/workspace/TCC/monografia/cap-implementacao.log
