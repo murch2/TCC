@@ -93,7 +93,7 @@ public class GameItem extends SpriteMenuItem {
 		try {
 			friendNameString = this.jsonFriendInfo.getString("nameOpponent");
 			friendNameString = nameTreatment(friendNameString); 
-			friendNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, friendNameString, ResourcesManager.getInstance().vbom);
+			friendNameText = new Text(0, 0, ResourcesManager.getInstance().arialFont, friendNameString, ResourcesManager.getInstance().vbom);
 			friendNameText.setAnchorCenter(0f, 0.5f); 
 			friendNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.27f, Constants.HEIGHT_PICKER_CELL * 0.7f);  
 			friendNameText.setColor(Color.WHITE); 
@@ -104,7 +104,7 @@ public class GameItem extends SpriteMenuItem {
 	}
 	
 	public void createMyText() { 
-		myNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, "eu", ResourcesManager.getInstance().vbom);
+		myNameText = new Text(0, 0, ResourcesManager.getInstance().arialFont, "eu", ResourcesManager.getInstance().vbom);
 		myNameText.setAnchorCenter(0.0f, 0.5f); 
 		myNameText.setPosition(Constants.WIDTH_PICKER_CELL * 0.6f, Constants.HEIGHT_PICKER_CELL * 0.7f);  
 		myNameText.setColor(Color.WHITE); 

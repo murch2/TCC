@@ -88,7 +88,7 @@ public class FriendPickerScene extends BaseScene implements Callback, IOnMenuIte
 
 	@Override
 	public void onBackKeyPressed() {
-		// TODO Auto-generated method stub
+		SceneManager.getInstance().createNewGameScene(); 
 	}
 
 	@Override

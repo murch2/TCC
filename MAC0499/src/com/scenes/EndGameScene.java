@@ -171,7 +171,8 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 
 	@Override
 	public void onBackKeyPressed() {
-		// TODO Auto-generated method stub
+//		TODO aqui depende do fluxo em que o jogo estiver. 
+//		SceneManager.getInstance().createMainMenuScene();  
 	}
 
 	@Override

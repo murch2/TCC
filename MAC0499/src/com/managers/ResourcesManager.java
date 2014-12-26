@@ -58,8 +58,7 @@ public class ResourcesManager {
     private BuildableBitmapTextureAtlas mainMenuAtlas;
     
     //NewGame
-    public ITextureRegion facebookFriendsMenuRegion;
-    public ITextureRegion randomOpponentMenuRegion;
+    public ITextureRegion blueButton;
     private BuildableBitmapTextureAtlas newGameMenuAtlas;
     
     //FriendPicker
@@ -188,7 +187,7 @@ public class ResourcesManager {
     private synchronized void createMainMenuGraphics() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/mainMenu/"); 
     	mainMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR); 
-    	newGameMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnNewGame.png");
+    	newGameMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "blueButton.png");
     	gameItemBackGroundRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "backGroundCell.png");
     	defaultPictureRegion2 = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "man_default.png");
     	btnStatusPlayRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(mainMenuAtlas, activity, "btnStatusPlay.png");
@@ -224,9 +223,8 @@ public class ResourcesManager {
     
     private void createNewGameScene() {
     	BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/scenes/newGame/"); 
-    	newGameMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 390, 180, TextureOptions.BILINEAR); 
-    	facebookFriendsMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(newGameMenuAtlas, activity, "btnFacebookFriends.png");
-    	randomOpponentMenuRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(newGameMenuAtlas, activity, "btnRandomOpponent.png");
+    	newGameMenuAtlas = new BuildableBitmapTextureAtlas(activity.getTextureManager(), 420, 180, TextureOptions.BILINEAR); 
+    	blueButton = BitmapTextureAtlasTextureRegionFactory.createFromAsset(newGameMenuAtlas, activity, "blueButton.png");
     	try {
 			newGameMenuAtlas.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(0, 1, 1))); 
 		} catch (TextureAtlasBuilderException e) {

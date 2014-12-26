@@ -92,7 +92,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	}
 
 	private void createBackground() {
-		setBackground(new Background(Color.BLACK));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
 	}
 
 	private void createRoullete(JSONArray dados) {

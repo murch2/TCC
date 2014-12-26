@@ -6,6 +6,7 @@ package com.scenes;
 
 import org.andengine.engine.handler.timer.ITimerCallback;
 import org.andengine.engine.handler.timer.TimerHandler;
+import org.andengine.entity.IEntity;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
@@ -14,6 +15,8 @@ import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.input.touch.detector.ScrollDetector;
 import org.andengine.input.touch.detector.ScrollDetector.IScrollDetectorListener;
@@ -22,6 +25,8 @@ import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.view.MenuItem;
 
 import com.facebook.Request.GraphUserCallback;
 import com.facebook.Response;
@@ -48,6 +53,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	private JSONObject jsonMyGames; 
 	private SurfaceScrollDetector scrollDetector = null;
 	private boolean swipe = false;
+	private boolean shouldSwipe = false; 
 
 	@Override
 	public void createScene() {
@@ -77,7 +83,8 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	}
 	
 	private void createBackground() {
-		setBackground(new Background(Color.BLUE));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
 	}
 	
 	private void createnewGameItem() {
@@ -87,21 +94,33 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			@Override
 			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				newGameItem.setScale(0.8f);
-				TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
-					@Override
-					public void onTimePassed(TimerHandler pTimerHandler) {
-						newGameItem.setScale(1.0f);
-						SceneManager.getInstance().createNewGameScene(); 
-					}
-				});
+				
+				int action = pSceneTouchEvent.getAction();
 
-				this.registerUpdateHandler(timer); 
+				if (action ==  TouchEvent.ACTION_UP){
+					TimerHandler timer = new TimerHandler(0.15f, new ITimerCallback() {
+						@Override
+						public void onTimePassed(TimerHandler pTimerHandler) {
+							newGameItem.setScale(1.0f);
+							SceneManager.getInstance().createNewGameScene(); 
+						}
+					});
+
+					this.registerUpdateHandler(timer);
+				}
 				return true; 
 			}
 		}; 
 		newGameItem.setPosition(Constants.CENTER_X, Constants.CAMERA_HEIGHT * 0.7f);
 		this.registerTouchArea(newGameItem);
 		attachChild(newGameItem);
+		
+		Text newGameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, "Novo Jogo", ResourcesManager.getInstance().vbom); 
+		newGameText.setPosition(newGameItem.getWidth() * 0.5f, newGameItem.getHeight() * 0.7f);  
+		newGameText.setColor(Color.WHITE); 
+		newGameText.setScale(1.2f);
+		newGameItem.attachChild(newGameText);
+		
 	}
 	
 	private void createMenuMyGames() {
@@ -113,8 +132,10 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 			array = jsonMyGames.getJSONArray("dados");
 			menuMyGames = new MenuScene(ResourcesManager.getInstance().camera);
 			menuMyGames.buildAnimations();
-			for (int i = 0; i < 5 * array.length(); i++) {
-				json = array.getJSONObject(i%2); 
+
+			for (int i = 0; i < array.length(); i++) {
+				shouldSwipe = true; 
+				json = array.getJSONObject(i); 
 				item = new ScaleMenuItemDecorator(new GameItem(GAME_ITEM, json.getString("idOpponent"), json), 0.8f, 1);
 				item.setPosition(Constants.CENTER_X, - i * 125 + Constants.CENTER_X + 200);
 				menuMyGames.addMenuItem(item);
@@ -133,7 +154,7 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
  
 	@Override
 	public void onBackKeyPressed() {
-		// TODO Auto-generated method stub
+		System.exit(0);
 	}
 
 	@Override
@@ -210,18 +231,26 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	public void onScroll(ScrollDetector pScollDetector, int pPointerID,
 			float pDistanceX, float pDistanceY) {
 		
-		if(swipe) {
-			if(pDistanceY < 0) {
-				
-				if(getChildScene().getY() + getChildScene().getHeight() * 0.5 > -1000){
-					newGameItem.setY(newGameItem.getY() + 20); 
-					getChildScene().setY(getChildScene().getY()	 + 20);
+		int offset = 20; 
+		int n = menuMyGames.getChildCount();
+		IEntity item = null; 
+		
+		if (n > 0) {
+			item = menuMyGames.getChildByIndex(0); 
+		}
+		
+		if (n > 4 && swipe && shouldSwipe) {
+			float topLimit = (n - 4) * (item.getHeight() + 10); 
+			if (pDistanceY < 0) {
+				if(getChildScene().getY() < topLimit){
+					newGameItem.setY(newGameItem.getY() + offset); 
+					getChildScene().setY(getChildScene().getY()	 + offset);
 				}
 			}
 			else if(pDistanceY > 0){
-				if(getChildScene().getY() < 1000){
-					newGameItem.setY(newGameItem.getY() - 20); 
-					getChildScene().setY(getChildScene().getY() - 20);
+				if(getChildScene().getY() > 0){
+					newGameItem.setY(newGameItem.getY() - offset); 
+					getChildScene().setY(getChildScene().getY() - offset);
 				}
             }
 		}
