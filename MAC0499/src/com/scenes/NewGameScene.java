@@ -24,6 +24,7 @@ import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
 import com.util.Constants;
+import com.util.LoadingLayer;
 
 public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickListener, HTTPResponseListener {
 
@@ -34,7 +35,8 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 	@Override
 	public void createScene() {
 		createBackground();
-		createMenu(); 
+		createMenu();
+		createHUD(); 
 	}
 	
 	private void createBackground() {

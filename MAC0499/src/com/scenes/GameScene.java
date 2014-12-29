@@ -35,8 +35,9 @@ import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
 import com.util.Constants;
+import com.util.LoadingLayer;
 
-public class GameScene extends BaseScene implements HTTPResponseListener, IOnMenuItemClickListener {
+public class GameScene extends BaseSceneWithHUD implements HTTPResponseListener, IOnMenuItemClickListener {
 	
 	private MenuScene tipsMenu = new MenuScene(ResourcesManager.getInstance().camera);
 	private Sprite title; 
@@ -56,6 +57,12 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 	public void createScene() {
 		currentRequest = Requests.RANDOM_CARD; 
 		new HTTPPostRequester().asyncPost(this, MakeParameters.randomCard());
+		putLoading(); 
+	}
+	
+	public void putLoading() {
+		LoadingLayer loading = new LoadingLayer();
+		loading.insertLoadingLayer(camera); 
 	}
 
 	private void createItensScene (JSONObject json) {
@@ -72,7 +79,7 @@ public class GameScene extends BaseScene implements HTTPResponseListener, IOnMen
 		createTitle(); 
 		createTips(json);  
 		createMyScoreText();
-		
+		createHUD(); 
 	}
 	
 	public void createTitle() {

@@ -244,67 +244,80 @@ class ExecuteQuery {
 
 	function myGamesQuery($json) {
 	
-		$userID = $json['userID']; 
+		$userID = $json['userID'];
 		$query = "SELECT id_jogador2, pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;"; 
+						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;";
 
-		$result = $this->trataResult($this->getInfo($query)); 
+		$result = $this->getInfo($query);
+ 	
+		$affected = pg_affected_rows($result); 
 
-		if ($this->trataResult($result)['status'] == 'error') {
-			return $this->error();
-		}
+		$i = 0;
 
-		$index = 0; 
-		$dados; 
-		foreach ($result['dados'] as $key => $game) {
-			$status = $game['status']; 
-			$opponentID = $game['id_jogador2']; 
+		if ($affected > 0 ) {
+			while ($row = pg_fetch_array($result)) {
+	 			$aux[$i] = $row; 
+	 			$i++; 
+	 		}
 
-			if ($status == 0) {
-			
-				$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
-						  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = $opponentID AND id_jogador2 = $userID; "; 
+	 		$result = $aux; 
 
-			
-				$resultAux = $this->getInfo($query); 
+	 		if (!$aux) {
+	 			return $this->error(); 
+	 		}
+
+			$index = 0; 
+			$dados;  
+			$this->log("2");
+
+			foreach ($result as $key => $game) {
+				$status = $game['status']; 
+				$opponentID = $game['id_jogador2']; 
+
+				if ($status == 0) {
 				
-				$row = pg_fetch_array($resultAux); 
-				$statusAux = $row['status']; 
-			
-				if ($statusAux == 2) {
+					$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
+							  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = $opponentID AND id_jogador2 = $userID; "; 
+
+				
+					$resultAux = $this->getInfo($query); 
+					
+					$row = pg_fetch_array($resultAux); 
+					$statusAux = $row['status']; 
+				
+					if ($statusAux == 2) {
+						$dados[$index++] = array('idOpponent' => $opponentID,
+											 'pictureOpponent' => $row['foto'],
+											 'scoreOpponent' => $row['pontuacao1'],
+											 'nameOpponent' => $row['nome'],
+											 'gameStatus' => "PLAY");
+					}
+					elseif ($statusAux == 4) {
+						
+					} 
+					elseif ($statusAux == 3) {
+						
+					}
+				}
+				elseif ($status == 1) {
+					
+				}
+				elseif ($status == 2) {
 					$dados[$index++] = array('idOpponent' => $opponentID,
-										 'pictureOpponent' => $row['foto'],
-										 'scoreOpponent' => $row['pontuacao1'],
-										 'nameOpponent' => $row['nome'],
-										 'gameStatus' => "PLAY");
-				}
-				elseif ($statusAux == 4) {
-					
+											 'pictureOpponent' => $game['foto'],
+											 'scoreOpponent' => $game['pontuacao2'],
+											 'nameOpponent' => $game['nome'],
+											 'gameStatus' => "POKE");
 				} 
-				elseif ($statusAux == 3) {
-					
+				elseif ($status == 3) {
+
+				}
+				elseif ($status == 4) {
+
 				}
 			}
-			elseif ($status == 1) {
-				
-			}
-			elseif ($status == 2) {
-			
-				$dados[$index++] = array('idOpponent' => $opponentID,
-										 'pictureOpponent' => $game['foto'],
-										 'scoreOpponent' => $game['pontuacao2'],
-										 'nameOpponent' => $game['nome'],
-										 'gameStatus' => "POKE");
-			} 
-			elseif ($status == 3) {
-
-			}
-			elseif ($status == 4) {
-
-			}
-
 		}
-		
+
 		$result = array('status' => 'ok',
 						'requestID' => 'MyGames',  
 						'dados' => $dados);

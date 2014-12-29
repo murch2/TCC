@@ -11,6 +11,7 @@ require 'ExecuteQuery.php';
  class TrataRequisicao {
 
  	function __construct($json) {
+ 		$this->log("Requisicao");
  		$json = json_decode($json, true); 
  		$json = $json['message']; 
  		$this->tratandoRequisicao($json); 

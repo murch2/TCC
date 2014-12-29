@@ -50,7 +50,7 @@ public class SceneManager {
 		ENDGAME_SCENE,
 	}
 	
-	public void setScene(BaseScene scene) {
+	public void setScene(BaseScene scene) { 
 		engine.setScene(scene);
 		setCurrentLastSceneType(currentSceneType); 
 		currentScene = scene;
@@ -87,6 +87,7 @@ public class SceneManager {
 	}
 	
 	public void createSplashScene(OnCreateSceneCallback pOnCreateSceneCallback) {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadSplashScene(); 
 		splashScene = new SplashScene(); 
 		currentScene = splashScene; 
@@ -102,6 +103,7 @@ public class SceneManager {
 	 
 //	TODO ver metodos dispose
 	public void createConnectScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 	    ResourcesManager.getInstance().loadConnectScene(); 
 	    connectScene = new ConnectScene(); 
 	    setScene(connectScene);
@@ -109,36 +111,42 @@ public class SceneManager {
 	}
 	
 	public void createMainMenuScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 	    ResourcesManager.getInstance().loadMainMenuScene(); 
 	    mainMenuScene = new MainMenuScene(); 
 	    setScene(mainMenuScene); 
 	}
 	
 	public void createNewGameScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadNewGameScene(); 
 		newGameScene = new NewGameScene(); 
 		setScene(newGameScene); 
 	}
 	
 	public void createNewFriendPickerScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadFriendPickerScene();  
 		friendPickerScene = new FriendPickerScene(); 
 		setScene(friendPickerScene); 
 	}
 	
 	public void createChoiceScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadChoiceScene();  
 		choiseScene = new ChoiceScene(); 
 		setScene(choiseScene); 
 	}
 	
 	public void createGameScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadGameScene();  
 		gameScene = new GameScene(); 
 		setScene(gameScene);
 	}
 	
 	public void createEndGameScene() {
+		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadEndGameScene();  
 		endGameScene = new EndGameScene(); 
 		setScene(endGameScene);

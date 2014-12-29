@@ -10,7 +10,10 @@ import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
 import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
+import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
+import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +63,8 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 	}
  
 	private void createBackground() {
-		setBackground(new Background(Color.BLACK));
+		Sprite background = new Sprite(Constants.CENTER_X, Constants.CENTER_Y, resourcesManager.blueBackground, vbom); 
+		attachChild(background);
 	}
 
 	private void createFacebookConnectMenu() {
@@ -82,14 +86,15 @@ public class ConnectScene extends BaseScene implements IOnMenuItemClickListener,
 	}
 	
 	private void createFacebookConnectText(IMenuItem item) {
-		Text text = new Text(0, 0, resourcesManager.gameFont, "Login with Facebook", vbom);
-		text.setPosition(item.getWidth() * 0.5f, item.getHeight() * 0.5f);  
+		Text text = new Text(0, 0, resourcesManager.gameFont, "Facebook Login", vbom);
+		text.setPosition(item.getWidth() * 0.55f, item.getHeight() * 0.6f);  
 		text.setColor(Color.WHITE); 
 		item.attachChild(text); 
 	}
 	
 	private void createWelcomeMessage() {
-		Text text = new Text(0, 0, resourcesManager.gameFont, "Welcome!\n Connect with Facebook\n and gain bonus! ", vbom);
+		Text text = new Text(0, 0, resourcesManager.gameFont, "Bem Vindo!\n Conecte-se com o \n facebook para jogar! ", 
+				new TextOptions(HorizontalAlign.CENTER), vbom);
 		text.setPosition(Constants.CAMERA_WIDTH / 2, Constants.CAMERA_HEIGHT * 0.8f);
 		text.setColor(Color.WHITE);
 		attachChild(text);

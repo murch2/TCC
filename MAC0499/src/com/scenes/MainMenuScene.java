@@ -224,35 +224,37 @@ public class MainMenuScene extends BaseSceneWithHUD implements HTTPResponseListe
 	@Override
 	public void onScrollStarted(ScrollDetector pScollDetector, int pPointerID,
 			float pDistanceX, float pDistanceY) {
-		
+
 	}
 
 	@Override
 	public void onScroll(ScrollDetector pScollDetector, int pPointerID,
 			float pDistanceX, float pDistanceY) {
-		
-		int offset = 20; 
-		int n = menuMyGames.getChildCount();
-		IEntity item = null; 
-		
-		if (n > 0) {
-			item = menuMyGames.getChildByIndex(0); 
-		}
-		
-		if (n > 4 && swipe && shouldSwipe) {
-			float topLimit = (n - 4) * (item.getHeight() + 10); 
-			if (pDistanceY < 0) {
-				if(getChildScene().getY() < topLimit){
-					newGameItem.setY(newGameItem.getY() + offset); 
-					getChildScene().setY(getChildScene().getY()	 + offset);
+
+		if (shouldSwipe) {
+			int offset = 20; 
+			int n = menuMyGames.getChildCount();
+			IEntity item = null; 
+
+			if (n > 0) {
+				item = menuMyGames.getChildByIndex(0); 
+			}
+
+			if (n > 4 && swipe) {
+				float topLimit = (n - 4) * (item.getHeight() + 10); 
+				if (pDistanceY < 0) {
+					if(getChildScene().getY() < topLimit){
+						newGameItem.setY(newGameItem.getY() + offset); 
+						getChildScene().setY(getChildScene().getY()	 + offset);
+					}
+				}
+				else if(pDistanceY > 0){
+					if(getChildScene().getY() > 0){
+						newGameItem.setY(newGameItem.getY() - offset); 
+						getChildScene().setY(getChildScene().getY() - offset);
+					}
 				}
 			}
-			else if(pDistanceY > 0){
-				if(getChildScene().getY() > 0){
-					newGameItem.setY(newGameItem.getY() - offset); 
-					getChildScene().setY(getChildScene().getY() - offset);
-				}
-            }
 		}
 	}
 

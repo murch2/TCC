@@ -34,6 +34,8 @@ public class VersusCell extends Sprite {
 				ResourcesManager.getInstance().backgroundChoiceRegion,
 				ResourcesManager.getInstance().vbom);
 		
+		this.setScale(getWidth() / 220, getHeight() / 150);
+		
 		this.isFriend = isFriend; 
 		createPicture(url);
 		createName(name); 
@@ -59,7 +61,6 @@ public class VersusCell extends Sprite {
 		ResourcesManager.getInstance().activity.runOnUpdateThread(new Runnable() {
 			@Override
 			public void run() {
-				System.out.println("Foto = " + url);
 				Sprite updatePicture = ImageDownloader.downloadImage(url);
 				updatePicture.setWidth(picture.getWidth());
 				updatePicture.setHeight(picture.getHeight()); 
@@ -82,27 +83,27 @@ public class VersusCell extends Sprite {
 			e.printStackTrace();
 		}
 		
-		nameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, name, ResourcesManager.getInstance().vbom);
-		nameText.setColor(Color.BLACK);
+		nameText = new Text(0, 0, ResourcesManager.getInstance().arialFont, name, ResourcesManager.getInstance().vbom);
+		nameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
 		if (isFriend) {
 			nameText.setAnchorCenter(0f, 0.5f);
-			nameText.setPosition(getWidth() * 0.4f, Constants.HEIGHT_PICKER_CELL * 0.85f);
+			nameText.setPosition(getWidth() * 0.42f, Constants.HEIGHT_PICKER_CELL * 0.8f);
 		}
 		else {
 			nameText.setAnchorCenter(0.0f, 0.5f);
-			nameText.setPosition(15, Constants.HEIGHT_PICKER_CELL * 0.85f);
+			nameText.setPosition(15, Constants.HEIGHT_PICKER_CELL * 0.8f);
 		}
 		attachChild(nameText);
 		
-		middleNameText = new Text(0, 0, ResourcesManager.getInstance().gameFont, middleName, ResourcesManager.getInstance().vbom);
-		middleNameText.setColor(Color.BLACK);
+		middleNameText = new Text(0, 0, ResourcesManager.getInstance().arialFont, middleName, ResourcesManager.getInstance().vbom);
+		middleNameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
 		if (isFriend) {
 			middleNameText.setAnchorCenter(0f, 0.5f);
-			middleNameText.setPosition(getWidth() * 0.4f, Constants.HEIGHT_PICKER_CELL * 0.4f);
+			middleNameText.setPosition(getWidth() * 0.4f, Constants.HEIGHT_PICKER_CELL * 0.45f);
 		}
 		else {
 			middleNameText.setAnchorCenter(0.0f, 0.5f);
-			middleNameText.setPosition(15, Constants.HEIGHT_PICKER_CELL * 0.4f);
+			middleNameText.setPosition(15, Constants.HEIGHT_PICKER_CELL * 0.45f);
 		}
 		attachChild(middleNameText);
 	}

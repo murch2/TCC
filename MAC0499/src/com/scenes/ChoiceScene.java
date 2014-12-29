@@ -17,7 +17,9 @@ import org.andengine.entity.scene.menu.item.SpriteMenuItem;
 import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
 import org.andengine.opengl.util.GLState;
+import org.andengine.util.adt.align.HorizontalAlign;
 import org.andengine.util.adt.color.Color;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +34,7 @@ import com.server.HTTPPostRequester;
 import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
 import com.util.Constants;
+import com.util.LoadingLayer;
 
 public class ChoiceScene extends BaseSceneWithHUD implements
 HTTPResponseListener, IOnMenuItemClickListener {
@@ -54,12 +57,17 @@ HTTPResponseListener, IOnMenuItemClickListener {
 
 	@Override
 	public void createScene() {
+		createBackground();
 		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
+		putLoading(); 
+	}
+	
+	public void putLoading() {
+		LoadingLayer loading = new LoadingLayer();
+		loading.insertLoadingLayer(camera); 
 	}
 
 	private void createItensScene(JSONArray dados) {
-		createBackground();
-//TODO	Se eu num vou escrever o que eh cada cor eu não preciso dos dados.
 		createRoullete(dados);
 		createHUD();
 		createCells();
@@ -99,10 +107,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	private void createRoullete(JSONArray dados) {
 		roullete = new Sprite[4]; 
 
-		ResourcesManager resources = ResourcesManager.getInstance();
-
 		roullete[0] = new Sprite(Constants.CENTER_X,
-				Constants.CENTER_Y - 40, resources.roulleteLeftTopRegion, vbom) {
+				Constants.CENTER_Y - 40, resourcesManager.roulleteLeftTopRegion, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -112,7 +118,7 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		roullete[0].setAlpha(0.3f);
 
 		roullete[1] = new Sprite(Constants.CENTER_X,
-				Constants.CENTER_Y - 40, resources.roulleteRightTopRegion, vbom) {
+				Constants.CENTER_Y - 40, resourcesManager.roulleteRightTopRegion, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -123,7 +129,7 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		roullete[1].setAlpha(0.3f); 
 
 		roullete[2] = new Sprite(Constants.CENTER_X,
-				Constants.CENTER_Y - 40, resources.roulleteRightBotRegion, vbom) {
+				Constants.CENTER_Y - 40, resourcesManager.roulleteRightBotRegion, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -135,7 +141,7 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		roullete[2].setAlpha(0.3f);
 
 		roullete[3] = new Sprite(Constants.CENTER_X,
-				Constants.CENTER_Y - 40, resources.roulleteLeftBotRegion, vbom) {
+				Constants.CENTER_Y - 40, resourcesManager.roulleteLeftBotRegion, vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -149,8 +155,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 
 	private void createNewGameText() {
 		newGameText = new Text(0, 0, ResourcesManager.getInstance().gameFont,
-				"NEW GAME!", vbom);
-		newGameText.setColor(Color.BLACK);
+				"NOVO \nJOGO!", new TextOptions(HorizontalAlign.CENTER), vbom);
+		newGameText.setColor(255.0f/255, 239.0f/255, 191.0f/255);
 		newGameText.setScale(2.0f);
 		newGameText.setPosition(Constants.CENTER_X, Constants.CENTER_Y);
 		attachChild(newGameText);
@@ -181,7 +187,6 @@ HTTPResponseListener, IOnMenuItemClickListener {
 			}
 		});
 		engine.registerUpdateHandler(timer); 
-
 	}
 
 	private void createBigPlayMenu() {
@@ -189,9 +194,16 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		bigPlayMenu.setPosition(0, -Constants.CAMERA_HEIGHT * 0.4f);
 
 		final IMenuItem itemBigPlay = new ScaleMenuItemDecorator(
-				new SpriteMenuItem(PLAY_BIG, resourcesManager.btnPlayBigRegion,
+				new SpriteMenuItem(PLAY_BIG, resourcesManager.btnBlueRegion,
 						vbom), 0.8f, 1);
 
+		Text playText = new Text(0, 0, ResourcesManager.getInstance().gameFont,
+				"PLAY", vbom);
+		playText.setColor(Color.WHITE);
+		playText.setScale(1.25f);
+		playText.setPosition(itemBigPlay.getWidth() * 0.5f, itemBigPlay.getHeight() * 0.65f);
+		itemBigPlay.attachChild(playText);
+		
 		bigPlayMenu.addMenuItem(itemBigPlay);
 		bigPlayMenu.buildAnimations();
 		bigPlayMenu.setBackgroundEnabled(false);
@@ -199,6 +211,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		bigPlayMenu.setOnMenuItemClickListener(this);
 
 		setChildScene(bigPlayMenu);
+		
+		
 	}
 
 	private void createSmallPlayMenu() {
@@ -208,15 +222,29 @@ HTTPResponseListener, IOnMenuItemClickListener {
 
 		itemSmallPlay = new ScaleMenuItemDecorator(
 				new SpriteMenuItem(PLAY_SMALL,
-						resourcesManager.btnPlaySmallRegion, vbom), 0.8f, 1);
+						resourcesManager.btnBlueSmallRegion, vbom), 0.8f, 1);
+		
+		Text smallPlayText = new Text(0, 0, ResourcesManager.getInstance().arialFont,
+				"Jogar", vbom);
+		smallPlayText.setColor(Color.WHITE);
+		smallPlayText.setScale(1.3f);
+		smallPlayText.setPosition(itemSmallPlay.getWidth() * 0.5f, itemSmallPlay.getHeight() * 0.5f);
+		itemSmallPlay.attachChild(smallPlayText);
 
 		itemSmallPlay.setAlpha(0.2f);
 		playFlag = false; 
 
 		itemRotate = new ScaleMenuItemDecorator(
-				new SpriteMenuItem(ROTATE, resourcesManager.btnRotateRegion,
+				new SpriteMenuItem(ROTATE, resourcesManager.btnBlueSmallRegion,
 						vbom), 0.8f, 1);
 
+		Text rotateText = new Text(0, 0, ResourcesManager.getInstance().arialFont,
+				"Girar", vbom);
+		rotateText.setColor(Color.WHITE);
+		rotateText.setScale(1.3f);
+		rotateText.setPosition(itemRotate.getWidth() * 0.5f, itemRotate.getHeight() * 0.5f);
+		itemRotate.attachChild(rotateText);
+		
 		smallPlayMenu.addMenuItem(itemRotate);
 		smallPlayMenu.addMenuItem(itemSmallPlay);
 
@@ -259,9 +287,11 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	@Override
 	public void onResponse(JSONObject json) {
 		try {
+			System.out.println(json.toString(4));
 			JSONArray dados = json.getJSONArray("dados");
 			createItensScene(dados);
 		} catch (JSONException e) {
+			SceneManager.getInstance().createNewFriendPickerScene(); 
 			e.printStackTrace();
 		}
 	}

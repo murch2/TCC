@@ -29,8 +29,9 @@ import com.server.HTTPResponseListener;
 import com.server.MakeParameters;
 import com.util.Constants;
 import com.util.ImageDownloader;
+import com.util.LoadingLayer;
 
-public class EndGameScene extends BaseScene implements HTTPResponseListener {
+public class EndGameScene extends BaseSceneWithHUD implements HTTPResponseListener {
 	
 	private Sprite picture; 
 	private Text titleText; 
@@ -41,17 +42,24 @@ public class EndGameScene extends BaseScene implements HTTPResponseListener {
 	
 	@Override
 	public void createScene() {
-		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound()); 
+		new HTTPPostRequester().asyncPost(this, MakeParameters.finishNewRound());
+		createBackground();
+		putLoading(); 
+	}
+	
+	public void putLoading() {
+		LoadingLayer loading = new LoadingLayer();
+		loading.insertLoadingLayer(camera); 
 	}
 	
 	private void createItensScene() {
-		createBackground();
 		createTitle(); 
 		createBorder(); 
 		createPicture();		
 		createName();
 		createScore(); 
 		createNextButton(); 
+		createHUD();
 	}
 	
 	private void createBackground() {

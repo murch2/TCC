@@ -25,20 +25,28 @@ import com.managers.SceneManager.SceneType;
 import com.model.FriendPickerItem;
 import com.util.Constants;
 import com.util.FacebookFacade;
+import com.util.LoadingLayer;
 
-public class FriendPickerScene extends BaseScene implements Callback, IOnMenuItemClickListener {
+public class FriendPickerScene extends BaseSceneWithHUD implements Callback, IOnMenuItemClickListener {
 
 	private JSONObject jsonFriends;  
 	
 	@Override
 	public void createScene() { 
+		createBackground();
 		new FacebookFacade().getFriends(this);
+		putLoading(); 
+	}
+	
+	public void putLoading() {
+		LoadingLayer loading = new LoadingLayer();
+		loading.insertLoadingLayer(camera); 
 	}
 	
 	private void createItensScene () {
-		createBackground();
 		createTitle(); 
-		makeFriendsMenu();  
+		makeFriendsMenu();
+		createHUD(); 
 	}
 	
 	private void createBackground() {
