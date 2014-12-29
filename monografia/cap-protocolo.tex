@@ -32,7 +32,7 @@ que precisam estar presentes para que qualquer requisição seja respondida. São e
 que estiver fora da chave \textit{message} é desconsiderada, e caso a chave \textit{message} não exista o servidor retorna um código 
 de erro. 
 \item{\textbf{requestId}:} Todas as possíveis requisições possuem um identificador único. Este identificador
-precisa ser passado como paramêtro dentro da chave \textit{requestId}, caso o conteúdo dessa chave não seja um identificador conhecido ou este campo não exista, o servidor retornará um código de erro. 
+precisa ser passado como paramêtro dentro da chave \textit{requestId}. Caso o conteúdo dessa chave não seja um identificador conhecido ou este campo não exista, o servidor retornará um código de erro. 
 \end{itemize}
 
 
@@ -46,7 +46,7 @@ contenham as informações necessárias para cada requisição.
 \section{Semântica}
 \label{sec:}
 
-	Para descrever a semântica do protocolo serão explicados dois exemplos de possíveis requisições:
+	Para descrever a semântica do protocolo serão explicados, a seguir, dois exemplos de possíveis requisições:
 	
 \subsection{Requisição \textit{SignUp}}
 
@@ -102,7 +102,7 @@ um desafio. Essa requisição salva as informações do turno na tabela desafio em q
 	\item{userID: Identificador do jogador.}
 	\item{friendID: Identificador do oponente.}
 	\item{score: Quantidade de pontos alcançados pelo jogador.}
-	\item{tipoCartaID: Identificador do tipo da carta jogado. Utilizado para atualizar a tabela Historico\_
+	\item{tipoCartaID: Identificador do tipo da carta jogado, utilizado para atualizar a tabela Historico\_
 Estatistica}
 	\item{correct: Booleano que indica se o jogador acertou ou não o nome da personalidade.}
 \end{itemize}
@@ -115,7 +115,7 @@ Estatistica}
 
 % TODO falar sobre o Nginx
 
-	Do lado do servidor as classes php \textit{TrataRequisicao} e \textit{ExecuteQuery} além de 
+	Do lado do servidor, as classes php \textit{TrataRequisicao} e \textit{ExecuteQuery} além de 
 um arquivo chamado infoDB, que guarda informações da conexão com o banco de dados, foram implementados
 e são responsáveis por toda a comunicação com o banco de dados, além de montarem a resposta das requisições em 
 formato JSON. 
@@ -172,13 +172,12 @@ para o banco de dados seja feita de maneira assíncrona.
 
 \subsection{MakeParameters}
 	
-	A classe MakeParameters é responsável pela montagem dos objetos JSON que serão passados ao servidor, 
-se trata de um conjunto de métodos estáticos, onde cada um dos métodos representa uma requisição.
+	A classe MakeParameters é responsável pela montagem dos objetos JSON que serão passados ao servidor. 
+Trata-se de um conjunto de métodos estáticos, em que cada um dos métodos representa uma requisição.
 	
 	Todas as classes que desejam trocar informações com o servidor precisam chamar um método da 
-classe MakeParameters que seja correspondente a requisição desejada, tal método retorna um objeto JSON
-populado com todos os paramêtros necessários para a requisição. Posteriormente esse objeto JSON é repassado 
-a classe HTTPPostRequester.
+classe MakeParameters que seja correspondente à requisição desejada. Tal método retorna um objeto JSON
+populado com todos os paramêtros necessários para a requisição. Posteriormente esse objeto JSON é repassado à classe HTTPPostRequester.
 
 \subsection{JSONParser}
 
@@ -208,7 +207,7 @@ servidor.
 
 \item{\textbf{Passo 3}}: Posteriormente é feita a chamada ao método a asynPost da classe HTTPPostRequester, 
 que executa a requisição em segundo plano e após a chegada da resposta devolve o JSON com os dados pedidos
-a classe que os pediu.
+à classe que os pediu.
 \end{itemize}
 
 

@@ -25,12 +25,12 @@ ou caso não seja a primeira sessão do usuário, este é redirecionado para a tela 
 	Na tela Main Menu o jogador pode tomar dois possíveis caminhos. O primeiro é a criação de um novo jogo. Caso 
 este caminho seja o escolhido, o jogo é redirecionado para a tela \textit{New Game Scene}. Nesta tela o usuário 
 pode escolher jogar contra um oponente aleatório e ser redirecionado para a tela \textit{Choice Scene} ou jogar
-contra um amigo do facebook, neste caso o jogador será redirecionado para a tela \textit{Friend Picker Scene} 
+contra um amigo do facebook. Neste caso o jogador será redirecionado para a tela \textit{Friend Picker Scene} 
 que apresentará um menu com os amigos que ele pode desafiar, sendo posteriormente redirecionado para a tela 
-\textit{Choice Scene}. O segundo caminho possível a partir do \textit{Main Menu} é responder um desafio, neste caso o jogador será diretamente redirecionado para a tela \textit{Choice Scene}. 
+\textit{Choice Scene}. O segundo caminho possível a partir do \textit{Main Menu} é responder um desafio. Neste caso o jogador será diretamente redirecionado para a tela \textit{Choice Scene}. 
 
 	Na tela \textit{Choice Scene} o usuário sorteia um tipo de carta a ser jogado se ele é o desafiante,
-e caso contrário, seja o desafiado, apenas lhe é mostrado qual tipo de carta o desafio possui. Qualquer que seja 
+e caso contrário, caso seja o desafiado, apenas lhe é mostrado qual tipo de carta o desafio possui. Qualquer que seja 
 o papel do jogador, a partir deste ponto a próxima tela será a \textit{Game Scene}. 
 
 	A \textit{Game Scene} é a tela em que são apresentadas as dicas ao jogador, que deve tentar acertar qual a 
@@ -38,10 +38,10 @@ personalidade da carta a partir das informações contidas nas dicas. Quando o usu
 finalmente redirecionado para a tela \textit{End Game}, que mostra o resultado final, ou seja, se o jogador acertou a personalidade ou não, e qual a pontuação atingida. 
 
 	A partir de então existem dois possíveis caminhos. Caso o jogador esteja respondendo um desafio, agora é 
-a vez dele mandar um novo desafio para o oponente, sendo assim ele é então redirecionado para a tela \textit{
-Choice Scene} para que seja sorteado um novo tipo de carta e dar prosseguimento ao jogo. Caso o jogador já esteja 
-mandando um novo desafio para o oponente, ele é redirecionado para o \textit{Main Menu}, dando fim ao fluxo 
-do jogo.
+a vez dele mandar um novo desafio para o oponente. Sendo assim, ele é então redirecionado para a tela \textit{
+Choice Scene} para que seja sorteado um novo tipo de carta e seja dado prosseguimento ao jogo. Caso o jogador já 
+esteja mandando um novo desafio para o oponente, ele é redirecionado para o \textit{Main Menu}, dando fim ao 
+fluxo do jogo.
 
 % % %% ------------------------------------------------------------------------- %%
 \section{Principais Classes}
@@ -53,13 +53,13 @@ do jogo.
 na tela em que se pode desenhar qualquer tipo de aplicação, além de ser o ponto inicial de uma aplicação 
 android. 
 
-	Em Biografia, a única activity implementada se chama \textit{GameActivity}. Esta classe herda da classe 
+	Em Biografia, a única activity implementada chama-se \textit{GameActivity}. Esta classe herda da classe 
 \textit{BaseGameActivity}, presente na andEngine, a capacidade de iniciar o jogo, instanciar os primeiros objetos,
 além de chamar a primeira cena do jogo. 
 
 \subsection{ResourcesManager}
 
-	A classe \textit{ResourcesManager} é responsável por todos os recursos utilizados no jogo, entende-se por 
+	A classe \textit{ResourcesManager} é responsável por todos os recursos utilizados no jogo. Entende-se por 
 recursos as imagens, as fontes e os sons utilizados no jogo. 
 
 	\textit{ResourcesManager} é uma classe singleton\footnote{Padrão de projeto que garante a existência de 
@@ -73,10 +73,10 @@ utilização dos mesmos impossibilitada.
 	A classe \textit{SceneManager} é responsável pela transição de cenas do jogo e também se trata de uma classe 
 singleton. 
 
-	É a classe \textit{SceneManager} que executa toda a lógica da troca de cena, no escopo dessa classe existe um 
+	É a classe \textit{SceneManager} que executa toda a lógica da troca de cena. No escopo dessa classe existe um 
 método \textit{create} para cada cena presente no jogo. Este método deve ser chamado sempre que se deseja trocar 
-a cena corrente por outra, nele é instanciado um novo objeto que representa a nova cena a ser inserida no jogo, 
-além de ser feita a chamada ao método \textit{setScene} presente da classe Engine do jogo(andEngine), que é a 
+a cena corrente por outra. Nele é instanciado um novo objeto que representa a nova cena a ser inserida no jogo, 
+além de ser feita a chamada ao método \textit{setScene} presente na classe Engine do jogo(andEngine), que é a 
 responsável por desenhar a nova cena na tela de fato. 
 
 \subsection{GameManager}
@@ -94,7 +94,7 @@ classes diferentes o utilizem. Alguns exemplos de valores guardados pelo GameMan
 \subsection{BaseScene}
 
 	\textit{BaseScene} é uma classe abstrata que representa uma cena genérica. No jogo todas as cenas herdam da 
-classe \textit{BaseScene}, o que uniformiza a implementação de qualquer trecho de código relacionado as cenas. 
+classe \textit{BaseScene}, o que uniformiza a implementação de qualquer trecho de código relacionado às cenas. 
 
 	A \textit{BaseScene} possui quatro métodos abstratos que devem ser implementados por qualquer classe que
 queira herdar suas configurações. São eles:
