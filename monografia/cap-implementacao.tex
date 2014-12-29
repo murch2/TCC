@@ -30,8 +30,8 @@ que apresentará um menu com os amigos que ele pode desafiar, sendo posteriorment
 \textit{Choice Scene}. O segundo caminho possível a partir do \textit{Main Menu} é responder um desafio. Neste caso o jogador será diretamente redirecionado para a tela \textit{Choice Scene}. 
 
 	Na tela \textit{Choice Scene} o usuário sorteia um tipo de carta a ser jogado se ele é o desafiante,
-e caso contrário, caso seja o desafiado, apenas lhe é mostrado qual tipo de carta o desafio possui. Qualquer que seja 
-o papel do jogador, a partir deste ponto a próxima tela será a \textit{Game Scene}. 
+e caso contrário, caso seja o desafiado, apenas lhe é mostrado qual tipo de carta foi sorteada pelo desafiante. 
+Qualquer que seja o papel do jogador, a partir deste ponto a próxima tela será a \textit{Game Scene}. 
 
 	A \textit{Game Scene} é a tela em que são apresentadas as dicas ao jogador, que deve tentar acertar qual a 
 personalidade da carta a partir das informações contidas nas dicas. Quando o usuário tenta responder, ele é 
@@ -118,21 +118,6 @@ fazer a chamada ao método que executa a requisição desejada. Os métodos presente
 \item {\textit{getFriends}:} Método que retorna a lista de amigos que possui o jogo
 \item {\textit{getUserPicture}:} Método que retorna a url da foto do usuário cujo identificador foi passado como parâmetro.	
 \end{itemize}
-
-% %% ------------------------------------------------------------------------- %%
-\section{Mecânica}
-\label{sec:mecanica}
-
-	Biografia é um jogo baseado em turnos que só pode ser jogado contra um oponente por vez.
-
-	Um turno é começado pelo jogador desafiante, este sorteia uma carta que será a carta daquele turno, 
-posteriormente o desafiante tenta descobrir qual a personalidade da carta sorteada através das dicas, 
-ganhando então uma quantidade de pontos. Feito isso o desafiante termina seu turno, fazendo com que o jogador 
-desafiado tenha a vez. O jogador desafiado responderá o turno jogando exatamente a mesma carta que foi jogada 
-pelo desafiante, com o objetivo de fazer mais pontos que ele. Ao fim do turno do jogador desafiado, aquele 
-jogador, desafiante ou desafiado, que obter a maior quantidade de pontos é então declarado vencedor daquele 
-turno, acrescentando 1 ponto ao placar geral que marca a quantidade de turnos vencidos, dando então fim ao 
-turno corrente e liberando o próximo a ser iniciado. 
 
 % %% ------------------------------------------------------------------------- %%
 \section{Integração Facebook}

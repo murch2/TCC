@@ -47,14 +47,9 @@ como o Brasil, que a poucos anos atrás possuia uma indústria de jogos praticamen
 passou a ter uma indústria especializada e um número muito grande de pequenas e médias empresas voltadas 
 ao desenvolvimento de jogos. 
 
-	A maior motivação para este trabalho é desenvolver uma aplicação para a plataforma android, pois com a 
-experiência adquirida no desenvolvimento de jogos para plataformas móveis da apple\footnote{Apple: \url{http://www.apple.com}}, obtive grande interesse pela área.  A oportunidade do maior aprofundamento na linguagem Java também é um dos fatores de motivação, uma vez que não tive grande contato com tal linguagem durante a graduação, além de aplicar diferentes áreas do conhecimento adquirido no curso de Bacharelado em Ciência da Computação. 
+	A maior motivação neste trabalho é desenvolver uma aplicação para a plataforma android, pois com a 
+experiência adquirida no desenvolvimento de jogos para plataformas móveis da apple\footnote{Apple: \url{http://www.apple.com}}, o autor obteve grande interesse pela área.  A oportunidade do maior aprofundamento na linguagem Java também é um dos fatores de motivação, uma vez que não houve grande contato com tal linguagem durante a graduação, além de aplicar diferentes áreas do conhecimento adquirido no curso de Bacharelado em Ciência da Computação. 
 
-% Considerações preliminares\footnote{Nota de rodapé (não abuse).}\index{genoma!projetos}.
-% % index permite acrescentar um item no indice remissivo
-% Texto texto texto texto texto texto texto texto texto texto texto texto texto
-% texto texto texto texto texto texto texto texto texto texto texto texto texto
-% texto texto texto texto texto texto texto.
  
 %% ------------------------------------------------------------------------- %%
 \section{Objetivos}
@@ -63,11 +58,24 @@ experiência adquirida no desenvolvimento de jogos para plataformas móveis da app
 	Desenvolver um jogo multijogador para plataforma android, em que o objetivo seja descobrir uma 
 personalidade utilizando o menor número de dicas possível. O jogo se comunicará com um web service para realizar a troca de informações entre banco de dados e o aplicativo, tornando possível a opção multijogador, que se realizará de maneira síncrona. O jogo será desenvolvido com auxílio da game engine AndEngine\footnote{AndEngine: \url{http://www.andengine.org}} e será escrito em Java, utilizando o ambiente ADT.
 
-% Texto texto texto texto texto texto texto texto texto texto texto texto texto
-% texto texto texto texto texto texto texto texto texto texto texto texto texto
-% texto texto texto texto texto texto.
+%% ------------------------------------------------------------------------- %%
+
+\section{Mecânica}
+\label{sec:mecanica}
+
+	Biografia é um jogo baseado em turnos que só pode ser jogado contra um oponente por vez.
+
+	Um turno é começado pelo jogador desafiante, este sorteia uma carta que será a carta daquele turno, 
+posteriormente o desafiante tenta descobrir qual a personalidade da carta sorteada através das dicas, 
+ganhando então uma quantidade de pontos. Feito isso o desafiante termina seu turno, fazendo com que o jogador 
+desafiado tenha a vez. O jogador desafiado responderá o turno jogando exatamente a mesma carta que foi jogada 
+pelo desafiante, com o objetivo de fazer mais pontos que ele. Ao fim do turno do jogador desafiado, aquele 
+jogador, desafiante ou desafiado, que obter a maior quantidade de pontos é então declarado vencedor daquele 
+turno, acrescentando um ponto ao placar geral que marca a quantidade de turnos vencidos, dando então fim ao 
+turno corrente e liberando o próximo a ser iniciado. 
 
 %% ------------------------------------------------------------------------- %%
+
 \section{Organização do Trabalho}
 \label{sec:organizacao_trabalho}
 
