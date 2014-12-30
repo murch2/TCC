@@ -5,64 +5,64 @@
 \BOOKMARK [0][]{chapter.1}{Introdu\347\343o}{part.1}% 5
 \BOOKMARK [1][]{section.1.1}{Motiva\347\343o}{chapter.1}% 6
 \BOOKMARK [1][]{section.1.2}{Objetivos}{chapter.1}% 7
-\BOOKMARK [1][]{section.1.3}{Organiza\347\343o do Trabalho}{chapter.1}% 8
-\BOOKMARK [0][]{chapter.2}{Conceitos}{part.1}% 9
-\BOOKMARK [1][]{section.2.1}{Jogos M\363veis}{chapter.2}% 10
-\BOOKMARK [2][]{subsection.2.1.1}{Jogos multijogador}{section.2.1}% 11
-\BOOKMARK [2][]{subsection.2.1.2}{Jogos Sociais}{section.2.1}% 12
-\BOOKMARK [1][]{section.2.2}{Android}{chapter.2}% 13
-\BOOKMARK [0][]{chapter.3}{Tecnologias Utilizadas}{part.1}% 14
-\BOOKMARK [1][]{section.3.1}{Ferramentas}{chapter.3}% 15
-\BOOKMARK [2][]{subsection.3.1.1}{ADT}{section.3.1}% 16
-\BOOKMARK [2][]{subsection.3.1.2}{AndEngine}{section.3.1}% 17
-\BOOKMARK [2][]{subsection.3.1.3}{PostgreSQL}{section.3.1}% 18
-\BOOKMARK [2][]{subsection.3.1.4}{Nginx}{section.3.1}% 19
-\BOOKMARK [2][]{subsection.3.1.5}{Facebook SDK}{section.3.1}% 20
-\BOOKMARK [1][]{section.3.2}{Linguagens de Programa\347\343o}{chapter.3}% 21
-\BOOKMARK [2][]{subsection.3.2.1}{Java}{section.3.2}% 22
-\BOOKMARK [2][]{subsection.3.2.2}{PHP}{section.3.2}% 23
-\BOOKMARK [0][]{chapter.4}{Banco de Dados}{part.1}% 24
-\BOOKMARK [1][]{section.4.1}{Modelo Relacional}{chapter.4}% 25
-\BOOKMARK [1][]{section.4.2}{Rela\347\365es}{chapter.4}% 26
-\BOOKMARK [2][]{subsection.4.2.1}{Jogador}{section.4.2}% 27
-\BOOKMARK [2][]{subsection.4.2.2}{TipoCarta}{section.4.2}% 28
-\BOOKMARK [2][]{subsection.4.2.3}{Carta}{section.4.2}% 29
-\BOOKMARK [2][]{subsection.4.2.4}{Dicas}{section.4.2}% 30
-\BOOKMARK [2][]{subsection.4.2.5}{Desafios}{section.4.2}% 31
-\BOOKMARK [2][]{subsection.4.2.6}{Historico\137Jogo}{section.4.2}% 32
-\BOOKMARK [2][]{subsection.4.2.7}{Historico\137Estatistica}{section.4.2}% 33
-\BOOKMARK [1][]{section.4.3}{Arquivos de cria\347\343o e de inser\347\343o}{chapter.4}% 34
-\BOOKMARK [0][]{chapter.5}{Protocolo de comunica\347\343o}{part.1}% 35
-\BOOKMARK [1][]{section.5.1}{Sintaxe}{chapter.5}% 36
-\BOOKMARK [2][]{subsection.5.1.1}{Estrutura de Dados}{section.5.1}% 37
-\BOOKMARK [2][]{subsection.5.1.2}{Campos Obrigat\363rios}{section.5.1}% 38
-\BOOKMARK [2][]{subsection.5.1.3}{Outros Campos}{section.5.1}% 39
-\BOOKMARK [1][]{section.5.2}{Sem\342ntica}{chapter.5}% 40
-\BOOKMARK [2][]{subsection.5.2.1}{Requisi\347\343o SignUp}{section.5.2}% 41
-\BOOKMARK [2][]{subsection.5.2.2}{Requisi\347\343o FinishOldRound}{section.5.2}% 42
-\BOOKMARK [1][]{section.5.3}{Servidor}{chapter.5}% 43
-\BOOKMARK [2][]{subsection.5.3.1}{TrataRequisicao}{section.5.3}% 44
-\BOOKMARK [2][]{subsection.5.3.2}{ExecuteQuery}{section.5.3}% 45
-\BOOKMARK [1][]{section.5.4}{Jogo}{chapter.5}% 46
-\BOOKMARK [2][]{subsection.5.4.1}{HTTPResponseListener}{section.5.4}% 47
-\BOOKMARK [2][]{subsection.5.4.2}{HTTPPostRequester}{section.5.4}% 48
-\BOOKMARK [2][]{subsection.5.4.3}{MakeParameters}{section.5.4}% 49
-\BOOKMARK [2][]{subsection.5.4.4}{JSONParser}{section.5.4}% 50
-\BOOKMARK [2][]{subsection.5.4.5}{Fluxo da requisi\347\343o}{section.5.4}% 51
-\BOOKMARK [0][]{chapter.6}{Implementac\343o do Jogo}{part.1}% 52
-\BOOKMARK [1][]{section.6.1}{Fluxo de Telas}{chapter.6}% 53
-\BOOKMARK [1][]{section.6.2}{Principais Classes}{chapter.6}% 54
-\BOOKMARK [2][]{subsection.6.2.1}{GameActivity}{section.6.2}% 55
-\BOOKMARK [2][]{subsection.6.2.2}{ResourcesManager}{section.6.2}% 56
-\BOOKMARK [2][]{subsection.6.2.3}{SceneManager}{section.6.2}% 57
-\BOOKMARK [2][]{subsection.6.2.4}{GameManager}{section.6.2}% 58
-\BOOKMARK [2][]{subsection.6.2.5}{BaseScene}{section.6.2}% 59
-\BOOKMARK [2][]{subsection.6.2.6}{FacebookFacade}{section.6.2}% 60
-\BOOKMARK [1][]{section.6.3}{Mec\342nica}{chapter.6}% 61
-\BOOKMARK [1][]{section.6.4}{Integra\347\343o Facebook}{chapter.6}% 62
-\BOOKMARK [1][]{section.6.5}{Novo Jogo}{chapter.6}% 63
-\BOOKMARK [2][]{subsection.6.5.1}{Amigo do Facebook}{section.6.5}% 64
-\BOOKMARK [2][]{subsection.6.5.2}{Oponente Aleat\363rio}{section.6.5}% 65
+\BOOKMARK [1][]{section.1.3}{Mec\342nica}{chapter.1}% 8
+\BOOKMARK [1][]{section.1.4}{Organiza\347\343o do Trabalho}{chapter.1}% 9
+\BOOKMARK [0][]{chapter.2}{Conceitos}{part.1}% 10
+\BOOKMARK [1][]{section.2.1}{Jogos M\363veis}{chapter.2}% 11
+\BOOKMARK [2][]{subsection.2.1.1}{Jogos multijogador}{section.2.1}% 12
+\BOOKMARK [2][]{subsection.2.1.2}{Jogos Sociais}{section.2.1}% 13
+\BOOKMARK [1][]{section.2.2}{Android}{chapter.2}% 14
+\BOOKMARK [0][]{chapter.3}{Tecnologias Utilizadas}{part.1}% 15
+\BOOKMARK [1][]{section.3.1}{Ferramentas}{chapter.3}% 16
+\BOOKMARK [2][]{subsection.3.1.1}{ADT}{section.3.1}% 17
+\BOOKMARK [2][]{subsection.3.1.2}{AndEngine}{section.3.1}% 18
+\BOOKMARK [2][]{subsection.3.1.3}{PostgreSQL}{section.3.1}% 19
+\BOOKMARK [2][]{subsection.3.1.4}{Nginx}{section.3.1}% 20
+\BOOKMARK [2][]{subsection.3.1.5}{Facebook SDK}{section.3.1}% 21
+\BOOKMARK [1][]{section.3.2}{Linguagens de Programa\347\343o}{chapter.3}% 22
+\BOOKMARK [2][]{subsection.3.2.1}{Java}{section.3.2}% 23
+\BOOKMARK [2][]{subsection.3.2.2}{PHP}{section.3.2}% 24
+\BOOKMARK [0][]{chapter.4}{Banco de Dados}{part.1}% 25
+\BOOKMARK [1][]{section.4.1}{Modelo Relacional}{chapter.4}% 26
+\BOOKMARK [1][]{section.4.2}{Rela\347\365es}{chapter.4}% 27
+\BOOKMARK [2][]{subsection.4.2.1}{Jogador}{section.4.2}% 28
+\BOOKMARK [2][]{subsection.4.2.2}{TipoCarta}{section.4.2}% 29
+\BOOKMARK [2][]{subsection.4.2.3}{Carta}{section.4.2}% 30
+\BOOKMARK [2][]{subsection.4.2.4}{Dicas}{section.4.2}% 31
+\BOOKMARK [2][]{subsection.4.2.5}{Desafios}{section.4.2}% 32
+\BOOKMARK [2][]{subsection.4.2.6}{Historico\137Jogo}{section.4.2}% 33
+\BOOKMARK [2][]{subsection.4.2.7}{Historico\137Estatistica}{section.4.2}% 34
+\BOOKMARK [1][]{section.4.3}{Arquivos de cria\347\343o e de inser\347\343o}{chapter.4}% 35
+\BOOKMARK [0][]{chapter.5}{Protocolo de comunica\347\343o}{part.1}% 36
+\BOOKMARK [1][]{section.5.1}{Sintaxe}{chapter.5}% 37
+\BOOKMARK [2][]{subsection.5.1.1}{Estrutura de Dados}{section.5.1}% 38
+\BOOKMARK [2][]{subsection.5.1.2}{Campos Obrigat\363rios}{section.5.1}% 39
+\BOOKMARK [2][]{subsection.5.1.3}{Outros Campos}{section.5.1}% 40
+\BOOKMARK [1][]{section.5.2}{Sem\342ntica}{chapter.5}% 41
+\BOOKMARK [2][]{subsection.5.2.1}{Requisi\347\343o SignUp}{section.5.2}% 42
+\BOOKMARK [2][]{subsection.5.2.2}{Requisi\347\343o FinishOldRound}{section.5.2}% 43
+\BOOKMARK [1][]{section.5.3}{Servidor}{chapter.5}% 44
+\BOOKMARK [2][]{subsection.5.3.1}{TrataRequisicao}{section.5.3}% 45
+\BOOKMARK [2][]{subsection.5.3.2}{ExecuteQuery}{section.5.3}% 46
+\BOOKMARK [1][]{section.5.4}{Jogo}{chapter.5}% 47
+\BOOKMARK [2][]{subsection.5.4.1}{HTTPResponseListener}{section.5.4}% 48
+\BOOKMARK [2][]{subsection.5.4.2}{HTTPPostRequester}{section.5.4}% 49
+\BOOKMARK [2][]{subsection.5.4.3}{MakeParameters}{section.5.4}% 50
+\BOOKMARK [2][]{subsection.5.4.4}{JSONParser}{section.5.4}% 51
+\BOOKMARK [2][]{subsection.5.4.5}{Fluxo da requisi\347\343o}{section.5.4}% 52
+\BOOKMARK [0][]{chapter.6}{Implementac\343o do Jogo}{part.1}% 53
+\BOOKMARK [1][]{section.6.1}{Fluxo de Telas}{chapter.6}% 54
+\BOOKMARK [1][]{section.6.2}{Principais Classes}{chapter.6}% 55
+\BOOKMARK [2][]{subsection.6.2.1}{GameActivity}{section.6.2}% 56
+\BOOKMARK [2][]{subsection.6.2.2}{ResourcesManager}{section.6.2}% 57
+\BOOKMARK [2][]{subsection.6.2.3}{SceneManager}{section.6.2}% 58
+\BOOKMARK [2][]{subsection.6.2.4}{GameManager}{section.6.2}% 59
+\BOOKMARK [2][]{subsection.6.2.5}{BaseScene}{section.6.2}% 60
+\BOOKMARK [2][]{subsection.6.2.6}{FacebookFacade}{section.6.2}% 61
+\BOOKMARK [1][]{section.6.3}{Integra\347\343o Facebook}{chapter.6}% 62
+\BOOKMARK [1][]{section.6.4}{Novo Jogo}{chapter.6}% 63
+\BOOKMARK [2][]{subsection.6.4.1}{Amigo do Facebook}{section.6.4}% 64
+\BOOKMARK [2][]{subsection.6.4.2}{Oponente Aleat\363rio}{section.6.4}% 65
 \BOOKMARK [0][]{chapter.7}{Resultados Obtidos}{part.1}% 66
 \BOOKMARK [0][]{chapter.8}{Conclus\343o}{part.1}% 67
 \BOOKMARK [0][]{chapter.9}{Trabalhos Futuros}{part.1}% 68

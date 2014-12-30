@@ -6,7 +6,8 @@
 \contentsline {chapter}{\numberline {1}Introdu\c c\~ao}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Motiva\c c\~ao}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Objetivos}{4}{section.1.2}
-\contentsline {section}{\numberline {1.3}Organiza\c c\~ao do Trabalho}{4}{section.1.3}
+\contentsline {section}{\numberline {1.3}Mec\^anica}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Organiza\c c\~ao do Trabalho}{4}{section.1.4}
 \contentsline {chapter}{\numberline {2}Conceitos}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Jogos M\'oveis}{5}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Jogos multijogador}{5}{subsection.2.1.1}
@@ -59,11 +60,10 @@
 \contentsline {subsection}{\numberline {6.2.4}GameManager}{24}{subsection.6.2.4}
 \contentsline {subsection}{\numberline {6.2.5}BaseScene}{25}{subsection.6.2.5}
 \contentsline {subsection}{\numberline {6.2.6}FacebookFacade}{25}{subsection.6.2.6}
-\contentsline {section}{\numberline {6.3}Mec\^anica}{25}{section.6.3}
-\contentsline {section}{\numberline {6.4}Integra\c c\~ao Facebook}{25}{section.6.4}
-\contentsline {section}{\numberline {6.5}Novo Jogo}{26}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Amigo do Facebook}{26}{subsection.6.5.1}
-\contentsline {subsection}{\numberline {6.5.2}Oponente Aleat\'orio}{26}{subsection.6.5.2}
+\contentsline {section}{\numberline {6.3}Integra\c c\~ao Facebook}{25}{section.6.3}
+\contentsline {section}{\numberline {6.4}Novo Jogo}{25}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Amigo do Facebook}{25}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Oponente Aleat\'orio}{26}{subsection.6.4.2}
 \contentsline {chapter}{\numberline {7}Resultados Obtidos}{27}{chapter.7}
 \contentsline {chapter}{\numberline {8}Conclus\~ao}{29}{chapter.8}
 \contentsline {chapter}{\numberline {9}Trabalhos Futuros}{31}{chapter.9}

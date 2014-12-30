@@ -32,7 +32,7 @@ que precisam estar presentes para que qualquer requisição seja respondida. São e
 que estiver fora da chave \textit{message} é desconsiderada, e caso a chave \textit{message} não exista o servidor retorna um código 
 de erro. 
 \item{\textbf{requestId}:} Todas as possíveis requisições possuem um identificador único. Este identificador
-precisa ser passado como paramêtro dentro da chave \textit{requestId}. Caso o conteúdo dessa chave não seja um identificador conhecido ou este campo não exista, o servidor retornará um código de erro. 
+precisa ser passado como parâmetro dentro da chave \textit{requestId}. Caso o conteúdo dessa chave não seja um identificador conhecido ou este campo não exista, o servidor retornará um código de erro. 
 \end{itemize}
 
 
@@ -46,7 +46,7 @@ contenham as informações necessárias para cada requisição.
 \section{Semântica}
 \label{sec:}
 
-	Para descrever a semântica do protocolo serão explicados a seguir, dois exemplos de possíveis requisições:
+	Para descrever a semântica do protocolo serão explicados a seguir, dois exemplos de possíveis requisições.
 	
 \subsection{Requisição \textit{SignUp}}
 
@@ -138,7 +138,7 @@ sucesso.
 
 	A classe ExecuteQuery é a classe que executa as chamadas SQL no banco de dados. Existe um método
 nessa classe para cada possível requisição que o servidor trata. Cada método recebe um objeto JSON que deve 
-possuir os paramêtros necessários para a execução da consulta ao banco.
+possuir os parâmetros necessários para a execução da consulta ao banco.
 
 	Existem duas funções auxiliares que são chamadas por qualquer método que trata requisições, a função
 \textit{getInfo} e a função \textit{setInfo}, a primeira executa apenas operações de leitura de dados do banco, já a segunda executa as operações de escrita no banco. Ambas fazem tratamento da conexão com o banco, abrindo-a e fechando-a nos devidos momentos. 
@@ -177,7 +177,7 @@ Trata-se de um conjunto de métodos estáticos, em que cada um dos métodos represe
 	
 	Todas as classes que desejam trocar informações com o servidor precisam chamar um método da 
 classe MakeParameters que seja correspondente à requisição desejada. Tal método retorna um objeto JSON
-populado com todos os paramêtros necessários para a requisição. Posteriormente esse objeto JSON é repassado à classe HTTPPostRequester.
+populado com todos os parâmetros necessários para a requisição. Posteriormente esse objeto JSON é repassado à classe HTTPPostRequester.
 
 \subsection{JSONParser}
 
@@ -202,7 +202,7 @@ servidor. Os passos a serem seguidos são:
 implemente a interface HTTPResponseListener, tornando-se obrigada, portanto, a ter um método que trata a resposta do servidor.
 
 \item{\textbf{Passo 2}}: O segundo passo é fazer uma chamada ao método correto, de acordo com a requisição, a 
-classe MakeParameters, tendo como resposta um objeto JSON populado com os paramêtros a serem passados ao 
+classe MakeParameters, tendo como resposta um objeto JSON populado com os parâmetros a serem passados ao 
 servidor. 
 
 \item{\textbf{Passo 3}}: Posteriormente é feita a chamada ao método a asynPost da classe HTTPPostRequester, 
