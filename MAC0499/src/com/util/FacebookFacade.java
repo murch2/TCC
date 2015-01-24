@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
-
 import com.facebook.HttpMethod;
 import com.facebook.Request;
 import com.facebook.Request.Callback;
@@ -56,6 +55,7 @@ public class FacebookFacade implements HTTPResponseListener{
 			}
 		});
 	} 
+	
 	public void getFriends (final Callback callback) {
 		ResourcesManager.getInstance().activity.runOnUiThread(new Runnable() {
 			@Override

@@ -45,7 +45,8 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	private IMenuItem itemSmallPlay; 
 	private IMenuItem itemRotate;
 	
-	private boolean playFlag; 
+	private boolean playFlag;
+	private boolean isNewGame; 
 
 	private Text newGameText;
 	private Sprite[] roullete; 
@@ -54,12 +55,29 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	private final int PLAY_BIG = 0;
 	private final int PLAY_SMALL = 1;
 	private final int ROTATE = 2;
+	
+	public ChoiceScene (boolean isNewGame) {
+//		Aqui ele vai precisar fazer destinção sobre qual request está fazendo pra poder 
+//		fazer o fluxo certo. 
+		this.isNewGame = isNewGame; 
+		if (isNewGame)
+			new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
+		else {
+			new HTTPPostRequester().asyncPost(this, MakeParameters.playDesafio());
+		}	
+		putLoading();
+	}
+	
+	public void createItensScene(JSONObject dados) {
+		System.out.println("AQUI !!!!! - - - - - - - - ");
+		createHUD();
+		createCells(); 
+		createBigPlayMenu();
+	}
 
 	@Override
 	public void createScene() {
-		createBackground();
-		new HTTPPostRequester().asyncPost(this, MakeParameters.newGame());
-		putLoading(); 
+		createBackground(); 
 	}
 	
 	public void putLoading() {
@@ -67,35 +85,31 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		loading.insertLoadingLayer(camera); 
 	}
 
-	private void createItensScene(JSONArray dados) {
+	private void createItensSceneNewGame(JSONArray dados) {
 		createRoullete(dados);
 		createHUD();
-		createCells();
-		if (SceneManager.getInstance().getCurrentLastSceneType()
-				.equals(SceneType.NEWGAME_SCENE)
-				|| SceneManager.getInstance().getCurrentLastSceneType()
-				.equals(SceneType.FRIENDPICKER_SCENE)) {
-			createNewGameText();
-		} else {
-			// TODO pensar na lógica de como mostrar o placar atual para o usuário.
-		}
+		createCells(); 
+		createNewGameText();
 		createBigPlayMenu();
 		createSmallPlayMenu();
 	}
 
 	private void createCells() {
-		VersusCell myCell = new VersusCell(GameManager.getInstance()
-				.getUserPictureURL(), false, GameManager.getInstance()
-				.getUserName());
-		myCell.setPosition(myCell.getWidth() * 0.5f,
-				Constants.CAMERA_HEIGHT * 0.8f);
+		
+		GameManager GM = GameManager.getInstance(); 
+		
+		System.out.println("UserPictureURL" + GM.getUserPictureURL());
+		System.out.println("UserName" + GM.getUserName());
+		
+		System.out.println("FriendPictureURL" + GM.getFriendPictureURL());
+		System.out.println("FriendName" + GM.getFriendName());
+		
+		VersusCell myCell = new VersusCell(GM.getUserPictureURL(), false, GM.getUserName());
+		myCell.setPosition(myCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f);
 		attachChild(myCell);
 
-		VersusCell friendCell = new VersusCell(GameManager.getInstance()
-				.getFriendPictureURL(), true, GameManager.getInstance()
-				.getFriendName());
-		friendCell.setPosition(Constants.CAMERA_WIDTH - friendCell.getWidth()
-				* 0.5f, Constants.CAMERA_HEIGHT * 0.8f);
+		VersusCell friendCell = new VersusCell(GM.getFriendPictureURL(), true, GM.getFriendName());
+		friendCell.setPosition(Constants.CAMERA_WIDTH - friendCell.getWidth() * 0.5f, Constants.CAMERA_HEIGHT * 0.8f);
 		attachChild(friendCell);
 	}
 
@@ -211,8 +225,6 @@ HTTPResponseListener, IOnMenuItemClickListener {
 		bigPlayMenu.setOnMenuItemClickListener(this);
 
 		setChildScene(bigPlayMenu);
-		
-		
 	}
 
 	private void createSmallPlayMenu() {
@@ -288,10 +300,19 @@ HTTPResponseListener, IOnMenuItemClickListener {
 	public void onResponse(JSONObject json) {
 		try {
 			System.out.println(json.toString(4));
-			JSONArray dados = json.getJSONArray("dados");
-			createItensScene(dados);
+
+			
+			if (isNewGame) {
+				JSONArray dados = json.getJSONArray("dados");
+				createItensSceneNewGame(dados);
+			}
+
+			else {
+				JSONObject dados = json.getJSONObject("dados");
+				createItensScene(dados); 
+			}
+
 		} catch (JSONException e) {
-			SceneManager.getInstance().createNewFriendPickerScene(); 
 			e.printStackTrace();
 		}
 	}

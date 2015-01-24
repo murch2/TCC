@@ -7,6 +7,7 @@ package com.scenes;
 import org.andengine.entity.scene.menu.MenuScene;
 import org.andengine.entity.scene.menu.MenuScene.IOnMenuItemClickListener;
 import org.andengine.entity.scene.menu.item.IMenuItem;
+import org.andengine.entity.scene.menu.item.decorator.ScaleMenuItemDecorator;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.entity.text.Text;
 import org.andengine.entity.text.TextOptions;
@@ -71,16 +72,17 @@ public class FriendPickerScene extends BaseSceneWithHUD implements Callback, IOn
 	private void makeFriendsMenu() {
 		JSONArray array;
 		JSONObject json; 
-		IMenuItem item; 
+		FriendPickerItem friendPickerItem; 
 		try {
 			array = jsonFriends.getJSONArray("data");
 			MenuScene menu = new MenuScene(ResourcesManager.getInstance().camera);
 			for (int i = 0; i < array.length(); i++) {
-				json = array.getJSONObject(i); 
-				item = new FriendPickerItem(i, json.getString("uid"), json);
+				json = array.getJSONObject(i);
+				friendPickerItem = new FriendPickerItem(i, json.getString("uid"), json);
+				IMenuItem item = new ScaleMenuItemDecorator(friendPickerItem, 0.8f, 1.0f);
+				item.setUserData(friendPickerItem); 
 				menu.addMenuItem(item); 
 			}		
-			
 			menu.buildAnimations();
 			menu.setBackgroundEnabled(false);
 			menu.setOnMenuItemClickListener(this); 
@@ -108,12 +110,13 @@ public class FriendPickerScene extends BaseSceneWithHUD implements Callback, IOn
 	public void disposeScene() {
 		this.detachSelf();
 		this.dispose();
-		ResourcesManager.getInstance().unloadFriendPickerScene();  
+		resourcesManager.unloadFriendPickerScene();  
 	}
 
 	@Override
 	public void onCompleted(Response response) {	
 		GraphObject graphObject = response.getGraphObject();
+		System.out.println(response);
 		jsonFriends = graphObject.getInnerJSONObject();
 		createItensScene(); 
 	}
@@ -122,13 +125,13 @@ public class FriendPickerScene extends BaseSceneWithHUD implements Callback, IOn
 	public boolean onMenuItemClicked(MenuScene pMenuScene, IMenuItem pMenuItem,
 			float pMenuItemLocalX, float pMenuItemLocalY) {
 		
-		FriendPickerItem item = (FriendPickerItem) pMenuItem; 
+		FriendPickerItem item = (FriendPickerItem) pMenuItem.getUserData(); 
 		
 		if (item != null) {
 			GameManager.getInstance().setFriendID(item.getFriendID()); 
 			GameManager.getInstance().setFriendPictureURL(item.getFriendURLPicture());
 			GameManager.getInstance().setFriendName(item.getFriendName()); 
-			SceneManager.getInstance().createChoiceScene(); 
+			SceneManager.getInstance().createChoiceScene(true); 
 			return true;
 		}
 		return false; 

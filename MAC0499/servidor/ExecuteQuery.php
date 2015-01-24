@@ -8,8 +8,11 @@ class ExecuteQuery {
  	}
 
 	function SignUpQuery ($json) {
+
 		$query = "INSERT INTO JOGADOR VALUES (". $json['userID'] .", '".$json['userName']."', 0, 0); ";
 		$result = $this->setInfo($query);
+
+		$this->log($query);
 
 		if ($this->trataResult($result)['status'] == 'error') {
 			return $this->error();
@@ -51,6 +54,53 @@ class ExecuteQuery {
 			}
 		}
 		return $result; 
+	}
+
+	function playDesafio($userID, $friendID) {
+		$this->log("PlayDesafio");
+		// Primeiro vou tentar ver se alguem me mandou algum desafio; 
+		$query = "SELECT id_carta, pontuacao1, pontuacao2, status FROM desafios 
+				WHERE id_jogador1 = ".$friendID." AND id_jogador2 = ".$userID.";"; 
+
+		$queryResult = $this->getInfo($query);
+		$affected = pg_affected_rows($queryResult); 
+
+		if ($affected > 0) {
+			$this->log("Affected > 0");
+			$row = pg_fetch_array($queryResult); 
+
+			$status = $row['status'];
+			$dados; 
+
+			// Eh a minha vez de jogar (Aqui eu tenho que ver se tem um jogo antes, e colocar pra mostrar)
+			
+			if ($status == 2){
+				$dados = array('id_carta'   => $row['id_carta'],
+				 			   'pontuacao1' => $row['pontuacao1'],
+				 			   'pontuacao2' => $row['pontuacao2'],
+				 			   'status'     => $row['status']);	
+			}
+
+			$result = array('status' => 'ok',
+			 				'dados' => $dados);
+
+			$this->log("Retornando o result!!!!!");
+
+			return $result; 
+		}
+
+		// if ($this->trataResult($queryResult) == 'error') {
+		// 	return $this->error(); 
+		// }
+
+		// $status = $queryResult['status']; 
+
+		// $this->log("status = " . $status);
+
+		// $result = array('status' => 'ok',
+		// 				'teste' => 'To testando essa merda!',
+		// 				'dados' => array('status' => $status));
+
 	}
 
 	function criaDesafios($userID, $friendID) {
@@ -243,18 +293,19 @@ class ExecuteQuery {
 	}
 
 	function myGamesQuery($json) {
-	
+
 		$userID = $json['userID'];
+
+		//Aqui pega o status do jogo que o player mandou. Eu sou o 1.
 		$query = "SELECT id_jogador2, pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 						  JOIN JOGADOR ON id = id_jogador2 WHERE id_jogador1 = $userID;";
 
 		$result = $this->getInfo($query);
- 	
 		$affected = pg_affected_rows($result); 
 
 		$i = 0;
 
-		if ($affected > 0 ) {
+		if ($affected > 0) {
 			while ($row = pg_fetch_array($result)) {
 	 			$aux[$i] = $row; 
 	 			$i++; 
@@ -268,14 +319,14 @@ class ExecuteQuery {
 
 			$index = 0; 
 			$dados;  
-			$this->log("2");
 
 			foreach ($result as $key => $game) {
 				$status = $game['status']; 
 				$opponentID = $game['id_jogador2']; 
 
+				// Acho que o status igual a 0 é só pra quem tem jogo. 
+
 				if ($status == 0) {
-				
 					$query = "SELECT pontuacao1, pontuacao2, status, nome, foto FROM DESAFIOS
 							  JOIN JOGADOR ON id = id_jogador1 WHERE id_jogador1 = $opponentID AND id_jogador2 = $userID; "; 
 
@@ -284,34 +335,34 @@ class ExecuteQuery {
 					
 					$row = pg_fetch_array($resultAux); 
 					$statusAux = $row['status']; 
-				
-					if ($statusAux == 2) {
+					
+					if ($statusAux == 1) {
+
+					} 
+					elseif ($statusAux == 2) {
 						$dados[$index++] = array('idOpponent' => $opponentID,
 											 'pictureOpponent' => $row['foto'],
 											 'scoreOpponent' => $row['pontuacao1'],
 											 'nameOpponent' => $row['nome'],
 											 'gameStatus' => "PLAY");
 					}
-					elseif ($statusAux == 4) {
+					elseif ($statusAux == 3) {
 						
 					} 
-					elseif ($statusAux == 3) {
+					elseif ($statusAux == 4) {
 						
 					}
 				}
 				elseif ($status == 1) {
 					
 				}
-				elseif ($status == 2) {
+				elseif ($status == 2 || $status == 3) {
 					$dados[$index++] = array('idOpponent' => $opponentID,
 											 'pictureOpponent' => $game['foto'],
 											 'scoreOpponent' => $game['pontuacao2'],
 											 'nameOpponent' => $game['nome'],
 											 'gameStatus' => "POKE");
 				} 
-				elseif ($status == 3) {
-
-				}
 				elseif ($status == 4) {
 
 				}

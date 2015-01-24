@@ -10,8 +10,8 @@ import org.json.JSONObject;
 import com.facebook.model.GraphUser;
 import com.managers.GameManager;
  
-public class MakeParameters {
-
+public class MakeParameters { 
+	
 	public static JSONObject signUpParams (GraphUser user) {
 		JSONObject params = new JSONObject(); 
 		JSONObject result = new JSONObject(); 
@@ -39,6 +39,20 @@ public class MakeParameters {
 			e.printStackTrace();
 		} 
 		return result; 
+	}
+	
+	public static JSONObject playDesafio() {
+		JSONObject params = new JSONObject(); 
+		JSONObject result = new JSONObject();
+		try {
+			params.put("requestID", "PlayDesafio"); 
+			params.put("userID", GameManager.getInstance().getUserID()); 
+			params.put("friendID", GameManager.getInstance().getFriendID()); 
+			result.put("message", params);
+		} catch (JSONException e) {
+			e.printStackTrace(); 
+		}
+		return result;
 	}
 	
 	public static JSONObject newGame() {

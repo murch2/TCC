@@ -39,13 +39,11 @@ public class VersusCell extends Sprite {
 		this.isFriend = isFriend; 
 		createPicture(url);
 		createName(name); 
-		
-// TODO Ver se o jogo é novo ou não.
 	}
 	
 	
 	private void createPicture(final String url) {
-		picture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion, ResourcesManager.getInstance().vbom) {
+		picture = new Sprite(0, 0, ResourcesManager.getInstance().manDefault, ResourcesManager.getInstance().vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);
@@ -99,7 +97,7 @@ public class VersusCell extends Sprite {
 		middleNameText.setColor(255.0f/255, 239.0f/255, 191.0f/255); 
 		if (isFriend) {
 			middleNameText.setAnchorCenter(0f, 0.5f);
-			middleNameText.setPosition(getWidth() * 0.4f, Constants.HEIGHT_PICKER_CELL * 0.45f);
+			middleNameText.setPosition(getWidth() * 0.42f, Constants.HEIGHT_PICKER_CELL * 0.45f);
 		}
 		else {
 			middleNameText.setAnchorCenter(0.0f, 0.5f);

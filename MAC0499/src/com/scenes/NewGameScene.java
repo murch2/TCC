@@ -123,7 +123,7 @@ public class NewGameScene extends BaseSceneWithHUD implements IOnMenuItemClickLi
 			GameManager.getInstance().setFriendID(json.getString("id")); 
 			GameManager.getInstance().setFriendPictureURL(json.getString("foto"));
 			GameManager.getInstance().setFriendName("nome");
-			SceneManager.getInstance().createChoiceScene(); 
+			SceneManager.getInstance().createChoiceScene(true); 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -11,7 +11,6 @@ require 'ExecuteQuery.php';
  class TrataRequisicao {
 
  	function __construct($json) {
- 		$this->log("Requisicao");
  		$json = json_decode($json, true); 
  		$json = $json['message']; 
  		$this->tratandoRequisicao($json); 
@@ -65,6 +64,10 @@ require 'ExecuteQuery.php';
  			case 'MyGames':
 				$result = $exeQuery->myGamesQuery($json);
  			break;
+
+ 			case 'PlayDesafio': 
+ 				$result = $exeQuery->playDesafio($json['userID'], $json['friendID']); 
+ 			break; 
  			
  			default:
  				break;

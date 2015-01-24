@@ -29,7 +29,9 @@ public class ResourcesManager {
 
 	// General
 	public ITextureRegion blueBackground;
+	public ITextureRegion manDefault;
 	private BitmapTextureAtlas generalTextureAtlas;
+	
 
 	// Splash
 	public ITextureRegion splashRegion;
@@ -53,8 +55,8 @@ public class ResourcesManager {
 	// MainMenu
 	public ITextureRegion newGameMenuRegion;
 	public ITextureRegion gameItemBackGroundRegion;
-	public ITextureRegion defaultPictureRegion2;
 	public ITextureRegion btnStatusPlayRegion;
+	public ITextureRegion btnStatusPokeRegion;
 	private BuildableBitmapTextureAtlas mainMenuAtlas;
 
 	// NewGame
@@ -63,7 +65,6 @@ public class ResourcesManager {
 
 	// FriendPicker
 	public ITextureRegion friendPickerCellBackGroundRegion;
-	public ITextureRegion defaultPictureRegion;
 	private BuildableBitmapTextureAtlas friendPickerCellAtlas;
 
 	// ChoiseScene
@@ -103,6 +104,7 @@ public class ResourcesManager {
 	}
 
 	public synchronized void loadSplashScene() {
+
 		BitmapTextureAtlasTextureRegionFactory
 				.setAssetBasePath("gfx/scenes/splash/");
 		splashTextureAtlas = new BitmapTextureAtlas(
@@ -111,10 +113,11 @@ public class ResourcesManager {
 				splashTextureAtlas, activity, "SplashScreen.png", 0, 0);
 		splashTextureAtlas.load();
 
+		
 		BitmapTextureAtlasTextureRegionFactory
 				.setAssetBasePath("gfx/scenes/game/");
 		generalTextureAtlas = new BitmapTextureAtlas(
-				activity.getTextureManager(), 500, 810, TextureOptions.BILINEAR);
+				activity.getTextureManager(), 600, 900, TextureOptions.BILINEAR);		
 		blueBackground = BitmapTextureAtlasTextureRegionFactory
 				.createFromAsset(generalTextureAtlas, activity, "teste1.png",
 						0, 0);
@@ -212,10 +215,12 @@ public class ResourcesManager {
 				.createFromAsset(mainMenuAtlas, activity, "blueButton.png");
 		gameItemBackGroundRegion = BitmapTextureAtlasTextureRegionFactory
 				.createFromAsset(mainMenuAtlas, activity, "backGroundCell.png");
-		defaultPictureRegion2 = BitmapTextureAtlasTextureRegionFactory
-				.createFromAsset(mainMenuAtlas, activity, "man_default.png");
 		btnStatusPlayRegion = BitmapTextureAtlasTextureRegionFactory
 				.createFromAsset(mainMenuAtlas, activity, "btnStatusPlay.png");
+		btnStatusPokeRegion = BitmapTextureAtlasTextureRegionFactory
+				.createFromAsset(mainMenuAtlas, activity, "btnStatusPoke.png");	
+		manDefault = BitmapTextureAtlasTextureRegionFactory
+				.createFromAsset(mainMenuAtlas, activity, "man_default.png");
 		try {
 			mainMenuAtlas
 					.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(
@@ -293,9 +298,6 @@ public class ResourcesManager {
 		friendPickerCellBackGroundRegion = BitmapTextureAtlasTextureRegionFactory
 				.createFromAsset(friendPickerCellAtlas, activity,
 						"backGroundCell.png");
-		defaultPictureRegion = BitmapTextureAtlasTextureRegionFactory
-				.createFromAsset(friendPickerCellAtlas, activity,
-						"man_default.png");
 		try {
 			this.friendPickerCellAtlas
 					.build((new BlackPawnTextureAtlasBuilder<IBitmapTextureAtlasSource, BitmapTextureAtlas>(

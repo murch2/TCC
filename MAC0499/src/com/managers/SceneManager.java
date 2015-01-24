@@ -131,10 +131,10 @@ public class SceneManager {
 		setScene(friendPickerScene); 
 	}
 	
-	public void createChoiceScene() {
+	public void createChoiceScene(boolean isNewGame) {
 		ResourcesManager.getInstance().camera.setHUD(null);
 		ResourcesManager.getInstance().loadChoiceScene();  
-		choiseScene = new ChoiceScene(); 
+		choiseScene = new ChoiceScene(isNewGame); 
 		setScene(choiseScene); 
 	}
 	

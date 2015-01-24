@@ -98,7 +98,7 @@ public class EndGameScene extends BaseSceneWithHUD implements HTTPResponseListen
 	}
 	
 	private void createPicture() {
-		picture = new Sprite(0, 0, ResourcesManager.getInstance().defaultPictureRegion, ResourcesManager.getInstance().vbom) {
+		picture = new Sprite(0, 0, ResourcesManager.getInstance().manDefault, ResourcesManager.getInstance().vbom) {
 			@Override
 			protected void preDraw(GLState pGLState, Camera pCamera) {
 				super.preDraw(pGLState, pCamera);

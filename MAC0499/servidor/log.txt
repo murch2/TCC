@@ -1,41 +1,10 @@
 Requisicao
-Requisicao
-Aqui0
-Requisicao
-Requisicao
-Requisicao
+EITA 1
+SignUP
+INSERT INTO JOGADOR VALUES (678359188912185, 'Rodrigo Duarte Louro', 0, 0); 
 Requisicao
 Requisicao
 Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-2
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-2
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-Requisicao
-2
+PlayDesafio
+Affected > 0
+Retornando o result!!!!!
